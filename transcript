@@ -1,4 +1,4 @@
-# vsim -c t_sReg 
+# vsim -c t_vReg 
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # //  ModelSim SE-64 10.2c Jul 18 2013 Linux 3.2.0-4-amd64
 # //
@@ -9,14 +9,39 @@
 # //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
 # //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
 # //
-# Loading work.t_sReg(fast)
-# Scalar 0 : abcd
-# Scalar 1 : abcd
-# Scalar 2 : abcd
-# Scalar 3 : abcd
-# Scalar 4 : xxcd
-# Scalar 5 : abcd
-# Scalar 6 : abxx
-# Scalar 7 : abxx
-# ** Note: $finish    : sReg.v(93)
-#    Time: 163 ns  Iteration: 0  Instance: /t_sReg
+# Loading work.t_vReg(fast)
+# In: a000 Serial Out: xxxx
+# In: a001 Serial Out: xxxx
+# In: a002 Serial Out: xxxx
+# In: a003 Serial Out: xxxx
+# In: a004 Serial Out: xxxx
+# In: a005 Serial Out: xxxx
+# In: a006 Serial Out: xxxx
+# In: a007 Serial Out: xxxx
+# In: a008 Serial Out: xxxx
+# In: a009 Serial Out: xxxx
+# In: a00a Serial Out: xxxx
+# In: a00b Serial Out: xxxx
+# In: a00c Serial Out: xxxx
+# In: a00d Serial Out: xxxx
+# In: a00e Serial Out: xxxx
+# In: a00f Serial Out: xxxx
+# In: a010 Serial Out: xxxx
+# In: a010 Serial Out: a000
+# In: a010 Serial Out: a001
+# In: a010 Serial Out: a002
+# In: a010 Serial Out: a003
+# In: a010 Serial Out: a004
+# In: a010 Serial Out: a005
+# In: a010 Serial Out: a006
+# In: a010 Serial Out: a007
+# In: a010 Serial Out: a008
+# In: a010 Serial Out: a009
+# In: a010 Serial Out: a00a
+# In: a010 Serial Out: a00b
+# In: a010 Serial Out: a00c
+# In: a010 Serial Out: a00d
+# In: a010 Serial Out: a00e
+# In: a010 Serial Out: a00f
+# ** Note: $finish    : vReg.v(105)
+#    Time: 343 ns  Iteration: 0  Instance: /t_vReg
