@@ -1,0 +1,22 @@
+# vsim -c t_sReg 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# //  ModelSim SE-64 10.2c Jul 18 2013 Linux 3.2.0-4-amd64
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading work.t_sReg(fast)
+# Scalar 0 : xxxx
+# Scalar 1 : abcd
+# Scalar 2 : abcd
+# Scalar 3 : abcd
+# Scalar 4 : xxcd
+# Scalar 5 : abcd
+# Scalar 6 : abxx
+# Scalar 7 : abxx
+# ** Note: $finish    : sReg.v(93)
+#    Time: 158 ns  Iteration: 0  Instance: /t_sReg
