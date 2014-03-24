@@ -11,6 +11,7 @@ It consists of a number of verilog modules:
 CVP14: the top-level module
 
 sReg: Stores 8 16-bit scalars. Arguments:
+
     * Addr: address
     * DataOut: outputs one scalar
     * DataIn: inputs one scalar
@@ -26,6 +27,7 @@ sReg: Stores 8 16-bit scalars. Arguments:
 vReg: Stores 8 16x16-bit vectors. Can read and write in parallel (an entire vector at once,
       as a 256-bit value) or serially (each 16 bit element, from element 0 to 15, over 16
       clock cycles). Arguments:
+
     * Addr: address
     * DataOut_p: Parallel data out
     * DataOut_s: Serial data out 
