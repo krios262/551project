@@ -18,18 +18,18 @@ module sReg(output reg [15:0] DataOut, input [2:0] Addr, input Clk1, input Clk2,
   end
 
   always@(read, address) begin
-    if (read == 1'b1)
+    if (read)
       DataOut = scalar[address];
     else
       DataOut = DataOut;
   end
 
   always@(write, wr_low, wr_high, address) begin
-    if (write == 1'b1)
+    if (write)
       scalar[address] = DataIn;
-    else if (wr_low == 1'b1)
+    else if (wr_low)
       scalar[address][7:0] = DataIn[7:0];
-    else if (wr_high == 1'b1)
+    else if (wr_high)
       scalar[address][15:8] = DataIn[15:8];
     else
       scalar[address] = scalar[address];

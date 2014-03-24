@@ -10,7 +10,7 @@
 # //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
 # //
 # Loading work.t_sReg(fast)
-# Scalar 0 : xxxx
+# Scalar 0 : abcd
 # Scalar 1 : abcd
 # Scalar 2 : abcd
 # Scalar 3 : abcd
@@ -19,4 +19,4 @@
 # Scalar 6 : abxx
 # Scalar 7 : abxx
 # ** Note: $finish    : sReg.v(93)
-#    Time: 158 ns  Iteration: 0  Instance: /t_sReg
+#    Time: 163 ns  Iteration: 0  Instance: /t_sReg
