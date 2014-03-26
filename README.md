@@ -37,6 +37,8 @@ vReg: Stores 8 16x16-bit vectors. Can read and write in parallel (an entire vect
     * WR_p: Parallel write
     * RD_s: Serial read (elements 0 to 15 appear at DataOut_s over 16 clocks)
     * WR_S: Serial write (elements 0 to 15 expected at DataIn_s over 16 clocks)
+    * Addr2: second address (only for reading)
+    * DataOut2_p and _s: Parallel and serial data out 2 - for reading Addr2
 
     vReg uses the same two-phase clock system as the system memory defined in
         the project spec.
