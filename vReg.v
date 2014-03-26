@@ -1,11 +1,13 @@
 //Eight 16x16-bit vector registers
-module vReg(output reg [255:0] DataOut_p, output reg [15:0] DataOut_s, 
-    input [2:0] Addr, input Clk1, input Clk2, input [255:0] DataIn_p, 
-    input [15:0] DataIn_s, input RD_p, input WR_p, input RD_s, input WR_s);
+module vReg(output reg [255:0] DataOut_p, output reg [255:0] DataOut2_p,
+    output reg [15:0] DataOut_s, output reg [15:0] DataOut2_s,
+    input [2:0] Addr, input [2:0] Addr2, input Clk1, input Clk2, 
+    input [255:0] DataIn_p, input [15:0] DataIn_s, 
+    input RD_p, input WR_p, input RD_s, input WR_s);
 
   reg [15:0] vector[7:0][15:0];
 
-  reg [2:0] address;
+  reg [2:0] address, address2;
   reg readp, writep, reads, writes;
   reg [3:0] select;
 
@@ -25,9 +27,10 @@ module vReg(output reg [255:0] DataOut_p, output reg [15:0] DataOut_s,
 
   always@(posedge Clk2) begin
     address <= Addr;
+    address2 <= Addr2;
   end
   
-  always@(readp, address) begin
+  always@(readp, address, address2) begin
     if (readp) begin
       DataOut_p = {vector[address][15], vector[address][14], 
                    vector[address][13], vector[address][12], vector[address][11], 
@@ -35,9 +38,17 @@ module vReg(output reg [255:0] DataOut_p, output reg [15:0] DataOut_s,
                    vector[address][7], vector[address][6], vector[address][5], 
                    vector[address][4], vector[address][3], vector[address][2], 
                    vector[address][1], vector[address][0]}; 
+      DataOut2_p = {vector[address2][15], vector[address2][14], 
+                   vector[address2][13], vector[address2][12], vector[address2][11], 
+                   vector[address2][10], vector[address2][9], vector[address2][8], 
+                   vector[address2][7], vector[address2][6], vector[address2][5], 
+                   vector[address2][4], vector[address2][3], vector[address2][2], 
+                   vector[address2][1], vector[address2][0]}; 
     end
-    else
+    else begin
       DataOut_p = DataOut_p;
+      DataOut2_p = DataOut2_p;
+    end
   end
   
   always@(writep, address) begin
@@ -80,10 +91,14 @@ module vReg(output reg [255:0] DataOut_p, output reg [15:0] DataOut_s,
   end
   
   always@(select) begin
-    if (reads)
+    if (reads) begin
       DataOut_s = vector[address][select];
-    else
+      DataOut2_s = vector[address2][select];
+    end
+    else begin
       DataOut_s = DataOut_s;  
+      DataOut2_s = DataOut2_s;  
+    end
     if (writes)
       vector[address][select] = DataIn_s;
     else
@@ -93,17 +108,18 @@ module vReg(output reg [255:0] DataOut_p, output reg [15:0] DataOut_s,
 endmodule
 
 module t_vReg();
-  wire [15:0] out;
+  wire [15:0] out, out2;
   reg [15:0] in;
-  wire [255:0] outp;
+  wire [255:0] outp, outp2;
   reg [255:0] inp;
-  reg [2:0] addr;
+  reg [2:0] addr, addr2;
   reg wr, rd, wrp, rdp, clk1, clk2;
   integer i;
 
   vReg UUT(.DataOut_s(out), .DataIn_s(in), .Addr(addr), .WR_s(wr), .RD_s(rd),
             .Clk1(clk1), .Clk2(clk2), .DataOut_p(outp), .DataIn_p(inp),
-            .WR_p(wrp), .RD_p(rdp));
+            .WR_p(wrp), .RD_p(rdp), .DataOut2_s(out2), .DataOut2_p(outp2),
+            .Addr2(addr2));
 
   initial begin
     clk1 = 1'b1;
@@ -115,11 +131,11 @@ module t_vReg();
     end
   end //initial
 
-  initial $monitor("In: %h Serial Out: %h", in, out);
+  initial $monitor("In: %h Serial Out: %h Serial Out 2: %h", in, out, out2);
 
   initial begin
     wr = 1'b0; wrp = 1'b0; rdp = 1'b0; rd = 1'b0;
-    addr = 3'b000;
+    addr = 3'b000; addr2 = 3'b000;
     in = 16'ha000;
     inp = 256'h0;
     #2.5;
@@ -147,8 +163,10 @@ module t_vReg();
     #10;
     wrp = 1'b0;
     rdp = 1'b1;
+    addr2 = 3'b010;
     #10;
     $display("Parallel out: %h", outp);
+    $display("Parallel out 2: %h", outp2);
     rdp = 1'b0;
     #25;
     addr = 3'b001;
