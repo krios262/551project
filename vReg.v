@@ -7,8 +7,7 @@ module vReg(output reg [255:0] DataOut_p, output reg [15:0] DataOut_s,
 
   reg [2:0] address;
   reg readp, writep, reads, writes;
-  reg [3:0] select; //tracks current element during sequential operations
-  integer i; //counter in for loop
+  reg [3:0] select;
 
   always@(posedge Clk1) begin
     readp <= RD_p;
@@ -43,14 +42,40 @@ module vReg(output reg [255:0] DataOut_p, output reg [15:0] DataOut_s,
   
   always@(writep, address) begin
     if (writep) begin
-      for (i = 0; i < 16; i = i + 1) begin
-        vector[address][i] = DataIn_p[(16*i+15):(16*i)];
-      end
+      vector[address][0] = DataIn_p[15:0];
+      vector[address][1] = DataIn_p[31:16];
+      vector[address][2] = DataIn_p[47:32];
+      vector[address][3] = DataIn_p[63:48];
+      vector[address][4] = DataIn_p[79:64];
+      vector[address][5] = DataIn_p[95:80];
+      vector[address][6] = DataIn_p[111:96];
+      vector[address][7] = DataIn_p[127:112];
+      vector[address][8] = DataIn_p[143:128];
+      vector[address][9] = DataIn_p[159:144];
+      vector[address][10] = DataIn_p[175:160];
+      vector[address][11] = DataIn_p[191:176];
+      vector[address][12] = DataIn_p[207:192];
+      vector[address][13] = DataIn_p[223:208];
+      vector[address][14] = DataIn_p[239:224];
+      vector[address][15] = DataIn_p[255:240];
     end
     else begin
-      for (i = 0; i < 16; i = i + 1) begin
-        vector[address][i] = vector[address][i]; 
-      end
+      vector[address][0] = vector[address][0]; 
+      vector[address][1] = vector[address][1]; 
+      vector[address][2] = vector[address][2]; 
+      vector[address][3] = vector[address][3]; 
+      vector[address][4] = vector[address][4]; 
+      vector[address][5] = vector[address][5]; 
+      vector[address][6] = vector[address][6]; 
+      vector[address][7] = vector[address][7]; 
+      vector[address][8] = vector[address][8]; 
+      vector[address][9] = vector[address][9]; 
+      vector[address][10] = vector[address][10]; 
+      vector[address][11] = vector[address][11]; 
+      vector[address][12] = vector[address][12]; 
+      vector[address][13] = vector[address][13]; 
+      vector[address][14] = vector[address][14]; 
+      vector[address][15] = vector[address][15]; 
     end
   end
   
