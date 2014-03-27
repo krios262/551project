@@ -5,14 +5,17 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
   parameter vadd = 4'b0000, vdot = 4'b0001, smul = 4'b0010, sst = 4'b0011, vld = 4'b0100,
             vst = 4'b0101,  sll = 4'b0110,  slh = 4'b0111,  j = 4'b1000,   nop = 4'b1111;
 
-  reg [255:0] vOutP, vOutP2, vInP;
-  reg [15:0] sOut, sIn, vOutS, vOutS2, vInS;
-  reg [2:0] sAddr, vAddr, vAddr2;
+  reg  [255:0] vInP;
+  wire [255:0] vOutP, vOutP2;
+  reg  [15:0]  sIn, vInS;
+  wire [15:0]  vOutS, vOutS2, sOut;
+  reg  [2:0]   sAddr, vAddr, vAddr2;
   reg sRD, sWR, sWR_l, sWR_h, vWR_p, vWR_s, vRD_p, vRD_s;
           
   reg [15:0] PC; //program counter
   reg [15:0] instruction;
   reg newPC, getNewInst, readInst;
+  reg f_sWR_l, f_sWR_h;
 
   //Scalar and Vector registers
   sReg scalar(.DataOut(sOut), .Addr(sAddr), .Clk1(Clk1), .Clk2(Clk2), .DataIn(sIn), 
@@ -37,11 +40,26 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
   end
 
   always@(posedge Clk2) begin
-    if (Reset)
+    if (Reset) begin
       PC <= 16'h0000;
-    else
+      newPC <= 1'b1;
+    end
+    else begin
       PC <= PC; //TODO is reset code in the right location?
+      newPC <= newPC;
+    end
 
+    //Instruction fetching 
+    if (getNewInst) begin
+      instruction <= DataIn;
+      RD <= 1'b0;
+      getNewInst <= 1'b0;
+    end
+    else begin
+      instruction <= instruction;
+      RD <= RD;
+      getNewInst <= getNewInst;
+    end
     if (readInst) begin
       RD <= 1'b1;
       readInst <= 1'b0;
@@ -53,15 +71,23 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
       getNewInst <= getNewInst;
     end
 
-    if (getNewInst) begin
-      instruction <= DataIn;
-      RD <= 1'b0;
-      getNewInst <= 1'b0;
+    //Scalar write Low
+    if (f_sWR_l) begin
+      sWR_l <= 1'b1;
+      f_sWR_l <= 1'b0;
     end
     else begin
-      instruction <= instruction;
-      RD <= RD;
-      getNewInst <= getNewInst;
+      sWR_l <= 1'b0;
+      f_sWR_l <= f_sWR_l;
+    end
+    //Scalar write high
+    if (f_sWR_h) begin
+      sWR_h <= 1'b1;
+      f_sWR_h <= 1'b0;
+    end
+    else begin
+      sWR_h <= 1'b0;
+      f_sWR_h <= f_sWR_h;
     end
   end
 
@@ -71,16 +97,27 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
     getNewInst = 1'b0;
 
     case (instruction[15:12])
-      vadd:
+      /*vadd:
       vdot:
       smul:
       sst:
       vld:
-      vst:
-      sll:
+      vst:*/
+      sll: 
+      begin
+        $strobe("Got sll instruction");
+        sAddr = instruction[11:9]; 
+        sIn   = {sIn[15:8],instruction[7:0]}; 
+        f_sWR_l = 1'b1;
+      end
       slh:
-      j:
-      nop:
+      begin
+        sAddr = instruction[11:9]; 
+        sIn   = {instruction[15:8],sIn[7:0]}; 
+        f_sWR_h = 1'b1;
+      end
+      //j:
+      //nop:
     endcase
 
     PC = PC + 1; //these 2 should probably go in their own always block
