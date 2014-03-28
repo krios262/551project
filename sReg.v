@@ -29,6 +29,7 @@ module sReg(output reg [15:0] DataOut, input [2:0] Addr, input Clk1, input Clk2,
       scalar[address] = DataIn;
     else if (wr_low)
       scalar[address][7:0] = DataIn[7:0];
+//TODO: change to scalar[address] = {scalar[address][15:8],DataIn[7:0]}; ??
     else if (wr_high)
       scalar[address][15:8] = DataIn[15:8];
     else

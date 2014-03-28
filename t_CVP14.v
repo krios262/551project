@@ -17,8 +17,8 @@ module t_CVP14();
 	end
   end
 initial begin
-  $monitor("Current Instruc: %h, PC: %d, Addr: %h, , readInst: %b,getNewInst: %b", 
-UUT.instruction, UUT.PC, UUT.Addr,UUT.readInst, UUT.getNewInst);
+  $monitor("Current Instruc: %h, PC: %d, Addr: %h", 
+            UUT.instruction, UUT.PC, UUT.Addr);
 end
 initial begin
   rst = 1'b1;
