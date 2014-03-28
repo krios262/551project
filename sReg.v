@@ -4,36 +4,40 @@ module sReg(output reg [15:0] DataOut, input [2:0] Addr, input Clk1, input Clk2,
 
   reg [15:0] scalar[7:0];
   reg [2:0] address;
-  reg read, write, wr_low, wr_high;
+  wire [3:0] cmd;
+  parameter read = 4'b1000, write = 4'b0100, wr_low = 4'b0010, wr_high = 4'b0001;
+
+  assign cmd = {RD, WR, WR_l, WR_h};
 
   always@(posedge Clk1) begin
-    read <= RD;
-    write <= WR;
-    wr_low <= WR_l;
-    wr_high <= WR_h;
+
+    case (cmd)
+      read: begin
+        DataOut <= scalar[address];
+        scalar[address] <= scalar[address];
+      end
+      write: begin
+        scalar[address] <= DataIn;
+        DataOut <= DataOut;
+      end
+      wr_low: begin
+        scalar[address] <= {scalar[address][15:8],DataIn[7:0]};
+        DataOut <= DataOut;
+      end
+      wr_high: begin
+        scalar[address] <= {DataIn[15:8],scalar[address][7:0]};
+        DataOut <= DataOut;
+      end
+      default: begin
+        scalar[address] <= scalar[address];
+        DataOut <= DataOut;
+      end
+    endcase
+
   end
 
   always@(posedge Clk2) begin
     address <= Addr;
-  end
-
-  always@(read, address) begin
-    if (read)
-      DataOut = scalar[address];
-    else
-      DataOut = DataOut;
-  end
-
-  always@(write, wr_low, wr_high, address) begin
-    if (write)
-      scalar[address] = DataIn;
-    else if (wr_low)
-      scalar[address][7:0] = DataIn[7:0];
-//TODO: change to scalar[address] = {scalar[address][15:8],DataIn[7:0]}; ??
-    else if (wr_high)
-      scalar[address][15:8] = DataIn[15:8];
-    else
-      scalar[address] = scalar[address];
   end
 endmodule
 
