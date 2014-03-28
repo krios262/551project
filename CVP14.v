@@ -105,7 +105,6 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
       vst:*/
       sll: 
       begin
-        $strobe("Got sll instruction");
         sAddr = instruction[11:9]; 
         sIn   = {sIn[15:8],instruction[7:0]}; 
         f_sWR_l = 1'b1;
@@ -113,7 +112,7 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
       slh:
       begin
         sAddr = instruction[11:9]; 
-        sIn   = {instruction[15:8],sIn[7:0]}; 
+        sIn   = {instruction[7:0],sIn[7:0]}; 
         f_sWR_h = 1'b1;
       end
       //j:
