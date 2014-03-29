@@ -1,0 +1,145 @@
+`timescale 1 ns / 1 ps
+module CVP14_DW01_inc_0 ( A, SUM );
+  input [15:0] A;
+  output [15:0] SUM;
+
+  wire   [15:2] carry;
+
+  HA1D0BWP U1_1_14 ( .A(A[14]), .B(carry[14]), .CO(carry[15]), .S(SUM[14]) );
+  HA1D0BWP U1_1_13 ( .A(A[13]), .B(carry[13]), .CO(carry[14]), .S(SUM[13]) );
+  HA1D0BWP U1_1_12 ( .A(A[12]), .B(carry[12]), .CO(carry[13]), .S(SUM[12]) );
+  HA1D0BWP U1_1_11 ( .A(A[11]), .B(carry[11]), .CO(carry[12]), .S(SUM[11]) );
+  HA1D0BWP U1_1_10 ( .A(A[10]), .B(carry[10]), .CO(carry[11]), .S(SUM[10]) );
+  HA1D0BWP U1_1_9 ( .A(A[9]), .B(carry[9]), .CO(carry[10]), .S(SUM[9]) );
+  HA1D0BWP U1_1_8 ( .A(A[8]), .B(carry[8]), .CO(carry[9]), .S(SUM[8]) );
+  HA1D0BWP U1_1_7 ( .A(A[7]), .B(carry[7]), .CO(carry[8]), .S(SUM[7]) );
+  HA1D0BWP U1_1_6 ( .A(A[6]), .B(carry[6]), .CO(carry[7]), .S(SUM[6]) );
+  HA1D0BWP U1_1_5 ( .A(A[5]), .B(carry[5]), .CO(carry[6]), .S(SUM[5]) );
+  HA1D0BWP U1_1_4 ( .A(A[4]), .B(carry[4]), .CO(carry[5]), .S(SUM[4]) );
+  HA1D0BWP U1_1_3 ( .A(A[3]), .B(carry[3]), .CO(carry[4]), .S(SUM[3]) );
+  HA1D0BWP U1_1_2 ( .A(A[2]), .B(carry[2]), .CO(carry[3]), .S(SUM[2]) );
+  HA1D0BWP U1_1_1 ( .A(A[1]), .B(A[0]), .CO(carry[2]), .S(SUM[1]) );
+  CKXOR2D0BWP U1 ( .A1(carry[15]), .A2(A[15]), .Z(SUM[15]) );
+  CKND0BWP U2 ( .I(A[0]), .ZN(SUM[0]) );
+endmodule
+
+`timescale 1 ns / 1 ps
+module CVP14_synth ( Addr, RD, WR, V, DataOut, Reset, Clk1, Clk2, DataIn );
+  output [15:0] Addr;
+  output [15:0] DataOut;
+  input [15:0] DataIn;
+  input Reset, Clk1, Clk2;
+  output RD, WR, V;
+  wire   N24, N25, N26, N83, N84, N85, N86, N87, N88, N89, N90, N91, N92, N93,
+         N94, N95, N96, N97, N98, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14,
+         n15, n16, n17, n18, n19, n20, n26, n28, n29, n30, n31, n32, n33, n34,
+         n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46, n47, n48,
+         n49, n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60, n61, n62,
+         n63, n64, n65, n66, n67, n68, n69, n70, n71, n72, n73, n74, n75, n76,
+         n77, n78, n79, n80, n81, n82, n83, n84, n85;
+  wire   [2:0] state;
+  wire   [15:0] PC;
+
+  CVP14_DW01_inc_0 add_146 ( .A(PC), .SUM({N98, N97, N96, N95, N94, N93, N92, 
+        N91, N90, N89, N88, N87, N86, N85, N84, N83}) );
+  DFD1BWP \PC_reg[15]  ( .D(n29), .CP(Clk2), .Q(PC[15]), .QN(n5) );
+  DFD1BWP \PC_reg[1]  ( .D(n57), .CP(Clk2), .Q(PC[1]), .QN(n19) );
+  DFD1BWP \PC_reg[2]  ( .D(n55), .CP(Clk2), .Q(PC[2]), .QN(n18) );
+  DFD1BWP \PC_reg[3]  ( .D(n53), .CP(Clk2), .Q(PC[3]), .QN(n17) );
+  DFD1BWP \PC_reg[4]  ( .D(n51), .CP(Clk2), .Q(PC[4]), .QN(n16) );
+  DFD1BWP \PC_reg[5]  ( .D(n49), .CP(Clk2), .Q(PC[5]), .QN(n15) );
+  DFD1BWP \PC_reg[6]  ( .D(n47), .CP(Clk2), .Q(PC[6]), .QN(n14) );
+  DFD1BWP \PC_reg[7]  ( .D(n45), .CP(Clk2), .Q(PC[7]), .QN(n13) );
+  DFD1BWP \PC_reg[8]  ( .D(n43), .CP(Clk2), .Q(PC[8]), .QN(n12) );
+  DFD1BWP \PC_reg[9]  ( .D(n41), .CP(Clk2), .Q(PC[9]), .QN(n11) );
+  DFD1BWP \PC_reg[10]  ( .D(n39), .CP(Clk2), .Q(PC[10]), .QN(n10) );
+  DFD1BWP \PC_reg[11]  ( .D(n37), .CP(Clk2), .Q(PC[11]), .QN(n9) );
+  DFD1BWP \PC_reg[12]  ( .D(n35), .CP(Clk2), .Q(PC[12]), .QN(n8) );
+  DFD1BWP \PC_reg[13]  ( .D(n33), .CP(Clk2), .Q(PC[13]), .QN(n7) );
+  DFD1BWP \PC_reg[14]  ( .D(n31), .CP(Clk2), .Q(PC[14]), .QN(n6) );
+  DFQD1BWP \Addr_reg[1]  ( .D(n56), .CP(Clk1), .Q(Addr[1]) );
+  DFQD1BWP \Addr_reg[2]  ( .D(n54), .CP(Clk1), .Q(Addr[2]) );
+  DFQD1BWP \Addr_reg[3]  ( .D(n52), .CP(Clk1), .Q(Addr[3]) );
+  DFQD1BWP \Addr_reg[4]  ( .D(n50), .CP(Clk1), .Q(Addr[4]) );
+  DFQD1BWP \Addr_reg[5]  ( .D(n48), .CP(Clk1), .Q(Addr[5]) );
+  DFQD1BWP \Addr_reg[6]  ( .D(n46), .CP(Clk1), .Q(Addr[6]) );
+  DFQD1BWP \Addr_reg[7]  ( .D(n44), .CP(Clk1), .Q(Addr[7]) );
+  DFQD1BWP \Addr_reg[8]  ( .D(n42), .CP(Clk1), .Q(Addr[8]) );
+  DFQD1BWP \Addr_reg[9]  ( .D(n40), .CP(Clk1), .Q(Addr[9]) );
+  DFQD1BWP \Addr_reg[10]  ( .D(n38), .CP(Clk1), .Q(Addr[10]) );
+  DFQD1BWP \Addr_reg[11]  ( .D(n36), .CP(Clk1), .Q(Addr[11]) );
+  DFQD1BWP \Addr_reg[12]  ( .D(n34), .CP(Clk1), .Q(Addr[12]) );
+  DFQD1BWP \Addr_reg[13]  ( .D(n32), .CP(Clk1), .Q(Addr[13]) );
+  DFQD1BWP \Addr_reg[14]  ( .D(n30), .CP(Clk1), .Q(Addr[14]) );
+  DFQD1BWP \Addr_reg[15]  ( .D(n28), .CP(Clk1), .Q(Addr[15]) );
+  DFQD1BWP \Addr_reg[0]  ( .D(n58), .CP(Clk1), .Q(Addr[0]) );
+  DFD1BWP \PC_reg[0]  ( .D(n59), .CP(Clk2), .Q(PC[0]), .QN(n20) );
+  DFQD1BWP \state_reg[0]  ( .D(N24), .CP(Clk1), .Q(state[0]) );
+  DFQD1BWP \state_reg[1]  ( .D(N25), .CP(Clk1), .Q(state[1]) );
+  DFQD1BWP \state_reg[2]  ( .D(N26), .CP(Clk1), .Q(state[2]) );
+  EDFQD1BWP RD_reg ( .D(n26), .E(n85), .CP(Clk2), .Q(RD) );
+  MOAI22D0BWP U50 ( .A1(n6), .A2(n61), .B1(N97), .B2(n62), .ZN(n31) );
+  MOAI22D0BWP U51 ( .A1(n7), .A2(n61), .B1(N96), .B2(n62), .ZN(n33) );
+  MOAI22D0BWP U52 ( .A1(n8), .A2(n61), .B1(N95), .B2(n62), .ZN(n35) );
+  MOAI22D0BWP U53 ( .A1(n9), .A2(n61), .B1(N94), .B2(n62), .ZN(n37) );
+  MOAI22D0BWP U54 ( .A1(n10), .A2(n61), .B1(N93), .B2(n62), .ZN(n39) );
+  MOAI22D0BWP U55 ( .A1(n5), .A2(n61), .B1(N98), .B2(n62), .ZN(n29) );
+  NR2XD0BWP U56 ( .A1(state[0]), .A2(state[1]), .ZN(n26) );
+  CKND3BWP U57 ( .I(n79), .ZN(n62) );
+  OA21D4BWP U58 ( .A1(state[1]), .A2(n81), .B(state[2]), .Z(n64) );
+  ND2D3BWP U59 ( .A1(n79), .A2(n60), .ZN(n61) );
+  TIELBWP U60 ( .ZN(WR) );
+  OAI21D0BWP U61 ( .A1(state[2]), .A2(state[1]), .B(n60), .ZN(n85) );
+  MOAI22D0BWP U62 ( .A1(n20), .A2(n61), .B1(N83), .B2(n62), .ZN(n59) );
+  MUX2ND0BWP U63 ( .I0(n63), .I1(n20), .S(n64), .ZN(n58) );
+  CKND0BWP U64 ( .I(Addr[0]), .ZN(n63) );
+  MOAI22D0BWP U65 ( .A1(n19), .A2(n61), .B1(N84), .B2(n62), .ZN(n57) );
+  MUX2ND0BWP U66 ( .I0(n65), .I1(n19), .S(n64), .ZN(n56) );
+  CKND0BWP U67 ( .I(Addr[1]), .ZN(n65) );
+  MOAI22D0BWP U68 ( .A1(n18), .A2(n61), .B1(N85), .B2(n62), .ZN(n55) );
+  MUX2ND0BWP U69 ( .I0(n66), .I1(n18), .S(n64), .ZN(n54) );
+  CKND0BWP U70 ( .I(Addr[2]), .ZN(n66) );
+  MOAI22D0BWP U71 ( .A1(n17), .A2(n61), .B1(N86), .B2(n62), .ZN(n53) );
+  MUX2ND0BWP U72 ( .I0(n67), .I1(n17), .S(n64), .ZN(n52) );
+  CKND0BWP U73 ( .I(Addr[3]), .ZN(n67) );
+  MOAI22D0BWP U74 ( .A1(n16), .A2(n61), .B1(N87), .B2(n62), .ZN(n51) );
+  MUX2ND0BWP U75 ( .I0(n68), .I1(n16), .S(n64), .ZN(n50) );
+  CKND0BWP U76 ( .I(Addr[4]), .ZN(n68) );
+  MOAI22D0BWP U77 ( .A1(n15), .A2(n61), .B1(N88), .B2(n62), .ZN(n49) );
+  MUX2ND0BWP U78 ( .I0(n69), .I1(n15), .S(n64), .ZN(n48) );
+  CKND0BWP U79 ( .I(Addr[5]), .ZN(n69) );
+  MOAI22D0BWP U80 ( .A1(n14), .A2(n61), .B1(N89), .B2(n62), .ZN(n47) );
+  MUX2ND0BWP U81 ( .I0(n70), .I1(n14), .S(n64), .ZN(n46) );
+  CKND0BWP U82 ( .I(Addr[6]), .ZN(n70) );
+  MOAI22D0BWP U83 ( .A1(n13), .A2(n61), .B1(N90), .B2(n62), .ZN(n45) );
+  MUX2ND0BWP U84 ( .I0(n71), .I1(n13), .S(n64), .ZN(n44) );
+  CKND0BWP U85 ( .I(Addr[7]), .ZN(n71) );
+  MOAI22D0BWP U86 ( .A1(n12), .A2(n61), .B1(N91), .B2(n62), .ZN(n43) );
+  MUX2ND0BWP U87 ( .I0(n72), .I1(n12), .S(n64), .ZN(n42) );
+  CKND0BWP U88 ( .I(Addr[8]), .ZN(n72) );
+  MOAI22D0BWP U89 ( .A1(n11), .A2(n61), .B1(N92), .B2(n62), .ZN(n41) );
+  MUX2ND0BWP U90 ( .I0(n73), .I1(n11), .S(n64), .ZN(n40) );
+  CKND0BWP U91 ( .I(Addr[9]), .ZN(n73) );
+  MUX2ND0BWP U92 ( .I0(n74), .I1(n10), .S(n64), .ZN(n38) );
+  CKND0BWP U93 ( .I(Addr[10]), .ZN(n74) );
+  MUX2ND0BWP U94 ( .I0(n75), .I1(n9), .S(n64), .ZN(n36) );
+  CKND0BWP U95 ( .I(Addr[11]), .ZN(n75) );
+  MUX2ND0BWP U96 ( .I0(n76), .I1(n8), .S(n64), .ZN(n34) );
+  CKND0BWP U97 ( .I(Addr[12]), .ZN(n76) );
+  MUX2ND0BWP U98 ( .I0(n77), .I1(n7), .S(n64), .ZN(n32) );
+  CKND0BWP U99 ( .I(Addr[13]), .ZN(n77) );
+  MUX2ND0BWP U100 ( .I0(n78), .I1(n6), .S(n64), .ZN(n30) );
+  CKND0BWP U101 ( .I(Addr[14]), .ZN(n78) );
+  ND3D0BWP U102 ( .A1(state[1]), .A2(state[0]), .A3(state[2]), .ZN(n60) );
+  CKND2D0BWP U103 ( .A1(n26), .A2(state[2]), .ZN(n79) );
+  MUX2ND0BWP U104 ( .I0(n80), .I1(n5), .S(n64), .ZN(n28) );
+  CKND0BWP U105 ( .I(Addr[15]), .ZN(n80) );
+  OAI21D0BWP U106 ( .A1(state[2]), .A2(n82), .B(n83), .ZN(N26) );
+  CKND0BWP U107 ( .I(state[1]), .ZN(n82) );
+  OAI21D0BWP U108 ( .A1(state[1]), .A2(n81), .B(n83), .ZN(N25) );
+  CKND0BWP U109 ( .I(state[0]), .ZN(n81) );
+  OAI21D0BWP U110 ( .A1(state[2]), .A2(n84), .B(n83), .ZN(N24) );
+  CKND0BWP U111 ( .I(Reset), .ZN(n83) );
+  CKND0BWP U112 ( .I(n26), .ZN(n84) );
+endmodule
+
