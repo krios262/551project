@@ -39,8 +39,6 @@ module t_CVP14();
     rst = 1'b1;
     #10;
     rst = 1'b0;
-    #10;
-    $strobe("Mem[0]: %h", mem.Memory[0]);
     #1100;
     $strobe("S0: %h S1: %h S7: %h", UUT.scalar.scalar[0], UUT.scalar.scalar[1], UUT.scalar.scalar[7]);
     #10;

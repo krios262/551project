@@ -18,7 +18,6 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
 
   reg [15:0] PC; //program counter
   reg [15:0] instruction;
-  reg [15:0] f_Addr;
 
   reg [2:0] state, nextState;
 
@@ -32,37 +31,69 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
   //Operation modules
 
   always@(posedge Clk1) begin
+    //Addresses and state are set on Clk1
     if (Reset)
       state <= start;
     else
       state <= nextState;
 
-    Addr <= f_Addr;
-    case (instruction[15:12])
-      /*vadd:
-      vdot:
-      smul:
-      sst:
-      vld:
-      vst:*/
-      sll:
-      begin
-        sAddr <= instruction[11:9];
+    case (nextState)
+
+      start: begin
+        //No action on Clk1
       end
-      slh:
-      begin
-        sAddr <= instruction[11:9];
+
+      newPC: begin
+        Addr <= PC;
       end
-      //j:
-      //nop:
+
+      fetchInst: begin
+        //No action on Clk1
+      end
+
+      startEx: begin
+
+        case (instruction[15:12])
+          /*vadd:
+          vdot:
+          smul:
+          sst:
+          vld:
+          vst:*/
+          sll:
+          begin
+            sAddr <= instruction[11:9];
+          end
+          slh:
+          begin
+            sAddr <= instruction[11:9];
+          end
+          //j:
+          //nop:
+        endcase
+
+      end
+
+      executing: begin
+        //No action for current ops (SLL and SLH)
+      end
+
+      done: begin
+        //No action on Clk1
+      end
+
     endcase
-  end
+
+  end //always
 
   always@(posedge Clk2) begin
+    //RD/WR flags, instruction, PC, data inputs are set on Clk2
+    //Data outputs are read on Clk2
 
     case (state)
 
       start: begin
+        PC <= 16'h0000;
         RD <= 1'b0;
         WR <= 1'b0;
         sWR_l <= 1'b0;
@@ -112,6 +143,7 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
       done: begin
         sWR_l <= 1'b0;
         sWR_h <= 1'b0;
+        PC <= PC + 1;
       end
     endcase
 
@@ -122,18 +154,14 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
     case (state)
 
       start: begin
-        PC = 16'h0000;
-        f_Addr = PC;
         nextState = newPC;
       end
 
       newPC: begin
-
         nextState = fetchInst;
       end
 
       fetchInst: begin
-
         nextState = startEx;
       end
 
@@ -167,8 +195,6 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
       end
 
       done: begin
-        PC = PC + 1;
-        f_Addr = PC;
         nextState = newPC;
       end
 
