@@ -47,11 +47,11 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
       vst:*/
       sll:
       begin
-        sAddr = instruction[11:9];
+        sAddr <= instruction[11:9];
       end
       slh:
       begin
-        sAddr = instruction[11:9];
+        sAddr <= instruction[11:9];
       end
       //j:
       //nop:
@@ -156,6 +156,8 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
           end
           //j:
           //nop:
+          default:
+            nextState = done;
         endcase
 
       end
@@ -168,6 +170,10 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
         PC = PC + 1;
         f_Addr = PC;
         nextState = newPC;
+      end
+
+      default: begin
+        nextState = 3'bx;
       end
     endcase
 
