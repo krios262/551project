@@ -138,7 +138,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
           vdot:
           smul: */
           sst: begin
-            sRD = 1'b1;
+            sRD <= 1'b1;
           end
           /*
           vld:
@@ -166,7 +166,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
             //updateAddr on first cycle, do other operations on second
             if (updateAddr) begin
               DataOut <= sOut;
-              WR = 1'b1;
+              WR <= 1'b1;
               sRD <= 1'b0;
               updateAddr <= 1'b0;
             end else
