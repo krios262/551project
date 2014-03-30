@@ -65,7 +65,10 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
           /*vadd:
           vdot:
           smul:
+          */
           sst:
+            sAddr <= instruction[8:6]; //get system mem dest address
+          /*
           vld:
           vst:*/
           sll:
@@ -83,7 +86,10 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
       end
 
       executing: begin
-        //No action for current ops (SLL and SLH)
+        case (instruction[15:12])
+          sst:
+            sAddr <= instruction[11:9]; //scalar value to be stored
+        endcase
       end
 
       done: begin
@@ -126,17 +132,18 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
         case (instruction[15:12])
           /*vadd:
           vdot:
-          smul:
-          sst:
+          smul: */
+          sst: begin
+            sRD = 1'b1;
+          end
+          /*
           vld:
           vst:*/
-          sll:
-          begin
+          sll: begin
             sIn   <= {sIn[15:8],instruction[7:0]};
             sWR_l <= 1'b1;
           end
-          slh:
-          begin
+          slh: begin
             sIn   <= {instruction[7:0],sIn[7:0]};
             sWR_h <= 1'b1;
           end
@@ -147,19 +154,33 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
       end
 
       executing: begin
+        case (instruction[15:12])
 
+          sst: begin
+            //updateAddr on first cycle, do other operations on second
+            if (updateAddr) begin
+              DataOut <= sOut;
+              WR = 1'b1;
+              sRD <= 1'b0;
+              updateAddr <= 1'b0;
+            end else
+              updateAddr <= 1'b1;
+          end
+
+        endcase
       end
 
       done: begin
         sWR_l <= 1'b0;
         sWR_h <= 1'b0;
         setPC <= 1'b1;
+        WR <= 1'b0;
       end
     endcase
 
   end
 
-  always @(state, instruction) begin
+  always @(state, instruction, updateAddr) begin
 
     case (state)
 
@@ -180,16 +201,17 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
         case (instruction[15:12])
           /*vadd:
           vdot:
-          smul:
-          sst:
+          smul: */
+          sst: begin
+            nextState = executing;
+          end
+          /*
           vld:
           vst:*/
-          sll:
-          begin
+          sll: begin
             nextState = done;
           end
-          slh:
-          begin
+          slh: begin
             nextState = done;
           end
           //j:
@@ -201,7 +223,26 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
       end
 
       executing: begin
-        nextState = done; //modify when adding more inst
+
+        case (instruction[15:12])
+          /*vadd:
+          vdot:
+          smul: */
+          sst: begin
+            if (updateAddr)
+              nextState = executing;
+            else
+              nextState = done;
+          end
+          /*
+          vld:
+          vst:*/
+          //j:
+          //nop:
+          default:
+            nextState = done;
+        endcase
+
       end
 
       done: begin

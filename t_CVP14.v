@@ -25,9 +25,8 @@ module t_CVP14();
 
   initial begin
     /*
-    $monitor("State: %b, Current Instruc: %h, PC: %d, Addr: %h, sWR_l: %b S0: %h S1: %h S7: %h",
-            UUT.state, UUT.instruction, UUT.PC, UUT.Addr, UUT.sWR_l,
-            UUT.scalar.scalar[0], UUT.scalar.scalar[1], UUT.scalar.scalar[7]);
+    $monitor("%t: State: %b, Inst: %h, PC: %d, Addr: %h, WR: %b, RD: %b, DataOut: %h",
+            $time, UUT.state, UUT.instruction, UUT.PC, UUT.Addr, UUT.WR, UUT.RD, UUT.DataOut);
     */
     /*
     $monitor("%t: State %b, Inst: %h, sWR_l:, %b, Scalar 0: %h, sIn: %h, sAddr: %h", $time, UUT.state,
@@ -41,6 +40,9 @@ module t_CVP14();
     rst = 1'b0;
     #1100;
     $strobe("S0: %h S1: %h S7: %h", UUT.scalar.scalar[0], UUT.scalar.scalar[1], UUT.scalar.scalar[7]);
+    #10;
+    //write memory contents to text file
+    $writememb("dump.txt", mem.Memory);
     #10;
     $finish;
   end
