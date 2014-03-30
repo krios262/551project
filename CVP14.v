@@ -53,6 +53,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
       newPC: begin
         updatePC <= 1'b0;
+        jump <= 1'b0;
       end
 
       fetchInst: begin
@@ -79,7 +80,10 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
           begin
             sAddr <= instruction[11:9];
           end
-          //j:
+          j: begin
+            updatePC <= 1'b1;
+            jump <= 1'b1;
+          end
           //nop:
         endcase
 
@@ -147,7 +151,9 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
             sIn   <= {instruction[7:0],sIn[7:0]};
             sWR_h <= 1'b1;
           end
-          //j:
+          j: begin
+            setPC <= 1'b1;
+          end
           //nop:
         endcase
 
@@ -214,7 +220,9 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
           slh: begin
             nextState = done;
           end
-          //j:
+          j: begin
+            nextState = newPC; //jump does not require the done state
+          end
           //nop:
           default:
             nextState = done;
