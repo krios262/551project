@@ -30,7 +30,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
               .RD_s(vRD_s), .DataOut2_p(vOutP2), .DataOut2_s(vOutS2), .Addr2(vAddr2));
 
   //Addressing
-  PCunit pcu(.PC(PC), .offset(instruction[5:0]), .Clk2(Clk2), .updatePC(updatePC),
+  PCunit pcu(.PC(PC), .offset(instruction[11:0]), .Clk2(Clk2), .updatePC(updatePC),
               .jump(jump), .reset(Reset));
   addrUnit addru(.addr(Addr), .PC(PC), .Clk1(Clk1), .offset(instruction[5:0]),
               .addrBase(sOut), .setPC(setPC), .updateAddr(updateAddr));
