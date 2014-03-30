@@ -1,4 +1,4 @@
-module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
+module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
     output reg [15:0] DataOut, input Reset, input Clk1, input Clk2, input [15:0] DataIn);
 
   //Parameters for opcodes
@@ -15,8 +15,9 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
   wire [15:0]  vOutS, vOutS2, sOut;
   reg  [2:0]   sAddr, vAddr, vAddr2;
   reg sRD, sWR, sWR_l, sWR_h, vWR_p, vWR_s, vRD_p, vRD_s;
+  reg updatePC, jump, setPC, updateAddr; //addressing module flags
 
-  reg [15:0] PC; //program counter
+  wire [15:0] PC; //program counter
   reg [15:0] instruction;
 
   reg [2:0] state, nextState;
@@ -28,13 +29,20 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
               .DataIn_p(vInP), .DataIn_s(vInS), .WR_p(vWR_p), .RD_p(vRD_p), .WR_s(vWR_s),
               .RD_s(vRD_s), .DataOut2_p(vOutP2), .DataOut2_s(vOutS2), .Addr2(vAddr2));
 
+  //Addressing
+  PCunit pcu(.PC(PC), .offset(instruction[5:0]), .Clk2(Clk2), .updatePC(updatePC),
+              .jump(jump), .reset(Reset));
+  addrUnit addru(.addr(Addr), .PC(PC), .Clk1(Clk1), .offset(instruction[5:0]),
+              .addrBase(sOut), .setPC(setPC), .updateAddr(updateAddr));
   //Operation modules
 
   always@(posedge Clk1) begin
     //Addresses and state are set on Clk1
-    if (Reset)
+    if (Reset) begin
       state <= start;
-    else
+      updatePC <= 1'b0;
+      jump <= 1'b0;
+    end else
       state <= nextState;
 
     case (nextState)
@@ -44,7 +52,7 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
       end
 
       newPC: begin
-        Addr <= PC;
+        updatePC <= 1'b0;
       end
 
       fetchInst: begin
@@ -79,7 +87,7 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
       end
 
       done: begin
-        //No action on Clk1
+        updatePC <= 1'b1;
       end
 
     endcase
@@ -93,17 +101,19 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
     case (state)
 
       start: begin
-        PC <= 16'h0000;
         RD <= 1'b0;
         WR <= 1'b0;
         sWR_l <= 1'b0;
         sWR <= 1'b0;
         sWR_h <= 1'b0;
         sRD <= 1'b0;
+        setPC <= 1'b1;
+        updateAddr <= 1'b0;
       end
 
       newPC: begin
         RD <= 1'b1;
+        setPC <= 1'b0;
       end
 
       fetchInst: begin
@@ -143,7 +153,7 @@ module CVP14(output reg [15:0] Addr, output reg RD, output reg WR, output reg V,
       done: begin
         sWR_l <= 1'b0;
         sWR_h <= 1'b0;
-        PC <= PC + 1;
+        setPC <= 1'b1;
       end
     endcase
 
