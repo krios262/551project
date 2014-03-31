@@ -1,13 +1,15 @@
 module FADD (sum,a,b)
+parameter BITS = 16;
+
 // Initilizing variables
-input [15:0] a,b;
-output [15:0] sum;
+input [BITS-1:0] a,b;
+output [BITS-1:0] sum;
 reg a_sign,b_sign;
 reg [4:0] a_exp,b_exp;
 reg [10:0] a_man, b_man;
 // Separting the signed bit , mantisa and exponent
-a_sign = a[15]; // Signed Bit
-b_sign = b[15];
+a_sign = a[BITS-1]; // Signed Bit
+b_sign = b[BITS-1];
 
 a_exp[4:0] = a[14:10]; // Exponents
 b_exp[4:0] = b[14:10];
@@ -55,7 +57,7 @@ sum_exp = a_exp;
 sum_man = a_man + b_man;
 end
 
-endmodule
+endmodule 
 
 
 
