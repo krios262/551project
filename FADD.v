@@ -27,7 +27,7 @@ if(a_exp_gt_b_exp) begin
 e_diff = a_exp - b_exp; // Difference between the exponents
 b_man_gr [12:0] = b_man[12:0] >> (e_diff); // Shift the lower exponent with diff+2 times
 // Sticky Bit Logic 
-for(i=0;i<e_diff;i=i+1) begin
+begin
 a_man[i+2] 
 
 
