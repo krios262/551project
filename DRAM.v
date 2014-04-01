@@ -1,4 +1,4 @@
-`timescale 1 ns / 1 ns
+`timescale 1 ns / 1 ps
 module DRAM(DataOut, Addr, DataIn, clk1, clk2, RD, WR);
 parameter WordSize=16;
 parameter AddrWidth=16;

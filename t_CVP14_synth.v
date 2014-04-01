@@ -27,6 +27,8 @@ module t_CVP14_synth();
     #10;
     rst = 1'b0;
     #1100;
+    $writememb("dump.txt", mem.Memory);
+    #10;
     $finish;
   end
 endmodule
