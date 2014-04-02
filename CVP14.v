@@ -19,7 +19,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
   wire [15:0] PC; //program counter
   reg [15:0] instruction;
-  wire [15:0] offset;
+  wire [3:0] inc_offset;
 
   reg [2:0] state, nextState;
 
@@ -33,9 +33,9 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
   //Addressing
   PCunit pcu(.PC(PC), .offset(instruction[11:0]), .Clk2(Clk2), .updatePC(updatePC),
               .jump(jump), .reset(Reset));
-  addrUnit addru(.addr(Addr), .PC(PC), .Clk1(Clk1), .offset(offset),
-              .addrBase(sOut), .setPC(setPC), .updateAddr(updateAddr));
-  offsetu osu(.offset(offset), .inst(instruction[5:0]), .Clk2(Clk2), .offsetInc(offsetInc));
+  addrUnit addru(.addr(Addr), .PC(PC), .Clk1(Clk1), .imm_offset(instruction[5:0]),
+              .addrBase(sOut), .setPC(setPC), .updateAddr(updateAddr), .inc_offset(inc_offset));
+  offsetu osu(.Reset(Reset), .Clk2(Clk2), .offsetInc(offsetInc), .offset(inc_offset));
   //Operation modules
 
   always@(posedge Clk1) begin
