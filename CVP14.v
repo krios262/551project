@@ -81,8 +81,10 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
             sAddr <= instruction[8:6]; //get system mem dest address
             vAddr <= instruction[11:9]; //vector store dest
           end
-          /*
-          vst:*/
+          vst: begin
+            sAddr <= instruction[8:6]; //get system mem dest address
+            vAddr <= instruction[11:9]; //vector store dest
+          end
           sll:
           begin
             sAddr <= instruction[11:9];
@@ -110,6 +112,13 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
             end else
               offsetInc <= 1'b0;
           end
+          vst: begin
+            if (updateAddr) begin
+              offsetInc <= 1'b1;
+            end else
+              offsetInc <= 1'b0;
+          end
+
         endcase
       end
 
@@ -146,13 +155,14 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
       newPC: begin
         RD <= 1'b1;
+        WR <= 1'b0;
         setPC <= 1'b0;
       end
 
       fetchInst: begin
         RD <= 1'b0;
-        instruction <= DataIn;
         vWR_s <= 1'b0;
+        instruction <= DataIn;
       end
 
       startEx: begin
@@ -167,8 +177,9 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
           vld: begin
             sRD <= 1'b1;
           end
-          /*
-          vst:*/
+          vst: begin
+            sRD <= 1'b1;
+          end
           sll: begin
             sIn   <= {sIn[15:8],instruction[7:0]};
             sWR_l <= 1'b1;
@@ -210,6 +221,16 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
             end else
               vWR_s <= 1'b0;
           end
+          vst: begin
+            sRD <= 1'b0;
+            vRD_s <= 1'b1;
+
+            if (updateAddr) begin
+              WR <= 1'b1;
+              DataOut <= vOutS;
+            end else
+              updateAddr <= 1'b1;
+          end
 
         endcase
       end
@@ -219,8 +240,24 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
         sWR_l <= 1'b0;
         sWR_h <= 1'b0;
         setPC <= 1'b1;
-        WR <= 1'b0;
+        vRD_s <= 1'b0;
         updateAddr <= 1'b0;
+
+        case (instruction[15:12]) //for vld, RD persists
+          vld: begin
+            WR <= 1'b0;
+            RD <= RD;
+          end
+          vst: begin
+            WR <= WR;
+            RD <= 1'b0;
+            DataOut <= vOutS;
+          end
+          default: begin
+            WR <= 1'b0;
+            RD <= 1'b0;
+          end
+        endcase
       end
     endcase
 
@@ -254,8 +291,9 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
           vld: begin
             nextState = executing;
           end
-          /*
-          vst:*/
+          vst: begin
+            nextState = executing;
+          end
           sll: begin
             nextState = done;
           end
@@ -290,8 +328,12 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
             else
               nextState = executing;
           end
-          /*
-          vst:*/
+          vst: begin
+            if (inc_offset[3] & inc_offset [2] & inc_offset[1] & inc_offset[0])
+              nextState = done;
+            else
+              nextState = executing;
+          end
           //j:
           //nop:
           default:
