@@ -22,7 +22,13 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
   wire [3:0] inc_offset;
 
   reg [2:0] state, nextState;
-
+  
+  wire [255:0] AdderOut;
+  wire OvF;
+  reg startadd;
+  wire DONE;
+  reg Prevdone;
+  reg [255:0] AdderIn1,AdderIn2;
   reg [15:0] vBuf;
 
   //Scalar and Vector registers
@@ -38,8 +44,10 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
   addrUnit addru(.addr(Addr), .PC(PC), .Clk1(Clk1), .imm_offset(instruction[5:0]),
               .addrBase(sOut), .setPC(setPC), .updateAddr(updateAddr), .inc_offset(inc_offset));
   offsetu osu(.Reset(Reset), .Clk2(Clk2), .offsetInc(offsetInc), .offset(inc_offset));
+  
   //Operation modules
-
+  
+    VADD16 adder(.SumV(AdderOut),.Overflw(Ovf),.Inval1(AdderIn1),.Inval2(AdderIn2),.start(startadd),.done(DONE));
   always@(posedge Clk1) begin
     //Addresses and state are set on Clk1
 
@@ -70,8 +78,12 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
       startEx: begin
 
         case (instruction[15:12])
-          /*vadd:
-          vdot:
+          vadd:
+          begin
+            vAddr <= instruction[8:6];
+            vAddr2 <= instruction[5:3];
+          end
+          /*vdot:
           smul:
           */
           sst: begin
@@ -104,6 +116,8 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
       executing: begin
         case (instruction[15:12])
+          vadd:
+             vAddr <= instruction[11:9];
           sst:
             sAddr <= instruction[11:9]; //scalar value to be stored
           vld: begin
@@ -151,6 +165,8 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
         vWR_p <= 1'b0;
         setPC <= 1'b1;
         updateAddr <= 1'b0;
+        Prevdone <= 1'b0;
+        startadd <= 1'b0;
       end
 
       newPC: begin
@@ -168,8 +184,11 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
       startEx: begin
 
         case (instruction[15:12])
-          /*vadd:
-          vdot:
+        vadd:
+          begin
+            vRD_p <= 1'b1;
+          end
+          /* vdot:
           smul: */
           sst: begin
             sRD <= 1'b1;
@@ -198,7 +217,21 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
       executing: begin
         case (instruction[15:12])
-
+          vadd: begin
+            vRD_p <= 1'b0;
+            AdderIn1 <= vOutP;
+            AdderIn2 <= vOutP2;
+            Prevdone <= DONE;
+            if(Prevdone == 1'b1)
+              begin
+                vInP <= AdderOut;  
+                V <= OvF;
+                vWR_p <= 1'b1;
+                startadd <= 1'b0;
+              end
+             else
+               startadd <= 1'b1;
+           end
           sst: begin
             //updateAddr on first cycle, do other operations on second
             if (updateAddr) begin
@@ -242,7 +275,9 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
         setPC <= 1'b1;
         vRD_s <= 1'b0;
         updateAddr <= 1'b0;
-
+        vWR_p <= 1'b0;
+        Prevdone <= 1'b0;
+        //startadd <= 1'b0;
         case (instruction[15:12]) //for vld, RD persists
           vld: begin
             WR <= 1'b0;
@@ -263,7 +298,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
   end
 
-  always @(state, instruction, updateAddr, inc_offset) begin
+  always @(state, instruction, updateAddr, inc_offset,vWR_p) begin
 
     case (state)
 
@@ -282,8 +317,9 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
       startEx: begin
 
         case (instruction[15:12])
-          /*vadd:
-          vdot:
+          vadd:
+           nextState = executing;
+          /*vdot:
           smul: */
           sst: begin
             nextState = executing;
@@ -313,8 +349,13 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
       executing: begin
 
         case (instruction[15:12])
-          /*vadd:
-          vdot:
+          vadd:begin
+            if(vWR_p)
+              nextState = done;
+            else
+              nextState = executing;
+            end
+          /*vdot:
           smul: */
           sst: begin
             if (updateAddr)
