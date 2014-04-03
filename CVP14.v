@@ -22,7 +22,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
   wire [3:0] inc_offset;
 
   reg [2:0] state, nextState;
-  
+
   wire [255:0] AdderOut;
   wire OvF;
   reg startadd;
@@ -46,8 +46,8 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
   offsetu osu(.Reset(Reset), .Clk2(Clk2), .offsetInc(offsetInc), .offset(inc_offset));
   
   //Operation modules
-  
-    VADD16 adder(.SumV(AdderOut),.Overflw(Ovf),.Inval1(AdderIn1),.Inval2(AdderIn2),.start(startadd),.done(DONE));
+  VADD16 adder(.SumV(AdderOut),.Overflw(Ovf),.Inval1(AdderIn1),.Inval2(AdderIn2),.start(startadd),.done(DONE));
+
   always@(posedge Clk1) begin
     //Addresses and state are set on Clk1
 
@@ -109,7 +109,9 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
             updatePC <= 1'b1;
             jump <= 1'b1;
           end
-          //nop:
+          nop: begin
+            updatePC <= 1'b1;
+          end
         endcase
 
       end
@@ -210,7 +212,9 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
           j: begin
             setPC <= 1'b1;
           end
-          //nop:
+          nop: begin
+            setPC <= 1'b1;
+          end
         endcase
 
       end
@@ -224,7 +228,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
             Prevdone <= DONE;
             if(Prevdone == 1'b1)
               begin
-                vInP <= AdderOut;  
+                vInP <= AdderOut;
                 V <= OvF;
                 vWR_p <= 1'b1;
                 startadd <= 1'b0;
@@ -339,7 +343,9 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
           j: begin
             nextState = newPC; //jump does not require the done state
           end
-          //nop:
+          nop: begin
+            nextState = newPC; //no op does not require the done state
+          end
           default:
             nextState = done;
         endcase
