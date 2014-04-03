@@ -41,7 +41,7 @@ module t_CVP14();
     rst = 1'b1;
     #10;
     rst = 1'b0;
-    #1500;
+    #5500;
     $strobe("V0.0: %h", UUT.vector.vector[0][0]);
     $strobe("V0.1: %h", UUT.vector.vector[0][1]);
     $strobe("V0.2: %h", UUT.vector.vector[0][2]);

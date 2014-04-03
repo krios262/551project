@@ -1,6 +1,6 @@
 //Updates PC
 module PCunit(output reg [15:0] PC, input [11:0] offset, input Clk2, input updatePC,
-    input jump, input reset);
+    input jump, input reset, input overflow);
 
   reg [15:0] ex_offset;
 
@@ -8,6 +8,8 @@ module PCunit(output reg [15:0] PC, input [11:0] offset, input Clk2, input updat
 
     if (reset)
       PC <= 16'h0000;
+    else if (overflow)
+      PC <= 16'hfff0;
     else
       if (updatePC)
 
