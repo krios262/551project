@@ -37,7 +37,6 @@ module vReg(output reg [255:0] DataOut_p, output reg [255:0] DataOut2_p,
 
       for(i = 0; i < 16; i = i + 1) begin
         vector[address][i] <= vector[address][i];
-        vector[address2][i] <= vector[address2][i];
       end
 
         DataOut_s <= DataOut_s;  
@@ -75,7 +74,6 @@ module vReg(output reg [255:0] DataOut_p, output reg [255:0] DataOut2_p,
 
       for(i = 0; i < 16; i = i + 1) begin
         vector[address][i] <= vector[address][i];
-        vector[address2][i] <= vector[address2][i];
       end
         DataOut_p <= DataOut_p;
         DataOut2_p <= DataOut2_p;
@@ -100,7 +98,6 @@ module vReg(output reg [255:0] DataOut_p, output reg [255:0] DataOut2_p,
 
         for(i = 0; i < 16; i = i + 1) begin
           vector[address][i] <= vector[address][i];
-          vector[address2][i] <= vector[address2][i];
         end
 
           DataOut_s <= DataOut_s;  
