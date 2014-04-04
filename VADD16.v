@@ -1,10 +1,12 @@
 module VADD16(output [255:0] SumV,output Overflw,input [255:0] Inval1,input [255:0] Inval2,input start,output done);
-  
+
   wire [15:0] Ov;
-  
+
   assign Overflw = Ov[0] |Ov[1] | Ov[2] | Ov[3] | Ov[4] | Ov[5] | Ov[6] | Ov[7] | Ov[8] | Ov[9] | Ov[10] | Ov[11] | Ov[12] | Ov[13] | Ov[14] | Ov[15] ; 
   assign done = start;
-  
+
+  VADD adder[15:0](SumV,Ov,Inval1,Inval2);
+  /*
   VADD add1(SumV[15:0],Ov[0],Inval1[15:0],Inval2[15:0]);
   VADD add2(SumV[31:16],Ov[1],Inval1[31:16],Inval2[31:16]);
   VADD add3(SumV[47:32],Ov[2],Inval1[47:32],Inval2[47:32]);
@@ -21,6 +23,6 @@ module VADD16(output [255:0] SumV,output Overflw,input [255:0] Inval1,input [255
   VADD add14(SumV[223:208],Ov[13],Inval1[223:208],Inval2[223:208]);
   VADD add15(SumV[239:224],Ov[14],Inval1[239:224],Inval2[239:224]);
   VADD add16(SumV[255:240],Ov[15],Inval1[255:240],Inval2[255:240]);
- 
-  
+  */
+
 endmodule

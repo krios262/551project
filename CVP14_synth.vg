@@ -2739,38 +2739,38 @@ module CVP14_synth ( Addr, RD, WR, V, DataOut, Reset, Clk1, Clk2, DataIn );
          );
   DFQD4BWP \vector/address_reg[2]  ( .D(vAddr[2]), .CP(Clk2), .Q(
         \vector/N4905 ) );
-  VADD \adder/add16  ( .Sum(AdderOut[255:240]), .Overflow(\adder/Ov [15]), 
-        .A(AdderIn1[255:240]), .B(AdderIn2[255:240]) );
-  VADD \adder/add15  ( .Sum(AdderOut[239:224]), .Overflow(\adder/Ov [14]), 
-        .A(AdderIn1[239:224]), .B(AdderIn2[239:224]) );
-  VADD \adder/add14  ( .Sum(AdderOut[223:208]), .Overflow(\adder/Ov [13]), 
-        .A(AdderIn1[223:208]), .B(AdderIn2[223:208]) );
-  VADD \adder/add13  ( .Sum(AdderOut[207:192]), .Overflow(\adder/Ov [12]), 
-        .A(AdderIn1[207:192]), .B(AdderIn2[207:192]) );
-  VADD \adder/add12  ( .Sum(AdderOut[191:176]), .Overflow(\adder/Ov [11]), 
-        .A(AdderIn1[191:176]), .B(AdderIn2[191:176]) );
-  VADD \adder/add11  ( .Sum(AdderOut[175:160]), .Overflow(\adder/Ov [10]), 
-        .A(AdderIn1[175:160]), .B(AdderIn2[175:160]) );
-  VADD \adder/add10  ( .Sum(AdderOut[159:144]), .Overflow(\adder/Ov [9]), 
+  VADD_synth \adder/adder[15]  ( .Sum(AdderOut[255:240]), .Overflow(
+        \adder/Ov [15]), .A(AdderIn1[255:240]), .B(AdderIn2[255:240]) );
+  VADD_synth \adder/adder[14]  ( .Sum(AdderOut[239:224]), .Overflow(
+        \adder/Ov [14]), .A(AdderIn1[239:224]), .B(AdderIn2[239:224]) );
+  VADD_synth \adder/adder[13]  ( .Sum(AdderOut[223:208]), .Overflow(
+        \adder/Ov [13]), .A(AdderIn1[223:208]), .B(AdderIn2[223:208]) );
+  VADD_synth \adder/adder[12]  ( .Sum(AdderOut[207:192]), .Overflow(
+        \adder/Ov [12]), .A(AdderIn1[207:192]), .B(AdderIn2[207:192]) );
+  VADD_synth \adder/adder[11]  ( .Sum(AdderOut[191:176]), .Overflow(
+        \adder/Ov [11]), .A(AdderIn1[191:176]), .B(AdderIn2[191:176]) );
+  VADD_synth \adder/adder[10]  ( .Sum(AdderOut[175:160]), .Overflow(
+        \adder/Ov [10]), .A(AdderIn1[175:160]), .B(AdderIn2[175:160]) );
+  VADD_synth \adder/adder[9]  ( .Sum(AdderOut[159:144]), .Overflow(\adder/Ov [9]), 
         .A(AdderIn1[159:144]), .B(AdderIn2[159:144]) );
-  VADD \adder/add9  ( .Sum(AdderOut[143:128]), .Overflow(\adder/Ov [8]), .A(
-        AdderIn1[143:128]), .B(AdderIn2[143:128]) );
-  VADD \adder/add8  ( .Sum(AdderOut[127:112]), .Overflow(\adder/Ov [7]), .A(
-        AdderIn1[127:112]), .B(AdderIn2[127:112]) );
-  VADD \adder/add7  ( .Sum(AdderOut[111:96]), .Overflow(\adder/Ov [6]), .A(
-        AdderIn1[111:96]), .B(AdderIn2[111:96]) );
-  VADD \adder/add6  ( .Sum(AdderOut[95:80]), .Overflow(\adder/Ov [5]), .A(
-        AdderIn1[95:80]), .B(AdderIn2[95:80]) );
-  VADD \adder/add5  ( .Sum(AdderOut[79:64]), .Overflow(\adder/Ov [4]), .A(
-        AdderIn1[79:64]), .B(AdderIn2[79:64]) );
-  VADD \adder/add4  ( .Sum(AdderOut[63:48]), .Overflow(\adder/Ov [3]), .A(
-        AdderIn1[63:48]), .B(AdderIn2[63:48]) );
-  VADD \adder/add3  ( .Sum(AdderOut[47:32]), .Overflow(\adder/Ov [2]), .A(
-        AdderIn1[47:32]), .B(AdderIn2[47:32]) );
-  VADD \adder/add2  ( .Sum(AdderOut[31:16]), .Overflow(\adder/Ov [1]), .A(
-        AdderIn1[31:16]), .B(AdderIn2[31:16]) );
-  VADD \adder/add1  ( .Sum(AdderOut[15:0]), .Overflow(\adder/Ov [0]), .A(
-        AdderIn1[15:0]), .B(AdderIn2[15:0]) );
+  VADD_synth \adder/adder[8]  ( .Sum(AdderOut[143:128]), .Overflow(\adder/Ov [8]), 
+        .A(AdderIn1[143:128]), .B(AdderIn2[143:128]) );
+  VADD_synth \adder/adder[7]  ( .Sum(AdderOut[127:112]), .Overflow(\adder/Ov [7]), 
+        .A(AdderIn1[127:112]), .B(AdderIn2[127:112]) );
+  VADD_synth \adder/adder[6]  ( .Sum(AdderOut[111:96]), .Overflow(\adder/Ov [6]), 
+        .A(AdderIn1[111:96]), .B(AdderIn2[111:96]) );
+  VADD_synth \adder/adder[5]  ( .Sum(AdderOut[95:80]), .Overflow(\adder/Ov [5]), 
+        .A(AdderIn1[95:80]), .B(AdderIn2[95:80]) );
+  VADD_synth \adder/adder[4]  ( .Sum(AdderOut[79:64]), .Overflow(\adder/Ov [4]), 
+        .A(AdderIn1[79:64]), .B(AdderIn2[79:64]) );
+  VADD_synth \adder/adder[3]  ( .Sum(AdderOut[63:48]), .Overflow(\adder/Ov [3]), 
+        .A(AdderIn1[63:48]), .B(AdderIn2[63:48]) );
+  VADD_synth \adder/adder[2]  ( .Sum(AdderOut[47:32]), .Overflow(\adder/Ov [2]), 
+        .A(AdderIn1[47:32]), .B(AdderIn2[47:32]) );
+  VADD_synth \adder/adder[1]  ( .Sum(AdderOut[31:16]), .Overflow(\adder/Ov [1]), 
+        .A(AdderIn1[31:16]), .B(AdderIn2[31:16]) );
+  VADD_synth \adder/adder[0]  ( .Sum(AdderOut[15:0]), .Overflow(\adder/Ov [0]), 
+        .A(AdderIn1[15:0]), .B(AdderIn2[15:0]) );
   CVP14_DW01_add_0 r3336 ( .A(PC), .B({\U3/U11/Z_15 , \U3/U11/Z_15 , 
         \U3/U11/Z_15 , \U3/U11/Z_15 , \U3/U11/Z_15 , \U3/U11/Z_10 , 
         \U3/U11/Z_9 , \U3/U11/Z_8 , \U3/U11/Z_7 , \U3/U11/Z_6 , \U3/U11/Z_5 , 
