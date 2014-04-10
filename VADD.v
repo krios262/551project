@@ -7,8 +7,8 @@ module VADD(output reg [15:0] Sum,output reg Overflow,input [15:0] A, input [15:
   reg [11:0] opersum1;
   reg [10:0] opersum2;
   reg [4:0] DiffE;
-  reg [5:0] i = 6'b000000;
-  reg [5:0] j = 4'b0000;
+  reg [5:0] i;
+  reg [5:0] j;
   reg [1:0] oper;
   reg flag;
   reg flaginf;
@@ -183,10 +183,7 @@ if(operSum[14] == 1'b1)
         Overflow = 1'b1;
       end
   end
-/* else if(Sum[14:0] == 5'b0)
-  begin
-    if (operSum[13] == 1'b1)
-      begin*/
+
         
 else 
    begin
@@ -195,12 +192,20 @@ else
      Overflow = 1'b0;
      for(j=0;j<14;j=j+1)
      begin
-        if((operSum[13]-j)== 1'b0)
+        if((operSum[13])== 1'b0)
           begin
             if(flag == 1'b0)
               begin
-              operSum = operSum << 1'b1;
-              Sum[14:10] = Sum[14:10] - 1'b1; 
+                if((Sum[14:10] == 5'h1) || (Sum[14:10] == 5'h0))
+                  begin
+                    operSum = operSum;
+                    Sum[14:10] = 5'h0;
+                   end
+                else
+                   begin             
+                   operSum = operSum << 1'b1;
+                   Sum[14:10] = Sum[14:10] - 1'b1;
+                   end 
               end
             else
               begin
@@ -211,14 +216,21 @@ else
         else
           begin
           operSum = operSum;
-          Sum[14:10] = Sum[14:10];
           flag = 1'b1;
+          if (Sum[14:10] == 5'h0)
+            begin
+              Sum[14:10] = 5'h1;
+            end
+          else
+            begin
+              Sum[14:10] = Sum[14:10];
+            end
           end
     end
   end 
 
 // rounding function based on IEEE standards after normalising
-if (operSum[2] == 1'b1)
+if ((operSum[2] == 1'b1) && (operSum[3] == 1'b1))
   opersum1 = operSum[14:3] + 1'b1;
 else
   opersum1 = operSum[14:3];
@@ -257,6 +269,10 @@ else
  if(A[15] == B[15])
    begin
    Sum[15] = A[15];
+   end
+ else if ((Sum[9:0] == 10'h0)&& (Sum[14:10] == 5'h0))
+   begin
+     Sum[15] = 1'b0;
    end
  end  
  end
