@@ -1,6 +1,7 @@
 module VMULT(output reg[15:0] product, output reg Overflow,input [15:0] A, input [15:0] B);
   reg [21:0] binary_prod;
-  reg [10:0] operA, operB, operA1, operB1, operA0, operB0;
+  reg [10:0] operA, operB;
+  wire [10:0]  operA1, operB1, operA0, operB0;
   reg [11:0]  mantissa;
   reg [5:0]  exponent;
   integer i;
@@ -90,11 +91,11 @@ module VMULT(output reg[15:0] product, output reg Overflow,input [15:0] A, input
           exponent = exponent + 1;
           mantissa = {1'b0, mantissa[11:1]};
         end
-      end
         else begin
           mantissa = mantissa;
           exponent = exponent;
-        end		    
+        end
+      end
       //All of the following bits are 0
       else begin
         //Last bit of mantissa is odd, add one to make it even
@@ -110,11 +111,11 @@ module VMULT(output reg[15:0] product, output reg Overflow,input [15:0] A, input
             exponent = exponent;
           end
         //Last bit of mantissa is even, do nothing
-        else begin
+        end else begin
           mantissa = mantissa;
           exponent = exponent;
         end
-      end		  
+      end
     end
 	//Round bit is 0, do nothing
     else begin 
@@ -150,6 +151,7 @@ module t_VMULT();
     B = 16'b0011001011011110;  
     #10;
   	$strobe("A:%b B:%b Product:%h Overflow:%b", A, B, prod, ovf);
-	$finish;
+    #10;
+	  $finish;
   end
 endmodule
