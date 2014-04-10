@@ -19,7 +19,7 @@ set_local_link_library {tcbn40lpbwptc.db,tpfn45gsgv18tc.db,tcbn40lpbwptc.db}
 #set_max_area 0
 
 #Compile with aggressive mapping effort
-ungroup -all
+ungroup -flatten -all
 uniquify
 compile -map_effort high
 report_area > area.txt

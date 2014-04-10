@@ -22,14 +22,13 @@ module t_CVP14_synth();
     end
   end
 
-  /*initial $monitor ("Clk1: %b Clk2: %b State: %b PC: %h Addr: %h SetPC: %b DataIn: %h, updatePC: %b",
-    UUT.Clk1, UUT.Clk2, UUT.state, UUT.PC, UUT.Addr, UUT.setPC, UUT.DataIn, UUT.n299);
-  */
+  initial $monitor ("Clk1: %b Clk2: %b State: %b PC: %h Addr: %h SetPC: %b DataIn: %h, V: %b, updatePC: %b",
+    UUT.Clk1, UUT.Clk2, UUT.state, UUT.PC, UUT.Addr, UUT.setPC, UUT.DataIn, UUT.V, UUT.updatePC);
 
   initial begin
     #2.5;
     rst = 1'b1;
-    #10;
+    #20;
     rst = 1'b0;
     #6000;
     $writememb("dump.txt", mem.Memory);
