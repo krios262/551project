@@ -10,7 +10,7 @@ module t_CVP14_synth();
     .DataOut(out), .Reset(rst), .Clk1(c1), .Clk2(c2), .DataIn(in));
 
   initial begin
-    c1 = 1'b0; c2 = 1'b1;
+    c1 = 1'b1; c2 = 1'b0;
     forever begin
       #5;
       c1 = ~c1;
@@ -22,13 +22,13 @@ module t_CVP14_synth();
     end
   end
 
-  initial $monitor ("Clk1: %b Clk2: %b State: %b PC: %h Addr: %h SetPC: %b DataIn: %h, V: %b, updatePC: %b",
-    UUT.Clk1, UUT.Clk2, UUT.state, UUT.PC, UUT.Addr, UUT.setPC, UUT.DataIn, UUT.V, UUT.updatePC);
+  initial $monitor ("Clk1: %b Clk2: %b State: %b PC: %h Addr: %h SetPC: %b DataIn: %h, V: %b, Reset: %b, updatePC: %b V_flag: %b",
+    UUT.Clk1, UUT.Clk2, UUT.state, UUT.PC, UUT.Addr, UUT.setPC, UUT.DataIn, UUT.V, UUT.Reset, UUT.updatePC, UUT.V_flag);
 
   initial begin
     #2.5;
     rst = 1'b1;
-    #20;
+    #10;
     rst = 1'b0;
     #6000;
     $writememb("dump.txt", mem.Memory);

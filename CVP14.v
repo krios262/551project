@@ -7,7 +7,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
   //Parameters for states
   parameter newPC = 3'b000, fetchInst = 3'b001, startEx = 3'b010, executing = 3'b011,
-            done = 3'b100, overflow = 3'b101, start = 3'b111;
+            done = 3'b100, overflow = 3'b101;
 
   reg  [255:0] vInP;
   wire [255:0] vOutP, vOutP2;
@@ -53,7 +53,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
     //Addresses and state are set on Clk1
 
     if (Reset) begin
-      state <= start;
+      state <= newPC;
       updatePC <= 1'b0;
       jump <= 1'b0;
       offsetInc <= 1'b0;
@@ -62,10 +62,6 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
       state <= nextState;
 
     case (nextState)
-
-      start: begin
-        //No action on Clk1
-      end
 
       newPC: begin
         updatePC <= 1'b0;
@@ -163,25 +159,25 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
     vInS <= DataIn;
 
-    case (state)
+    if (Reset) begin
+      RD <= 1'b0;
+      WR <= 1'b0;
+      sWR_l <= 1'b0;
+      sWR <= 1'b0;
+      sWR_h <= 1'b0;
+      sRD <= 1'b0;
+      vRD_s <= 1'b0;
+      vRD_p <= 1'b0;
+      vWR_s <= 1'b0;
+      vWR_p <= 1'b0;
+      setPC <= 1'b1;
+      updateAddr <= 1'b0;
+      Prevdone <= 1'b0;
+      startadd <= 1'b0;
+      V_flag <= 1'b0;
+    end else begin
 
-      start: begin
-        RD <= 1'b0;
-        WR <= 1'b0;
-        sWR_l <= 1'b0;
-        sWR <= 1'b0;
-        sWR_h <= 1'b0;
-        sRD <= 1'b0;
-        vRD_s <= 1'b0;
-        vRD_p <= 1'b0;
-        vWR_s <= 1'b0;
-        vWR_p <= 1'b0;
-        setPC <= 1'b1;
-        updateAddr <= 1'b0;
-        Prevdone <= 1'b0;
-        startadd <= 1'b0;
-        V_flag <= 1'b0;
-      end
+    case (state)
 
       newPC: begin
         RD <= 1'b1;
@@ -319,15 +315,13 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
       end
     endcase
 
+    end //reset else
+
   end
 
   always @(state, instruction, updateAddr, inc_offset, vWR_p, V_flag) begin
 
     case (state)
-
-      start: begin
-        nextState = newPC;
-      end
 
       newPC: begin
         nextState = fetchInst;
