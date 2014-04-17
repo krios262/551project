@@ -26,15 +26,15 @@ module t_CVP14();
   end
 
   initial begin
-    /*
-    $monitor("%t: State: %d, nextState: %d, Inst: %h, PC: %d, Addr: %h, WR: %b, RD: %b, DataOut: %h, vOutS: %h, vRD_s: %b, select: %d",
-            $time, UUT.state, UUT.nextState, UUT.instruction, UUT.PC, 
-            UUT.Addr, UUT.WR, UUT.RD, UUT.DataOut, UUT.vOutS, UUT.vRD_s, UUT.vector.select);
-    */
     
+    $monitor("%t: State: %d, nextState: %d, Inst: %h, PC: %d, Addr: %h, WR: %b, RD: %b, DataOut: %h, dotStart: %b dotDone: %b, startadd: %b",
+            $time, UUT.state, UUT.nextState, UUT.instruction, UUT.PC, 
+            UUT.Addr, UUT.WR, UUT.RD, UUT.DataOut, UUT.dotDone, UUT.dotStart, UUT.startadd);
+    
+    /*
     $monitor("%t: State %b, Inst: %h, Scalar 0: %h, sIn: %h, sAddr: %h, DataIn: %h", $time, UUT.state,
           UUT.instruction, UUT.scalar.scalar[0], UUT.sIn, UUT.sAddr, UUT.DataIn);
-    
+    */
   end
 
   initial begin
