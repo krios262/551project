@@ -7,7 +7,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
   //Parameters for states
   parameter newPC = 3'b000, fetchInst = 3'b001, startEx = 3'b010, executing = 3'b011,
-            done = 3'b100, overflow = 3'b101;
+            done = 3'b100, overflow = 3'b101, start = 3'b111;
 
   reg  [255:0] vInP;
   wire [255:0] vOutP, vOutP2;
@@ -53,7 +53,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
     //Addresses and state are set on Clk1
 
     if (Reset) begin
-      state <= newPC;
+      state <= start;
       updatePC <= 1'b0;
       jump <= 1'b0;
       offsetInc <= 1'b0;
@@ -317,11 +317,15 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
     end //reset else
 
-  end
+  end //clk2 sequential
 
   always @(state, instruction, updateAddr, inc_offset, vWR_p, V_flag) begin
 
     case (state)
+
+      start: begin
+        nextState = newPC;
+      end
 
       newPC: begin
         nextState = fetchInst;
