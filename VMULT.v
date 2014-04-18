@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 module VMULT(output reg[15:0] product, output reg Overflow,input [15:0] A, input [15:0] B);
   reg [21:0] binary_prod;
   reg [10:0] operA, operB;
@@ -63,12 +64,19 @@ module VMULT(output reg[15:0] product, output reg Overflow,input [15:0] A, input
             binary_prod = binary_prod;
             exponent = exponent;
           end
+          //Check if exponent has reached minumum
+          else if (exponent == 5'h1) begin
+            found_first_one = 1'b1;
+            mantissa = {1'b0, binary_prod[21:11]};
+            exponent = exponent;
+            binary_prod = binary_prod;
+          end
           //shift and search again
           else begin
             binary_prod = binary_prod << 1'b1;
+            exponent = exponent - 1;
             found_first_one = 1'b0;
             mantissa = 12'b0;
-            exponent = exponent - 1;
           end
         end
         //First one has been found
@@ -110,8 +118,9 @@ module VMULT(output reg[15:0] product, output reg Overflow,input [15:0] A, input
             mantissa = mantissa;
             exponent = exponent;
           end
+        end
         //Last bit of mantissa is even, do nothing
-        end else begin
+        else begin
           mantissa = mantissa;
           exponent = exponent;
         end
@@ -127,6 +136,13 @@ module VMULT(output reg[15:0] product, output reg Overflow,input [15:0] A, input
       exponent = 6'b111111;
       mantissa = 12'b0;
       Overflow = 1'b1;
+    end
+    else if(exponent == 5'b00001) begin
+      //Mantissa is denormalized, make exponent 0
+      if (~mantissa[10]) exponent = 5'b00000;
+      //Mantissa is normalized do nothing
+      else exponent = exponent;
+      Overflow = 1'b0;
     end
     else begin
       exponent = exponent;
@@ -145,6 +161,51 @@ module t_VMULT();
   wire ovf;
 
   VMULT uut(prod, ovf, A, B);
+
+  initial $monitor("A:%b B:%b Product:%h Overflow:%b", A, B, prod, ovf);
+  initial begin
+    A = 16'b0011110000000000;
+    B = 16'b0011110000000000;
+    #10;
+    A = 16'b1011110000000000;
+    B = 16'b0011110000000000;
+    #10;
+    A = 16'b1011110000000000;
+    B = 16'b1011110000000000;
+    #10;
+    A = 16'b0100001010101010;
+    B = 16'b0011001011011110;
+    #10;
+    A = 16'b0100001010101010;
+    B = 16'b0011001011011110;
+    #10;
+    A = 16'b1100001010101010;
+    B = 16'b0011001011011110;
+    #10;
+    A = 16'b0111101010101010;
+    B = 16'b0111101011011110;
+    #10;
+    A = 16'b0100000010000000;
+    B = 16'b0011110010000000;
+    #10;
+    A = 16'b0100000010000000;
+    B = 16'b0000001000000001; //expect 0482
+    #10;
+    A = 16'b0011110010000000; //this case does not work properly
+    B = 16'b0000001000000001; //expect 0241
+    #10;
+    A = 16'b0100000010000000; //this case does not work properly
+    B = 16'b0000000000010001; //expect 0026
+    #10;
+    $finish;
+  end
+endmodule
+module t_VMULT_synth();
+  reg [15:0] A, B;
+  wire [15:0] prod;
+  wire ovf;
+
+  VMULT_synth uut(prod, ovf, A, B);
 
   initial $monitor("A:%b B:%b Product:%h Overflow:%b", A, B, prod, ovf);
   initial begin
