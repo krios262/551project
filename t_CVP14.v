@@ -13,7 +13,7 @@ module t_CVP14();
     .DataOut(out), .Reset(rst), .Clk1(c1), .Clk2(c2), .DataIn(in));
 
   initial begin
-    c1 = 1'b1; c2 = 1'b0;
+    c1 = 1'b0; c2 = 1'b1;
     forever begin
       #5;
       c1 = ~c1;

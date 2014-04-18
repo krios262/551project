@@ -67,10 +67,6 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
     case (nextState)
 
-      start: begin
-        //No action on Clk1
-      end
-
       newPC: begin
         updatePC <= 1'b0;
         jump <= 1'b0;
@@ -174,26 +170,25 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
     vInS <= DataIn;
 
-    case (state)
+    if (Reset) begin
+      RD <= 1'b0;
+      WR <= 1'b0;
+      sWR_l <= 1'b0;
+      sWR <= 1'b0;
+      sWR_h <= 1'b0;
+      sRD <= 1'b0;
+      vRD_s <= 1'b0;
+      vRD_p <= 1'b0;
+      vWR_s <= 1'b0;
+      vWR_p <= 1'b0;
+      setPC <= 1'b1;
+      updateAddr <= 1'b0;
+      Prevdone <= 1'b0;
+      startadd <= 1'b0;
+      V_flag <= 1'b0;
+    end else begin
 
-      start: begin
-        RD <= 1'b0;
-        WR <= 1'b0;
-        sWR_l <= 1'b0;
-        sWR <= 1'b0;
-        sWR_h <= 1'b0;
-        sRD <= 1'b0;
-        vRD_s <= 1'b0;
-        vRD_p <= 1'b0;
-        vWR_s <= 1'b0;
-        vWR_p <= 1'b0;
-        setPC <= 1'b1;
-        updateAddr <= 1'b0;
-        Prevdone <= 1'b0;
-        startadd <= 1'b0;
-        dotStart <= 1'b0;
-        V_flag <= 1'b0;
-      end
+    case (state)
 
       newPC: begin
         RD <= 1'b1;
@@ -345,7 +340,9 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
       end
     endcase
 
-  end
+    end //reset else
+
+  end //clk2 sequential
 
   always @(state, instruction, updateAddr, inc_offset, vWR_p, dotDone, V_flag) begin
 
