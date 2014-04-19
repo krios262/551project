@@ -22,8 +22,8 @@ module t_CVP14_synth();
     end
   end
 
-  initial $monitor ("State: %b PC: %h Addr: %h SetPC: %b DataIn: %h, V: %b, Reset: %b, updatePC: %b updateAddr: %b V_flag: %b",
-    UUT.state, UUT.PC, UUT.Addr, UUT.setPC, UUT.DataIn, UUT.V, UUT.Reset, UUT.updatePC, UUT.updateAddr, UUT.V_flag);
+  initial $monitor ("State: %b PC: %h Addr: %h SetPC: %b DataIn: %h, V: %b, Reset: %b",
+    UUT.state, UUT.PC, UUT.Addr, UUT.setPC, UUT.DataIn, UUT.V, UUT.Reset);
 
   initial begin
     #2.5;
