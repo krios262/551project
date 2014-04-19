@@ -27,9 +27,9 @@ module t_CVP14();
 
   initial begin
     
-    $monitor("%t: State: %d, nextState: %d, Inst: %h, PC: %d, Addr: %h, WR: %b, RD: %b, DataOut: %h, dotStart: %b dotDone: %b, startadd: %b",
+    $monitor("%t: State: %d, nextState: %d, Inst: %h, PC: %d, Addr: %h, WR: %b, RD: %b, DataOut: %h",
             $time, UUT.state, UUT.nextState, UUT.instruction, UUT.PC, 
-            UUT.Addr, UUT.WR, UUT.RD, UUT.DataOut, UUT.dotDone, UUT.dotStart, UUT.startadd);
+            UUT.Addr, UUT.WR, UUT.RD, UUT.DataOut);
     
     /*
     $monitor("%t: State %b, Inst: %h, Scalar 0: %h, sIn: %h, sAddr: %h, DataIn: %h", $time, UUT.state,

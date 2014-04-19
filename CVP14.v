@@ -50,8 +50,8 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
   offsetu osu(.Reset(Reset), .Clk2(Clk2), .offsetInc(offsetInc), .offset(inc_offset));
 
   //Operation modules
-  VADD16 adder(.SumV(AdderOut),.Overflw(OvF),.Inval1(AdderIn1),.Inval2(AdderIn2),.start(startadd),.done(DONE));
-  VDOT16 vdotmul(.out(dotOut), .V(dotV), .A(vOutP), .B(vOutP2), .Clk1(Clk1), .start(dotStart), .done(dotDone));
+  VADD16 adder(.SumV(AdderOut), .Overflw(OvF), .Inval1(AdderIn1), .Inval2(AdderIn2), .start(startadd), .done(DONE));
+  VDOT16 vdotmul(.out(dotOut), .V(dotV), .A(vOutP), .B(vOutP2), .start(dotStart), .done(dotDone));
 
   always@(posedge Clk1) begin
     //Addresses and state are set on Clk1
@@ -62,6 +62,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
       jump <= 1'b0;
       offsetInc <= 1'b0;
       V <= 1'b0;
+      dotStart <= 1'b0;
     end else begin
       state <= nextState;
 
@@ -123,6 +124,8 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
       executing: begin
         case (instruction[15:12])
+          vdot:
+            dotStart <= 1'b1;
           vadd:
             vAddr <= instruction[11:9];
           sst:
@@ -145,6 +148,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
       done: begin
         updatePC <= 1'b1;
+        dotStart <= 1'b0;
         case (instruction[15:12])
           vadd:
             V <= V_flag;
@@ -262,12 +266,11 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
           vdot: begin
             vRD_p <= 1'b0;
             if (dotDone) begin
-              dotStart <= 1'b0;
               sIn <= dotOut;
               sWR <= 1'b1;
               V_flag <= dotV;
             end else
-              dotStart <= 1'b1;
+              sWR <= sWR;
           end
 
           sst: begin
