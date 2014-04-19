@@ -9,6 +9,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
   parameter newPC = 3'b000, fetchInst = 3'b001, startEx = 3'b010, executing = 3'b011,
             done = 3'b100, overflow = 3'b101, start = 3'b111;
 
+  //register file nets
   reg  [255:0] vInP;
   wire [255:0] vOutP, vOutP2;
   reg  [15:0]  sIn, vInS;
@@ -17,6 +18,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
   reg sRD, sWR, sWR_l, sWR_h, vWR_p, vWR_s, vRD_p, vRD_s;
   reg updatePC, jump, setPC, updateAddr, offsetInc; //addressing module flags
 
+  //addressing nets
   wire [15:0] PC; //program counter
   reg [15:0] instruction;
   wire [3:0] inc_offset;
@@ -24,6 +26,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
   reg [2:0] state, nextState;
 
+  //vadd nets
   wire [255:0] AdderOut;
   wire OvF;
   reg startadd;
@@ -31,9 +34,15 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
   reg Prevdone;
   reg [255:0] AdderIn1,AdderIn2;
 
+  //vdot nets
   wire [15:0] dotOut;
   wire dotV, dotDone;
   reg dotStart;
+
+  //smul nets
+  wire [255:0] smulOut;
+  wire smulV, smulDone;
+  reg smulStart;
 
   //Scalar and Vector registers
   sReg scalar(.DataOut(sOut), .Addr(sAddr), .Clk1(Clk1), .Clk2(Clk2), .DataIn(sIn),
@@ -50,8 +59,9 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
   offsetu osu(.Reset(Reset), .Clk2(Clk2), .offsetInc(offsetInc), .offset(inc_offset));
 
   //Operation modules
-  VADD16 adder(.SumV(AdderOut), .Overflw(OvF), .Inval1(AdderIn1), .Inval2(AdderIn2), .start(startadd), .done(DONE));
-  VDOT16 vdotmul(.out(dotOut), .V(dotV), .A(vOutP), .B(vOutP2), .start(dotStart), .done(dotDone));
+  VADD16 adderu(.SumV(AdderOut), .Overflw(OvF), .Inval1(AdderIn1), .Inval2(AdderIn2), .start(startadd), .done(DONE));
+  VDOT16 vdotmulu(.out(dotOut), .V(dotV), .A(vOutP), .B(vOutP2), .start(dotStart), .done(dotDone));
+  SMULT16 smultu(.product(smulOut), .V(smulV), .scalar(sOut), .vecin(vOutP), .start(smulStart), .done(smulDone));
 
   always@(posedge Clk1) begin
     //Addresses and state are set on Clk1
@@ -63,6 +73,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
       offsetInc <= 1'b0;
       V <= 1'b0;
       dotStart <= 1'b0;
+      smulStart <= 1'b0;
     end else begin
       state <= nextState;
 
@@ -90,8 +101,10 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
             vAddr <= instruction[8:6];
             vAddr2 <= instruction[5:3];
           end
-          /*smul:
-          */
+          smul: begin
+            sAddr <= instruction[5:3];
+            vAddr <= instruction[8:6];
+          end
           sst: begin
             sAddr <= instruction[8:6]; //get system mem dest address
           end
@@ -103,12 +116,10 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
             sAddr <= instruction[8:6]; //get system mem dest address
             vAddr <= instruction[11:9]; //vector store dest
           end
-          sll:
-          begin
+          sll: begin
             sAddr <= instruction[11:9];
           end
-          slh:
-          begin
+          slh: begin
             sAddr <= instruction[11:9];
           end
           j: begin
@@ -124,10 +135,14 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
       executing: begin
         case (instruction[15:12])
-          vdot:
-            dotStart <= 1'b1;
           vadd:
             vAddr <= instruction[11:9];
+          vdot:
+            dotStart <= 1'b1;
+          smul: begin
+            vAddr <= instruction[11:9];
+            smulStart <= 1'b1;
+          end
           sst:
             sAddr <= instruction[11:9]; //scalar value to be stored
           vld: begin
@@ -149,10 +164,13 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
       done: begin
         updatePC <= 1'b1;
         dotStart <= 1'b0;
+        smulStart <= 1'b0;
         case (instruction[15:12])
           vadd:
             V <= V_flag;
           vdot:
+            V <= V_flag;
+          smul:
             V <= V_flag;
           default:
             V <= V;
@@ -217,7 +235,10 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
           vdot: begin
             vRD_p <= 1'b1;
           end
-          /*smul: */
+          smul: begin
+            vRD_p <= 1'b1;
+            sRD <= 1'b1;
+          end
           sst: begin
             sRD <= 1'b1;
           end
@@ -271,6 +292,17 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
               V_flag <= dotV;
             end else
               sWR <= sWR;
+          end
+
+          smul: begin
+            vRD_p <= 1'b0;
+            sRD <= 1'b0;
+            if (smulDone) begin
+              vInP <= smulOut;
+              vWR_p <= 1'b1;
+              V_flag <= smulV;
+            end else
+              vWR_p <= vWR_p;
           end
 
           sst: begin
@@ -370,28 +402,22 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
             nextState = executing;
           vdot:
             nextState = executing;
-          /*smul: */
-          sst: begin
+          smul:
             nextState = executing;
-          end
-          vld: begin
+          sst:
             nextState = executing;
-          end
-          vst: begin
+          vld:
             nextState = executing;
-          end
-          sll: begin
+          vst:
+            nextState = executing;
+          sll:
             nextState = done;
-          end
-          slh: begin
+          slh:
             nextState = done;
-          end
-          j: begin
+          j:
             nextState = newPC; //jump does not require the done state
-          end
-          nop: begin
+          nop:
             nextState = newPC; //no op does not require the done state
-          end
           default:
             nextState = done;
         endcase
@@ -413,7 +439,12 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
             else
               nextState = executing;
           end
-          /*smul: */
+          smul: begin
+            if (smulDone)
+              nextState = done;
+            else
+              nextState = executing;
+          end
           sst: begin
             if (updateAddr)
               nextState = executing;
