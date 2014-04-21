@@ -28,11 +28,8 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
   //vadd nets
   wire [255:0] AdderOut;
-  wire OvF;
-  reg startadd;
-  wire DONE;
-  reg Prevdone;
-  reg [255:0] AdderIn1,AdderIn2;
+  wire OvF, addDone;
+  reg addStart;
 
   //vdot nets
   wire [15:0] dotOut;
@@ -59,7 +56,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
   offsetu osu(.Reset(Reset), .Clk2(Clk2), .offsetInc(offsetInc), .offset(inc_offset));
 
   //Operation modules
-  VADD16 adderu(.SumV(AdderOut), .Overflw(OvF), .Inval1(AdderIn1), .Inval2(AdderIn2), .start(startadd), .done(DONE));
+  VADD16 adderu(.SumV(AdderOut), .Overflw(OvF), .Inval1(vOutP), .Inval2(vOutP2), .start(addStart), .done(addDone));
   VDOT16 vdotmulu(.out(dotOut), .V(dotV), .A(vOutP), .B(vOutP2), .start(dotStart), .done(dotDone));
   SMULT16 smultu(.product(smulOut), .V(smulV), .scalar(sOut), .vecin(vOutP), .start(smulStart), .done(smulDone));
 
@@ -74,6 +71,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
       V <= 1'b0;
       dotStart <= 1'b0;
       smulStart <= 1'b0;
+      addStart <= 1'b0;
     end else begin
       state <= nextState;
 
@@ -135,8 +133,10 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
       executing: begin
         case (instruction[15:12])
-          vadd:
+          vadd: begin
             vAddr <= instruction[11:9];
+            addStart <= 1'b1;
+          end
           vdot:
             dotStart <= 1'b1;
           smul: begin
@@ -165,6 +165,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
         updatePC <= 1'b1;
         dotStart <= 1'b0;
         smulStart <= 1'b0;
+        addStart <= 1'b0;
         case (instruction[15:12])
           vadd:
             V <= V_flag;
@@ -205,8 +206,6 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
       vWR_p <= 1'b0;
       setPC <= 1'b1;
       updateAddr <= 1'b0;
-      Prevdone <= 1'b0;
-      startadd <= 1'b0;
       V_flag <= 1'b0;
     end else begin
 
@@ -268,20 +267,15 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
       executing: begin
         case (instruction[15:12])
+
           vadd: begin
             vRD_p <= 1'b0;
-            AdderIn1 <= vOutP;
-            AdderIn2 <= vOutP2;
-            Prevdone <= DONE;
-            if(Prevdone == 1'b1)
-              begin
-                vInP <= AdderOut;
-                V_flag <= OvF;
-                vWR_p <= 1'b1;
-                startadd <= 1'b0;
-              end
-            else
-              startadd <= 1'b1;
+            if (addDone) begin
+              vInP <= AdderOut;
+              vWR_p <= 1'b1;
+              V_flag <= OvF;
+            end else
+              vWR_p <= vWR_p;
           end
 
           vdot: begin
@@ -350,8 +344,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
         vRD_s <= 1'b0;
         updateAddr <= 1'b0;
         vWR_p <= 1'b0;
-        Prevdone <= 1'b0;
-        //startadd <= 1'b0;
+
         case (instruction[15:12]) //for vld, RD persists
           vld: begin
             WR <= 1'b0;
@@ -379,7 +372,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
   end //clk2 sequential
 
-  always @(state, instruction, updateAddr, inc_offset, vWR_p, dotDone, V_flag) begin
+  always @(state, instruction, updateAddr, inc_offset, dotDone, addDone, smulDone, V_flag) begin
 
     case (state)
 
@@ -428,7 +421,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
         case (instruction[15:12])
           vadd: begin
-            if(vWR_p)
+            if(addDone)
               nextState = done;
             else
               nextState = executing;
