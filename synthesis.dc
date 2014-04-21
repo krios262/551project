@@ -15,15 +15,38 @@ set_wire_load_model -name TSMC512K_Lowk_Aggresive -library tpfn45gsgv18tc
 set_fix_multiple_port_nets -all
 set_local_link_library {tcbn40lpbwptc.db,tpfn45gsgv18tc.db,tcbn40lpbwptc.db}
 
+#timing options
+#create_clock [get_ports Clk1] -period 10 -waveform {0 2.5}
+#create_clock [get_ports Clk2] -period 10 -waveform {5 7.5}
+#set_dont_touch_network [all_clocks]
+
 #area options
-#set_max_area 0
+#set_max_area 250000
 
 #Compile with aggressive mapping effort
 ungroup -flatten -all
 uniquify
-compile -map_effort high
+compile -map_effort medium
 report_area > area.txt
 report_timing -path full -delay max -nworst 3 > timing.txt
 report_timing -path full -delay min -nworst 3 >> timing.txt
+#report_constraint -all_violators > violator_report.txt
 write -format verilog CVP14 -output CVP14_synth.vg
+
+#Compile with new constraints
+#timing options
+create_clock [get_ports Clk1] -period 1000 -waveform {0 250}
+create_clock [get_ports Clk2] -period 1000 -waveform {500 750}
+set_dont_touch_network [all_clocks]
+#area options
+set_max_area 300000
+#Compile with aggressive mapping effort
+ungroup -flatten -all
+uniquify
+compile -map_effort high
+report_area >> area.txt
+report_timing -path full -delay max -nworst 3 >> timing.txt
+report_timing -path full -delay min -nworst 3 >> timing.txt
+report_constraint -all_violators > violator_report.txt
+write -format verilog CVP14 -output CVP14_synth1.vg
 1
