@@ -1,0 +1,64 @@
+ 
+****************************************
+Report : area
+Design : CVP14
+Version: H-2013.03-SP3
+Date   : Sun Apr 20 11:06:03 2014
+****************************************
+
+Information: Updating design information... (UID-85)
+Warning: Design 'CVP14' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Library(s) Used:
+
+    tcbn40lpbwptc (File: /cae/apps/data/synopsys-2011/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn40lpbwp_120b/tcbn40lpbwptc.db)
+
+Number of ports:                           54
+Number of nets:                        114235
+Number of cells:                       112057
+Number of combinational cells:         107765
+Number of sequential cells:              4132
+Number of macros/black boxes:               0
+Number of buf/inv:                      18524
+Number of references:                     413
+
+Combinational area:             176121.643518
+Buf/Inv area:                    12895.016784
+Noncombinational area:           16003.184804
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                192124.828322
+Total area:                 undefined
+1
+ 
+****************************************
+Report : area
+Design : CVP14
+Version: H-2013.03-SP3
+Date   : Sun Apr 20 11:15:57 2014
+****************************************
+
+Information: Updating design information... (UID-85)
+Warning: Design 'CVP14' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Library(s) Used:
+
+    tcbn40lpbwptc (File: /cae/apps/data/synopsys-2011/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn40lpbwp_120b/tcbn40lpbwptc.db)
+
+Number of ports:                           54
+Number of nets:                        132826
+Number of cells:                       128298
+Number of combinational cells:         124181
+Number of sequential cells:              4117
+Number of macros/black boxes:               0
+Number of buf/inv:                      26587
+Number of references:                     187
+
+Combinational area:             166201.435956
+Buf/Inv area:                    16722.191310
+Noncombinational area:           16142.187982
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                182343.623938
+Total area:                 undefined
+1

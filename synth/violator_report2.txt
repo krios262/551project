@@ -1,0 +1,20 @@
+Warning: Ignoring compile_fix_multiple_port_nets = TRUE. (UIO-60)
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : CVP14
+Version: H-2013.03-SP3
+Date   : Mon Apr 21 02:13:28 2014
+****************************************
+
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   CVP14                    180000.00      181474.50      -1474.50  (VIOLATED)
+
+
+1

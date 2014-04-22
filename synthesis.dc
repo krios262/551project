@@ -15,25 +15,7 @@ set_wire_load_model -name TSMC512K_Lowk_Aggresive -library tpfn45gsgv18tc
 set_fix_multiple_port_nets -all
 set_local_link_library {tcbn40lpbwptc.db,tpfn45gsgv18tc.db,tcbn40lpbwptc.db}
 
-#timing options
-#create_clock [get_ports Clk1] -period 10 -waveform {0 2.5}
-#create_clock [get_ports Clk2] -period 10 -waveform {5 7.5}
-#set_dont_touch_network [all_clocks]
-
-#area options
-#set_max_area 250000
-
-#Compile with aggressive mapping effort
-ungroup -flatten -all
-uniquify
-compile -map_effort medium
-report_area > area.txt
-report_timing -path full -delay max -nworst 3 > timing.txt
-report_timing -path full -delay min -nworst 3 >> timing.txt
-#report_constraint -all_violators > violator_report.txt
-write -format verilog CVP14 -output CVP14_synth.vg
-
-#Compile with new constraints
+#synthesis 1
 #timing options
 create_clock [get_ports Clk1] -period 1000 -waveform {0 250}
 create_clock [get_ports Clk2] -period 1000 -waveform {500 750}
@@ -44,9 +26,111 @@ set_max_area 300000
 ungroup -flatten -all
 uniquify
 compile -map_effort high
-report_area >> area.txt
-report_timing -path full -delay max -nworst 3 >> timing.txt
-report_timing -path full -delay min -nworst 3 >> timing.txt
-report_constraint -all_violators > violator_report.txt
-write -format verilog CVP14 -output CVP14_synth1.vg
+report_area > synth/area1.txt
+report_timing -path full -delay max -nworst 3 > synth/timing1.txt
+report_timing -path full -delay min -nworst 3 >> synth/timing1.txt
+report_constraint -all_violators > synth/violator_report1.txt
+write -format verilog CVP14 -output synth/CVP14_synth1.vg
+
+#synthesis 2
+#timing options
+create_clock [get_ports Clk1] -period 1000 -waveform {0 250}
+create_clock [get_ports Clk2] -period 1000 -waveform {500 750}
+set_dont_touch_network [all_clocks]
+#area options
+set_max_area 180000
+#Compile with aggressive mapping effort
+ungroup -flatten -all
+uniquify
+compile -map_effort high
+report_area > synth/area2.txt
+report_timing -path full -delay max -nworst 3 > synth/timing2.txt
+report_timing -path full -delay min -nworst 3 >> synth/timing2.txt
+report_constraint -all_violators > synth/violator_report2.txt
+write -format verilog CVP14 -output synth/CVP14_synth2.vg
+
+#synthesis 3
+#timing options
+create_clock [get_ports Clk1] -period 1000 -waveform {0 250}
+create_clock [get_ports Clk2] -period 1000 -waveform {500 750}
+set_dont_touch_network [all_clocks]
+#area options
+set_max_area 160000
+#Compile with aggressive mapping effort
+ungroup -flatten -all
+uniquify
+compile -map_effort high -incremental_mapping
+report_area > synth/area3.txt
+report_timing -path full -delay max -nworst 3 > synth/timing3.txt
+report_timing -path full -delay min -nworst 3 >> synth/timing3.txt
+report_constraint -all_violators > synth/violator_report3.txt
+write -format verilog CVP14 -output synth/CVP14_synth3.vg
+
+#synthesis 4
+#timing options
+create_clock [get_ports Clk1] -period 1000 -waveform {0 250}
+create_clock [get_ports Clk2] -period 1000 -waveform {500 750}
+set_dont_touch_network [all_clocks]
+#area options
+set_max_area 140000
+#Compile with aggressive mapping effort
+ungroup -flatten -all
+uniquify
+compile -map_effort high -incremental_mapping
+report_area > synth/area4.txt
+report_timing -path full -delay max -nworst 3 > synth/timing4.txt
+report_timing -path full -delay min -nworst 3 >> synth/timing4.txt
+report_constraint -all_violators > synth/violator_report4.txt
+write -format verilog CVP14 -output synth/CVP14_synth4.vg
+
+#synthesis 5
+#timing options
+create_clock [get_ports Clk1] -period 500 -waveform {0 125}
+create_clock [get_ports Clk2] -period 500 -waveform {250 375}
+set_dont_touch_network [all_clocks]
+#area options
+set_max_area 300000
+#Compile with aggressive mapping effort
+ungroup -flatten -all
+uniquify
+compile -map_effort high
+report_area > synth/area5.txt
+report_timing -path full -delay max -nworst 3 > synth/timing5.txt
+report_timing -path full -delay min -nworst 3 >> synth/timing5.txt
+report_constraint -all_violators > synth/violator_report5.txt
+write -format verilog CVP14 -output synth/CVP14_synth5.vg
+
+#synthesis 6
+#timing options
+create_clock [get_ports Clk1] -period 400 -waveform {0 100}
+create_clock [get_ports Clk2] -period 400 -waveform {200 300}
+set_dont_touch_network [all_clocks]
+#area options
+set_max_area 300000
+#Compile with aggressive mapping effort
+ungroup -flatten -all
+uniquify
+compile -map_effort high -incremental_mapping
+report_area > synth/area6.txt
+report_timing -path full -delay max -nworst 3 > synth/timing6.txt
+report_timing -path full -delay min -nworst 3 >> synth/timing6.txt
+report_constraint -all_violators > synth/violator_report6.txt
+write -format verilog CVP14 -output synth/CVP14_synth6.vg
+
+#synthesis 7
+#timing options
+create_clock [get_ports Clk1] -period 400 -waveform {0 100}
+create_clock [get_ports Clk2] -period 400 -waveform {200 300}
+set_dont_touch_network [all_clocks]
+#area options
+set_max_area 250000
+#Compile with aggressive mapping effort
+ungroup -flatten -all
+uniquify
+compile_ultra
+report_area > synth/area7.txt
+report_timing -path full -delay max -nworst 3 > synth/timing7.txt
+report_timing -path full -delay min -nworst 3 >> synth/timing7.txt
+report_constraint -all_violators > synth/violator_report7.txt
+write -format verilog CVP14 -output synth/CVP14_synth7.vg
 1
