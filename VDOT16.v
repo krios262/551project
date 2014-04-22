@@ -1,5 +1,5 @@
 //Implements vector dot product
-module VDOT16(output [15:0] out, output V, input [255:0] A, input [255:0] B, input start, output done, output write);
+module VDOT16(output [15:0] out, output V, input [255:0] A, input [255:0] B, input start, output done);
 
   wire [30:0] Ov;
   wire [255:0] multOut;
@@ -13,7 +13,6 @@ module VDOT16(output [15:0] out, output V, input [255:0] A, input [255:0] B, inp
                   Ov[23] | Ov[24] | Ov[25] | Ov[26] | Ov[27] | Ov[28] | Ov[29] | Ov[30];
 
   assign done = start; //this module finishes operation in one cycle
-  assign write = start;
 
   VMULT mult[15:0](.product(multOut), .Overflow(Ov[15:0]), .A(A), .B(B));
   VADD add1[7:0](.Sum(add1Out), .Overflow(Ov[23:16]), .A(multOut[127:0]), .B(multOut[255:128]));

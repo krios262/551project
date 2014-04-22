@@ -1,7 +1,7 @@
 //Implements vector dot product
 //Pipelined version of VDOT16
 module VDOT16p(output [15:0] out, output V, input [255:0] A, input [255:0] B, input start,
-               input Clk1, input Clk2, output reg done, output reg write);
+               input Clk1, input Clk2, output reg done);
 
   wire [30:0] Ov;
   wire [255:0] multOut;
@@ -27,10 +27,10 @@ module VDOT16p(output [15:0] out, output V, input [255:0] A, input [255:0] B, in
   VADD add4u(.Sum(out), .Overflow(Ov[30]), .A(add3[15:0]), .B(add3[31:16]));
 
   always@(posedge Clk1) begin
-    if (state == 3'b011)
-      write <= 1'b1;
+    if (state == 3'b101)
+      done <= 1'b1;
     else
-      write <= 1'b0;
+      done <= 1'b0;
   end
 
   always@(posedge Clk2) begin
@@ -40,16 +40,13 @@ module VDOT16p(output [15:0] out, output V, input [255:0] A, input [255:0] B, in
     add3 <= add3Out;
 
     if (start) begin
-      if (state == 3'b100) begin
+      if (state == 3'b101) begin
         state <= state;
-        done <= 1'b1;
       end else begin
         state <= state + 1;
-        done <= 1'b0;
       end
     end else begin
       state <= 3'b000;
-      done <= 1'b0;
     end
   end //always
 
@@ -59,9 +56,9 @@ module t_VDOT16p();
   reg [255:0] A, B;
   reg start, Clk1, Clk2;
   wire [15:0] out;
-  wire done, write, V;
+  wire done, V;
 
-  VDOT16p UUT(.out(out), .V(V), .A(A), .B(B), .start(start), .Clk1(Clk1), .Clk2(Clk2), .done(done), .write(write));
+  VDOT16p UUT(.out(out), .V(V), .A(A), .B(B), .start(start), .Clk1(Clk1), .Clk2(Clk2), .done(done));
 
   initial begin
     Clk1 = 1'b0;
@@ -73,7 +70,7 @@ module t_VDOT16p();
     end //forever
   end
 
-  initial $monitor("state: %b A: %h B: %h out: %h V: %b start: %b done: %b write: %b", UUT.state, A, B, out, V, start, done, write);
+  initial $monitor("state: %b A: %h B: %h out: %h V: %b start: %b done: %b", UUT.state, A, B, out, V, start, done);
 
   initial begin
     start = 1'b0;

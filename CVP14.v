@@ -2,7 +2,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
     output reg [15:0] DataOut, input Reset, input Clk1, input Clk2, input [15:0] DataIn);
 
   //Generate parameters
-  parameter Pipe_Vdot = 1'b0;
+  parameter Pipe_Vdot = 1'b1;
 
   //Parameters for opcodes
   parameter vadd = 4'b0000, vdot = 4'b0001, smul = 4'b0010, sst = 4'b0011, vld = 4'b0100,
@@ -36,7 +36,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
   //vdot nets
   wire [15:0] dotOut;
-  wire dotV, dotDone, dotWrite;
+  wire dotV, dotDone;
   reg dotStart;
 
   //smul nets
@@ -64,9 +64,9 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
   generate
     if (Pipe_Vdot)
       VDOT16p vdotmulu(.out(dotOut), .V(dotV), .A(vOutP), .B(vOutP2), .start(dotStart), .Clk1(Clk1), .Clk2(Clk2),
-                        .done(dotDone), .write(dotWrite));
+                        .done(dotDone));
     else
-      VDOT16 vdotmulu(.out(dotOut), .V(dotV), .A(vOutP), .B(vOutP2), .start(dotStart), .done(dotDone), .write(dotWrite));
+      VDOT16 vdotmulu(.out(dotOut), .V(dotV), .A(vOutP), .B(vOutP2), .start(dotStart), .done(dotDone));
   endgenerate
 
   always@(posedge Clk1) begin
