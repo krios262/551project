@@ -7,7 +7,7 @@ Report : timing
         -max_paths 3
 Design : CVP14
 Version: H-2013.03-SP3
-Date   : Mon Apr 21 22:19:57 2014
+Date   : Tue Apr 22 19:36:38 2014
 ****************************************
 
  # A fanout number of 1000 was used for high fanout net computations.
@@ -1288,7 +1288,7 @@ Report : timing
         -max_paths 3
 Design : CVP14
 Version: H-2013.03-SP3
-Date   : Mon Apr 21 22:19:58 2014
+Date   : Tue Apr 22 19:36:38 2014
 ****************************************
 
  # A fanout number of 1000 was used for high fanout net computations.
