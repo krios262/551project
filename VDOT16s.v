@@ -3,7 +3,7 @@
 module VDOT16s(output reg [15:0] out, output V, input [15:0] A, input [15:0] B, input start,
                input Clk1, input Clk2, output reg done);
 
-  reg [3:0] state;
+  reg [4:0] state;
 
   reg [15:0] mult;
   wire [15:0] multOut;
@@ -16,7 +16,7 @@ module VDOT16s(output reg [15:0] out, output V, input [15:0] A, input [15:0] B, 
   VADD addu(.Sum(sumOut), .Overflow(Ov[1]), .A(multOut), .B(out));
 
   always@(posedge Clk1) begin
-    if (state == 4'b1111)
+    if (state == 5'b10000)
       done <= 1'b1;
     else
       done <= 1'b0;
@@ -28,13 +28,13 @@ module VDOT16s(output reg [15:0] out, output V, input [15:0] A, input [15:0] B, 
     if (start) begin
       out <= sumOut;
 
-      if (state == 4'b1111) begin
+      if (state == 5'b10000) begin
         state <= state;
       end else begin
         state <= state + 1;
       end
     end else begin
-      state <= 4'b0000;
+      state <= 5'b00000;
       out <= 16'b0;
     end
   end //always
@@ -67,7 +67,7 @@ module t_VDOT16s();
     A = 16'h3c00;
     B = 16'h3c00;
     start = 1'b1;
-    #160;
+    #170;
     start = 1'b0;
     #20;
     $finish;
