@@ -3,7 +3,8 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
   //Generate parameters
   parameter Pipe_Vdot = 1'b0;
-  parameter serial_operation = 1'b1;
+  parameter serial_operation = 1'b0;
+  parameter Pipe_SMUL_parallel = 1'b0;  
 
   //Parameters for opcodes
   parameter vadd = 4'b0000, vdot = 4'b0001, smul = 4'b0010, sst = 4'b0011, vld = 4'b0100,
@@ -68,7 +69,15 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
   //Operation modules
   VADD16 adderu(.SumV(AdderOut), .Overflw(OvF), .Inval1(vOutP), .Inval2(vOutP2), .start(addStart), .done(addDone));
-  SMULT16 smultu(.product(smulOut), .V(smulV), .scalar(sOut), .vecin(vOutP), .start(smulStart), .done(smulDone));
+  //SMULT generates 
+  generate 
+    if(Pipe_SMUL_parallel)
+      SMULT16p smultu(.product(smulOut), .V(smulV), .scalar(sOut), .vecin(vOutP), .Clk1(Clk1), .Clk2(Clk2), 
+                    .start(smulStart), .done(smulDone));
+    else
+      SMULT16 smultu(.product(smulOut), .V(smulV), .scalar(sOut), .vecin(vOutP), .start(smulStart), .done(smulDone));
+  endgenerate
+  //VDOT generates
   generate
     if (serial_operation)
       VDOT16s vdotmulu(.out(dotOut), .V(dotV), .A(vOutS), .B(vOutS2), .start(dotStart), .Clk1(Clk1), .Clk2(Clk2), 
