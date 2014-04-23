@@ -2,7 +2,8 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
     output reg [15:0] DataOut, input Reset, input Clk1, input Clk2, input [15:0] DataIn);
 
   //Generate parameters
-  parameter Pipe_Vdot = 1'b1;
+  parameter Pipe_Vdot = 1'b0;
+  parameter serial_operation = 1'b1;
 
   //Parameters for opcodes
   parameter vadd = 4'b0000, vdot = 4'b0001, smul = 4'b0010, sst = 4'b0011, vld = 4'b0100,
@@ -62,7 +63,9 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
   VADD16 adderu(.SumV(AdderOut), .Overflw(OvF), .Inval1(vOutP), .Inval2(vOutP2), .start(addStart), .done(addDone));
   SMULT16 smultu(.product(smulOut), .V(smulV), .scalar(sOut), .vecin(vOutP), .start(smulStart), .done(smulDone));
   generate
-    if (Pipe_Vdot)
+    if (serial_operation)
+      VDOT16s vdotmulu(.out(dotOut), .V(dotV), .A(vOutS), .B(vOutS2), .start(dotStart), .done(dotDone));
+    else if (Pipe_Vdot)
       VDOT16p vdotmulu(.out(dotOut), .V(dotV), .A(vOutP), .B(vOutP2), .start(dotStart), .Clk1(Clk1), .Clk2(Clk2),
                         .done(dotDone));
     else
@@ -241,7 +244,10 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
             vRD_p <= 1'b1;
           end
           vdot: begin
-            vRD_p <= 1'b1;
+            if (serial_operation)
+              vRD_s <= 1'b1;
+            else
+              vRD_p <= 1'b1;
           end
           smul: begin
             vRD_p <= 1'b1;
@@ -288,7 +294,11 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
           end
 
           vdot: begin
-            vRD_p <= 1'b0;
+            if (serial_operation)
+              vRD_s <= 1'b1;
+            else
+              vRD_p <= 1'b0;
+
             if (dotDone) begin
               sIn <= dotOut;
               sWR <= 1'b1;
