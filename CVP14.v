@@ -48,9 +48,16 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
   //Scalar and Vector registers
   sReg scalar(.DataOut(sOut), .Addr(sAddr), .Clk1(Clk1), .Clk2(Clk2), .DataIn(sIn),
               .RD(sRD), .WR(sWR), .WR_l(sWR_l), .WR_h(sWR_h));
-  vReg vector(.DataOut_p(vOutP), .DataOut_s(vOutS), .Addr(vAddr), .Clk1(Clk1), .Clk2(Clk2),
-              .DataIn_p(vInP), .DataIn_s(vInS), .WR_p(vWR_p), .RD_p(vRD_p), .WR_s(vWR_s),
-              .RD_s(vRD_s), .DataOut2_p(vOutP2), .DataOut2_s(vOutS2), .Addr2(vAddr2));
+  generate
+    if (serial_operation)
+      vRegs vector(.DataOut_s(vOutS), .Addr(vAddr), .Clk1(Clk1), .Clk2(Clk2),
+                  .DataIn_s(vInS), .WR_s(vWR_s),
+                  .RD_s(vRD_s), .DataOut2_s(vOutS2), .Addr2(vAddr2));
+    else
+      vReg vector(.DataOut_p(vOutP), .DataOut_s(vOutS), .Addr(vAddr), .Clk1(Clk1), .Clk2(Clk2),
+                  .DataIn_p(vInP), .DataIn_s(vInS), .WR_p(vWR_p), .RD_p(vRD_p), .WR_s(vWR_s),
+                  .RD_s(vRD_s), .DataOut2_p(vOutP2), .DataOut2_s(vOutS2), .Addr2(vAddr2));
+  endgenerate
 
   //Addressing
   PCunit pcu(.PC(PC), .offset(instruction[11:0]), .Clk2(Clk2), .updatePC(updatePC),
