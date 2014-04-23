@@ -2,7 +2,9 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
     output reg [15:0] DataOut, input Reset, input Clk1, input Clk2, input [15:0] DataIn);
 
   //Generate parameters
-  parameter Pipe_Vdot = 1'b1;
+  parameter Pipe_Vdot = 1'b0;
+  parameter serial_operation = 1'b0;
+  parameter Pipe_SMUL_parallel = 1'b0;  
 
   //Parameters for opcodes
   parameter vadd = 4'b0000, vdot = 4'b0001, smul = 4'b0010, sst = 4'b0011, vld = 4'b0100,
@@ -47,9 +49,16 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
   //Scalar and Vector registers
   sReg scalar(.DataOut(sOut), .Addr(sAddr), .Clk1(Clk1), .Clk2(Clk2), .DataIn(sIn),
               .RD(sRD), .WR(sWR), .WR_l(sWR_l), .WR_h(sWR_h));
-  vReg vector(.DataOut_p(vOutP), .DataOut_s(vOutS), .Addr(vAddr), .Clk1(Clk1), .Clk2(Clk2),
-              .DataIn_p(vInP), .DataIn_s(vInS), .WR_p(vWR_p), .RD_p(vRD_p), .WR_s(vWR_s),
-              .RD_s(vRD_s), .DataOut2_p(vOutP2), .DataOut2_s(vOutS2), .Addr2(vAddr2));
+  generate
+    if (serial_operation)
+      vRegs vector(.DataOut_s(vOutS), .Addr(vAddr), .Clk1(Clk1), .Clk2(Clk2),
+                  .DataIn_s(vInS), .WR_s(vWR_s),
+                  .RD_s(vRD_s), .DataOut2_s(vOutS2), .Addr2(vAddr2));
+    else
+      vReg vector(.DataOut_p(vOutP), .DataOut_s(vOutS), .Addr(vAddr), .Clk1(Clk1), .Clk2(Clk2),
+                  .DataIn_p(vInP), .DataIn_s(vInS), .WR_p(vWR_p), .RD_p(vRD_p), .WR_s(vWR_s),
+                  .RD_s(vRD_s), .DataOut2_p(vOutP2), .DataOut2_s(vOutS2), .Addr2(vAddr2));
+  endgenerate
 
   //Addressing
   PCunit pcu(.PC(PC), .offset(instruction[11:0]), .Clk2(Clk2), .updatePC(updatePC),
@@ -60,9 +69,20 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
   //Operation modules
   VADD16 adderu(.SumV(AdderOut), .Overflw(OvF), .Inval1(vOutP), .Inval2(vOutP2), .start(addStart), .done(addDone));
-  SMULT16 smultu(.product(smulOut), .V(smulV), .scalar(sOut), .vecin(vOutP), .start(smulStart), .done(smulDone));
+  //SMULT generates 
+  generate 
+    if(Pipe_SMUL_parallel)
+      SMULT16p smultu(.product(smulOut), .V(smulV), .scalar(sOut), .vecin(vOutP), .Clk1(Clk1), .Clk2(Clk2), 
+                    .start(smulStart), .done(smulDone));
+    else
+      SMULT16 smultu(.product(smulOut), .V(smulV), .scalar(sOut), .vecin(vOutP), .start(smulStart), .done(smulDone));
+  endgenerate
+  //VDOT generates
   generate
-    if (Pipe_Vdot)
+    if (serial_operation)
+      VDOT16s vdotmulu(.out(dotOut), .V(dotV), .A(vOutS), .B(vOutS2), .start(dotStart), .Clk1(Clk1), .Clk2(Clk2), 
+                        .done(dotDone));
+    else if (Pipe_Vdot)
       VDOT16p vdotmulu(.out(dotOut), .V(dotV), .A(vOutP), .B(vOutP2), .start(dotStart), .Clk1(Clk1), .Clk2(Clk2),
                         .done(dotDone));
     else
@@ -241,7 +261,10 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
             vRD_p <= 1'b1;
           end
           vdot: begin
-            vRD_p <= 1'b1;
+            if (serial_operation)
+              vRD_s <= 1'b1;
+            else
+              vRD_p <= 1'b1;
           end
           smul: begin
             vRD_p <= 1'b1;
@@ -288,7 +311,11 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
           end
 
           vdot: begin
-            vRD_p <= 1'b0;
+            if (serial_operation)
+              vRD_s <= 1'b1;
+            else
+              vRD_p <= 1'b0;
+
             if (dotDone) begin
               sIn <= dotOut;
               sWR <= 1'b1;

@@ -1,6 +1,7 @@
 //Cvp14 Test Bench
 `timescale 1ns/1ns
 module t_CVP14();
+  parameter smul_pipe = 1'b1;
   wire[15:0] out, in, addr;
   wire r, w, v;
   reg  rst, c1, c2;
@@ -9,7 +10,7 @@ module t_CVP14();
 
   DRAM mem(.DataOut(in), .Addr(addr), .DataIn(out),
     .clk1(c1), .clk2(c2), .RD(r), .WR(w));
-  CVP14 UUT(.Addr(addr), .RD(r), .WR(w), .V(v),
+  CVP14 #(.Pipe_SMUL_parallel(smul_pipe)) UUT(.Addr(addr), .RD(r), .WR(w), .V(v),
     .DataOut(out), .Reset(rst), .Clk1(c1), .Clk2(c2), .DataIn(in));
 
   initial begin
@@ -41,7 +42,7 @@ module t_CVP14();
     rst = 1'b1;
     #10;
     rst = 1'b0;
-    #4500;
+    #4500;/*
     $strobe("V4.0: %h", UUT.vector.vector[4][0]);
     $strobe("V4.1: %h", UUT.vector.vector[4][1]);
     $strobe("V4.2: %h", UUT.vector.vector[4][2]);
@@ -61,7 +62,7 @@ module t_CVP14();
     #10;
     $strobe("S0: %h S7: %h", UUT.scalar.scalar[0], UUT.scalar.scalar[7]);
     //write memory contents to text file
-    $writememb("dump.txt", mem.Memory);
+    */$writememb("dump.txt", mem.Memory);
     #10;
     $finish;
   end
