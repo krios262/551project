@@ -1,6 +1,6 @@
 //Implements vector dot product
 //Serial version of VDOT16
-module VDOT16s(output reg [15:0] out, output V, input [15:0] A, input [15:0] B, input start,
+module VDOT16s(output reg [15:0] out, output reg V, input [15:0] A, input [15:0] B, input start,
                input Clk1, input Clk2, output reg done);
 
   reg [4:0] state;
@@ -9,8 +9,6 @@ module VDOT16s(output reg [15:0] out, output V, input [15:0] A, input [15:0] B, 
   wire [15:0] multOut;
   wire [15:0] sumOut;
   wire [1:0] Ov;
-
-  assign V = Ov[0] | Ov[1];
 
   VMULT multu(.product(multOut), .Overflow(Ov[0]), .A(A), .B(B));
   VADD addu(.Sum(sumOut), .Overflow(Ov[1]), .A(multOut), .B(out));
@@ -27,6 +25,7 @@ module VDOT16s(output reg [15:0] out, output V, input [15:0] A, input [15:0] B, 
 
     if (start) begin
       out <= sumOut;
+      V <= Ov[0] | Ov[1] | V;
 
       if (state == 5'b10000) begin
         state <= state;
@@ -36,6 +35,7 @@ module VDOT16s(output reg [15:0] out, output V, input [15:0] A, input [15:0] B, 
     end else begin
       state <= 5'b00000;
       out <= 16'b0;
+      V <= 1'b0;
     end
   end //always
 
