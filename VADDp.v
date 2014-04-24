@@ -43,6 +43,7 @@ module pre_norm_sum(output reg [15:0] Sum, output reg [14:0] operSum, output reg
   always @(A, B)begin
     //Check for overflow numbers
     if((A[14:10] == 5'h1F) || (B[14:10] == 5'h1F))begin
+      operSum = 15'h0;
       Overflow = 1'b1;
       if (A[14:10] == 5'h1F) begin
         Sum = {A[15],A[14:10],10'h0};
