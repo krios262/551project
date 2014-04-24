@@ -4,6 +4,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
   //Generate parameters
   parameter Pipe_Vdot = 1'b0;
   parameter serial_operation = 1'b1;
+  parameter pipe_fp = 1'b1;
   parameter Pipe_SMUL_parallel = 1'b0;
 
   //Parameters for opcodes
