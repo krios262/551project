@@ -30,9 +30,21 @@ module t_CVP14_synth();
     rst = 1'b1;
     #10;
     rst = 1'b0;
-    #6000;
+    #60000000;
+    $display("Didn't reach addr xFFFF, dump what we have");
     $writememb("dump.txt", mem.Memory);
     #10;
     $finish;
   end
+
+  always@(addr) begin
+	//END OF TESTBENCH CONDITION
+	$display("Addr = %h", addr);
+	if(addr == 16'hffff) begin
+		$display("Time:%t MEM DUMP!", $time);
+		$writememb("dump.txt", mem.Memory);
+		#10;
+		$finish;
+	end
+end
 endmodule
