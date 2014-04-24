@@ -32,12 +32,15 @@ module VADD16serp(output reg [15:0] SumV, output reg V, input [15:0] A,
     SumV <= sum;
 
     if (start) begin
-      V <= Ov | V;
-
-      if (state == 5'b11111) begin
+      if (state == 5'b00000) begin 
+        V <= V;
+        state <= state +1;
+      end else if (state == 5'b11111) begin
         state <= state;
+        V <= Ov| V;
       end else begin
         state <= state + 1;
+        V <= Ov| V;
       end
     end else begin
       state <= 5'b00000;
@@ -65,7 +68,7 @@ module t_VADD16serp();
     end //forever
   end
 
-  initial $monitor("state: %b A: %h B: %h out: %h V: %b start: %b write: %b done: %b", UUT.state, A, B, out, V, start, write, done);
+  initial $monitor("state: %b A: %h B: %h out: %h V: %b  VADDov:%b start: %b write: %b done: %b", UUT.state, A, B, out, V,UUT.Ov, start, write, done);
 
   initial begin
     start = 1'b0;
@@ -74,6 +77,15 @@ module t_VADD16serp();
     B = 16'h9939;
     start = 1'b1;
     #350;
+    start = 1'b0;
+    #12.5;
+    A = 16'b0111101000000000;
+    B = 16'b0111011011110010;
+    start = 1'b1;
+    #175;
+    A = 16'h9939;
+    B = 16'h9939;
+    #175;
     start = 1'b0;
     #20;
     $finish;

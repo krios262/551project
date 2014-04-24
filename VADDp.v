@@ -6,21 +6,16 @@ module VADDp(output [15:0] Sum,output Overflow,input [15:0] A, input [15:0] B,
   wire [15:0] pre_sum_pipe;
   reg [14:0] pre_operSum;
   wire [14:0] pre_operSum_pipe;
-  reg Ov1;
-  wire Ov1_pipe;
-  reg Ov2;
-  wire Ov2_pipe;
+  reg pre_ovf;
+  wire pre_ovf_pipe;
 
   pre_norm_sum preADD(.Sum(pre_sum_pipe), .operSum(pre_operSum_pipe), 
-                      .Overflow(Ov1_pipe), .A(A), .B(B));
-  norm_round_sum_final finalADD(.pre_sum(pre_sum), .pre_operSum(pre_operSum), 
-                                .Ovf(Ov2_pipe), .final_sum(Sum));
-
-  assign Overflow = Ov2 | Ov1;
+                      .Overflow(pre_ovf_pipe), .A(A), .B(B));
+  norm_round_sum_final finalADD(.pre_sum(pre_sum), .pre_operSum(pre_operSum), .pre_ovf(pre_ovf),
+                                .Ovf(Overflow), .final_sum(Sum));
 
   always@(posedge Clk2) begin
-    Ov1 <= Ov1_pipe;
-    Ov2 <= Ov2_pipe;
+    pre_ovf <= pre_ovf_pipe;
     pre_sum <= pre_sum_pipe;
     pre_operSum <= pre_operSum_pipe;
   end
@@ -161,7 +156,7 @@ module pre_norm_sum(output reg [15:0] Sum, output reg [14:0] operSum, output reg
 endmodule//End pre_norm_sum
 
 //Normalize a raw sum, round it, normalize again, and give final Sum in half point float
-module norm_round_sum_final(input [15:0] pre_sum, input [14:0] pre_operSum, output reg Ovf, 
+module norm_round_sum_final(input [15:0] pre_sum, input [14:0] pre_operSum, input pre_ovf, output reg Ovf, 
                             output reg [15:0] final_sum);
   reg [14:0] operSum;
   reg [15:0] Sum;
@@ -175,124 +170,132 @@ module norm_round_sum_final(input [15:0] pre_sum, input [14:0] pre_operSum, outp
   always@(pre_sum, pre_operSum) begin
     operSum = pre_operSum;
     Sum = pre_sum;
-    // normalising for sum
-    //Got a carry out of 1 and exponent needs to be shifted
-    if(operSum[14] == 1'b1) begin
-      //If exponent is not 30, shift mantissa and add 1 to exponent
-      if(Sum[14:10] != 5'h1E) begin
-        operSum = operSum >> 1'b1;
-        Sum[14:10] = Sum[14:10] + 1'b1;
-        flaginf = 1'b0; 
-        Overflow = 1'b0;
-      end
-      //Exponent is at max of 30, we can't represent 31, so its infinty
-      else begin
-        operSum = operSum;
-        Sum[14:10] = 5'h1F;
-        flaginf = 1'b1;
-        Overflow = 1'b1;
-      end
-    end //End carry out of 1
-    
-    //MSB of sum is 0    
-    else begin
-      flag =1'b0;
-      flaginf = 1'b0;
-      Overflow = 1'b0;
-      //shift mantiss til a 1 is hit
-      for(j=0;j<14;j=j+1) begin
-        //MSB is 0
-        if(~operSum[13]) begin
-          //Check if flag that we are done is not set
-          if(~flag) begin
-            //Check if exponent is as low as it can go, don't shift
-            if((Sum[14:10] == 5'h0)) begin
-              operSum = operSum;
-              Sum[14:10] = 5'h0;
-            end
-            //Exponent can go lower, shift mantissa and exponent
-            else begin             
-              operSum = operSum << 1'b1;
-              Sum[14:10] = Sum[14:10] - 1'b1;
-            end 
-          end
-          //Flag has been set that we are done
-          else begin
-            operSum = operSum;
-            Sum[14:10] = Sum[14:10]; 
-          end              
-        end //End MSB is 0
-
-        //MSB is 1
-        else begin
-          //Set done flag to stop shifting
-          operSum = operSum;
-          flag = 1'b1;
-          //Exponent is 0, change it back to 1
-          if (Sum[14:10] == 5'h0) begin
-            Sum[14:10] = 5'h1;
-          end
-          //Exponent is not zero
-          else begin
-            Sum[14:10] = Sum[14:10];
-          end
-        end //End MSB is 1
-      end //End for loop
-    end //End MSB of sum is 0
-
-    // rounding function based on IEEE standards after normalising
-    //Need to round
-    if (operSum[2]) begin
-      //Round up
-      if (operSum[1:0])
-        opersum1 = operSum[14:3] + 1'b1;
-      //Round to even
-      else begin
-        //LSB is 1, therefore round to 0 by adding 1
-        if (operSum[3])
-          opersum1 = operSum[14:3] + 1'b1;
-        //LSB is 0, therefore don't need to round
-        else
-          opersum1 = operSum[14:3];
-      end
+    //Pre_overflow high so we got infinite
+    if(pre_ovf) begin
+      Ovf = pre_ovf;
+      final_sum = pre_sum;
     end
-    //Don't need to round
+    //Numbers are normal to add
     else begin
-      opersum1 = operSum[14:3];
-    end //End rounding
+      // normalising for sum
+      //Got a carry out of 1 and exponent needs to be shifted
+      if(operSum[14] == 1'b1) begin
+        //If exponent is not 30, shift mantissa and add 1 to exponent
+        if(Sum[14:10] != 5'h1E) begin
+          operSum = operSum >> 1'b1;
+          Sum[14:10] = Sum[14:10] + 1'b1;
+          flaginf = 1'b0; 
+          Overflow = 1'b0;
+        end
+        //Exponent is at max of 30, we can't represent 31, so its infinty
+        else begin
+          operSum = operSum;
+          Sum[14:10] = 5'h1F;
+          flaginf = 1'b1;
+          Overflow = 1'b1;
+        end
+      end //End carry out of 1
+      
+      //MSB of sum is 0    
+      else begin
+        flag =1'b0;
+        flaginf = 1'b0;
+        Overflow = 1'b0;
+        //shift mantiss til a 1 is hit
+        for(j=0;j<14;j=j+1) begin
+          //MSB is 0
+          if(~operSum[13]) begin
+            //Check if flag that we are done is not set
+            if(~flag) begin
+              //Check if exponent is as low as it can go, don't shift
+              if((Sum[14:10] == 5'h0)) begin
+                operSum = operSum;
+                Sum[14:10] = 5'h0;
+              end
+              //Exponent can go lower, shift mantissa and exponent
+              else begin             
+                operSum = operSum << 1'b1;
+                Sum[14:10] = Sum[14:10] - 1'b1;
+              end 
+            end
+            //Flag has been set that we are done
+            else begin
+              operSum = operSum;
+              Sum[14:10] = Sum[14:10]; 
+            end              
+          end //End MSB is 0
 
-    //normalising function after rounding
-    //Got a carry out
-    if (opersum1[11] == 1'b1) begin
-      //Exponent has room to grow
-      if(~flaginf) begin
-        opersum2 = opersum1[11:1];
-        Sum[14:10] = Sum[14:10] + 1'b1; 
-      end 
-      //Already at infinity
+          //MSB is 1
+          else begin
+            //Set done flag to stop shifting
+            operSum = operSum;
+            flag = 1'b1;
+            //Exponent is 0, change it back to 1
+            if (Sum[14:10] == 5'h0) begin
+              Sum[14:10] = 5'h1;
+            end
+            //Exponent is not zero
+            else begin
+              Sum[14:10] = Sum[14:10];
+            end
+          end //End MSB is 1
+        end //End for loop
+      end //End MSB of sum is 0
+
+      // rounding function based on IEEE standards after normalising
+      //Need to round
+      if (operSum[2]) begin
+        //Round up
+        if (operSum[1:0])
+          opersum1 = operSum[14:3] + 1'b1;
+        //Round to even
+        else begin
+          //LSB is 1, therefore round to 0 by adding 1
+          if (operSum[3])
+            opersum1 = operSum[14:3] + 1'b1;
+          //LSB is 0, therefore don't need to round
+          else
+            opersum1 = operSum[14:3];
+        end
+      end
+      //Don't need to round
+      else begin
+        opersum1 = operSum[14:3];
+      end //End rounding
+
+      //normalising function after rounding
+      //Got a carry out
+      if (opersum1[11] == 1'b1) begin
+        //Exponent has room to grow
+        if(~flaginf) begin
+          opersum2 = opersum1[11:1];
+          Sum[14:10] = Sum[14:10] + 1'b1; 
+        end 
+        //Already at infinity
+        else begin
+          opersum2 = opersum1[10:0];
+          Sum[14:10] = Sum[14:10];
+        end
+      end
+      //Didn't get a carry out
       else begin
         opersum2 = opersum1[10:0];
         Sum[14:10] = Sum[14:10];
+      end //End post round normalize
+     
+      // assign mantissa to the sum
+      //Didnt Hit infinity
+      if (flaginf != 1'b1) begin
+        Sum[9:0] = opersum2[9:0];
       end
-    end
-    //Didn't get a carry out
-    else begin
-      opersum2 = opersum1[10:0];
-      Sum[14:10] = Sum[14:10];
-    end //End post round normalize
-   
-    // assign mantissa to the sum
-    //Didnt Hit infinity
-    if (flaginf != 1'b1) begin
-      Sum[9:0] = opersum2[9:0];
-    end
-    //hit infinity 
-    else begin
-      Sum[9:0] = 10'h0;
-    end 
-    //Assign final values
-    final_sum = Sum;
-    Ovf = Overflow;
+      //hit infinity 
+      else begin
+        Sum[9:0] = 10'h0;
+      end 
+      //Assign final values
+      final_sum = Sum;
+      Ovf = Overflow;
+    end //End normal number add
   end//End always pre_sum, pre_operSum
 endmodule //end norm_round_sum_final
 
