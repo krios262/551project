@@ -15,10 +15,10 @@ set_wire_load_model -name TSMC512K_Lowk_Aggresive -library tpfn45gsgv18tc
 set_fix_multiple_port_nets -all
 set_local_link_library {tcbn40lpbwptc.db,tpfn45gsgv18tc.db,tcbn40lpbwptc.db}
 
-#synthesis 4
+#synthesis 6
 #timing options
-create_clock [get_ports Clk1] -period 100 -waveform {0 25}
-create_clock [get_ports Clk2] -period 100 -waveform {50 75}
+create_clock [get_ports Clk1] -period 33 -waveform {0 8.25}
+create_clock [get_ports Clk2] -period 33 -waveform {17.5 25.75}
 set_dont_touch_network [all_clocks]
 #area options
 set_max_area 22000
@@ -26,27 +26,28 @@ set_max_area 22000
 ungroup -flatten -all
 uniquify
 compile -map_effort high
-report_area > synthSer/area4.txt
-report_timing -path full -delay max -nworst 3 > synthSer/timing4.txt
-report_timing -path full -delay min -nworst 3 >> synthSer/timing4.txt
-report_constraint -all_violators > synthSer/violator_report4.txt
-write -format verilog CVP14 -output synthSer/CVP14_synth4.vg
+report_area > synthSer/area6.txt
+report_timing -path full -delay max -nworst 3 > synthSer/timing6.txt
+report_timing -path full -delay min -nworst 3 >> synthSer/timing6.txt
+report_constraint -all_violators > synthSer/violator_report6.txt
+write -hierarchy -format verilog CVP14 -output synthSer/CVP14_synth6.vg
+#try this hierarchy flag
 
 #synthesis 5
 #timing options
-create_clock [get_ports Clk1] -period 33 -waveform {0 8.25}
-create_clock [get_ports Clk2] -period 33 -waveform {17.5 25.75}
-set_dont_touch_network [all_clocks]
+#create_clock [get_ports Clk1] -period 33 -waveform {0 8.25}
+#create_clock [get_ports Clk2] -period 33 -waveform {17.5 25.75}
+#set_dont_touch_network [all_clocks]
 #area options
-set_max_area 70000
+#set_max_area 70000
 #Compile with aggressive mapping effort
-ungroup -flatten -all
-uniquify
-compile -map_effort high
-report_area > synthSer/area5.txt
-report_timing -path full -delay max -nworst 3 > synthSer/timing5.txt
-report_timing -path full -delay min -nworst 3 >> synthSer/timing5.txt
-report_constraint -all_violators > synthSer/violator_report5.txt
-write -format verilog CVP14 -output synthSer/CVP14_synth5.vg
+#ungroup -flatten -all
+#uniquify
+#compile -map_effort high
+#report_area > synthSer/area5.txt
+#report_timing -path full -delay max -nworst 3 > synthSer/timing5.txt
+#report_timing -path full -delay min -nworst 3 >> synthSer/timing5.txt
+#report_constraint -all_violators > synthSer/violator_report5.txt
+#write -format verilog CVP14 -output synthSer/CVP14_synth5.vg
 
 1
