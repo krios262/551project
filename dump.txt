@@ -1,5 +1,5 @@
 // memory data file (do not edit the following line - required for mem load use)
-// instance=/t_CVP14/mem/Memory
+// instance=/t_CVP14_synth/mem/Memory
 // format=bin addressradix=h dataradix=b version=1.0 wordsperline=1 noaddress
 1111000000000000
 0110000011101111
