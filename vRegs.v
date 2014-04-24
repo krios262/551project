@@ -7,55 +7,43 @@ module vRegs(output reg [15:0] DataOut_s, output reg [15:0] DataOut2_s,
   integer i;  //used in for loop
   wire [1:0] cmd;
   reg [2:0] address, address2;
-  parameter reads = 2'b10, writes = 2'b01;
   reg prev_WR_s, prev_RD_s;
-  reg [3:0] select;
-
-  assign cmd = {RD_s, WR_s};
+  reg [3:0] selectW;
+  reg [3:0] selectR;
 
   always@(posedge Clk1) begin
 
     prev_RD_s <= RD_s;
     prev_WR_s <= WR_s;
 
-    case (cmd)
 
-      reads: begin
-        DataOut_s <= vector[address][select];
-        DataOut2_s <= vector[address2][select];
+    if (RD_s) begin
+      DataOut_s <= vector[address][selectR];
+      DataOut2_s <= vector[address2][selectR];
+    end else begin
+      DataOut_s <= DataOut_s;
+      DataOut2_s <= DataOut2_s;
+    end
 
-        for(i = 0; i < 16; i = i + 1) begin
-          vector[address][i] <= vector[address][i];
-        end
-      end
+    if (WR_s) begin
+      vector[address][selectW] <= DataIn_s;
+    end else begin
+      vector[address][i] <= vector[address][i];
+    end
 
-      writes: begin
-
-        for(i = 0; i < 16; i = i + 1) begin
-          if (i == select)
-            vector[address][select] <= DataIn_s;
-          else
-            vector[address][i] <= vector[address][i];
-        end
-      end
-
-      default: begin
-
-        for(i = 0; i < 16; i = i + 1) begin
-          vector[address][i] <= vector[address][i];
-        end
-
-        DataOut_s <= DataOut_s;
-        DataOut2_s <= DataOut2_s;
-      end
-    endcase
-
-    if ((~prev_RD_s && RD_s) || (~prev_WR_s && WR_s))
-      select <= 1;
-    else if (prev_RD_s || prev_WR_s)
-      select <= select + 1;
+    if (~prev_RD_s && RD_s)
+      selectR <= 1;
+    else if (prev_RD_s)
+      selectR <= selectR + 1;
     else
-      select <= 0;
+      selectR <= 0;
+
+    if (~prev_WR_s && WR_s)
+      selectW <= 1;
+    else if (prev_WR_s)
+      selectW <= selectW + 1;
+    else
+      selectW <= 0;
   end
 
   always@(posedge Clk2) begin
