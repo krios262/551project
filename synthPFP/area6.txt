@@ -1,0 +1,32 @@
+ 
+****************************************
+Report : area
+Design : CVP14
+Version: H-2013.03-SP3
+Date   : Fri Apr 25 00:15:17 2014
+****************************************
+
+Information: Updating design information... (UID-85)
+Warning: Design 'CVP14' contains 2 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Library(s) Used:
+
+    tcbn40lpbwptc (File: /cae/apps/data/synopsys-2011/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn40lpbwp_120b/tcbn40lpbwptc.db)
+
+Number of ports:                           54
+Number of nets:                          2222
+Number of cells:                         1090
+Number of combinational cells:            730
+Number of sequential cells:               352
+Number of macros/black boxes:               0
+Number of buf/inv:                        285
+Number of references:                      69
+
+Combinational area:             108859.968676
+Buf/Inv area:                    11853.727543
+Noncombinational area:           19298.160665
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                128158.129341
+Total area:                 undefined
+1

@@ -1,0 +1,35 @@
+###################################################################
+
+# Created by write_script -format dctcl on Sun Feb 23 14:42:09 2014
+# Modified by ET
+
+###################################################################
+
+# Set the current_design #
+current_design CVP14
+
+set_units -time ns -resistance kOhm -capacitance pF -voltage V -current mA
+set_operating_conditions NCCOM -library tcbn40lpbwptc
+set_wire_load_mode top
+set_wire_load_model -name TSMC512K_Lowk_Aggresive -library tpfn45gsgv18tc
+set_fix_multiple_port_nets -all
+set_local_link_library {tcbn40lpbwptc.db,tpfn45gsgv18tc.db,tcbn40lpbwptc.db}
+
+#synthesis 10
+#timing options
+create_clock [get_ports Clk1] -period 50 -waveform {0 12.5}
+create_clock [get_ports Clk2] -period 50 -waveform {25 37.5}
+set_dont_touch_network [all_clocks]
+#area options
+set_max_area 100000
+#Compile with aggressive mapping effort
+#ungroup -flatten -all
+uniquify
+compile -map_effort high
+report_area > synthPFP/area11.txt
+report_timing -path full -delay max -nworst 3 > synthPFP/timing11.txt
+report_timing -path full -delay min -nworst 3 >> synthPFP/timing11.txt
+report_constraint -all_violators > synthPFP/violator_report11.txt
+write -hierarchy -format verilog CVP14 -output synthPFP/CVP14_synth11.vg
+
+1

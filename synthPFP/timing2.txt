@@ -1,0 +1,1257 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nworst 3
+        -max_paths 3
+Design : CVP14
+Version: H-2013.03-SP3
+Date   : Thu Apr 24 23:37:13 2014
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: NCCOM   Library: tcbn40lpbwptc
+Wire Load Model Mode: top
+
+  Startpoint: instruction_reg[0]
+              (rising edge-triggered flip-flop clocked by Clk2)
+  Endpoint: addru/addr_reg[15]
+            (rising edge-triggered flip-flop clocked by Clk1)
+  Path Group: Clk1
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk2 (rise edge)                                 50.00      50.00
+  clock network delay (ideal)                             0.00      50.00
+  instruction_reg[0]/CP (EDFQD1BWP)                       0.00 #    50.00 r
+  instruction_reg[0]/Q (EDFQD1BWP)                        0.24      50.24 r
+  addru/imm_offset[0] (addrUnit)                          0.00      50.24 r
+  addru/add_1_root_add_0_root_add_14_2/B[0] (addrUnit_DW01_add_1)
+                                                          0.00      50.24 r
+  addru/add_1_root_add_0_root_add_14_2/U64/ZN (ND2D1BWP)
+                                                          0.18      50.42 f
+  addru/add_1_root_add_0_root_add_14_2/U28/ZN (OAI21D1BWP)
+                                                          0.16      50.59 r
+  addru/add_1_root_add_0_root_add_14_2/U21/ZN (AOI21D1BWP)
+                                                          0.12      50.70 f
+  addru/add_1_root_add_0_root_add_14_2/U31/ZN (OAI21D1BWP)
+                                                          0.13      50.83 r
+  addru/add_1_root_add_0_root_add_14_2/U47/Z (XOR2D1BWP)
+                                                          0.14      50.97 f
+  addru/add_1_root_add_0_root_add_14_2/SUM[4] (addrUnit_DW01_add_1)
+                                                          0.00      50.97 f
+  addru/add_0_root_add_0_root_add_14_2/B[4] (addrUnit_DW01_add_0)
+                                                          0.00      50.97 f
+  addru/add_0_root_add_0_root_add_14_2/U39/ZN (NR2XD0BWP)
+                                                          0.11      51.08 r
+  addru/add_0_root_add_0_root_add_14_2/U15/ZN (INVD1BWP)
+                                                          0.05      51.13 f
+  addru/add_0_root_add_0_root_add_14_2/U14/ZN (AOI21D1BWP)
+                                                          0.12      51.24 r
+  addru/add_0_root_add_0_root_add_14_2/U10/ZN (OAI21D1BWP)
+                                                          0.11      51.36 f
+  addru/add_0_root_add_0_root_add_14_2/U3/ZN (AOI21D1BWP)
+                                                          0.14      51.50 r
+  addru/add_0_root_add_0_root_add_14_2/U11/ZN (OAI21D1BWP)
+                                                          0.12      51.62 f
+  addru/add_0_root_add_0_root_add_14_2/U8/ZN (AOI21D1BWP)
+                                                          0.13      51.75 r
+  addru/add_0_root_add_0_root_add_14_2/U7/ZN (OAI21D1BWP)
+                                                          0.11      51.86 f
+  addru/add_0_root_add_0_root_add_14_2/U5/ZN (AOI21D1BWP)
+                                                          0.14      52.00 r
+  addru/add_0_root_add_0_root_add_14_2/U2/ZN (OAI21D1BWP)
+                                                          0.16      52.15 f
+  addru/add_0_root_add_0_root_add_14_2/U13/Z (OR2XD1BWP)
+                                                          0.10      52.25 f
+  addru/add_0_root_add_0_root_add_14_2/U12/ZN (AOI22D1BWP)
+                                                          0.17      52.43 r
+  addru/add_0_root_add_0_root_add_14_2/U17/ZN (ND2D1BWP)
+                                                          0.08      52.51 f
+  addru/add_0_root_add_0_root_add_14_2/U16/ZN (IOA22D1BWP)
+                                                          0.14      52.65 f
+  addru/add_0_root_add_0_root_add_14_2/U34/ZN (NR2XD0BWP)
+                                                          0.08      52.73 r
+  addru/add_0_root_add_0_root_add_14_2/U72/ZN (MOAI22D0BWP)
+                                                          0.05      52.79 f
+  addru/add_0_root_add_0_root_add_14_2/U71/Z (XOR3D1BWP)
+                                                          0.08      52.86 f
+  addru/add_0_root_add_0_root_add_14_2/SUM[15] (addrUnit_DW01_add_0)
+                                                          0.00      52.86 f
+  addru/U19/Z (AO222D1BWP)                                0.13      52.99 f
+  addru/addr_reg[15]/D (DFQD1BWP)                         0.00      52.99 f
+  data arrival time                                                 52.99
+
+  clock Clk1 (rise edge)                                100.00     100.00
+  clock network delay (ideal)                             0.00     100.00
+  addru/addr_reg[15]/CP (DFQD1BWP)                        0.00     100.00 r
+  library setup time                                     -0.02      99.98
+  data required time                                                99.98
+  --------------------------------------------------------------------------
+  data required time                                                99.98
+  data arrival time                                                -52.99
+  --------------------------------------------------------------------------
+  slack (MET)                                                       46.99
+
+
+  Startpoint: instruction_reg[0]
+              (rising edge-triggered flip-flop clocked by Clk2)
+  Endpoint: addru/addr_reg[15]
+            (rising edge-triggered flip-flop clocked by Clk1)
+  Path Group: Clk1
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk2 (rise edge)                                 50.00      50.00
+  clock network delay (ideal)                             0.00      50.00
+  instruction_reg[0]/CP (EDFQD1BWP)                       0.00 #    50.00 r
+  instruction_reg[0]/Q (EDFQD1BWP)                        0.24      50.24 r
+  addru/imm_offset[0] (addrUnit)                          0.00      50.24 r
+  addru/add_1_root_add_0_root_add_14_2/B[0] (addrUnit_DW01_add_1)
+                                                          0.00      50.24 r
+  addru/add_1_root_add_0_root_add_14_2/U64/ZN (ND2D1BWP)
+                                                          0.18      50.42 f
+  addru/add_1_root_add_0_root_add_14_2/U28/ZN (OAI21D1BWP)
+                                                          0.16      50.59 r
+  addru/add_1_root_add_0_root_add_14_2/U21/ZN (AOI21D1BWP)
+                                                          0.12      50.70 f
+  addru/add_1_root_add_0_root_add_14_2/U31/ZN (OAI21D1BWP)
+                                                          0.13      50.83 r
+  addru/add_1_root_add_0_root_add_14_2/U47/Z (XOR2D1BWP)
+                                                          0.14      50.97 f
+  addru/add_1_root_add_0_root_add_14_2/SUM[4] (addrUnit_DW01_add_1)
+                                                          0.00      50.97 f
+  addru/add_0_root_add_0_root_add_14_2/B[4] (addrUnit_DW01_add_0)
+                                                          0.00      50.97 f
+  addru/add_0_root_add_0_root_add_14_2/U39/ZN (NR2XD0BWP)
+                                                          0.11      51.08 r
+  addru/add_0_root_add_0_root_add_14_2/U15/ZN (INVD1BWP)
+                                                          0.05      51.13 f
+  addru/add_0_root_add_0_root_add_14_2/U14/ZN (AOI21D1BWP)
+                                                          0.12      51.24 r
+  addru/add_0_root_add_0_root_add_14_2/U10/ZN (OAI21D1BWP)
+                                                          0.11      51.36 f
+  addru/add_0_root_add_0_root_add_14_2/U3/ZN (AOI21D1BWP)
+                                                          0.14      51.50 r
+  addru/add_0_root_add_0_root_add_14_2/U11/ZN (OAI21D1BWP)
+                                                          0.12      51.62 f
+  addru/add_0_root_add_0_root_add_14_2/U8/ZN (AOI21D1BWP)
+                                                          0.13      51.75 r
+  addru/add_0_root_add_0_root_add_14_2/U7/ZN (OAI21D1BWP)
+                                                          0.11      51.86 f
+  addru/add_0_root_add_0_root_add_14_2/U5/ZN (AOI21D1BWP)
+                                                          0.14      52.00 r
+  addru/add_0_root_add_0_root_add_14_2/U2/ZN (OAI21D1BWP)
+                                                          0.16      52.15 f
+  addru/add_0_root_add_0_root_add_14_2/U13/Z (OR2XD1BWP)
+                                                          0.10      52.25 f
+  addru/add_0_root_add_0_root_add_14_2/U12/ZN (AOI22D1BWP)
+                                                          0.17      52.43 r
+  addru/add_0_root_add_0_root_add_14_2/U17/ZN (ND2D1BWP)
+                                                          0.08      52.51 f
+  addru/add_0_root_add_0_root_add_14_2/U16/ZN (IOA22D1BWP)
+                                                          0.14      52.65 f
+  addru/add_0_root_add_0_root_add_14_2/U34/ZN (NR2XD0BWP)
+                                                          0.08      52.73 r
+  addru/add_0_root_add_0_root_add_14_2/U72/ZN (MOAI22D0BWP)
+                                                          0.05      52.79 f
+  addru/add_0_root_add_0_root_add_14_2/U71/Z (XOR3D1BWP)
+                                                          0.08      52.86 f
+  addru/add_0_root_add_0_root_add_14_2/SUM[15] (addrUnit_DW01_add_0)
+                                                          0.00      52.86 f
+  addru/U19/Z (AO222D1BWP)                                0.13      52.99 f
+  addru/addr_reg[15]/D (DFQD1BWP)                         0.00      52.99 f
+  data arrival time                                                 52.99
+
+  clock Clk1 (rise edge)                                100.00     100.00
+  clock network delay (ideal)                             0.00     100.00
+  addru/addr_reg[15]/CP (DFQD1BWP)                        0.00     100.00 r
+  library setup time                                     -0.02      99.98
+  data required time                                                99.98
+  --------------------------------------------------------------------------
+  data required time                                                99.98
+  data arrival time                                                -52.99
+  --------------------------------------------------------------------------
+  slack (MET)                                                       46.99
+
+
+  Startpoint: instruction_reg[0]
+              (rising edge-triggered flip-flop clocked by Clk2)
+  Endpoint: addru/addr_reg[15]
+            (rising edge-triggered flip-flop clocked by Clk1)
+  Path Group: Clk1
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk2 (rise edge)                                 50.00      50.00
+  clock network delay (ideal)                             0.00      50.00
+  instruction_reg[0]/CP (EDFQD1BWP)                       0.00 #    50.00 r
+  instruction_reg[0]/Q (EDFQD1BWP)                        0.24      50.24 r
+  addru/imm_offset[0] (addrUnit)                          0.00      50.24 r
+  addru/add_1_root_add_0_root_add_14_2/B[0] (addrUnit_DW01_add_1)
+                                                          0.00      50.24 r
+  addru/add_1_root_add_0_root_add_14_2/U64/ZN (ND2D1BWP)
+                                                          0.18      50.42 f
+  addru/add_1_root_add_0_root_add_14_2/U28/ZN (OAI21D1BWP)
+                                                          0.16      50.59 r
+  addru/add_1_root_add_0_root_add_14_2/U21/ZN (AOI21D1BWP)
+                                                          0.12      50.70 f
+  addru/add_1_root_add_0_root_add_14_2/U31/ZN (OAI21D1BWP)
+                                                          0.13      50.83 r
+  addru/add_1_root_add_0_root_add_14_2/U47/Z (XOR2D1BWP)
+                                                          0.14      50.97 f
+  addru/add_1_root_add_0_root_add_14_2/SUM[4] (addrUnit_DW01_add_1)
+                                                          0.00      50.97 f
+  addru/add_0_root_add_0_root_add_14_2/B[4] (addrUnit_DW01_add_0)
+                                                          0.00      50.97 f
+  addru/add_0_root_add_0_root_add_14_2/U39/ZN (NR2XD0BWP)
+                                                          0.11      51.08 r
+  addru/add_0_root_add_0_root_add_14_2/U15/ZN (INVD1BWP)
+                                                          0.05      51.13 f
+  addru/add_0_root_add_0_root_add_14_2/U14/ZN (AOI21D1BWP)
+                                                          0.12      51.24 r
+  addru/add_0_root_add_0_root_add_14_2/U10/ZN (OAI21D1BWP)
+                                                          0.11      51.36 f
+  addru/add_0_root_add_0_root_add_14_2/U3/ZN (AOI21D1BWP)
+                                                          0.14      51.50 r
+  addru/add_0_root_add_0_root_add_14_2/U11/ZN (OAI21D1BWP)
+                                                          0.12      51.62 f
+  addru/add_0_root_add_0_root_add_14_2/U8/ZN (AOI21D1BWP)
+                                                          0.13      51.75 r
+  addru/add_0_root_add_0_root_add_14_2/U7/ZN (OAI21D1BWP)
+                                                          0.11      51.86 f
+  addru/add_0_root_add_0_root_add_14_2/U5/ZN (AOI21D1BWP)
+                                                          0.14      52.00 r
+  addru/add_0_root_add_0_root_add_14_2/U2/ZN (OAI21D1BWP)
+                                                          0.16      52.15 f
+  addru/add_0_root_add_0_root_add_14_2/U13/Z (OR2XD1BWP)
+                                                          0.10      52.25 f
+  addru/add_0_root_add_0_root_add_14_2/U12/ZN (AOI22D1BWP)
+                                                          0.17      52.43 r
+  addru/add_0_root_add_0_root_add_14_2/U17/ZN (ND2D1BWP)
+                                                          0.08      52.51 f
+  addru/add_0_root_add_0_root_add_14_2/U16/ZN (IOA22D1BWP)
+                                                          0.14      52.65 f
+  addru/add_0_root_add_0_root_add_14_2/U34/ZN (NR2XD0BWP)
+                                                          0.08      52.73 r
+  addru/add_0_root_add_0_root_add_14_2/U72/ZN (MOAI22D0BWP)
+                                                          0.05      52.79 f
+  addru/add_0_root_add_0_root_add_14_2/U71/Z (XOR3D1BWP)
+                                                          0.08      52.86 f
+  addru/add_0_root_add_0_root_add_14_2/SUM[15] (addrUnit_DW01_add_0)
+                                                          0.00      52.86 f
+  addru/U19/Z (AO222D1BWP)                                0.13      52.99 f
+  addru/addr_reg[15]/D (DFQD1BWP)                         0.00      52.99 f
+  data arrival time                                                 52.99
+
+  clock Clk1 (rise edge)                                100.00     100.00
+  clock network delay (ideal)                             0.00     100.00
+  addru/addr_reg[15]/CP (DFQD1BWP)                        0.00     100.00 r
+  library setup time                                     -0.02      99.98
+  data required time                                                99.98
+  --------------------------------------------------------------------------
+  data required time                                                99.98
+  data arrival time                                                -52.99
+  --------------------------------------------------------------------------
+  slack (MET)                                                       46.99
+
+
+  Startpoint: genblk1.vector/DataOut_p_reg[10]
+              (rising edge-triggered flip-flop clocked by Clk1)
+  Endpoint: genblk2.adderu/adder[0]/pre_operSum_reg[0]
+            (rising edge-triggered flip-flop clocked by Clk2)
+  Path Group: Clk2
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk1 (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  genblk1.vector/DataOut_p_reg[10]/CP (EDFQD1BWP)         0.00 #     0.00 r
+  genblk1.vector/DataOut_p_reg[10]/Q (EDFQD1BWP)          0.24       0.24 r
+  genblk1.vector/DataOut_p[10] (vReg)                     0.00       0.24 r
+  genblk2.adderu/A[10] (VADD16p)                          0.00       0.24 r
+  genblk2.adderu/adder[0]/A[10] (VADDp_14)                0.00       0.24 r
+  genblk2.adderu/adder[0]/preADD/A[10] (pre_norm_sum_14)
+                                                          0.00       0.24 r
+  genblk2.adderu/adder[0]/preADD/U1175/ZN (INVD1BWP)      0.14       0.38 f
+  genblk2.adderu/adder[0]/preADD/U1170/ZN (ND2D1BWP)      0.13       0.51 r
+  genblk2.adderu/adder[0]/preADD/U145/ZN (ND2D1BWP)       0.21       0.72 f
+  genblk2.adderu/adder[0]/preADD/U1092/ZN (NR3D1BWP)      0.21       0.93 r
+  genblk2.adderu/adder[0]/preADD/U146/ZN (INR3D0BWP)      0.23       1.17 r
+  genblk2.adderu/adder[0]/preADD/U1004/ZN (CKND3BWP)      0.21       1.37 f
+  genblk2.adderu/adder[0]/preADD/U1008/ZN (ND2D1BWP)      0.12       1.49 r
+  genblk2.adderu/adder[0]/preADD/U959/ZN (INVD1BWP)       0.07       1.56 f
+  genblk2.adderu/adder[0]/preADD/U1096/Z (OA32D1BWP)      0.12       1.68 f
+  genblk2.adderu/adder[0]/preADD/U138/ZN (INR3D0BWP)      0.16       1.85 r
+  genblk2.adderu/adder[0]/preADD/U1005/ZN (INR3D0BWP)     0.13       1.97 r
+  genblk2.adderu/adder[0]/preADD/U136/Z (CKBD2BWP)        0.22       2.20 r
+  genblk2.adderu/adder[0]/preADD/U958/ZN (INVD1BWP)       0.15       2.35 f
+  genblk2.adderu/adder[0]/preADD/U906/ZN (ND2D1BWP)       0.16       2.51 r
+  genblk2.adderu/adder[0]/preADD/U1007/ZN (XNR2D1BWP)     0.15       2.65 r
+  genblk2.adderu/adder[0]/preADD/U131/ZN (INR3D0BWP)      0.10       2.76 f
+  genblk2.adderu/adder[0]/preADD/U952/ZN (IND2D1BWP)      0.05       2.80 r
+  genblk2.adderu/adder[0]/preADD/U128/Z (CKBD2BWP)        0.23       3.03 r
+  genblk2.adderu/adder[0]/preADD/U905/ZN (ND2D1BWP)       0.24       3.27 f
+  genblk2.adderu/adder[0]/preADD/U957/ZN (OAI21D1BWP)     0.09       3.37 r
+  genblk2.adderu/adder[0]/preADD/U956/ZN (ND2D1BWP)       0.09       3.46 f
+  genblk2.adderu/adder[0]/preADD/U896/ZN (INR3D0BWP)      0.17       3.63 r
+  genblk2.adderu/adder[0]/preADD/U130/ZN (ND3D1BWP)       0.27       3.90 f
+  genblk2.adderu/adder[0]/preADD/U903/ZN (ND2D1BWP)       0.22       4.12 r
+  genblk2.adderu/adder[0]/preADD/U902/ZN (XNR2D1BWP)      0.17       4.29 r
+  genblk2.adderu/adder[0]/preADD/U848/ZN (INR3D0BWP)      0.10       4.39 f
+  genblk2.adderu/adder[0]/preADD/U899/ZN (IND3D1BWP)      0.05       4.44 r
+  genblk2.adderu/adder[0]/preADD/U126/Z (CKBD2BWP)        0.21       4.66 r
+  genblk2.adderu/adder[0]/preADD/U853/ZN (ND2D1BWP)       0.15       4.81 f
+  genblk2.adderu/adder[0]/preADD/U808/ZN (INVD1BWP)       0.17       4.97 r
+  genblk2.adderu/adder[0]/preADD/U850/Z (XOR2D1BWP)       0.17       5.14 f
+  genblk2.adderu/adder[0]/preADD/U802/ZN (NR3D1BWP)       0.15       5.29 r
+  genblk2.adderu/adder[0]/preADD/U123/ZN (ND3D1BWP)       0.21       5.50 f
+  genblk2.adderu/adder[0]/preADD/U804/ZN (CKND2BWP)       0.22       5.72 r
+  genblk2.adderu/adder[0]/preADD/U763/ZN (NR2XD1BWP)      0.19       5.92 f
+  genblk2.adderu/adder[0]/preADD/U801/Z (XOR2D1BWP)       0.15       6.06 f
+  genblk2.adderu/adder[0]/preADD/U764/ZN (NR3D1BWP)       0.17       6.23 r
+  genblk2.adderu/adder[0]/preADD/U480/ZN (INR3D4BWP)      0.20       6.44 r
+  genblk2.adderu/adder[0]/preADD/U761/ZN (CKND2BWP)       0.19       6.63 f
+  genblk2.adderu/adder[0]/preADD/U718/ZN (ND2D1BWP)       0.12       6.75 r
+  genblk2.adderu/adder[0]/preADD/U678/ZN (INVD1BWP)       0.07       6.82 f
+  genblk2.adderu/adder[0]/preADD/U768/Z (OA32D1BWP)       0.12       6.94 f
+  genblk2.adderu/adder[0]/preADD/U120/ZN (INR3D0BWP)      0.16       7.10 r
+  genblk2.adderu/adder[0]/preADD/U770/ZN (INR3D0BWP)      0.13       7.23 r
+  genblk2.adderu/adder[0]/preADD/U769/Z (CKBD2BWP)        0.16       7.40 r
+  genblk2.adderu/adder[0]/preADD/U722/ZN (INVD1BWP)       0.12       7.52 f
+  genblk2.adderu/adder[0]/preADD/U717/ZN (ND2D1BWP)       0.15       7.67 r
+  genblk2.adderu/adder[0]/preADD/U716/ZN (XNR2D1BWP)      0.15       7.82 f
+  genblk2.adderu/adder[0]/preADD/U117/ZN (INR3D0BWP)      0.17       7.99 r
+  genblk2.adderu/adder[0]/preADD/U721/Z (AN3XD1BWP)       0.20       8.20 r
+  genblk2.adderu/adder[0]/preADD/U118/ZN (INVD1BWP)       0.13       8.33 f
+  genblk2.adderu/adder[0]/preADD/U675/ZN (ND2D1BWP)       0.16       8.49 r
+  genblk2.adderu/adder[0]/preADD/U670/ZN (XNR2D1BWP)      0.15       8.64 f
+  genblk2.adderu/adder[0]/preADD/U115/ZN (INR3D0BWP)      0.17       8.81 r
+  genblk2.adderu/adder[0]/preADD/U674/ZN (INR3D0BWP)      0.13       8.94 r
+  genblk2.adderu/adder[0]/preADD/U673/Z (CKBD2BWP)        0.20       9.13 r
+  genblk2.adderu/adder[0]/preADD/U633/ZN (INVD1BWP)       0.14       9.27 f
+  genblk2.adderu/adder[0]/preADD/U629/ZN (ND2D1BWP)       0.16       9.43 r
+  genblk2.adderu/adder[0]/preADD/U628/ZN (XNR2D1BWP)      0.15       9.57 r
+  genblk2.adderu/adder[0]/preADD/U113/ZN (INR3D0BWP)      0.10       9.68 f
+  genblk2.adderu/adder[0]/preADD/U632/Z (AN3XD1BWP)       0.09       9.77 f
+  genblk2.adderu/adder[0]/preADD/U112/ZN (INVD1BWP)       0.17       9.95 r
+  genblk2.adderu/adder[0]/preADD/U590/ZN (ND2D1BWP)       0.13      10.08 f
+  genblk2.adderu/adder[0]/preADD/U538/ZN (INVD1BWP)       0.16      10.24 r
+  genblk2.adderu/adder[0]/preADD/U583/Z (XOR2D1BWP)       0.17      10.41 f
+  genblk2.adderu/adder[0]/preADD/U532/ZN (NR3D1BWP)       0.15      10.56 r
+  genblk2.adderu/adder[0]/preADD/U585/ZN (INR3D0BWP)      0.12      10.69 r
+  genblk2.adderu/adder[0]/preADD/U111/Z (CKBD2BWP)        0.22      10.91 r
+  genblk2.adderu/adder[0]/preADD/U109/ZN (NR2XD1BWP)      0.22      11.13 f
+  genblk2.adderu/adder[0]/preADD/U529/Z (XOR2D1BWP)       0.15      11.28 f
+  genblk2.adderu/adder[0]/preADD/U486/ZN (NR3D1BWP)       0.16      11.44 r
+  genblk2.adderu/adder[0]/preADD/U534/ZN (ND3D1BWP)       0.10      11.53 f
+  genblk2.adderu/adder[0]/preADD/U108/Z (CKBD2BWP)        0.17      11.70 f
+  genblk2.adderu/adder[0]/preADD/U107/ZN (INVD1BWP)       0.21      11.92 r
+  genblk2.adderu/adder[0]/preADD/U455/ZN (INR2D1BWP)      0.14      12.05 f
+  genblk2.adderu/adder[0]/preADD/U490/Z (OA32D1BWP)       0.14      12.20 f
+  genblk2.adderu/adder[0]/preADD/U105/ZN (INR3D0BWP)      0.16      12.36 r
+  genblk2.adderu/adder[0]/preADD/U485/ZN (INR3D0BWP)      0.13      12.49 r
+  genblk2.adderu/adder[0]/preADD/U484/Z (CKBD2BWP)        0.21      12.70 r
+  genblk2.adderu/adder[0]/preADD/U460/ZN (INVD1BWP)       0.11      12.81 f
+  genblk2.adderu/adder[0]/preADD/U457/ZN (ND2D1BWP)       0.15      12.96 r
+  genblk2.adderu/adder[0]/preADD/U454/ZN (XNR2D1BWP)      0.15      13.11 f
+  genblk2.adderu/adder[0]/preADD/U103/ZN (INR3D0BWP)      0.17      13.28 r
+  genblk2.adderu/adder[0]/preADD/U456/Z (AN3XD1BWP)       0.15      13.43 r
+  genblk2.adderu/adder[0]/preADD/U102/ZN (INVD1BWP)       0.13      13.57 f
+  genblk2.adderu/adder[0]/preADD/U423/ZN (ND2D1BWP)       0.17      13.74 r
+  genblk2.adderu/adder[0]/preADD/U418/ZN (XNR2D1BWP)      0.15      13.89 f
+  genblk2.adderu/adder[0]/preADD/U99/ZN (INR3D0BWP)       0.17      14.06 r
+  genblk2.adderu/adder[0]/preADD/U422/ZN (INR3D0BWP)      0.13      14.19 r
+  genblk2.adderu/adder[0]/preADD/U421/Z (CKBD2BWP)        0.20      14.39 r
+  genblk2.adderu/adder[0]/preADD/U403/ZN (INVD1BWP)       0.14      14.52 f
+  genblk2.adderu/adder[0]/preADD/U399/ZN (ND2D1BWP)       0.16      14.68 r
+  genblk2.adderu/adder[0]/preADD/U398/ZN (XNR2D1BWP)      0.16      14.83 f
+  genblk2.adderu/adder[0]/preADD/U97/ZN (INR3D0BWP)       0.17      15.01 r
+  genblk2.adderu/adder[0]/preADD/U402/Z (AN3XD1BWP)       0.15      15.16 r
+  genblk2.adderu/adder[0]/preADD/U96/ZN (INVD1BWP)        0.13      15.29 f
+  genblk2.adderu/adder[0]/preADD/U381/ZN (ND2D1BWP)       0.17      15.46 r
+  genblk2.adderu/adder[0]/preADD/U376/ZN (XNR2D1BWP)      0.15      15.62 f
+  genblk2.adderu/adder[0]/preADD/U93/ZN (INR3D0BWP)       0.17      15.79 r
+  genblk2.adderu/adder[0]/preADD/U380/ZN (INR3D0BWP)      0.13      15.91 r
+  genblk2.adderu/adder[0]/preADD/U379/Z (CKBD2BWP)        0.20      16.11 r
+  genblk2.adderu/adder[0]/preADD/U364/ZN (INVD1BWP)       0.14      16.25 f
+  genblk2.adderu/adder[0]/preADD/U360/ZN (ND2D1BWP)       0.16      16.40 r
+  genblk2.adderu/adder[0]/preADD/U359/ZN (XNR2D1BWP)      0.16      16.56 f
+  genblk2.adderu/adder[0]/preADD/U89/ZN (INR3D0BWP)       0.17      16.73 r
+  genblk2.adderu/adder[0]/preADD/U363/Z (AN3XD1BWP)       0.20      16.93 r
+  genblk2.adderu/adder[0]/preADD/U90/ZN (INVD1BWP)        0.13      17.07 f
+  genblk2.adderu/adder[0]/preADD/U341/ZN (ND2D1BWP)       0.16      17.23 r
+  genblk2.adderu/adder[0]/preADD/U338/ZN (XNR2D1BWP)      0.15      17.38 f
+  genblk2.adderu/adder[0]/preADD/U86/ZN (INR3D0BWP)       0.17      17.55 r
+  genblk2.adderu/adder[0]/preADD/U337/ZN (INR3D0BWP)      0.13      17.68 r
+  genblk2.adderu/adder[0]/preADD/U336/Z (CKBD2BWP)        0.20      17.87 r
+  genblk2.adderu/adder[0]/preADD/U323/ZN (INVD1BWP)       0.14      18.01 f
+  genblk2.adderu/adder[0]/preADD/U320/ZN (ND2D1BWP)       0.16      18.17 r
+  genblk2.adderu/adder[0]/preADD/U318/ZN (XNR2D1BWP)      0.15      18.32 f
+  genblk2.adderu/adder[0]/preADD/U294/ZN (INR3D0BWP)      0.17      18.49 r
+  genblk2.adderu/adder[0]/preADD/U317/ZN (IND3D1BWP)      0.09      18.58 f
+  genblk2.adderu/adder[0]/preADD/U316/Z (CKBD3BWP)        0.17      18.75 f
+  genblk2.adderu/adder[0]/preADD/U298/ZN (ND2D1BWP)       0.18      18.92 r
+  genblk2.adderu/adder[0]/preADD/U295/ZN (XNR2D1BWP)      0.15      19.08 f
+  genblk2.adderu/adder[0]/preADD/U275/ZN (INR3D0BWP)      0.17      19.25 r
+  genblk2.adderu/adder[0]/preADD/U84/ZN (IND3D1BWP)       0.27      19.52 f
+  genblk2.adderu/adder[0]/preADD/U276/ZN (ND2D1BWP)       0.23      19.74 r
+  genblk2.adderu/adder[0]/preADD/U278/ZN (XNR2D1BWP)      0.16      19.90 f
+  genblk2.adderu/adder[0]/preADD/U81/ZN (INR3D0BWP)       0.17      20.07 r
+  genblk2.adderu/adder[0]/preADD/U283/Z (AN3XD1BWP)       0.15      20.22 r
+  genblk2.adderu/adder[0]/preADD/U80/ZN (INVD1BWP)        0.13      20.36 f
+  genblk2.adderu/adder[0]/preADD/U257/ZN (ND2D1BWP)       0.17      20.53 r
+  genblk2.adderu/adder[0]/preADD/U256/ZN (XNR2D1BWP)      0.15      20.68 f
+  genblk2.adderu/adder[0]/preADD/U235/ZN (INR3D0BWP)      0.17      20.86 r
+  genblk2.adderu/adder[0]/preADD/U78/ZN (IND3D1BWP)       0.27      21.12 f
+  genblk2.adderu/adder[0]/preADD/U236/ZN (ND2D1BWP)       0.23      21.35 r
+  genblk2.adderu/adder[0]/preADD/U239/ZN (XNR2D1BWP)      0.16      21.51 f
+  genblk2.adderu/adder[0]/preADD/U72/ZN (INR3D0BWP)       0.17      21.68 r
+  genblk2.adderu/adder[0]/preADD/U76/ZN (INR3D0BWP)       0.23      21.91 r
+  genblk2.adderu/adder[0]/preADD/U215/ZN (CKND3BWP)       0.20      22.11 f
+  genblk2.adderu/adder[0]/preADD/U217/ZN (ND2D1BWP)       0.19      22.30 r
+  genblk2.adderu/adder[0]/preADD/U216/ZN (XNR2D1BWP)      0.16      22.45 f
+  genblk2.adderu/adder[0]/preADD/U196/ZN (IND3D1BWP)      0.14      22.60 f
+  genblk2.adderu/adder[0]/preADD/U198/ZN (INR2D1BWP)      0.07      22.67 r
+  genblk2.adderu/adder[0]/preADD/U197/Z (CKBD2BWP)        0.22      22.89 r
+  genblk2.adderu/adder[0]/preADD/U193/ZN (IND2D1BWP)      0.19      23.08 r
+  genblk2.adderu/adder[0]/preADD/U195/ZN (NR2XD0BWP)      0.07      23.15 f
+  genblk2.adderu/adder[0]/preADD/U194/ZN (OAI21D1BWP)     0.12      23.27 r
+  genblk2.adderu/adder[0]/preADD/U172/ZN (INR3D0BWP)      0.11      23.38 f
+  genblk2.adderu/adder[0]/preADD/U218/Z (AN3XD1BWP)       0.10      23.48 f
+  genblk2.adderu/adder[0]/preADD/U70/ZN (INVD1BWP)        0.17      23.65 r
+  genblk2.adderu/adder[0]/preADD/U178/ZN (ND2D1BWP)       0.22      23.87 f
+  genblk2.adderu/adder[0]/preADD/U184/ZN (OAI21D1BWP)     0.09      23.97 r
+  genblk2.adderu/adder[0]/preADD/U183/ZN (ND2D1BWP)       0.09      24.06 f
+  genblk2.adderu/adder[0]/preADD/U64/ZN (INR3D0BWP)       0.17      24.23 r
+  genblk2.adderu/adder[0]/preADD/U156/ZN (IND2D1BWP)      0.17      24.40 f
+  genblk2.adderu/adder[0]/preADD/U159/ZN (ND2D1BWP)       0.17      24.57 r
+  genblk2.adderu/adder[0]/preADD/U160/ZN (XNR2D1BWP)      0.14      24.71 r
+  genblk2.adderu/adder[0]/preADD/U151/ZN (IND3D1BWP)      0.09      24.80 r
+  genblk2.adderu/adder[0]/preADD/U220/ZN (IND2D1BWP)      0.07      24.87 r
+  genblk2.adderu/adder[0]/preADD/U219/Z (CKBD3BWP)        0.18      25.05 r
+  genblk2.adderu/adder[0]/preADD/U200/ZN (ND2D1BWP)       0.22      25.27 f
+  genblk2.adderu/adder[0]/preADD/U180/ZN (XNR2D1BWP)      0.16      25.42 f
+  genblk2.adderu/adder[0]/preADD/U170/ZN (IND4D2BWP)      0.19      25.61 f
+  genblk2.adderu/adder[0]/preADD/U157/ZN (CKND2BWP)       0.27      25.88 r
+  genblk2.adderu/adder[0]/preADD/U204/ZN (ND2D1BWP)       0.08      25.96 f
+  genblk2.adderu/adder[0]/preADD/U203/Z (CKBD2BWP)        0.16      26.12 f
+  genblk2.adderu/adder[0]/preADD/U491/Z (OA222D1BWP)      0.17      26.29 f
+  genblk2.adderu/adder[0]/preADD/U1098/ZN (OAI32D1BWP)
+                                                          0.07      26.36 r
+  genblk2.adderu/adder[0]/preADD/U1010/ZN (IND4D1BWP)     0.08      26.44 r
+  genblk2.adderu/adder[0]/preADD/U57/ZN (NR4D0BWP)        0.05      26.49 f
+  genblk2.adderu/adder[0]/preADD/U100/ZN (OAI22D4BWP)     0.15      26.65 r
+  genblk2.adderu/adder[0]/preADD/r831/A[0] (pre_norm_sum_14_DW01_cmp6_0)
+                                                          0.00      26.65 r
+  genblk2.adderu/adder[0]/preADD/r831/U2/ZN (INVD1BWP)
+                                                          0.09      26.74 f
+  genblk2.adderu/adder[0]/preADD/r831/U30/ZN (NR2D0BWP)
+                                                          0.09      26.83 r
+  genblk2.adderu/adder[0]/preADD/r831/U29/ZN (MAOI222D1BWP)
+                                                          0.09      26.92 f
+  genblk2.adderu/adder[0]/preADD/r831/U28/Z (OA211D1BWP)
+                                                          0.08      27.00 f
+  genblk2.adderu/adder[0]/preADD/r831/U27/ZN (NR3D0BWP)
+                                                          0.07      27.07 r
+  genblk2.adderu/adder[0]/preADD/r831/U10/ZN (OAI31D1BWP)
+                                                          0.05      27.12 f
+  genblk2.adderu/adder[0]/preADD/r831/U9/ZN (OAI211D1BWP)
+                                                          0.06      27.18 r
+  genblk2.adderu/adder[0]/preADD/r831/U8/ZN (IND3D1BWP)
+                                                          0.06      27.24 f
+  genblk2.adderu/adder[0]/preADD/r831/U26/ZN (AOI31D1BWP)
+                                                          0.06      27.30 r
+  genblk2.adderu/adder[0]/preADD/r831/U23/ZN (AOI211XD0BWP)
+                                                          0.06      27.37 f
+  genblk2.adderu/adder[0]/preADD/r831/U21/ZN (OAI32D1BWP)
+                                                          0.16      27.53 r
+  genblk2.adderu/adder[0]/preADD/r831/U20/ZN (NR2XD0BWP)
+                                                          0.08      27.61 f
+  genblk2.adderu/adder[0]/preADD/r831/U19/ZN (MOAI22D0BWP)
+                                                          0.18      27.79 r
+  genblk2.adderu/adder[0]/preADD/r831/GT (pre_norm_sum_14_DW01_cmp6_0)
+                                                          0.00      27.79 r
+  genblk2.adderu/adder[0]/preADD/U1091/ZN (INR3D0BWP)     0.13      27.92 r
+  genblk2.adderu/adder[0]/preADD/U1090/Z (CKBD3BWP)       0.20      28.12 r
+  genblk2.adderu/adder[0]/preADD/U1027/Z (AO222D1BWP)     0.14      28.26 r
+  genblk2.adderu/adder[0]/preADD/operSum[0] (pre_norm_sum_14)
+                                                          0.00      28.26 r
+  genblk2.adderu/adder[0]/pre_operSum_reg[0]/D (DFQD1BWP)
+                                                          0.00      28.26 r
+  data arrival time                                                 28.26
+
+  clock Clk2 (rise edge)                                 50.00      50.00
+  clock network delay (ideal)                             0.00      50.00
+  genblk2.adderu/adder[0]/pre_operSum_reg[0]/CP (DFQD1BWP)
+                                                          0.00      50.00 r
+  library setup time                                     -0.03      49.97
+  data required time                                                49.97
+  --------------------------------------------------------------------------
+  data required time                                                49.97
+  data arrival time                                                -28.26
+  --------------------------------------------------------------------------
+  slack (MET)                                                       21.71
+
+
+  Startpoint: genblk1.vector/DataOut_p_reg[10]
+              (rising edge-triggered flip-flop clocked by Clk1)
+  Endpoint: genblk2.adderu/adder[0]/pre_operSum_reg[1]
+            (rising edge-triggered flip-flop clocked by Clk2)
+  Path Group: Clk2
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk1 (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  genblk1.vector/DataOut_p_reg[10]/CP (EDFQD1BWP)         0.00 #     0.00 r
+  genblk1.vector/DataOut_p_reg[10]/Q (EDFQD1BWP)          0.24       0.24 r
+  genblk1.vector/DataOut_p[10] (vReg)                     0.00       0.24 r
+  genblk2.adderu/A[10] (VADD16p)                          0.00       0.24 r
+  genblk2.adderu/adder[0]/A[10] (VADDp_14)                0.00       0.24 r
+  genblk2.adderu/adder[0]/preADD/A[10] (pre_norm_sum_14)
+                                                          0.00       0.24 r
+  genblk2.adderu/adder[0]/preADD/U1175/ZN (INVD1BWP)      0.14       0.38 f
+  genblk2.adderu/adder[0]/preADD/U1170/ZN (ND2D1BWP)      0.13       0.51 r
+  genblk2.adderu/adder[0]/preADD/U145/ZN (ND2D1BWP)       0.21       0.72 f
+  genblk2.adderu/adder[0]/preADD/U1092/ZN (NR3D1BWP)      0.21       0.93 r
+  genblk2.adderu/adder[0]/preADD/U146/ZN (INR3D0BWP)      0.23       1.17 r
+  genblk2.adderu/adder[0]/preADD/U1004/ZN (CKND3BWP)      0.21       1.37 f
+  genblk2.adderu/adder[0]/preADD/U1008/ZN (ND2D1BWP)      0.12       1.49 r
+  genblk2.adderu/adder[0]/preADD/U959/ZN (INVD1BWP)       0.07       1.56 f
+  genblk2.adderu/adder[0]/preADD/U1096/Z (OA32D1BWP)      0.12       1.68 f
+  genblk2.adderu/adder[0]/preADD/U138/ZN (INR3D0BWP)      0.16       1.85 r
+  genblk2.adderu/adder[0]/preADD/U1005/ZN (INR3D0BWP)     0.13       1.97 r
+  genblk2.adderu/adder[0]/preADD/U136/Z (CKBD2BWP)        0.22       2.20 r
+  genblk2.adderu/adder[0]/preADD/U958/ZN (INVD1BWP)       0.15       2.35 f
+  genblk2.adderu/adder[0]/preADD/U906/ZN (ND2D1BWP)       0.16       2.51 r
+  genblk2.adderu/adder[0]/preADD/U1007/ZN (XNR2D1BWP)     0.15       2.65 r
+  genblk2.adderu/adder[0]/preADD/U131/ZN (INR3D0BWP)      0.10       2.76 f
+  genblk2.adderu/adder[0]/preADD/U952/ZN (IND2D1BWP)      0.05       2.80 r
+  genblk2.adderu/adder[0]/preADD/U128/Z (CKBD2BWP)        0.23       3.03 r
+  genblk2.adderu/adder[0]/preADD/U905/ZN (ND2D1BWP)       0.24       3.27 f
+  genblk2.adderu/adder[0]/preADD/U957/ZN (OAI21D1BWP)     0.09       3.37 r
+  genblk2.adderu/adder[0]/preADD/U956/ZN (ND2D1BWP)       0.09       3.46 f
+  genblk2.adderu/adder[0]/preADD/U896/ZN (INR3D0BWP)      0.17       3.63 r
+  genblk2.adderu/adder[0]/preADD/U130/ZN (ND3D1BWP)       0.27       3.90 f
+  genblk2.adderu/adder[0]/preADD/U903/ZN (ND2D1BWP)       0.22       4.12 r
+  genblk2.adderu/adder[0]/preADD/U902/ZN (XNR2D1BWP)      0.17       4.29 r
+  genblk2.adderu/adder[0]/preADD/U848/ZN (INR3D0BWP)      0.10       4.39 f
+  genblk2.adderu/adder[0]/preADD/U899/ZN (IND3D1BWP)      0.05       4.44 r
+  genblk2.adderu/adder[0]/preADD/U126/Z (CKBD2BWP)        0.21       4.66 r
+  genblk2.adderu/adder[0]/preADD/U853/ZN (ND2D1BWP)       0.15       4.81 f
+  genblk2.adderu/adder[0]/preADD/U808/ZN (INVD1BWP)       0.17       4.97 r
+  genblk2.adderu/adder[0]/preADD/U850/Z (XOR2D1BWP)       0.17       5.14 f
+  genblk2.adderu/adder[0]/preADD/U802/ZN (NR3D1BWP)       0.15       5.29 r
+  genblk2.adderu/adder[0]/preADD/U123/ZN (ND3D1BWP)       0.21       5.50 f
+  genblk2.adderu/adder[0]/preADD/U804/ZN (CKND2BWP)       0.22       5.72 r
+  genblk2.adderu/adder[0]/preADD/U763/ZN (NR2XD1BWP)      0.19       5.92 f
+  genblk2.adderu/adder[0]/preADD/U801/Z (XOR2D1BWP)       0.15       6.06 f
+  genblk2.adderu/adder[0]/preADD/U764/ZN (NR3D1BWP)       0.17       6.23 r
+  genblk2.adderu/adder[0]/preADD/U480/ZN (INR3D4BWP)      0.20       6.44 r
+  genblk2.adderu/adder[0]/preADD/U761/ZN (CKND2BWP)       0.19       6.63 f
+  genblk2.adderu/adder[0]/preADD/U718/ZN (ND2D1BWP)       0.12       6.75 r
+  genblk2.adderu/adder[0]/preADD/U678/ZN (INVD1BWP)       0.07       6.82 f
+  genblk2.adderu/adder[0]/preADD/U768/Z (OA32D1BWP)       0.12       6.94 f
+  genblk2.adderu/adder[0]/preADD/U120/ZN (INR3D0BWP)      0.16       7.10 r
+  genblk2.adderu/adder[0]/preADD/U770/ZN (INR3D0BWP)      0.13       7.23 r
+  genblk2.adderu/adder[0]/preADD/U769/Z (CKBD2BWP)        0.16       7.40 r
+  genblk2.adderu/adder[0]/preADD/U722/ZN (INVD1BWP)       0.12       7.52 f
+  genblk2.adderu/adder[0]/preADD/U717/ZN (ND2D1BWP)       0.15       7.67 r
+  genblk2.adderu/adder[0]/preADD/U716/ZN (XNR2D1BWP)      0.15       7.82 f
+  genblk2.adderu/adder[0]/preADD/U117/ZN (INR3D0BWP)      0.17       7.99 r
+  genblk2.adderu/adder[0]/preADD/U721/Z (AN3XD1BWP)       0.20       8.20 r
+  genblk2.adderu/adder[0]/preADD/U118/ZN (INVD1BWP)       0.13       8.33 f
+  genblk2.adderu/adder[0]/preADD/U675/ZN (ND2D1BWP)       0.16       8.49 r
+  genblk2.adderu/adder[0]/preADD/U670/ZN (XNR2D1BWP)      0.15       8.64 f
+  genblk2.adderu/adder[0]/preADD/U115/ZN (INR3D0BWP)      0.17       8.81 r
+  genblk2.adderu/adder[0]/preADD/U674/ZN (INR3D0BWP)      0.13       8.94 r
+  genblk2.adderu/adder[0]/preADD/U673/Z (CKBD2BWP)        0.20       9.13 r
+  genblk2.adderu/adder[0]/preADD/U633/ZN (INVD1BWP)       0.14       9.27 f
+  genblk2.adderu/adder[0]/preADD/U629/ZN (ND2D1BWP)       0.16       9.43 r
+  genblk2.adderu/adder[0]/preADD/U628/ZN (XNR2D1BWP)      0.15       9.57 r
+  genblk2.adderu/adder[0]/preADD/U113/ZN (INR3D0BWP)      0.10       9.68 f
+  genblk2.adderu/adder[0]/preADD/U632/Z (AN3XD1BWP)       0.09       9.77 f
+  genblk2.adderu/adder[0]/preADD/U112/ZN (INVD1BWP)       0.17       9.95 r
+  genblk2.adderu/adder[0]/preADD/U590/ZN (ND2D1BWP)       0.13      10.08 f
+  genblk2.adderu/adder[0]/preADD/U538/ZN (INVD1BWP)       0.16      10.24 r
+  genblk2.adderu/adder[0]/preADD/U583/Z (XOR2D1BWP)       0.17      10.41 f
+  genblk2.adderu/adder[0]/preADD/U532/ZN (NR3D1BWP)       0.15      10.56 r
+  genblk2.adderu/adder[0]/preADD/U585/ZN (INR3D0BWP)      0.12      10.69 r
+  genblk2.adderu/adder[0]/preADD/U111/Z (CKBD2BWP)        0.22      10.91 r
+  genblk2.adderu/adder[0]/preADD/U109/ZN (NR2XD1BWP)      0.22      11.13 f
+  genblk2.adderu/adder[0]/preADD/U529/Z (XOR2D1BWP)       0.15      11.28 f
+  genblk2.adderu/adder[0]/preADD/U486/ZN (NR3D1BWP)       0.16      11.44 r
+  genblk2.adderu/adder[0]/preADD/U534/ZN (ND3D1BWP)       0.10      11.53 f
+  genblk2.adderu/adder[0]/preADD/U108/Z (CKBD2BWP)        0.17      11.70 f
+  genblk2.adderu/adder[0]/preADD/U107/ZN (INVD1BWP)       0.21      11.92 r
+  genblk2.adderu/adder[0]/preADD/U455/ZN (INR2D1BWP)      0.14      12.05 f
+  genblk2.adderu/adder[0]/preADD/U490/Z (OA32D1BWP)       0.14      12.20 f
+  genblk2.adderu/adder[0]/preADD/U105/ZN (INR3D0BWP)      0.16      12.36 r
+  genblk2.adderu/adder[0]/preADD/U485/ZN (INR3D0BWP)      0.13      12.49 r
+  genblk2.adderu/adder[0]/preADD/U484/Z (CKBD2BWP)        0.21      12.70 r
+  genblk2.adderu/adder[0]/preADD/U460/ZN (INVD1BWP)       0.11      12.81 f
+  genblk2.adderu/adder[0]/preADD/U457/ZN (ND2D1BWP)       0.15      12.96 r
+  genblk2.adderu/adder[0]/preADD/U454/ZN (XNR2D1BWP)      0.15      13.11 f
+  genblk2.adderu/adder[0]/preADD/U103/ZN (INR3D0BWP)      0.17      13.28 r
+  genblk2.adderu/adder[0]/preADD/U456/Z (AN3XD1BWP)       0.15      13.43 r
+  genblk2.adderu/adder[0]/preADD/U102/ZN (INVD1BWP)       0.13      13.57 f
+  genblk2.adderu/adder[0]/preADD/U423/ZN (ND2D1BWP)       0.17      13.74 r
+  genblk2.adderu/adder[0]/preADD/U418/ZN (XNR2D1BWP)      0.15      13.89 f
+  genblk2.adderu/adder[0]/preADD/U99/ZN (INR3D0BWP)       0.17      14.06 r
+  genblk2.adderu/adder[0]/preADD/U422/ZN (INR3D0BWP)      0.13      14.19 r
+  genblk2.adderu/adder[0]/preADD/U421/Z (CKBD2BWP)        0.20      14.39 r
+  genblk2.adderu/adder[0]/preADD/U403/ZN (INVD1BWP)       0.14      14.52 f
+  genblk2.adderu/adder[0]/preADD/U399/ZN (ND2D1BWP)       0.16      14.68 r
+  genblk2.adderu/adder[0]/preADD/U398/ZN (XNR2D1BWP)      0.16      14.83 f
+  genblk2.adderu/adder[0]/preADD/U97/ZN (INR3D0BWP)       0.17      15.01 r
+  genblk2.adderu/adder[0]/preADD/U402/Z (AN3XD1BWP)       0.15      15.16 r
+  genblk2.adderu/adder[0]/preADD/U96/ZN (INVD1BWP)        0.13      15.29 f
+  genblk2.adderu/adder[0]/preADD/U381/ZN (ND2D1BWP)       0.17      15.46 r
+  genblk2.adderu/adder[0]/preADD/U376/ZN (XNR2D1BWP)      0.15      15.62 f
+  genblk2.adderu/adder[0]/preADD/U93/ZN (INR3D0BWP)       0.17      15.79 r
+  genblk2.adderu/adder[0]/preADD/U380/ZN (INR3D0BWP)      0.13      15.91 r
+  genblk2.adderu/adder[0]/preADD/U379/Z (CKBD2BWP)        0.20      16.11 r
+  genblk2.adderu/adder[0]/preADD/U364/ZN (INVD1BWP)       0.14      16.25 f
+  genblk2.adderu/adder[0]/preADD/U360/ZN (ND2D1BWP)       0.16      16.40 r
+  genblk2.adderu/adder[0]/preADD/U359/ZN (XNR2D1BWP)      0.16      16.56 f
+  genblk2.adderu/adder[0]/preADD/U89/ZN (INR3D0BWP)       0.17      16.73 r
+  genblk2.adderu/adder[0]/preADD/U363/Z (AN3XD1BWP)       0.20      16.93 r
+  genblk2.adderu/adder[0]/preADD/U90/ZN (INVD1BWP)        0.13      17.07 f
+  genblk2.adderu/adder[0]/preADD/U341/ZN (ND2D1BWP)       0.16      17.23 r
+  genblk2.adderu/adder[0]/preADD/U338/ZN (XNR2D1BWP)      0.15      17.38 f
+  genblk2.adderu/adder[0]/preADD/U86/ZN (INR3D0BWP)       0.17      17.55 r
+  genblk2.adderu/adder[0]/preADD/U337/ZN (INR3D0BWP)      0.13      17.68 r
+  genblk2.adderu/adder[0]/preADD/U336/Z (CKBD2BWP)        0.20      17.87 r
+  genblk2.adderu/adder[0]/preADD/U323/ZN (INVD1BWP)       0.14      18.01 f
+  genblk2.adderu/adder[0]/preADD/U320/ZN (ND2D1BWP)       0.16      18.17 r
+  genblk2.adderu/adder[0]/preADD/U318/ZN (XNR2D1BWP)      0.15      18.32 f
+  genblk2.adderu/adder[0]/preADD/U294/ZN (INR3D0BWP)      0.17      18.49 r
+  genblk2.adderu/adder[0]/preADD/U317/ZN (IND3D1BWP)      0.09      18.58 f
+  genblk2.adderu/adder[0]/preADD/U316/Z (CKBD3BWP)        0.17      18.75 f
+  genblk2.adderu/adder[0]/preADD/U298/ZN (ND2D1BWP)       0.18      18.92 r
+  genblk2.adderu/adder[0]/preADD/U295/ZN (XNR2D1BWP)      0.15      19.08 f
+  genblk2.adderu/adder[0]/preADD/U275/ZN (INR3D0BWP)      0.17      19.25 r
+  genblk2.adderu/adder[0]/preADD/U84/ZN (IND3D1BWP)       0.27      19.52 f
+  genblk2.adderu/adder[0]/preADD/U276/ZN (ND2D1BWP)       0.23      19.74 r
+  genblk2.adderu/adder[0]/preADD/U278/ZN (XNR2D1BWP)      0.16      19.90 f
+  genblk2.adderu/adder[0]/preADD/U81/ZN (INR3D0BWP)       0.17      20.07 r
+  genblk2.adderu/adder[0]/preADD/U283/Z (AN3XD1BWP)       0.15      20.22 r
+  genblk2.adderu/adder[0]/preADD/U80/ZN (INVD1BWP)        0.13      20.36 f
+  genblk2.adderu/adder[0]/preADD/U257/ZN (ND2D1BWP)       0.17      20.53 r
+  genblk2.adderu/adder[0]/preADD/U256/ZN (XNR2D1BWP)      0.15      20.68 f
+  genblk2.adderu/adder[0]/preADD/U235/ZN (INR3D0BWP)      0.17      20.86 r
+  genblk2.adderu/adder[0]/preADD/U78/ZN (IND3D1BWP)       0.27      21.12 f
+  genblk2.adderu/adder[0]/preADD/U236/ZN (ND2D1BWP)       0.23      21.35 r
+  genblk2.adderu/adder[0]/preADD/U239/ZN (XNR2D1BWP)      0.16      21.51 f
+  genblk2.adderu/adder[0]/preADD/U72/ZN (INR3D0BWP)       0.17      21.68 r
+  genblk2.adderu/adder[0]/preADD/U76/ZN (INR3D0BWP)       0.23      21.91 r
+  genblk2.adderu/adder[0]/preADD/U215/ZN (CKND3BWP)       0.20      22.11 f
+  genblk2.adderu/adder[0]/preADD/U217/ZN (ND2D1BWP)       0.19      22.30 r
+  genblk2.adderu/adder[0]/preADD/U216/ZN (XNR2D1BWP)      0.16      22.45 f
+  genblk2.adderu/adder[0]/preADD/U196/ZN (IND3D1BWP)      0.14      22.60 f
+  genblk2.adderu/adder[0]/preADD/U198/ZN (INR2D1BWP)      0.07      22.67 r
+  genblk2.adderu/adder[0]/preADD/U197/Z (CKBD2BWP)        0.22      22.89 r
+  genblk2.adderu/adder[0]/preADD/U193/ZN (IND2D1BWP)      0.19      23.08 r
+  genblk2.adderu/adder[0]/preADD/U195/ZN (NR2XD0BWP)      0.07      23.15 f
+  genblk2.adderu/adder[0]/preADD/U194/ZN (OAI21D1BWP)     0.12      23.27 r
+  genblk2.adderu/adder[0]/preADD/U172/ZN (INR3D0BWP)      0.11      23.38 f
+  genblk2.adderu/adder[0]/preADD/U218/Z (AN3XD1BWP)       0.10      23.48 f
+  genblk2.adderu/adder[0]/preADD/U70/ZN (INVD1BWP)        0.17      23.65 r
+  genblk2.adderu/adder[0]/preADD/U178/ZN (ND2D1BWP)       0.22      23.87 f
+  genblk2.adderu/adder[0]/preADD/U184/ZN (OAI21D1BWP)     0.09      23.97 r
+  genblk2.adderu/adder[0]/preADD/U183/ZN (ND2D1BWP)       0.09      24.06 f
+  genblk2.adderu/adder[0]/preADD/U64/ZN (INR3D0BWP)       0.17      24.23 r
+  genblk2.adderu/adder[0]/preADD/U156/ZN (IND2D1BWP)      0.17      24.40 f
+  genblk2.adderu/adder[0]/preADD/U159/ZN (ND2D1BWP)       0.17      24.57 r
+  genblk2.adderu/adder[0]/preADD/U160/ZN (XNR2D1BWP)      0.14      24.71 r
+  genblk2.adderu/adder[0]/preADD/U151/ZN (IND3D1BWP)      0.09      24.80 r
+  genblk2.adderu/adder[0]/preADD/U220/ZN (IND2D1BWP)      0.07      24.87 r
+  genblk2.adderu/adder[0]/preADD/U219/Z (CKBD3BWP)        0.18      25.05 r
+  genblk2.adderu/adder[0]/preADD/U200/ZN (ND2D1BWP)       0.22      25.27 f
+  genblk2.adderu/adder[0]/preADD/U180/ZN (XNR2D1BWP)      0.16      25.42 f
+  genblk2.adderu/adder[0]/preADD/U170/ZN (IND4D2BWP)      0.19      25.61 f
+  genblk2.adderu/adder[0]/preADD/U157/ZN (CKND2BWP)       0.27      25.88 r
+  genblk2.adderu/adder[0]/preADD/U204/ZN (ND2D1BWP)       0.08      25.96 f
+  genblk2.adderu/adder[0]/preADD/U203/Z (CKBD2BWP)        0.16      26.12 f
+  genblk2.adderu/adder[0]/preADD/U491/Z (OA222D1BWP)      0.17      26.29 f
+  genblk2.adderu/adder[0]/preADD/U1098/ZN (OAI32D1BWP)
+                                                          0.07      26.36 r
+  genblk2.adderu/adder[0]/preADD/U1010/ZN (IND4D1BWP)     0.08      26.44 r
+  genblk2.adderu/adder[0]/preADD/U57/ZN (NR4D0BWP)        0.05      26.49 f
+  genblk2.adderu/adder[0]/preADD/U100/ZN (OAI22D4BWP)     0.15      26.65 r
+  genblk2.adderu/adder[0]/preADD/r831/A[0] (pre_norm_sum_14_DW01_cmp6_0)
+                                                          0.00      26.65 r
+  genblk2.adderu/adder[0]/preADD/r831/U2/ZN (INVD1BWP)
+                                                          0.09      26.74 f
+  genblk2.adderu/adder[0]/preADD/r831/U30/ZN (NR2D0BWP)
+                                                          0.09      26.83 r
+  genblk2.adderu/adder[0]/preADD/r831/U29/ZN (MAOI222D1BWP)
+                                                          0.09      26.92 f
+  genblk2.adderu/adder[0]/preADD/r831/U28/Z (OA211D1BWP)
+                                                          0.08      27.00 f
+  genblk2.adderu/adder[0]/preADD/r831/U27/ZN (NR3D0BWP)
+                                                          0.07      27.07 r
+  genblk2.adderu/adder[0]/preADD/r831/U10/ZN (OAI31D1BWP)
+                                                          0.05      27.12 f
+  genblk2.adderu/adder[0]/preADD/r831/U9/ZN (OAI211D1BWP)
+                                                          0.06      27.18 r
+  genblk2.adderu/adder[0]/preADD/r831/U8/ZN (IND3D1BWP)
+                                                          0.06      27.24 f
+  genblk2.adderu/adder[0]/preADD/r831/U26/ZN (AOI31D1BWP)
+                                                          0.06      27.30 r
+  genblk2.adderu/adder[0]/preADD/r831/U23/ZN (AOI211XD0BWP)
+                                                          0.06      27.37 f
+  genblk2.adderu/adder[0]/preADD/r831/U21/ZN (OAI32D1BWP)
+                                                          0.16      27.53 r
+  genblk2.adderu/adder[0]/preADD/r831/U20/ZN (NR2XD0BWP)
+                                                          0.08      27.61 f
+  genblk2.adderu/adder[0]/preADD/r831/U19/ZN (MOAI22D0BWP)
+                                                          0.18      27.79 r
+  genblk2.adderu/adder[0]/preADD/r831/GT (pre_norm_sum_14_DW01_cmp6_0)
+                                                          0.00      27.79 r
+  genblk2.adderu/adder[0]/preADD/U1091/ZN (INR3D0BWP)     0.13      27.92 r
+  genblk2.adderu/adder[0]/preADD/U1090/Z (CKBD3BWP)       0.20      28.12 r
+  genblk2.adderu/adder[0]/preADD/U1026/Z (AO222D1BWP)     0.14      28.26 r
+  genblk2.adderu/adder[0]/preADD/operSum[1] (pre_norm_sum_14)
+                                                          0.00      28.26 r
+  genblk2.adderu/adder[0]/pre_operSum_reg[1]/D (DFQD1BWP)
+                                                          0.00      28.26 r
+  data arrival time                                                 28.26
+
+  clock Clk2 (rise edge)                                 50.00      50.00
+  clock network delay (ideal)                             0.00      50.00
+  genblk2.adderu/adder[0]/pre_operSum_reg[1]/CP (DFQD1BWP)
+                                                          0.00      50.00 r
+  library setup time                                     -0.03      49.97
+  data required time                                                49.97
+  --------------------------------------------------------------------------
+  data required time                                                49.97
+  data arrival time                                                -28.26
+  --------------------------------------------------------------------------
+  slack (MET)                                                       21.71
+
+
+  Startpoint: genblk1.vector/DataOut_p_reg[10]
+              (rising edge-triggered flip-flop clocked by Clk1)
+  Endpoint: genblk2.adderu/adder[0]/pre_operSum_reg[2]
+            (rising edge-triggered flip-flop clocked by Clk2)
+  Path Group: Clk2
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk1 (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  genblk1.vector/DataOut_p_reg[10]/CP (EDFQD1BWP)         0.00 #     0.00 r
+  genblk1.vector/DataOut_p_reg[10]/Q (EDFQD1BWP)          0.24       0.24 r
+  genblk1.vector/DataOut_p[10] (vReg)                     0.00       0.24 r
+  genblk2.adderu/A[10] (VADD16p)                          0.00       0.24 r
+  genblk2.adderu/adder[0]/A[10] (VADDp_14)                0.00       0.24 r
+  genblk2.adderu/adder[0]/preADD/A[10] (pre_norm_sum_14)
+                                                          0.00       0.24 r
+  genblk2.adderu/adder[0]/preADD/U1175/ZN (INVD1BWP)      0.14       0.38 f
+  genblk2.adderu/adder[0]/preADD/U1170/ZN (ND2D1BWP)      0.13       0.51 r
+  genblk2.adderu/adder[0]/preADD/U145/ZN (ND2D1BWP)       0.21       0.72 f
+  genblk2.adderu/adder[0]/preADD/U1092/ZN (NR3D1BWP)      0.21       0.93 r
+  genblk2.adderu/adder[0]/preADD/U146/ZN (INR3D0BWP)      0.23       1.17 r
+  genblk2.adderu/adder[0]/preADD/U1004/ZN (CKND3BWP)      0.21       1.37 f
+  genblk2.adderu/adder[0]/preADD/U1008/ZN (ND2D1BWP)      0.12       1.49 r
+  genblk2.adderu/adder[0]/preADD/U959/ZN (INVD1BWP)       0.07       1.56 f
+  genblk2.adderu/adder[0]/preADD/U1096/Z (OA32D1BWP)      0.12       1.68 f
+  genblk2.adderu/adder[0]/preADD/U138/ZN (INR3D0BWP)      0.16       1.85 r
+  genblk2.adderu/adder[0]/preADD/U1005/ZN (INR3D0BWP)     0.13       1.97 r
+  genblk2.adderu/adder[0]/preADD/U136/Z (CKBD2BWP)        0.22       2.20 r
+  genblk2.adderu/adder[0]/preADD/U958/ZN (INVD1BWP)       0.15       2.35 f
+  genblk2.adderu/adder[0]/preADD/U906/ZN (ND2D1BWP)       0.16       2.51 r
+  genblk2.adderu/adder[0]/preADD/U1007/ZN (XNR2D1BWP)     0.15       2.65 r
+  genblk2.adderu/adder[0]/preADD/U131/ZN (INR3D0BWP)      0.10       2.76 f
+  genblk2.adderu/adder[0]/preADD/U952/ZN (IND2D1BWP)      0.05       2.80 r
+  genblk2.adderu/adder[0]/preADD/U128/Z (CKBD2BWP)        0.23       3.03 r
+  genblk2.adderu/adder[0]/preADD/U905/ZN (ND2D1BWP)       0.24       3.27 f
+  genblk2.adderu/adder[0]/preADD/U957/ZN (OAI21D1BWP)     0.09       3.37 r
+  genblk2.adderu/adder[0]/preADD/U956/ZN (ND2D1BWP)       0.09       3.46 f
+  genblk2.adderu/adder[0]/preADD/U896/ZN (INR3D0BWP)      0.17       3.63 r
+  genblk2.adderu/adder[0]/preADD/U130/ZN (ND3D1BWP)       0.27       3.90 f
+  genblk2.adderu/adder[0]/preADD/U903/ZN (ND2D1BWP)       0.22       4.12 r
+  genblk2.adderu/adder[0]/preADD/U902/ZN (XNR2D1BWP)      0.17       4.29 r
+  genblk2.adderu/adder[0]/preADD/U848/ZN (INR3D0BWP)      0.10       4.39 f
+  genblk2.adderu/adder[0]/preADD/U899/ZN (IND3D1BWP)      0.05       4.44 r
+  genblk2.adderu/adder[0]/preADD/U126/Z (CKBD2BWP)        0.21       4.66 r
+  genblk2.adderu/adder[0]/preADD/U853/ZN (ND2D1BWP)       0.15       4.81 f
+  genblk2.adderu/adder[0]/preADD/U808/ZN (INVD1BWP)       0.17       4.97 r
+  genblk2.adderu/adder[0]/preADD/U850/Z (XOR2D1BWP)       0.17       5.14 f
+  genblk2.adderu/adder[0]/preADD/U802/ZN (NR3D1BWP)       0.15       5.29 r
+  genblk2.adderu/adder[0]/preADD/U123/ZN (ND3D1BWP)       0.21       5.50 f
+  genblk2.adderu/adder[0]/preADD/U804/ZN (CKND2BWP)       0.22       5.72 r
+  genblk2.adderu/adder[0]/preADD/U763/ZN (NR2XD1BWP)      0.19       5.92 f
+  genblk2.adderu/adder[0]/preADD/U801/Z (XOR2D1BWP)       0.15       6.06 f
+  genblk2.adderu/adder[0]/preADD/U764/ZN (NR3D1BWP)       0.17       6.23 r
+  genblk2.adderu/adder[0]/preADD/U480/ZN (INR3D4BWP)      0.20       6.44 r
+  genblk2.adderu/adder[0]/preADD/U761/ZN (CKND2BWP)       0.19       6.63 f
+  genblk2.adderu/adder[0]/preADD/U718/ZN (ND2D1BWP)       0.12       6.75 r
+  genblk2.adderu/adder[0]/preADD/U678/ZN (INVD1BWP)       0.07       6.82 f
+  genblk2.adderu/adder[0]/preADD/U768/Z (OA32D1BWP)       0.12       6.94 f
+  genblk2.adderu/adder[0]/preADD/U120/ZN (INR3D0BWP)      0.16       7.10 r
+  genblk2.adderu/adder[0]/preADD/U770/ZN (INR3D0BWP)      0.13       7.23 r
+  genblk2.adderu/adder[0]/preADD/U769/Z (CKBD2BWP)        0.16       7.40 r
+  genblk2.adderu/adder[0]/preADD/U722/ZN (INVD1BWP)       0.12       7.52 f
+  genblk2.adderu/adder[0]/preADD/U717/ZN (ND2D1BWP)       0.15       7.67 r
+  genblk2.adderu/adder[0]/preADD/U716/ZN (XNR2D1BWP)      0.15       7.82 f
+  genblk2.adderu/adder[0]/preADD/U117/ZN (INR3D0BWP)      0.17       7.99 r
+  genblk2.adderu/adder[0]/preADD/U721/Z (AN3XD1BWP)       0.20       8.20 r
+  genblk2.adderu/adder[0]/preADD/U118/ZN (INVD1BWP)       0.13       8.33 f
+  genblk2.adderu/adder[0]/preADD/U675/ZN (ND2D1BWP)       0.16       8.49 r
+  genblk2.adderu/adder[0]/preADD/U670/ZN (XNR2D1BWP)      0.15       8.64 f
+  genblk2.adderu/adder[0]/preADD/U115/ZN (INR3D0BWP)      0.17       8.81 r
+  genblk2.adderu/adder[0]/preADD/U674/ZN (INR3D0BWP)      0.13       8.94 r
+  genblk2.adderu/adder[0]/preADD/U673/Z (CKBD2BWP)        0.20       9.13 r
+  genblk2.adderu/adder[0]/preADD/U633/ZN (INVD1BWP)       0.14       9.27 f
+  genblk2.adderu/adder[0]/preADD/U629/ZN (ND2D1BWP)       0.16       9.43 r
+  genblk2.adderu/adder[0]/preADD/U628/ZN (XNR2D1BWP)      0.15       9.57 r
+  genblk2.adderu/adder[0]/preADD/U113/ZN (INR3D0BWP)      0.10       9.68 f
+  genblk2.adderu/adder[0]/preADD/U632/Z (AN3XD1BWP)       0.09       9.77 f
+  genblk2.adderu/adder[0]/preADD/U112/ZN (INVD1BWP)       0.17       9.95 r
+  genblk2.adderu/adder[0]/preADD/U590/ZN (ND2D1BWP)       0.13      10.08 f
+  genblk2.adderu/adder[0]/preADD/U538/ZN (INVD1BWP)       0.16      10.24 r
+  genblk2.adderu/adder[0]/preADD/U583/Z (XOR2D1BWP)       0.17      10.41 f
+  genblk2.adderu/adder[0]/preADD/U532/ZN (NR3D1BWP)       0.15      10.56 r
+  genblk2.adderu/adder[0]/preADD/U585/ZN (INR3D0BWP)      0.12      10.69 r
+  genblk2.adderu/adder[0]/preADD/U111/Z (CKBD2BWP)        0.22      10.91 r
+  genblk2.adderu/adder[0]/preADD/U109/ZN (NR2XD1BWP)      0.22      11.13 f
+  genblk2.adderu/adder[0]/preADD/U529/Z (XOR2D1BWP)       0.15      11.28 f
+  genblk2.adderu/adder[0]/preADD/U486/ZN (NR3D1BWP)       0.16      11.44 r
+  genblk2.adderu/adder[0]/preADD/U534/ZN (ND3D1BWP)       0.10      11.53 f
+  genblk2.adderu/adder[0]/preADD/U108/Z (CKBD2BWP)        0.17      11.70 f
+  genblk2.adderu/adder[0]/preADD/U107/ZN (INVD1BWP)       0.21      11.92 r
+  genblk2.adderu/adder[0]/preADD/U455/ZN (INR2D1BWP)      0.14      12.05 f
+  genblk2.adderu/adder[0]/preADD/U490/Z (OA32D1BWP)       0.14      12.20 f
+  genblk2.adderu/adder[0]/preADD/U105/ZN (INR3D0BWP)      0.16      12.36 r
+  genblk2.adderu/adder[0]/preADD/U485/ZN (INR3D0BWP)      0.13      12.49 r
+  genblk2.adderu/adder[0]/preADD/U484/Z (CKBD2BWP)        0.21      12.70 r
+  genblk2.adderu/adder[0]/preADD/U460/ZN (INVD1BWP)       0.11      12.81 f
+  genblk2.adderu/adder[0]/preADD/U457/ZN (ND2D1BWP)       0.15      12.96 r
+  genblk2.adderu/adder[0]/preADD/U454/ZN (XNR2D1BWP)      0.15      13.11 f
+  genblk2.adderu/adder[0]/preADD/U103/ZN (INR3D0BWP)      0.17      13.28 r
+  genblk2.adderu/adder[0]/preADD/U456/Z (AN3XD1BWP)       0.15      13.43 r
+  genblk2.adderu/adder[0]/preADD/U102/ZN (INVD1BWP)       0.13      13.57 f
+  genblk2.adderu/adder[0]/preADD/U423/ZN (ND2D1BWP)       0.17      13.74 r
+  genblk2.adderu/adder[0]/preADD/U418/ZN (XNR2D1BWP)      0.15      13.89 f
+  genblk2.adderu/adder[0]/preADD/U99/ZN (INR3D0BWP)       0.17      14.06 r
+  genblk2.adderu/adder[0]/preADD/U422/ZN (INR3D0BWP)      0.13      14.19 r
+  genblk2.adderu/adder[0]/preADD/U421/Z (CKBD2BWP)        0.20      14.39 r
+  genblk2.adderu/adder[0]/preADD/U403/ZN (INVD1BWP)       0.14      14.52 f
+  genblk2.adderu/adder[0]/preADD/U399/ZN (ND2D1BWP)       0.16      14.68 r
+  genblk2.adderu/adder[0]/preADD/U398/ZN (XNR2D1BWP)      0.16      14.83 f
+  genblk2.adderu/adder[0]/preADD/U97/ZN (INR3D0BWP)       0.17      15.01 r
+  genblk2.adderu/adder[0]/preADD/U402/Z (AN3XD1BWP)       0.15      15.16 r
+  genblk2.adderu/adder[0]/preADD/U96/ZN (INVD1BWP)        0.13      15.29 f
+  genblk2.adderu/adder[0]/preADD/U381/ZN (ND2D1BWP)       0.17      15.46 r
+  genblk2.adderu/adder[0]/preADD/U376/ZN (XNR2D1BWP)      0.15      15.62 f
+  genblk2.adderu/adder[0]/preADD/U93/ZN (INR3D0BWP)       0.17      15.79 r
+  genblk2.adderu/adder[0]/preADD/U380/ZN (INR3D0BWP)      0.13      15.91 r
+  genblk2.adderu/adder[0]/preADD/U379/Z (CKBD2BWP)        0.20      16.11 r
+  genblk2.adderu/adder[0]/preADD/U364/ZN (INVD1BWP)       0.14      16.25 f
+  genblk2.adderu/adder[0]/preADD/U360/ZN (ND2D1BWP)       0.16      16.40 r
+  genblk2.adderu/adder[0]/preADD/U359/ZN (XNR2D1BWP)      0.16      16.56 f
+  genblk2.adderu/adder[0]/preADD/U89/ZN (INR3D0BWP)       0.17      16.73 r
+  genblk2.adderu/adder[0]/preADD/U363/Z (AN3XD1BWP)       0.20      16.93 r
+  genblk2.adderu/adder[0]/preADD/U90/ZN (INVD1BWP)        0.13      17.07 f
+  genblk2.adderu/adder[0]/preADD/U341/ZN (ND2D1BWP)       0.16      17.23 r
+  genblk2.adderu/adder[0]/preADD/U338/ZN (XNR2D1BWP)      0.15      17.38 f
+  genblk2.adderu/adder[0]/preADD/U86/ZN (INR3D0BWP)       0.17      17.55 r
+  genblk2.adderu/adder[0]/preADD/U337/ZN (INR3D0BWP)      0.13      17.68 r
+  genblk2.adderu/adder[0]/preADD/U336/Z (CKBD2BWP)        0.20      17.87 r
+  genblk2.adderu/adder[0]/preADD/U323/ZN (INVD1BWP)       0.14      18.01 f
+  genblk2.adderu/adder[0]/preADD/U320/ZN (ND2D1BWP)       0.16      18.17 r
+  genblk2.adderu/adder[0]/preADD/U318/ZN (XNR2D1BWP)      0.15      18.32 f
+  genblk2.adderu/adder[0]/preADD/U294/ZN (INR3D0BWP)      0.17      18.49 r
+  genblk2.adderu/adder[0]/preADD/U317/ZN (IND3D1BWP)      0.09      18.58 f
+  genblk2.adderu/adder[0]/preADD/U316/Z (CKBD3BWP)        0.17      18.75 f
+  genblk2.adderu/adder[0]/preADD/U298/ZN (ND2D1BWP)       0.18      18.92 r
+  genblk2.adderu/adder[0]/preADD/U295/ZN (XNR2D1BWP)      0.15      19.08 f
+  genblk2.adderu/adder[0]/preADD/U275/ZN (INR3D0BWP)      0.17      19.25 r
+  genblk2.adderu/adder[0]/preADD/U84/ZN (IND3D1BWP)       0.27      19.52 f
+  genblk2.adderu/adder[0]/preADD/U276/ZN (ND2D1BWP)       0.23      19.74 r
+  genblk2.adderu/adder[0]/preADD/U278/ZN (XNR2D1BWP)      0.16      19.90 f
+  genblk2.adderu/adder[0]/preADD/U81/ZN (INR3D0BWP)       0.17      20.07 r
+  genblk2.adderu/adder[0]/preADD/U283/Z (AN3XD1BWP)       0.15      20.22 r
+  genblk2.adderu/adder[0]/preADD/U80/ZN (INVD1BWP)        0.13      20.36 f
+  genblk2.adderu/adder[0]/preADD/U257/ZN (ND2D1BWP)       0.17      20.53 r
+  genblk2.adderu/adder[0]/preADD/U256/ZN (XNR2D1BWP)      0.15      20.68 f
+  genblk2.adderu/adder[0]/preADD/U235/ZN (INR3D0BWP)      0.17      20.86 r
+  genblk2.adderu/adder[0]/preADD/U78/ZN (IND3D1BWP)       0.27      21.12 f
+  genblk2.adderu/adder[0]/preADD/U236/ZN (ND2D1BWP)       0.23      21.35 r
+  genblk2.adderu/adder[0]/preADD/U239/ZN (XNR2D1BWP)      0.16      21.51 f
+  genblk2.adderu/adder[0]/preADD/U72/ZN (INR3D0BWP)       0.17      21.68 r
+  genblk2.adderu/adder[0]/preADD/U76/ZN (INR3D0BWP)       0.23      21.91 r
+  genblk2.adderu/adder[0]/preADD/U215/ZN (CKND3BWP)       0.20      22.11 f
+  genblk2.adderu/adder[0]/preADD/U217/ZN (ND2D1BWP)       0.19      22.30 r
+  genblk2.adderu/adder[0]/preADD/U216/ZN (XNR2D1BWP)      0.16      22.45 f
+  genblk2.adderu/adder[0]/preADD/U196/ZN (IND3D1BWP)      0.14      22.60 f
+  genblk2.adderu/adder[0]/preADD/U198/ZN (INR2D1BWP)      0.07      22.67 r
+  genblk2.adderu/adder[0]/preADD/U197/Z (CKBD2BWP)        0.22      22.89 r
+  genblk2.adderu/adder[0]/preADD/U193/ZN (IND2D1BWP)      0.19      23.08 r
+  genblk2.adderu/adder[0]/preADD/U195/ZN (NR2XD0BWP)      0.07      23.15 f
+  genblk2.adderu/adder[0]/preADD/U194/ZN (OAI21D1BWP)     0.12      23.27 r
+  genblk2.adderu/adder[0]/preADD/U172/ZN (INR3D0BWP)      0.11      23.38 f
+  genblk2.adderu/adder[0]/preADD/U218/Z (AN3XD1BWP)       0.10      23.48 f
+  genblk2.adderu/adder[0]/preADD/U70/ZN (INVD1BWP)        0.17      23.65 r
+  genblk2.adderu/adder[0]/preADD/U178/ZN (ND2D1BWP)       0.22      23.87 f
+  genblk2.adderu/adder[0]/preADD/U184/ZN (OAI21D1BWP)     0.09      23.97 r
+  genblk2.adderu/adder[0]/preADD/U183/ZN (ND2D1BWP)       0.09      24.06 f
+  genblk2.adderu/adder[0]/preADD/U64/ZN (INR3D0BWP)       0.17      24.23 r
+  genblk2.adderu/adder[0]/preADD/U156/ZN (IND2D1BWP)      0.17      24.40 f
+  genblk2.adderu/adder[0]/preADD/U159/ZN (ND2D1BWP)       0.17      24.57 r
+  genblk2.adderu/adder[0]/preADD/U160/ZN (XNR2D1BWP)      0.14      24.71 r
+  genblk2.adderu/adder[0]/preADD/U151/ZN (IND3D1BWP)      0.09      24.80 r
+  genblk2.adderu/adder[0]/preADD/U220/ZN (IND2D1BWP)      0.07      24.87 r
+  genblk2.adderu/adder[0]/preADD/U219/Z (CKBD3BWP)        0.18      25.05 r
+  genblk2.adderu/adder[0]/preADD/U200/ZN (ND2D1BWP)       0.22      25.27 f
+  genblk2.adderu/adder[0]/preADD/U180/ZN (XNR2D1BWP)      0.16      25.42 f
+  genblk2.adderu/adder[0]/preADD/U170/ZN (IND4D2BWP)      0.19      25.61 f
+  genblk2.adderu/adder[0]/preADD/U157/ZN (CKND2BWP)       0.27      25.88 r
+  genblk2.adderu/adder[0]/preADD/U204/ZN (ND2D1BWP)       0.08      25.96 f
+  genblk2.adderu/adder[0]/preADD/U203/Z (CKBD2BWP)        0.16      26.12 f
+  genblk2.adderu/adder[0]/preADD/U491/Z (OA222D1BWP)      0.17      26.29 f
+  genblk2.adderu/adder[0]/preADD/U1098/ZN (OAI32D1BWP)
+                                                          0.07      26.36 r
+  genblk2.adderu/adder[0]/preADD/U1010/ZN (IND4D1BWP)     0.08      26.44 r
+  genblk2.adderu/adder[0]/preADD/U57/ZN (NR4D0BWP)        0.05      26.49 f
+  genblk2.adderu/adder[0]/preADD/U100/ZN (OAI22D4BWP)     0.15      26.65 r
+  genblk2.adderu/adder[0]/preADD/r831/A[0] (pre_norm_sum_14_DW01_cmp6_0)
+                                                          0.00      26.65 r
+  genblk2.adderu/adder[0]/preADD/r831/U2/ZN (INVD1BWP)
+                                                          0.09      26.74 f
+  genblk2.adderu/adder[0]/preADD/r831/U30/ZN (NR2D0BWP)
+                                                          0.09      26.83 r
+  genblk2.adderu/adder[0]/preADD/r831/U29/ZN (MAOI222D1BWP)
+                                                          0.09      26.92 f
+  genblk2.adderu/adder[0]/preADD/r831/U28/Z (OA211D1BWP)
+                                                          0.08      27.00 f
+  genblk2.adderu/adder[0]/preADD/r831/U27/ZN (NR3D0BWP)
+                                                          0.07      27.07 r
+  genblk2.adderu/adder[0]/preADD/r831/U10/ZN (OAI31D1BWP)
+                                                          0.05      27.12 f
+  genblk2.adderu/adder[0]/preADD/r831/U9/ZN (OAI211D1BWP)
+                                                          0.06      27.18 r
+  genblk2.adderu/adder[0]/preADD/r831/U8/ZN (IND3D1BWP)
+                                                          0.06      27.24 f
+  genblk2.adderu/adder[0]/preADD/r831/U26/ZN (AOI31D1BWP)
+                                                          0.06      27.30 r
+  genblk2.adderu/adder[0]/preADD/r831/U23/ZN (AOI211XD0BWP)
+                                                          0.06      27.37 f
+  genblk2.adderu/adder[0]/preADD/r831/U21/ZN (OAI32D1BWP)
+                                                          0.16      27.53 r
+  genblk2.adderu/adder[0]/preADD/r831/U20/ZN (NR2XD0BWP)
+                                                          0.08      27.61 f
+  genblk2.adderu/adder[0]/preADD/r831/U19/ZN (MOAI22D0BWP)
+                                                          0.18      27.79 r
+  genblk2.adderu/adder[0]/preADD/r831/GT (pre_norm_sum_14_DW01_cmp6_0)
+                                                          0.00      27.79 r
+  genblk2.adderu/adder[0]/preADD/U1091/ZN (INR3D0BWP)     0.13      27.92 r
+  genblk2.adderu/adder[0]/preADD/U1090/Z (CKBD3BWP)       0.20      28.12 r
+  genblk2.adderu/adder[0]/preADD/U1025/Z (AO222D1BWP)     0.14      28.26 r
+  genblk2.adderu/adder[0]/preADD/operSum[2] (pre_norm_sum_14)
+                                                          0.00      28.26 r
+  genblk2.adderu/adder[0]/pre_operSum_reg[2]/D (DFQD1BWP)
+                                                          0.00      28.26 r
+  data arrival time                                                 28.26
+
+  clock Clk2 (rise edge)                                 50.00      50.00
+  clock network delay (ideal)                             0.00      50.00
+  genblk2.adderu/adder[0]/pre_operSum_reg[2]/CP (DFQD1BWP)
+                                                          0.00      50.00 r
+  library setup time                                     -0.03      49.97
+  data required time                                                49.97
+  --------------------------------------------------------------------------
+  data required time                                                49.97
+  data arrival time                                                -28.26
+  --------------------------------------------------------------------------
+  slack (MET)                                                       21.71
+
+
+1
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -nworst 3
+        -max_paths 3
+Design : CVP14
+Version: H-2013.03-SP3
+Date   : Thu Apr 24 23:37:13 2014
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: NCCOM   Library: tcbn40lpbwptc
+Wire Load Model Mode: top
+
+  Startpoint: offsetInc_reg
+              (rising edge-triggered flip-flop clocked by Clk1)
+  Endpoint: offsetInc_reg
+            (rising edge-triggered flip-flop clocked by Clk1)
+  Path Group: Clk1
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk1 (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  offsetInc_reg/CP (DFD1BWP)               0.00 #     0.00 r
+  offsetInc_reg/QN (DFD1BWP)               0.14       0.14 r
+  U1659/ZN (OAI32D1BWP)                    0.03       0.17 f
+  offsetInc_reg/D (DFD1BWP)                0.00       0.17 f
+  data arrival time                                   0.17
+
+  clock Clk1 (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  offsetInc_reg/CP (DFD1BWP)               0.00       0.00 r
+  library hold time                        0.02       0.02
+  data required time                                  0.02
+  -----------------------------------------------------------
+  data required time                                  0.02
+  data arrival time                                  -0.17
+  -----------------------------------------------------------
+  slack (MET)                                         0.15
+
+
+  Startpoint: offsetInc_reg
+              (rising edge-triggered flip-flop clocked by Clk1)
+  Endpoint: offsetInc_reg
+            (rising edge-triggered flip-flop clocked by Clk1)
+  Path Group: Clk1
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk1 (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  offsetInc_reg/CP (DFD1BWP)               0.00 #     0.00 r
+  offsetInc_reg/QN (DFD1BWP)               0.14       0.14 r
+  U1659/ZN (OAI32D1BWP)                    0.03       0.17 f
+  offsetInc_reg/D (DFD1BWP)                0.00       0.17 f
+  data arrival time                                   0.17
+
+  clock Clk1 (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  offsetInc_reg/CP (DFD1BWP)               0.00       0.00 r
+  library hold time                        0.02       0.02
+  data required time                                  0.02
+  -----------------------------------------------------------
+  data required time                                  0.02
+  data arrival time                                  -0.17
+  -----------------------------------------------------------
+  slack (MET)                                         0.16
+
+
+  Startpoint: offsetInc_reg
+              (rising edge-triggered flip-flop clocked by Clk1)
+  Endpoint: offsetInc_reg
+            (rising edge-triggered flip-flop clocked by Clk1)
+  Path Group: Clk1
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk1 (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  offsetInc_reg/CP (DFD1BWP)               0.00 #     0.00 r
+  offsetInc_reg/QN (DFD1BWP)               0.14       0.14 r
+  U1659/ZN (OAI32D1BWP)                    0.03       0.17 f
+  offsetInc_reg/D (DFD1BWP)                0.00       0.17 f
+  data arrival time                                   0.17
+
+  clock Clk1 (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  offsetInc_reg/CP (DFD1BWP)               0.00       0.00 r
+  library hold time                        0.02       0.02
+  data required time                                  0.02
+  -----------------------------------------------------------
+  data required time                                  0.02
+  data arrival time                                  -0.17
+  -----------------------------------------------------------
+  slack (MET)                                         0.16
+
+
+  Startpoint: genblk4.vdotmulu/add1u[2]/pre_sum_reg[15]
+              (rising edge-triggered flip-flop clocked by Clk2)
+  Endpoint: genblk4.vdotmulu/add1_reg[47]
+            (rising edge-triggered flip-flop clocked by Clk2)
+  Path Group: Clk2
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk2 (rise edge)                                 50.00      50.00
+  clock network delay (ideal)                             0.00      50.00
+  genblk4.vdotmulu/add1u[2]/pre_sum_reg[15]/CP (DFQD1BWP)
+                                                          0.00 #    50.00 r
+  genblk4.vdotmulu/add1u[2]/pre_sum_reg[15]/Q (DFQD1BWP)
+                                                          0.12      50.12 f
+  genblk4.vdotmulu/add1u[2]/finalADD/pre_sum[15] (norm_round_sum_final_8)
+                                                          0.00      50.12 f
+  genblk4.vdotmulu/add1u[2]/finalADD/U422/Z (CKBD1BWP)
+                                                          0.04      50.15 f
+  genblk4.vdotmulu/add1u[2]/finalADD/final_sum[15] (norm_round_sum_final_8)
+                                                          0.00      50.15 f
+  genblk4.vdotmulu/add1u[2]/Sum[15] (VADDp_8)             0.00      50.15 f
+  genblk4.vdotmulu/add1_reg[47]/D (DFQD1BWP)              0.00      50.15 f
+  data arrival time                                                 50.15
+
+  clock Clk2 (rise edge)                                 50.00      50.00
+  clock network delay (ideal)                             0.00      50.00
+  genblk4.vdotmulu/add1_reg[47]/CP (DFQD1BWP)             0.00      50.00 r
+  library hold time                                       0.02      50.02
+  data required time                                                50.02
+  --------------------------------------------------------------------------
+  data required time                                                50.02
+  data arrival time                                                -50.15
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.13
+
+
+  Startpoint: genblk4.vdotmulu/add1u[1]/pre_sum_reg[15]
+              (rising edge-triggered flip-flop clocked by Clk2)
+  Endpoint: genblk4.vdotmulu/add1_reg[31]
+            (rising edge-triggered flip-flop clocked by Clk2)
+  Path Group: Clk2
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk2 (rise edge)                                 50.00      50.00
+  clock network delay (ideal)                             0.00      50.00
+  genblk4.vdotmulu/add1u[1]/pre_sum_reg[15]/CP (DFQD1BWP)
+                                                          0.00 #    50.00 r
+  genblk4.vdotmulu/add1u[1]/pre_sum_reg[15]/Q (DFQD1BWP)
+                                                          0.12      50.12 f
+  genblk4.vdotmulu/add1u[1]/finalADD/pre_sum[15] (norm_round_sum_final_7)
+                                                          0.00      50.12 f
+  genblk4.vdotmulu/add1u[1]/finalADD/U422/Z (CKBD1BWP)
+                                                          0.04      50.15 f
+  genblk4.vdotmulu/add1u[1]/finalADD/final_sum[15] (norm_round_sum_final_7)
+                                                          0.00      50.15 f
+  genblk4.vdotmulu/add1u[1]/Sum[15] (VADDp_7)             0.00      50.15 f
+  genblk4.vdotmulu/add1_reg[31]/D (DFQD1BWP)              0.00      50.15 f
+  data arrival time                                                 50.15
+
+  clock Clk2 (rise edge)                                 50.00      50.00
+  clock network delay (ideal)                             0.00      50.00
+  genblk4.vdotmulu/add1_reg[31]/CP (DFQD1BWP)             0.00      50.00 r
+  library hold time                                       0.02      50.02
+  data required time                                                50.02
+  --------------------------------------------------------------------------
+  data required time                                                50.02
+  data arrival time                                                -50.15
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.13
+
+
+  Startpoint: genblk4.vdotmulu/add1u[0]/pre_sum_reg[15]
+              (rising edge-triggered flip-flop clocked by Clk2)
+  Endpoint: genblk4.vdotmulu/add1_reg[15]
+            (rising edge-triggered flip-flop clocked by Clk2)
+  Path Group: Clk2
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk2 (rise edge)                                 50.00      50.00
+  clock network delay (ideal)                             0.00      50.00
+  genblk4.vdotmulu/add1u[0]/pre_sum_reg[15]/CP (DFQD1BWP)
+                                                          0.00 #    50.00 r
+  genblk4.vdotmulu/add1u[0]/pre_sum_reg[15]/Q (DFQD1BWP)
+                                                          0.12      50.12 f
+  genblk4.vdotmulu/add1u[0]/finalADD/pre_sum[15] (norm_round_sum_final_6)
+                                                          0.00      50.12 f
+  genblk4.vdotmulu/add1u[0]/finalADD/U422/Z (CKBD1BWP)
+                                                          0.04      50.15 f
+  genblk4.vdotmulu/add1u[0]/finalADD/final_sum[15] (norm_round_sum_final_6)
+                                                          0.00      50.15 f
+  genblk4.vdotmulu/add1u[0]/Sum[15] (VADDp_6)             0.00      50.15 f
+  genblk4.vdotmulu/add1_reg[15]/D (DFQD1BWP)              0.00      50.15 f
+  data arrival time                                                 50.15
+
+  clock Clk2 (rise edge)                                 50.00      50.00
+  clock network delay (ideal)                             0.00      50.00
+  genblk4.vdotmulu/add1_reg[15]/CP (DFQD1BWP)             0.00      50.00 r
+  library hold time                                       0.02      50.02
+  data required time                                                50.02
+  --------------------------------------------------------------------------
+  data required time                                                50.02
+  data arrival time                                                -50.15
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.13
+
+
+1

@@ -1,0 +1,1671 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nworst 3
+        -max_paths 3
+Design : CVP14
+Version: H-2013.03-SP3
+Date   : Fri Apr 25 00:29:23 2014
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: NCCOM   Library: tcbn40lpbwptc
+Wire Load Model Mode: top
+
+  Startpoint: instruction_reg[0]
+              (rising edge-triggered flip-flop clocked by Clk2)
+  Endpoint: addru/addr_reg[15]
+            (rising edge-triggered flip-flop clocked by Clk1)
+  Path Group: Clk1
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk2 (rise edge)                                  6.00       6.00
+  clock network delay (ideal)                             0.00       6.00
+  instruction_reg[0]/CP (EDFQD1BWP)                       0.00 #     6.00 r
+  instruction_reg[0]/Q (EDFQD1BWP)                        0.24       6.24 r
+  addru/imm_offset[0] (addrUnit)                          0.00       6.24 r
+  addru/add_1_root_add_0_root_add_14_2/B[0] (addrUnit_DW01_add_1)
+                                                          0.00       6.24 r
+  addru/add_1_root_add_0_root_add_14_2/U64/ZN (ND2D1BWP)
+                                                          0.18       6.42 f
+  addru/add_1_root_add_0_root_add_14_2/U28/ZN (OAI21D1BWP)
+                                                          0.16       6.59 r
+  addru/add_1_root_add_0_root_add_14_2/U21/ZN (AOI21D1BWP)
+                                                          0.12       6.70 f
+  addru/add_1_root_add_0_root_add_14_2/U30/ZN (OAI21D1BWP)
+                                                          0.13       6.83 r
+  addru/add_1_root_add_0_root_add_14_2/U47/Z (XOR2D1BWP)
+                                                          0.14       6.97 f
+  addru/add_1_root_add_0_root_add_14_2/SUM[4] (addrUnit_DW01_add_1)
+                                                          0.00       6.97 f
+  addru/add_0_root_add_0_root_add_14_2/B[4] (addrUnit_DW01_add_0)
+                                                          0.00       6.97 f
+  addru/add_0_root_add_0_root_add_14_2/U39/ZN (NR2XD0BWP)
+                                                          0.11       7.08 r
+  addru/add_0_root_add_0_root_add_14_2/U15/ZN (INVD1BWP)
+                                                          0.05       7.13 f
+  addru/add_0_root_add_0_root_add_14_2/U14/ZN (AOI21D1BWP)
+                                                          0.12       7.24 r
+  addru/add_0_root_add_0_root_add_14_2/U10/ZN (OAI21D1BWP)
+                                                          0.11       7.36 f
+  addru/add_0_root_add_0_root_add_14_2/U3/ZN (AOI21D1BWP)
+                                                          0.14       7.50 r
+  addru/add_0_root_add_0_root_add_14_2/U11/ZN (OAI21D1BWP)
+                                                          0.12       7.62 f
+  addru/add_0_root_add_0_root_add_14_2/U8/ZN (AOI21D1BWP)
+                                                          0.13       7.75 r
+  addru/add_0_root_add_0_root_add_14_2/U7/ZN (OAI21D1BWP)
+                                                          0.11       7.86 f
+  addru/add_0_root_add_0_root_add_14_2/U5/ZN (AOI21D1BWP)
+                                                          0.14       8.00 r
+  addru/add_0_root_add_0_root_add_14_2/U2/ZN (OAI21D1BWP)
+                                                          0.16       8.15 f
+  addru/add_0_root_add_0_root_add_14_2/U13/Z (OR2XD1BWP)
+                                                          0.10       8.25 f
+  addru/add_0_root_add_0_root_add_14_2/U12/ZN (AOI22D1BWP)
+                                                          0.17       8.43 r
+  addru/add_0_root_add_0_root_add_14_2/U17/ZN (ND2D1BWP)
+                                                          0.08       8.51 f
+  addru/add_0_root_add_0_root_add_14_2/U16/ZN (IOA22D1BWP)
+                                                          0.14       8.65 f
+  addru/add_0_root_add_0_root_add_14_2/U34/ZN (NR2XD0BWP)
+                                                          0.08       8.73 r
+  addru/add_0_root_add_0_root_add_14_2/U70/ZN (MOAI22D0BWP)
+                                                          0.05       8.79 f
+  addru/add_0_root_add_0_root_add_14_2/U69/Z (XOR3D1BWP)
+                                                          0.08       8.86 f
+  addru/add_0_root_add_0_root_add_14_2/SUM[15] (addrUnit_DW01_add_0)
+                                                          0.00       8.86 f
+  addru/U18/Z (AO222D1BWP)                                0.13       8.99 f
+  addru/addr_reg[15]/D (DFQD1BWP)                         0.00       8.99 f
+  data arrival time                                                  8.99
+
+  clock Clk1 (rise edge)                                 12.00      12.00
+  clock network delay (ideal)                             0.00      12.00
+  addru/addr_reg[15]/CP (DFQD1BWP)                        0.00      12.00 r
+  library setup time                                     -0.02      11.98
+  data required time                                                11.98
+  --------------------------------------------------------------------------
+  data required time                                                11.98
+  data arrival time                                                 -8.99
+  --------------------------------------------------------------------------
+  slack (MET)                                                        2.99
+
+
+  Startpoint: instruction_reg[0]
+              (rising edge-triggered flip-flop clocked by Clk2)
+  Endpoint: addru/addr_reg[15]
+            (rising edge-triggered flip-flop clocked by Clk1)
+  Path Group: Clk1
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk2 (rise edge)                                  6.00       6.00
+  clock network delay (ideal)                             0.00       6.00
+  instruction_reg[0]/CP (EDFQD1BWP)                       0.00 #     6.00 r
+  instruction_reg[0]/Q (EDFQD1BWP)                        0.24       6.24 r
+  addru/imm_offset[0] (addrUnit)                          0.00       6.24 r
+  addru/add_1_root_add_0_root_add_14_2/B[0] (addrUnit_DW01_add_1)
+                                                          0.00       6.24 r
+  addru/add_1_root_add_0_root_add_14_2/U64/ZN (ND2D1BWP)
+                                                          0.18       6.42 f
+  addru/add_1_root_add_0_root_add_14_2/U28/ZN (OAI21D1BWP)
+                                                          0.16       6.59 r
+  addru/add_1_root_add_0_root_add_14_2/U21/ZN (AOI21D1BWP)
+                                                          0.12       6.70 f
+  addru/add_1_root_add_0_root_add_14_2/U30/ZN (OAI21D1BWP)
+                                                          0.13       6.83 r
+  addru/add_1_root_add_0_root_add_14_2/U47/Z (XOR2D1BWP)
+                                                          0.14       6.97 f
+  addru/add_1_root_add_0_root_add_14_2/SUM[4] (addrUnit_DW01_add_1)
+                                                          0.00       6.97 f
+  addru/add_0_root_add_0_root_add_14_2/B[4] (addrUnit_DW01_add_0)
+                                                          0.00       6.97 f
+  addru/add_0_root_add_0_root_add_14_2/U39/ZN (NR2XD0BWP)
+                                                          0.11       7.08 r
+  addru/add_0_root_add_0_root_add_14_2/U15/ZN (INVD1BWP)
+                                                          0.05       7.13 f
+  addru/add_0_root_add_0_root_add_14_2/U14/ZN (AOI21D1BWP)
+                                                          0.12       7.24 r
+  addru/add_0_root_add_0_root_add_14_2/U10/ZN (OAI21D1BWP)
+                                                          0.11       7.36 f
+  addru/add_0_root_add_0_root_add_14_2/U3/ZN (AOI21D1BWP)
+                                                          0.14       7.50 r
+  addru/add_0_root_add_0_root_add_14_2/U11/ZN (OAI21D1BWP)
+                                                          0.12       7.62 f
+  addru/add_0_root_add_0_root_add_14_2/U8/ZN (AOI21D1BWP)
+                                                          0.13       7.75 r
+  addru/add_0_root_add_0_root_add_14_2/U7/ZN (OAI21D1BWP)
+                                                          0.11       7.86 f
+  addru/add_0_root_add_0_root_add_14_2/U5/ZN (AOI21D1BWP)
+                                                          0.14       8.00 r
+  addru/add_0_root_add_0_root_add_14_2/U2/ZN (OAI21D1BWP)
+                                                          0.16       8.15 f
+  addru/add_0_root_add_0_root_add_14_2/U13/Z (OR2XD1BWP)
+                                                          0.10       8.25 f
+  addru/add_0_root_add_0_root_add_14_2/U12/ZN (AOI22D1BWP)
+                                                          0.17       8.43 r
+  addru/add_0_root_add_0_root_add_14_2/U17/ZN (ND2D1BWP)
+                                                          0.08       8.51 f
+  addru/add_0_root_add_0_root_add_14_2/U16/ZN (IOA22D1BWP)
+                                                          0.14       8.65 f
+  addru/add_0_root_add_0_root_add_14_2/U34/ZN (NR2XD0BWP)
+                                                          0.08       8.73 r
+  addru/add_0_root_add_0_root_add_14_2/U70/ZN (MOAI22D0BWP)
+                                                          0.05       8.79 f
+  addru/add_0_root_add_0_root_add_14_2/U69/Z (XOR3D1BWP)
+                                                          0.08       8.86 f
+  addru/add_0_root_add_0_root_add_14_2/SUM[15] (addrUnit_DW01_add_0)
+                                                          0.00       8.86 f
+  addru/U18/Z (AO222D1BWP)                                0.13       8.99 f
+  addru/addr_reg[15]/D (DFQD1BWP)                         0.00       8.99 f
+  data arrival time                                                  8.99
+
+  clock Clk1 (rise edge)                                 12.00      12.00
+  clock network delay (ideal)                             0.00      12.00
+  addru/addr_reg[15]/CP (DFQD1BWP)                        0.00      12.00 r
+  library setup time                                     -0.02      11.98
+  data required time                                                11.98
+  --------------------------------------------------------------------------
+  data required time                                                11.98
+  data arrival time                                                 -8.99
+  --------------------------------------------------------------------------
+  slack (MET)                                                        2.99
+
+
+  Startpoint: instruction_reg[0]
+              (rising edge-triggered flip-flop clocked by Clk2)
+  Endpoint: addru/addr_reg[15]
+            (rising edge-triggered flip-flop clocked by Clk1)
+  Path Group: Clk1
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk2 (rise edge)                                  6.00       6.00
+  clock network delay (ideal)                             0.00       6.00
+  instruction_reg[0]/CP (EDFQD1BWP)                       0.00 #     6.00 r
+  instruction_reg[0]/Q (EDFQD1BWP)                        0.24       6.24 r
+  addru/imm_offset[0] (addrUnit)                          0.00       6.24 r
+  addru/add_1_root_add_0_root_add_14_2/B[0] (addrUnit_DW01_add_1)
+                                                          0.00       6.24 r
+  addru/add_1_root_add_0_root_add_14_2/U64/ZN (ND2D1BWP)
+                                                          0.18       6.42 f
+  addru/add_1_root_add_0_root_add_14_2/U28/ZN (OAI21D1BWP)
+                                                          0.16       6.59 r
+  addru/add_1_root_add_0_root_add_14_2/U21/ZN (AOI21D1BWP)
+                                                          0.12       6.70 f
+  addru/add_1_root_add_0_root_add_14_2/U30/ZN (OAI21D1BWP)
+                                                          0.13       6.83 r
+  addru/add_1_root_add_0_root_add_14_2/U47/Z (XOR2D1BWP)
+                                                          0.14       6.97 f
+  addru/add_1_root_add_0_root_add_14_2/SUM[4] (addrUnit_DW01_add_1)
+                                                          0.00       6.97 f
+  addru/add_0_root_add_0_root_add_14_2/B[4] (addrUnit_DW01_add_0)
+                                                          0.00       6.97 f
+  addru/add_0_root_add_0_root_add_14_2/U39/ZN (NR2XD0BWP)
+                                                          0.11       7.08 r
+  addru/add_0_root_add_0_root_add_14_2/U15/ZN (INVD1BWP)
+                                                          0.05       7.13 f
+  addru/add_0_root_add_0_root_add_14_2/U14/ZN (AOI21D1BWP)
+                                                          0.12       7.24 r
+  addru/add_0_root_add_0_root_add_14_2/U10/ZN (OAI21D1BWP)
+                                                          0.11       7.36 f
+  addru/add_0_root_add_0_root_add_14_2/U3/ZN (AOI21D1BWP)
+                                                          0.14       7.50 r
+  addru/add_0_root_add_0_root_add_14_2/U11/ZN (OAI21D1BWP)
+                                                          0.12       7.62 f
+  addru/add_0_root_add_0_root_add_14_2/U8/ZN (AOI21D1BWP)
+                                                          0.13       7.75 r
+  addru/add_0_root_add_0_root_add_14_2/U7/ZN (OAI21D1BWP)
+                                                          0.11       7.86 f
+  addru/add_0_root_add_0_root_add_14_2/U5/ZN (AOI21D1BWP)
+                                                          0.14       8.00 r
+  addru/add_0_root_add_0_root_add_14_2/U2/ZN (OAI21D1BWP)
+                                                          0.16       8.15 f
+  addru/add_0_root_add_0_root_add_14_2/U13/Z (OR2XD1BWP)
+                                                          0.10       8.25 f
+  addru/add_0_root_add_0_root_add_14_2/U12/ZN (AOI22D1BWP)
+                                                          0.17       8.43 r
+  addru/add_0_root_add_0_root_add_14_2/U17/ZN (ND2D1BWP)
+                                                          0.08       8.51 f
+  addru/add_0_root_add_0_root_add_14_2/U16/ZN (IOA22D1BWP)
+                                                          0.14       8.65 f
+  addru/add_0_root_add_0_root_add_14_2/U34/ZN (NR2XD0BWP)
+                                                          0.08       8.73 r
+  addru/add_0_root_add_0_root_add_14_2/U70/ZN (MOAI22D0BWP)
+                                                          0.05       8.79 f
+  addru/add_0_root_add_0_root_add_14_2/U69/Z (XOR3D1BWP)
+                                                          0.08       8.86 f
+  addru/add_0_root_add_0_root_add_14_2/SUM[15] (addrUnit_DW01_add_0)
+                                                          0.00       8.86 f
+  addru/U18/Z (AO222D1BWP)                                0.13       8.99 f
+  addru/addr_reg[15]/D (DFQD1BWP)                         0.00       8.99 f
+  data arrival time                                                  8.99
+
+  clock Clk1 (rise edge)                                 12.00      12.00
+  clock network delay (ideal)                             0.00      12.00
+  addru/addr_reg[15]/CP (DFQD1BWP)                        0.00      12.00 r
+  library setup time                                     -0.02      11.98
+  data required time                                                11.98
+  --------------------------------------------------------------------------
+  data required time                                                11.98
+  data arrival time                                                 -8.99
+  --------------------------------------------------------------------------
+  slack (MET)                                                        2.99
+
+
+  Startpoint: genblk4.vdotmulu/multu[1]/exponent_reg[4]
+              (rising edge-triggered flip-flop clocked by Clk2)
+  Endpoint: genblk4.vdotmulu/mult_reg[24]
+            (rising edge-triggered flip-flop clocked by Clk2)
+  Path Group: Clk2
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk2 (rise edge)                                  6.00       6.00
+  clock network delay (ideal)                             0.00       6.00
+  genblk4.vdotmulu/multu[1]/exponent_reg[4]/CP (DFQD4BWP)
+                                                          0.00 #     6.00 r
+  genblk4.vdotmulu/multu[1]/exponent_reg[4]/Q (DFQD4BWP)
+                                                          0.13       6.13 f
+  genblk4.vdotmulu/multu[1]/mult_final/exp[4] (shift_round_final_1)
+                                                          0.00       6.13 f
+  genblk4.vdotmulu/multu[1]/mult_final/U142/ZN (NR3D2BWP)
+                                                          0.05       6.18 r
+  genblk4.vdotmulu/multu[1]/mult_final/U420/ZN (IND4D2BWP)
+                                                          0.07       6.25 f
+  genblk4.vdotmulu/multu[1]/mult_final/U333/ZN (ND2D2BWP)
+                                                          0.04       6.29 r
+  genblk4.vdotmulu/multu[1]/mult_final/U332/ZN (INVD3BWP)
+                                                          0.03       6.32 f
+  genblk4.vdotmulu/multu[1]/mult_final/U291/ZN (INVD6BWP)
+                                                          0.04       6.36 r
+  genblk4.vdotmulu/multu[1]/mult_final/U276/ZN (NR2XD8BWP)
+                                                          0.03       6.39 f
+  genblk4.vdotmulu/multu[1]/mult_final/U275/ZN (INVD12BWP)
+                                                          0.04       6.43 r
+  genblk4.vdotmulu/multu[1]/mult_final/U415/Z (OR3D4BWP)
+                                                          0.07       6.50 r
+  genblk4.vdotmulu/multu[1]/mult_final/U3/ZN (NR2D8BWP)
+                                                          0.03       6.53 f
+  genblk4.vdotmulu/multu[1]/mult_final/U127/ZN (AOI21D1BWP)
+                                                          0.13       6.66 r
+  genblk4.vdotmulu/multu[1]/mult_final/U309/ZN (INVD4BWP)
+                                                          0.07       6.73 f
+  genblk4.vdotmulu/multu[1]/mult_final/U414/ZN (OAI31D4BWP)
+                                                          0.09       6.82 r
+  genblk4.vdotmulu/multu[1]/mult_final/U216/ZN (NR2XD3BWP)
+                                                          0.08       6.90 f
+  genblk4.vdotmulu/multu[1]/mult_final/U39/ZN (CKND1BWP)
+                                                          0.14       7.04 r
+  genblk4.vdotmulu/multu[1]/mult_final/U22/ZN (NR2D0BWP)
+                                                          0.07       7.11 f
+  genblk4.vdotmulu/multu[1]/mult_final/U519/ZN (OAI21D1BWP)
+                                                          0.21       7.32 r
+  genblk4.vdotmulu/multu[1]/mult_final/U418/ZN (INVD3BWP)
+                                                          0.05       7.37 f
+  genblk4.vdotmulu/multu[1]/mult_final/U417/ZN (AOI31D4BWP)
+                                                          0.06       7.43 r
+  genblk4.vdotmulu/multu[1]/mult_final/U438/ZN (ND2D8BWP)
+                                                          0.07       7.50 f
+  genblk4.vdotmulu/multu[1]/mult_final/U387/ZN (NR3D3BWP)
+                                                          0.11       7.61 r
+  genblk4.vdotmulu/multu[1]/mult_final/U199/ZN (CKND2D8BWP)
+                                                          0.07       7.68 f
+  genblk4.vdotmulu/multu[1]/mult_final/U206/Z (XOR2D2BWP)
+                                                          0.15       7.83 r
+  genblk4.vdotmulu/multu[1]/mult_final/U48/ZN (ND3D3BWP)
+                                                          0.06       7.89 f
+  genblk4.vdotmulu/multu[1]/mult_final/U200/Z (OA31D4BWP)
+                                                          0.12       8.01 f
+  genblk4.vdotmulu/multu[1]/mult_final/U201/ZN (DCCKND16BWP)
+                                                          0.03       8.03 r
+  genblk4.vdotmulu/multu[1]/mult_final/U252/ZN (NR2D8BWP)
+                                                          0.02       8.06 f
+  genblk4.vdotmulu/multu[1]/mult_final/U282/ZN (CKND6BWP)
+                                                          0.05       8.11 r
+  genblk4.vdotmulu/multu[1]/mult_final/U244/Z (OR3D4BWP)
+                                                          0.08       8.18 r
+  genblk4.vdotmulu/multu[1]/mult_final/U221/ZN (NR2XD4BWP)
+                                                          0.04       8.23 f
+  genblk4.vdotmulu/multu[1]/mult_final/U226/ZN (OAI22D2BWP)
+                                                          0.14       8.37 r
+  genblk4.vdotmulu/multu[1]/mult_final/U93/ZN (IND3D4BWP)
+                                                          0.08       8.45 f
+  genblk4.vdotmulu/multu[1]/mult_final/U262/ZN (OAI31D4BWP)
+                                                          0.11       8.56 r
+  genblk4.vdotmulu/multu[1]/mult_final/U61/ZN (NR2XD4BWP)
+                                                          0.07       8.62 f
+  genblk4.vdotmulu/multu[1]/mult_final/U101/ZN (INVD12BWP)
+                                                          0.04       8.66 r
+  genblk4.vdotmulu/multu[1]/mult_final/U100/ZN (NR2D8BWP)
+                                                          0.03       8.69 f
+  genblk4.vdotmulu/multu[1]/mult_final/U50/ZN (CKND3BWP)
+                                                          0.06       8.75 r
+  genblk4.vdotmulu/multu[1]/mult_final/U243/ZN (NR2D8BWP)
+                                                          0.04       8.79 f
+  genblk4.vdotmulu/multu[1]/mult_final/U72/ZN (ND2D8BWP)
+                                                          0.03       8.82 r
+  genblk4.vdotmulu/multu[1]/mult_final/U342/ZN (INR2D0BWP)
+                                                          0.04       8.86 f
+  genblk4.vdotmulu/multu[1]/mult_final/U341/Z (OA21D2BWP)
+                                                          0.09       8.96 f
+  genblk4.vdotmulu/multu[1]/mult_final/U7/ZN (ND2D3BWP)
+                                                          0.03       8.99 r
+  genblk4.vdotmulu/multu[1]/mult_final/U242/ZN (OAI211D4BWP)
+                                                          0.09       9.08 f
+  genblk4.vdotmulu/multu[1]/mult_final/U189/ZN (NR3D3BWP)
+                                                          0.12       9.20 r
+  genblk4.vdotmulu/multu[1]/mult_final/U77/ZN (CKND2D8BWP)
+                                                          0.05       9.25 f
+  genblk4.vdotmulu/multu[1]/mult_final/U245/ZN (INVD6BWP)
+                                                          0.03       9.28 r
+  genblk4.vdotmulu/multu[1]/mult_final/U126/Z (XOR2D1BWP)
+                                                          0.12       9.40 f
+  genblk4.vdotmulu/multu[1]/mult_final/U273/ZN (CKND2BWP)
+                                                          0.07       9.47 r
+  genblk4.vdotmulu/multu[1]/mult_final/U416/ZN (NR3D2BWP)
+                                                          0.05       9.51 f
+  genblk4.vdotmulu/multu[1]/mult_final/U331/ZN (AOI31D4BWP)
+                                                          0.06       9.57 r
+  genblk4.vdotmulu/multu[1]/mult_final/U90/ZN (CKND2D8BWP)
+                                                          0.06       9.64 f
+  genblk4.vdotmulu/multu[1]/mult_final/U173/ZN (CKND12BWP)
+                                                          0.05       9.68 r
+  genblk4.vdotmulu/multu[1]/mult_final/U366/Z (AN2D4BWP)
+                                                          0.06       9.74 r
+  genblk4.vdotmulu/multu[1]/mult_final/U70/Z (AN2D4BWP)
+                                                          0.06       9.80 r
+  genblk4.vdotmulu/multu[1]/mult_final/U128/ZN (CKND2D4BWP)
+                                                          0.06       9.86 f
+  genblk4.vdotmulu/multu[1]/mult_final/U233/ZN (IND3D2BWP)
+                                                          0.12       9.98 f
+  genblk4.vdotmulu/multu[1]/mult_final/U311/ZN (OAI21D2BWP)
+                                                          0.07      10.05 r
+  genblk4.vdotmulu/multu[1]/mult_final/U279/ZN (OAI31D4BWP)
+                                                          0.07      10.12 f
+  genblk4.vdotmulu/multu[1]/mult_final/U278/ZN (NR2D8BWP)
+                                                          0.10      10.22 r
+  genblk4.vdotmulu/multu[1]/mult_final/U51/ZN (ND3D4BWP)
+                                                          0.10      10.32 f
+  genblk4.vdotmulu/multu[1]/mult_final/U348/ZN (OAI22D1BWP)
+                                                          0.23      10.55 r
+  genblk4.vdotmulu/multu[1]/mult_final/U87/ZN (ND3D3BWP)
+                                                          0.08      10.63 f
+  genblk4.vdotmulu/multu[1]/mult_final/U203/ZN (OAI31D2BWP)
+                                                          0.09      10.71 r
+  genblk4.vdotmulu/multu[1]/mult_final/U202/Z (BUFFD4BWP)
+                                                          0.07      10.78 r
+  genblk4.vdotmulu/multu[1]/mult_final/U361/ZN (NR2XD8BWP)
+                                                          0.04      10.82 f
+  genblk4.vdotmulu/multu[1]/mult_final/U73/ZN (ND2D8BWP)
+                                                          0.05      10.88 r
+  genblk4.vdotmulu/multu[1]/mult_final/U134/ZN (NR3D4BWP)
+                                                          0.05      10.93 f
+  genblk4.vdotmulu/multu[1]/mult_final/U106/ZN (OAI32D4BWP)
+                                                          0.16      11.09 r
+  genblk4.vdotmulu/multu[1]/mult_final/U18/ZN (INR3D1BWP)
+                                                          0.09      11.18 r
+  genblk4.vdotmulu/multu[1]/mult_final/U69/ZN (AOI31D4BWP)
+                                                          0.06      11.24 f
+  genblk4.vdotmulu/multu[1]/mult_final/U68/ZN (CKND2D8BWP)
+                                                          0.06      11.30 r
+  genblk4.vdotmulu/multu[1]/mult_final/U4/ZN (INVD12BWP)
+                                                          0.03      11.33 f
+  genblk4.vdotmulu/multu[1]/mult_final/U84/ZN (CKND2D8BWP)
+                                                          0.03      11.36 r
+  genblk4.vdotmulu/multu[1]/mult_final/U62/ZN (CKND12BWP)
+                                                          0.02      11.38 f
+  genblk4.vdotmulu/multu[1]/mult_final/U133/ZN (ND2D3BWP)
+                                                          0.04      11.42 r
+  genblk4.vdotmulu/multu[1]/mult_final/U42/ZN (INVD8BWP)
+                                                          0.03      11.45 f
+  genblk4.vdotmulu/multu[1]/mult_final/U79/ZN (CKND2D8BWP)
+                                                          0.04      11.49 r
+  genblk4.vdotmulu/multu[1]/mult_final/U272/ZN (XNR2D2BWP)
+                                                          0.12      11.60 f
+  genblk4.vdotmulu/multu[1]/mult_final/U96/ZN (ND3D4BWP)
+                                                          0.04      11.64 r
+  genblk4.vdotmulu/multu[1]/mult_final/U386/ZN (OAI31D4BWP)
+                                                          0.05      11.69 f
+  genblk4.vdotmulu/multu[1]/mult_final/U240/ZN (NR2D8BWP)
+                                                          0.07      11.76 r
+  genblk4.vdotmulu/multu[1]/mult_final/U125/ZN (CKND8BWP)
+                                                          0.04      11.80 f
+  genblk4.vdotmulu/multu[1]/mult_final/U290/Z (OR3D4BWP)
+                                                          0.10      11.90 f
+  genblk4.vdotmulu/multu[1]/mult_final/U235/ZN (NR2D8BWP)
+                                                          0.06      11.96 r
+  genblk4.vdotmulu/multu[1]/mult_final/U234/ZN (ND3D2BWP)
+                                                          0.09      12.05 f
+  genblk4.vdotmulu/multu[1]/mult_final/U274/ZN (OAI21D4BWP)
+                                                          0.07      12.12 r
+  genblk4.vdotmulu/multu[1]/mult_final/U385/ZN (OAI31D4BWP)
+                                                          0.07      12.19 f
+  genblk4.vdotmulu/multu[1]/mult_final/U304/ZN (NR2D8BWP)
+                                                          0.08      12.27 r
+  genblk4.vdotmulu/multu[1]/mult_final/U8/ZN (CKND2D8BWP)
+                                                          0.05      12.32 f
+  genblk4.vdotmulu/multu[1]/mult_final/U212/ZN (NR2D8BWP)
+                                                          0.05      12.38 r
+  genblk4.vdotmulu/multu[1]/mult_final/U89/ZN (CKND2D3BWP)
+                                                          0.05      12.42 f
+  genblk4.vdotmulu/multu[1]/mult_final/U124/ZN (CKND3BWP)
+                                                          0.04      12.46 r
+  genblk4.vdotmulu/multu[1]/mult_final/U295/Z (OR2D1BWP)
+                                                          0.06      12.52 r
+  genblk4.vdotmulu/multu[1]/mult_final/U296/ZN (ND2D3BWP)
+                                                          0.07      12.59 f
+  genblk4.vdotmulu/multu[1]/mult_final/U217/ZN (NR2XD2BWP)
+                                                          0.05      12.65 r
+  genblk4.vdotmulu/multu[1]/mult_final/U218/ZN (ND4D4BWP)
+                                                          0.08      12.72 f
+  genblk4.vdotmulu/multu[1]/mult_final/U249/ZN (ND3D8BWP)
+                                                          0.06      12.79 r
+  genblk4.vdotmulu/multu[1]/mult_final/U27/ZN (CKND16BWP)
+                                                          0.04      12.83 f
+  genblk4.vdotmulu/multu[1]/mult_final/U299/ZN (CKND2D8BWP)
+                                                          0.04      12.86 r
+  genblk4.vdotmulu/multu[1]/mult_final/U119/ZN (CKND3BWP)
+                                                          0.04      12.90 f
+  genblk4.vdotmulu/multu[1]/mult_final/U66/ZN (IND3D4BWP)
+                                                          0.03      12.93 r
+  genblk4.vdotmulu/multu[1]/mult_final/U59/ZN (INR2XD1BWP)
+                                                          0.08      13.01 r
+  genblk4.vdotmulu/multu[1]/mult_final/U247/ZN (IND3D4BWP)
+                                                          0.06      13.08 r
+  genblk4.vdotmulu/multu[1]/mult_final/U236/ZN (OAI211D4BWP)
+                                                          0.08      13.16 f
+  genblk4.vdotmulu/multu[1]/mult_final/U364/Z (OR3D4BWP)
+                                                          0.12      13.28 f
+  genblk4.vdotmulu/multu[1]/mult_final/U107/ZN (NR2D8BWP)
+                                                          0.06      13.34 r
+  genblk4.vdotmulu/multu[1]/mult_final/U95/ZN (ND3D4BWP)
+                                                          0.07      13.41 f
+  genblk4.vdotmulu/multu[1]/mult_final/U132/ZN (ND2D1BWP)
+                                                          0.08      13.49 r
+  genblk4.vdotmulu/multu[1]/mult_final/U91/ZN (ND3D3BWP)
+                                                          0.05      13.54 f
+  genblk4.vdotmulu/multu[1]/mult_final/U277/ZN (OAI31D4BWP)
+                                                          0.10      13.64 r
+  genblk4.vdotmulu/multu[1]/mult_final/U167/ZN (NR2D4BWP)
+                                                          0.04      13.67 f
+  genblk4.vdotmulu/multu[1]/mult_final/U165/ZN (CKND6BWP)
+                                                          0.03      13.70 r
+  genblk4.vdotmulu/multu[1]/mult_final/U166/ZN (INVD12BWP)
+                                                          0.02      13.72 f
+  genblk4.vdotmulu/multu[1]/mult_final/U308/ZN (ND2D8BWP)
+                                                          0.03      13.75 r
+  genblk4.vdotmulu/multu[1]/mult_final/U121/ZN (NR2D4BWP)
+                                                          0.03      13.77 f
+  genblk4.vdotmulu/multu[1]/mult_final/U194/ZN (ND2D2BWP)
+                                                          0.05      13.83 r
+  genblk4.vdotmulu/multu[1]/mult_final/U60/ZN (INVD4BWP)
+                                                          0.03      13.86 f
+  genblk4.vdotmulu/multu[1]/mult_final/U40/ZN (ND2D4BWP)
+                                                          0.04      13.90 r
+  genblk4.vdotmulu/multu[1]/mult_final/U178/ZN (IAO21D1BWP)
+                                                          0.08      13.97 r
+  genblk4.vdotmulu/multu[1]/mult_final/U197/Z (BUFFD4BWP)
+                                                          0.05      14.03 r
+  genblk4.vdotmulu/multu[1]/mult_final/U140/ZN (IND4D1BWP)
+                                                          0.05      14.08 r
+  genblk4.vdotmulu/multu[1]/mult_final/U139/ZN (ND3D2BWP)
+                                                          0.16      14.24 f
+  genblk4.vdotmulu/multu[1]/mult_final/U143/ZN (CKND6BWP)
+                                                          0.08      14.32 r
+  genblk4.vdotmulu/multu[1]/mult_final/U105/ZN (IND3D4BWP)
+                                                          0.08      14.40 f
+  genblk4.vdotmulu/multu[1]/mult_final/U123/ZN (NR2XD4BWP)
+                                                          0.07      14.47 r
+  genblk4.vdotmulu/multu[1]/mult_final/U109/ZN (XNR2D2BWP)
+                                                          0.13      14.61 f
+  genblk4.vdotmulu/multu[1]/mult_final/U363/ZN (ND3D3BWP)
+                                                          0.04      14.65 r
+  genblk4.vdotmulu/multu[1]/mult_final/U362/ZN (OAI31D4BWP)
+                                                          0.05      14.70 f
+  genblk4.vdotmulu/multu[1]/mult_final/U228/ZN (NR2D4BWP)
+                                                          0.10      14.80 r
+  genblk4.vdotmulu/multu[1]/mult_final/U32/ZN (CKND12BWP)
+                                                          0.05      14.85 f
+  genblk4.vdotmulu/multu[1]/mult_final/U88/ZN (NR3D8BWP)
+                                                          0.06      14.91 r
+  genblk4.vdotmulu/multu[1]/mult_final/U175/ZN (ND2D8BWP)
+                                                          0.05      14.96 f
+  genblk4.vdotmulu/multu[1]/mult_final/U286/ZN (INR2XD2BWP)
+                                                          0.05      15.01 r
+  genblk4.vdotmulu/multu[1]/mult_final/U215/ZN (XNR2D2BWP)
+                                                          0.10      15.11 f
+  genblk4.vdotmulu/multu[1]/mult_final/U64/Z (AN3D4BWP)
+                                                          0.05      15.15 f
+  genblk4.vdotmulu/multu[1]/mult_final/U205/ZN (AOI31D4BWP)
+                                                          0.05      15.20 r
+  genblk4.vdotmulu/multu[1]/mult_final/U204/ZN (CKND2D4BWP)
+                                                          0.07      15.27 f
+  genblk4.vdotmulu/multu[1]/mult_final/U281/ZN (CKND12BWP)
+                                                          0.04      15.32 r
+  genblk4.vdotmulu/multu[1]/mult_final/U186/ZN (ND3D8BWP)
+                                                          0.06      15.38 f
+  genblk4.vdotmulu/multu[1]/mult_final/U180/ZN (IND3D4BWP)
+                                                          0.10      15.48 f
+  genblk4.vdotmulu/multu[1]/mult_final/U103/ZN (CKND6BWP)
+                                                          0.03      15.51 r
+  genblk4.vdotmulu/multu[1]/mult_final/U284/Z (XOR2D0BWP)
+                                                          0.14      15.65 f
+  genblk4.vdotmulu/multu[1]/mult_final/U317/ZN (IND3D2BWP)
+                                                          0.04      15.69 r
+  genblk4.vdotmulu/multu[1]/mult_final/U208/Z (OA211D4BWP)
+                                                          0.09      15.78 r
+  genblk4.vdotmulu/multu[1]/mult_final/U83/ZN (CKND16BWP)
+                                                          0.03      15.81 f
+  genblk4.vdotmulu/multu[1]/mult_final/U347/Z (OR3D4BWP)
+                                                          0.09      15.90 f
+  genblk4.vdotmulu/multu[1]/mult_final/U82/ZN (NR2XD8BWP)
+                                                          0.03      15.94 r
+  genblk4.vdotmulu/multu[1]/mult_final/U136/ZN (CKND2D4BWP)
+                                                          0.04      15.98 f
+  genblk4.vdotmulu/multu[1]/mult_final/U335/ZN (XNR2D2BWP)
+                                                          0.10      16.08 f
+  genblk4.vdotmulu/multu[1]/mult_final/U496/Z (AN3XD1BWP)
+                                                          0.06      16.14 f
+  genblk4.vdotmulu/multu[1]/mult_final/U367/Z (AO31D4BWP)
+                                                          0.08      16.22 f
+  genblk4.vdotmulu/multu[1]/mult_final/U211/ZN (NR2XD4BWP)
+                                                          0.05      16.27 r
+  genblk4.vdotmulu/multu[1]/mult_final/U138/Z (AN2D4BWP)
+                                                          0.08      16.34 r
+  genblk4.vdotmulu/multu[1]/mult_final/U298/ZN (CKND2D8BWP)
+                                                          0.04      16.38 f
+  genblk4.vdotmulu/multu[1]/mult_final/U230/ZN (NR2D8BWP)
+                                                          0.07      16.45 r
+  genblk4.vdotmulu/multu[1]/mult_final/U231/ZN (CKND2D8BWP)
+                                                          0.04      16.49 f
+  genblk4.vdotmulu/multu[1]/mult_final/U280/ZN (OAI21D4BWP)
+                                                          0.06      16.56 r
+  genblk4.vdotmulu/multu[1]/mult_final/U301/ZN (NR2D3BWP)
+                                                          0.04      16.60 f
+  genblk4.vdotmulu/multu[1]/mult_final/U314/ZN (ND4D2BWP)
+                                                          0.04      16.64 r
+  genblk4.vdotmulu/multu[1]/mult_final/U289/ZN (ND3D3BWP)
+                                                          0.07      16.71 f
+  genblk4.vdotmulu/multu[1]/mult_final/U302/ZN (NR2XD4BWP)
+                                                          0.08      16.79 r
+  genblk4.vdotmulu/multu[1]/mult_final/U35/ZN (CKND2D2BWP)
+                                                          0.06      16.85 f
+  genblk4.vdotmulu/multu[1]/mult_final/U14/ZN (CKND1BWP)
+                                                          0.08      16.94 r
+  genblk4.vdotmulu/multu[1]/mult_final/U193/Z (AO222D1BWP)
+                                                          0.12      17.06 r
+  genblk4.vdotmulu/multu[1]/mult_final/U440/CO (HA1D0BWP)
+                                                          0.09      17.15 r
+  genblk4.vdotmulu/multu[1]/mult_final/U425/CO (HA1D0BWP)
+                                                          0.09      17.24 r
+  genblk4.vdotmulu/multu[1]/mult_final/U427/CO (HA1D2BWP)
+                                                          0.07      17.31 r
+  genblk4.vdotmulu/multu[1]/mult_final/U422/S (HA1D0BWP)
+                                                          0.06      17.37 f
+  genblk4.vdotmulu/multu[1]/mult_final/U118/ZN (OAI22D2BWP)
+                                                          0.11      17.49 r
+  genblk4.vdotmulu/multu[1]/mult_final/U26/ZN (OAI31D4BWP)
+                                                          0.12      17.60 f
+  genblk4.vdotmulu/multu[1]/mult_final/U163/ZN (NR2D4BWP)
+                                                          0.22      17.82 r
+  genblk4.vdotmulu/multu[1]/mult_final/U598/Z (AO222D1BWP)
+                                                          0.14      17.97 r
+  genblk4.vdotmulu/multu[1]/mult_final/product[8] (shift_round_final_1)
+                                                          0.00      17.97 r
+  genblk4.vdotmulu/multu[1]/product[8] (VMULTp_1)         0.00      17.97 r
+  genblk4.vdotmulu/mult_reg[24]/D (DFQD1BWP)              0.00      17.97 r
+  data arrival time                                                 17.97
+
+  clock Clk2 (rise edge)                                 18.00      18.00
+  clock network delay (ideal)                             0.00      18.00
+  genblk4.vdotmulu/mult_reg[24]/CP (DFQD1BWP)             0.00      18.00 r
+  library setup time                                     -0.03      17.97
+  data required time                                                17.97
+  --------------------------------------------------------------------------
+  data required time                                                17.97
+  data arrival time                                                -17.97
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: genblk4.vdotmulu/multu[1]/exponent_reg[4]
+              (rising edge-triggered flip-flop clocked by Clk2)
+  Endpoint: genblk4.vdotmulu/mult_reg[18]
+            (rising edge-triggered flip-flop clocked by Clk2)
+  Path Group: Clk2
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk2 (rise edge)                                  6.00       6.00
+  clock network delay (ideal)                             0.00       6.00
+  genblk4.vdotmulu/multu[1]/exponent_reg[4]/CP (DFQD4BWP)
+                                                          0.00 #     6.00 r
+  genblk4.vdotmulu/multu[1]/exponent_reg[4]/Q (DFQD4BWP)
+                                                          0.13       6.13 f
+  genblk4.vdotmulu/multu[1]/mult_final/exp[4] (shift_round_final_1)
+                                                          0.00       6.13 f
+  genblk4.vdotmulu/multu[1]/mult_final/U142/ZN (NR3D2BWP)
+                                                          0.05       6.18 r
+  genblk4.vdotmulu/multu[1]/mult_final/U420/ZN (IND4D2BWP)
+                                                          0.07       6.25 f
+  genblk4.vdotmulu/multu[1]/mult_final/U333/ZN (ND2D2BWP)
+                                                          0.04       6.29 r
+  genblk4.vdotmulu/multu[1]/mult_final/U332/ZN (INVD3BWP)
+                                                          0.03       6.32 f
+  genblk4.vdotmulu/multu[1]/mult_final/U291/ZN (INVD6BWP)
+                                                          0.04       6.36 r
+  genblk4.vdotmulu/multu[1]/mult_final/U276/ZN (NR2XD8BWP)
+                                                          0.03       6.39 f
+  genblk4.vdotmulu/multu[1]/mult_final/U275/ZN (INVD12BWP)
+                                                          0.04       6.43 r
+  genblk4.vdotmulu/multu[1]/mult_final/U415/Z (OR3D4BWP)
+                                                          0.07       6.50 r
+  genblk4.vdotmulu/multu[1]/mult_final/U3/ZN (NR2D8BWP)
+                                                          0.03       6.53 f
+  genblk4.vdotmulu/multu[1]/mult_final/U127/ZN (AOI21D1BWP)
+                                                          0.13       6.66 r
+  genblk4.vdotmulu/multu[1]/mult_final/U309/ZN (INVD4BWP)
+                                                          0.07       6.73 f
+  genblk4.vdotmulu/multu[1]/mult_final/U414/ZN (OAI31D4BWP)
+                                                          0.09       6.82 r
+  genblk4.vdotmulu/multu[1]/mult_final/U216/ZN (NR2XD3BWP)
+                                                          0.08       6.90 f
+  genblk4.vdotmulu/multu[1]/mult_final/U39/ZN (CKND1BWP)
+                                                          0.14       7.04 r
+  genblk4.vdotmulu/multu[1]/mult_final/U22/ZN (NR2D0BWP)
+                                                          0.07       7.11 f
+  genblk4.vdotmulu/multu[1]/mult_final/U519/ZN (OAI21D1BWP)
+                                                          0.21       7.32 r
+  genblk4.vdotmulu/multu[1]/mult_final/U418/ZN (INVD3BWP)
+                                                          0.05       7.37 f
+  genblk4.vdotmulu/multu[1]/mult_final/U417/ZN (AOI31D4BWP)
+                                                          0.06       7.43 r
+  genblk4.vdotmulu/multu[1]/mult_final/U438/ZN (ND2D8BWP)
+                                                          0.07       7.50 f
+  genblk4.vdotmulu/multu[1]/mult_final/U387/ZN (NR3D3BWP)
+                                                          0.11       7.61 r
+  genblk4.vdotmulu/multu[1]/mult_final/U199/ZN (CKND2D8BWP)
+                                                          0.07       7.68 f
+  genblk4.vdotmulu/multu[1]/mult_final/U206/Z (XOR2D2BWP)
+                                                          0.15       7.83 r
+  genblk4.vdotmulu/multu[1]/mult_final/U48/ZN (ND3D3BWP)
+                                                          0.06       7.89 f
+  genblk4.vdotmulu/multu[1]/mult_final/U200/Z (OA31D4BWP)
+                                                          0.12       8.01 f
+  genblk4.vdotmulu/multu[1]/mult_final/U201/ZN (DCCKND16BWP)
+                                                          0.03       8.03 r
+  genblk4.vdotmulu/multu[1]/mult_final/U252/ZN (NR2D8BWP)
+                                                          0.02       8.06 f
+  genblk4.vdotmulu/multu[1]/mult_final/U282/ZN (CKND6BWP)
+                                                          0.05       8.11 r
+  genblk4.vdotmulu/multu[1]/mult_final/U244/Z (OR3D4BWP)
+                                                          0.08       8.18 r
+  genblk4.vdotmulu/multu[1]/mult_final/U221/ZN (NR2XD4BWP)
+                                                          0.04       8.23 f
+  genblk4.vdotmulu/multu[1]/mult_final/U226/ZN (OAI22D2BWP)
+                                                          0.14       8.37 r
+  genblk4.vdotmulu/multu[1]/mult_final/U93/ZN (IND3D4BWP)
+                                                          0.08       8.45 f
+  genblk4.vdotmulu/multu[1]/mult_final/U262/ZN (OAI31D4BWP)
+                                                          0.11       8.56 r
+  genblk4.vdotmulu/multu[1]/mult_final/U61/ZN (NR2XD4BWP)
+                                                          0.07       8.62 f
+  genblk4.vdotmulu/multu[1]/mult_final/U101/ZN (INVD12BWP)
+                                                          0.04       8.66 r
+  genblk4.vdotmulu/multu[1]/mult_final/U100/ZN (NR2D8BWP)
+                                                          0.03       8.69 f
+  genblk4.vdotmulu/multu[1]/mult_final/U50/ZN (CKND3BWP)
+                                                          0.06       8.75 r
+  genblk4.vdotmulu/multu[1]/mult_final/U243/ZN (NR2D8BWP)
+                                                          0.04       8.79 f
+  genblk4.vdotmulu/multu[1]/mult_final/U72/ZN (ND2D8BWP)
+                                                          0.03       8.82 r
+  genblk4.vdotmulu/multu[1]/mult_final/U342/ZN (INR2D0BWP)
+                                                          0.04       8.86 f
+  genblk4.vdotmulu/multu[1]/mult_final/U341/Z (OA21D2BWP)
+                                                          0.09       8.96 f
+  genblk4.vdotmulu/multu[1]/mult_final/U7/ZN (ND2D3BWP)
+                                                          0.03       8.99 r
+  genblk4.vdotmulu/multu[1]/mult_final/U242/ZN (OAI211D4BWP)
+                                                          0.09       9.08 f
+  genblk4.vdotmulu/multu[1]/mult_final/U189/ZN (NR3D3BWP)
+                                                          0.12       9.20 r
+  genblk4.vdotmulu/multu[1]/mult_final/U77/ZN (CKND2D8BWP)
+                                                          0.05       9.25 f
+  genblk4.vdotmulu/multu[1]/mult_final/U245/ZN (INVD6BWP)
+                                                          0.03       9.28 r
+  genblk4.vdotmulu/multu[1]/mult_final/U126/Z (XOR2D1BWP)
+                                                          0.12       9.40 f
+  genblk4.vdotmulu/multu[1]/mult_final/U273/ZN (CKND2BWP)
+                                                          0.07       9.47 r
+  genblk4.vdotmulu/multu[1]/mult_final/U416/ZN (NR3D2BWP)
+                                                          0.05       9.51 f
+  genblk4.vdotmulu/multu[1]/mult_final/U331/ZN (AOI31D4BWP)
+                                                          0.06       9.57 r
+  genblk4.vdotmulu/multu[1]/mult_final/U90/ZN (CKND2D8BWP)
+                                                          0.06       9.64 f
+  genblk4.vdotmulu/multu[1]/mult_final/U173/ZN (CKND12BWP)
+                                                          0.05       9.68 r
+  genblk4.vdotmulu/multu[1]/mult_final/U366/Z (AN2D4BWP)
+                                                          0.06       9.74 r
+  genblk4.vdotmulu/multu[1]/mult_final/U70/Z (AN2D4BWP)
+                                                          0.06       9.80 r
+  genblk4.vdotmulu/multu[1]/mult_final/U128/ZN (CKND2D4BWP)
+                                                          0.06       9.86 f
+  genblk4.vdotmulu/multu[1]/mult_final/U233/ZN (IND3D2BWP)
+                                                          0.12       9.98 f
+  genblk4.vdotmulu/multu[1]/mult_final/U311/ZN (OAI21D2BWP)
+                                                          0.07      10.05 r
+  genblk4.vdotmulu/multu[1]/mult_final/U279/ZN (OAI31D4BWP)
+                                                          0.07      10.12 f
+  genblk4.vdotmulu/multu[1]/mult_final/U278/ZN (NR2D8BWP)
+                                                          0.10      10.22 r
+  genblk4.vdotmulu/multu[1]/mult_final/U51/ZN (ND3D4BWP)
+                                                          0.10      10.32 f
+  genblk4.vdotmulu/multu[1]/mult_final/U348/ZN (OAI22D1BWP)
+                                                          0.23      10.55 r
+  genblk4.vdotmulu/multu[1]/mult_final/U87/ZN (ND3D3BWP)
+                                                          0.08      10.63 f
+  genblk4.vdotmulu/multu[1]/mult_final/U203/ZN (OAI31D2BWP)
+                                                          0.09      10.71 r
+  genblk4.vdotmulu/multu[1]/mult_final/U202/Z (BUFFD4BWP)
+                                                          0.07      10.78 r
+  genblk4.vdotmulu/multu[1]/mult_final/U361/ZN (NR2XD8BWP)
+                                                          0.04      10.82 f
+  genblk4.vdotmulu/multu[1]/mult_final/U73/ZN (ND2D8BWP)
+                                                          0.05      10.88 r
+  genblk4.vdotmulu/multu[1]/mult_final/U134/ZN (NR3D4BWP)
+                                                          0.05      10.93 f
+  genblk4.vdotmulu/multu[1]/mult_final/U106/ZN (OAI32D4BWP)
+                                                          0.16      11.09 r
+  genblk4.vdotmulu/multu[1]/mult_final/U18/ZN (INR3D1BWP)
+                                                          0.09      11.18 r
+  genblk4.vdotmulu/multu[1]/mult_final/U69/ZN (AOI31D4BWP)
+                                                          0.06      11.24 f
+  genblk4.vdotmulu/multu[1]/mult_final/U68/ZN (CKND2D8BWP)
+                                                          0.06      11.30 r
+  genblk4.vdotmulu/multu[1]/mult_final/U4/ZN (INVD12BWP)
+                                                          0.03      11.33 f
+  genblk4.vdotmulu/multu[1]/mult_final/U84/ZN (CKND2D8BWP)
+                                                          0.03      11.36 r
+  genblk4.vdotmulu/multu[1]/mult_final/U62/ZN (CKND12BWP)
+                                                          0.02      11.38 f
+  genblk4.vdotmulu/multu[1]/mult_final/U133/ZN (ND2D3BWP)
+                                                          0.04      11.42 r
+  genblk4.vdotmulu/multu[1]/mult_final/U42/ZN (INVD8BWP)
+                                                          0.03      11.45 f
+  genblk4.vdotmulu/multu[1]/mult_final/U79/ZN (CKND2D8BWP)
+                                                          0.04      11.49 r
+  genblk4.vdotmulu/multu[1]/mult_final/U272/ZN (XNR2D2BWP)
+                                                          0.12      11.60 f
+  genblk4.vdotmulu/multu[1]/mult_final/U96/ZN (ND3D4BWP)
+                                                          0.04      11.64 r
+  genblk4.vdotmulu/multu[1]/mult_final/U386/ZN (OAI31D4BWP)
+                                                          0.05      11.69 f
+  genblk4.vdotmulu/multu[1]/mult_final/U240/ZN (NR2D8BWP)
+                                                          0.07      11.76 r
+  genblk4.vdotmulu/multu[1]/mult_final/U125/ZN (CKND8BWP)
+                                                          0.04      11.80 f
+  genblk4.vdotmulu/multu[1]/mult_final/U290/Z (OR3D4BWP)
+                                                          0.10      11.90 f
+  genblk4.vdotmulu/multu[1]/mult_final/U235/ZN (NR2D8BWP)
+                                                          0.06      11.96 r
+  genblk4.vdotmulu/multu[1]/mult_final/U234/ZN (ND3D2BWP)
+                                                          0.09      12.05 f
+  genblk4.vdotmulu/multu[1]/mult_final/U274/ZN (OAI21D4BWP)
+                                                          0.07      12.12 r
+  genblk4.vdotmulu/multu[1]/mult_final/U385/ZN (OAI31D4BWP)
+                                                          0.07      12.19 f
+  genblk4.vdotmulu/multu[1]/mult_final/U304/ZN (NR2D8BWP)
+                                                          0.08      12.27 r
+  genblk4.vdotmulu/multu[1]/mult_final/U8/ZN (CKND2D8BWP)
+                                                          0.05      12.32 f
+  genblk4.vdotmulu/multu[1]/mult_final/U212/ZN (NR2D8BWP)
+                                                          0.05      12.38 r
+  genblk4.vdotmulu/multu[1]/mult_final/U89/ZN (CKND2D3BWP)
+                                                          0.05      12.42 f
+  genblk4.vdotmulu/multu[1]/mult_final/U124/ZN (CKND3BWP)
+                                                          0.04      12.46 r
+  genblk4.vdotmulu/multu[1]/mult_final/U295/Z (OR2D1BWP)
+                                                          0.06      12.52 r
+  genblk4.vdotmulu/multu[1]/mult_final/U296/ZN (ND2D3BWP)
+                                                          0.07      12.59 f
+  genblk4.vdotmulu/multu[1]/mult_final/U217/ZN (NR2XD2BWP)
+                                                          0.05      12.65 r
+  genblk4.vdotmulu/multu[1]/mult_final/U218/ZN (ND4D4BWP)
+                                                          0.08      12.72 f
+  genblk4.vdotmulu/multu[1]/mult_final/U249/ZN (ND3D8BWP)
+                                                          0.06      12.79 r
+  genblk4.vdotmulu/multu[1]/mult_final/U27/ZN (CKND16BWP)
+                                                          0.04      12.83 f
+  genblk4.vdotmulu/multu[1]/mult_final/U299/ZN (CKND2D8BWP)
+                                                          0.04      12.86 r
+  genblk4.vdotmulu/multu[1]/mult_final/U119/ZN (CKND3BWP)
+                                                          0.04      12.90 f
+  genblk4.vdotmulu/multu[1]/mult_final/U66/ZN (IND3D4BWP)
+                                                          0.03      12.93 r
+  genblk4.vdotmulu/multu[1]/mult_final/U59/ZN (INR2XD1BWP)
+                                                          0.08      13.01 r
+  genblk4.vdotmulu/multu[1]/mult_final/U247/ZN (IND3D4BWP)
+                                                          0.06      13.08 r
+  genblk4.vdotmulu/multu[1]/mult_final/U236/ZN (OAI211D4BWP)
+                                                          0.08      13.16 f
+  genblk4.vdotmulu/multu[1]/mult_final/U364/Z (OR3D4BWP)
+                                                          0.12      13.28 f
+  genblk4.vdotmulu/multu[1]/mult_final/U107/ZN (NR2D8BWP)
+                                                          0.06      13.34 r
+  genblk4.vdotmulu/multu[1]/mult_final/U95/ZN (ND3D4BWP)
+                                                          0.07      13.41 f
+  genblk4.vdotmulu/multu[1]/mult_final/U132/ZN (ND2D1BWP)
+                                                          0.08      13.49 r
+  genblk4.vdotmulu/multu[1]/mult_final/U91/ZN (ND3D3BWP)
+                                                          0.05      13.54 f
+  genblk4.vdotmulu/multu[1]/mult_final/U277/ZN (OAI31D4BWP)
+                                                          0.10      13.64 r
+  genblk4.vdotmulu/multu[1]/mult_final/U167/ZN (NR2D4BWP)
+                                                          0.04      13.67 f
+  genblk4.vdotmulu/multu[1]/mult_final/U165/ZN (CKND6BWP)
+                                                          0.03      13.70 r
+  genblk4.vdotmulu/multu[1]/mult_final/U166/ZN (INVD12BWP)
+                                                          0.02      13.72 f
+  genblk4.vdotmulu/multu[1]/mult_final/U308/ZN (ND2D8BWP)
+                                                          0.03      13.75 r
+  genblk4.vdotmulu/multu[1]/mult_final/U121/ZN (NR2D4BWP)
+                                                          0.03      13.77 f
+  genblk4.vdotmulu/multu[1]/mult_final/U194/ZN (ND2D2BWP)
+                                                          0.05      13.83 r
+  genblk4.vdotmulu/multu[1]/mult_final/U60/ZN (INVD4BWP)
+                                                          0.03      13.86 f
+  genblk4.vdotmulu/multu[1]/mult_final/U40/ZN (ND2D4BWP)
+                                                          0.04      13.90 r
+  genblk4.vdotmulu/multu[1]/mult_final/U178/ZN (IAO21D1BWP)
+                                                          0.08      13.97 r
+  genblk4.vdotmulu/multu[1]/mult_final/U197/Z (BUFFD4BWP)
+                                                          0.05      14.03 r
+  genblk4.vdotmulu/multu[1]/mult_final/U140/ZN (IND4D1BWP)
+                                                          0.05      14.08 r
+  genblk4.vdotmulu/multu[1]/mult_final/U139/ZN (ND3D2BWP)
+                                                          0.16      14.24 f
+  genblk4.vdotmulu/multu[1]/mult_final/U143/ZN (CKND6BWP)
+                                                          0.08      14.32 r
+  genblk4.vdotmulu/multu[1]/mult_final/U105/ZN (IND3D4BWP)
+                                                          0.08      14.40 f
+  genblk4.vdotmulu/multu[1]/mult_final/U123/ZN (NR2XD4BWP)
+                                                          0.07      14.47 r
+  genblk4.vdotmulu/multu[1]/mult_final/U109/ZN (XNR2D2BWP)
+                                                          0.13      14.61 f
+  genblk4.vdotmulu/multu[1]/mult_final/U363/ZN (ND3D3BWP)
+                                                          0.04      14.65 r
+  genblk4.vdotmulu/multu[1]/mult_final/U362/ZN (OAI31D4BWP)
+                                                          0.05      14.70 f
+  genblk4.vdotmulu/multu[1]/mult_final/U228/ZN (NR2D4BWP)
+                                                          0.10      14.80 r
+  genblk4.vdotmulu/multu[1]/mult_final/U32/ZN (CKND12BWP)
+                                                          0.05      14.85 f
+  genblk4.vdotmulu/multu[1]/mult_final/U88/ZN (NR3D8BWP)
+                                                          0.06      14.91 r
+  genblk4.vdotmulu/multu[1]/mult_final/U175/ZN (ND2D8BWP)
+                                                          0.05      14.96 f
+  genblk4.vdotmulu/multu[1]/mult_final/U286/ZN (INR2XD2BWP)
+                                                          0.05      15.01 r
+  genblk4.vdotmulu/multu[1]/mult_final/U215/ZN (XNR2D2BWP)
+                                                          0.10      15.11 f
+  genblk4.vdotmulu/multu[1]/mult_final/U64/Z (AN3D4BWP)
+                                                          0.05      15.15 f
+  genblk4.vdotmulu/multu[1]/mult_final/U205/ZN (AOI31D4BWP)
+                                                          0.05      15.20 r
+  genblk4.vdotmulu/multu[1]/mult_final/U204/ZN (CKND2D4BWP)
+                                                          0.07      15.27 f
+  genblk4.vdotmulu/multu[1]/mult_final/U281/ZN (CKND12BWP)
+                                                          0.04      15.32 r
+  genblk4.vdotmulu/multu[1]/mult_final/U186/ZN (ND3D8BWP)
+                                                          0.06      15.38 f
+  genblk4.vdotmulu/multu[1]/mult_final/U180/ZN (IND3D4BWP)
+                                                          0.10      15.48 f
+  genblk4.vdotmulu/multu[1]/mult_final/U103/ZN (CKND6BWP)
+                                                          0.03      15.51 r
+  genblk4.vdotmulu/multu[1]/mult_final/U284/Z (XOR2D0BWP)
+                                                          0.14      15.65 f
+  genblk4.vdotmulu/multu[1]/mult_final/U317/ZN (IND3D2BWP)
+                                                          0.04      15.69 r
+  genblk4.vdotmulu/multu[1]/mult_final/U208/Z (OA211D4BWP)
+                                                          0.09      15.78 r
+  genblk4.vdotmulu/multu[1]/mult_final/U83/ZN (CKND16BWP)
+                                                          0.03      15.81 f
+  genblk4.vdotmulu/multu[1]/mult_final/U347/Z (OR3D4BWP)
+                                                          0.09      15.90 f
+  genblk4.vdotmulu/multu[1]/mult_final/U82/ZN (NR2XD8BWP)
+                                                          0.03      15.94 r
+  genblk4.vdotmulu/multu[1]/mult_final/U136/ZN (CKND2D4BWP)
+                                                          0.04      15.98 f
+  genblk4.vdotmulu/multu[1]/mult_final/U335/ZN (XNR2D2BWP)
+                                                          0.10      16.08 f
+  genblk4.vdotmulu/multu[1]/mult_final/U496/Z (AN3XD1BWP)
+                                                          0.06      16.14 f
+  genblk4.vdotmulu/multu[1]/mult_final/U367/Z (AO31D4BWP)
+                                                          0.08      16.22 f
+  genblk4.vdotmulu/multu[1]/mult_final/U211/ZN (NR2XD4BWP)
+                                                          0.05      16.27 r
+  genblk4.vdotmulu/multu[1]/mult_final/U138/Z (AN2D4BWP)
+                                                          0.08      16.34 r
+  genblk4.vdotmulu/multu[1]/mult_final/U298/ZN (CKND2D8BWP)
+                                                          0.04      16.38 f
+  genblk4.vdotmulu/multu[1]/mult_final/U230/ZN (NR2D8BWP)
+                                                          0.07      16.45 r
+  genblk4.vdotmulu/multu[1]/mult_final/U231/ZN (CKND2D8BWP)
+                                                          0.04      16.49 f
+  genblk4.vdotmulu/multu[1]/mult_final/U280/ZN (OAI21D4BWP)
+                                                          0.06      16.56 r
+  genblk4.vdotmulu/multu[1]/mult_final/U301/ZN (NR2D3BWP)
+                                                          0.04      16.60 f
+  genblk4.vdotmulu/multu[1]/mult_final/U314/ZN (ND4D2BWP)
+                                                          0.04      16.64 r
+  genblk4.vdotmulu/multu[1]/mult_final/U289/ZN (ND3D3BWP)
+                                                          0.07      16.71 f
+  genblk4.vdotmulu/multu[1]/mult_final/U302/ZN (NR2XD4BWP)
+                                                          0.08      16.79 r
+  genblk4.vdotmulu/multu[1]/mult_final/U35/ZN (CKND2D2BWP)
+                                                          0.06      16.85 f
+  genblk4.vdotmulu/multu[1]/mult_final/U14/ZN (CKND1BWP)
+                                                          0.08      16.94 r
+  genblk4.vdotmulu/multu[1]/mult_final/U193/Z (AO222D1BWP)
+                                                          0.12      17.06 r
+  genblk4.vdotmulu/multu[1]/mult_final/U440/CO (HA1D0BWP)
+                                                          0.09      17.15 r
+  genblk4.vdotmulu/multu[1]/mult_final/U425/CO (HA1D0BWP)
+                                                          0.09      17.24 r
+  genblk4.vdotmulu/multu[1]/mult_final/U427/CO (HA1D2BWP)
+                                                          0.07      17.31 r
+  genblk4.vdotmulu/multu[1]/mult_final/U422/S (HA1D0BWP)
+                                                          0.06      17.37 f
+  genblk4.vdotmulu/multu[1]/mult_final/U118/ZN (OAI22D2BWP)
+                                                          0.11      17.49 r
+  genblk4.vdotmulu/multu[1]/mult_final/U26/ZN (OAI31D4BWP)
+                                                          0.12      17.60 f
+  genblk4.vdotmulu/multu[1]/mult_final/U163/ZN (NR2D4BWP)
+                                                          0.22      17.82 r
+  genblk4.vdotmulu/multu[1]/mult_final/U503/Z (AO222D1BWP)
+                                                          0.14      17.97 r
+  genblk4.vdotmulu/multu[1]/mult_final/product[2] (shift_round_final_1)
+                                                          0.00      17.97 r
+  genblk4.vdotmulu/multu[1]/product[2] (VMULTp_1)         0.00      17.97 r
+  genblk4.vdotmulu/mult_reg[18]/D (DFQD1BWP)              0.00      17.97 r
+  data arrival time                                                 17.97
+
+  clock Clk2 (rise edge)                                 18.00      18.00
+  clock network delay (ideal)                             0.00      18.00
+  genblk4.vdotmulu/mult_reg[18]/CP (DFQD1BWP)             0.00      18.00 r
+  library setup time                                     -0.03      17.97
+  data required time                                                17.97
+  --------------------------------------------------------------------------
+  data required time                                                17.97
+  data arrival time                                                -17.97
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: genblk4.vdotmulu/multu[1]/exponent_reg[4]
+              (rising edge-triggered flip-flop clocked by Clk2)
+  Endpoint: genblk4.vdotmulu/mult_reg[17]
+            (rising edge-triggered flip-flop clocked by Clk2)
+  Path Group: Clk2
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk2 (rise edge)                                  6.00       6.00
+  clock network delay (ideal)                             0.00       6.00
+  genblk4.vdotmulu/multu[1]/exponent_reg[4]/CP (DFQD4BWP)
+                                                          0.00 #     6.00 r
+  genblk4.vdotmulu/multu[1]/exponent_reg[4]/Q (DFQD4BWP)
+                                                          0.13       6.13 f
+  genblk4.vdotmulu/multu[1]/mult_final/exp[4] (shift_round_final_1)
+                                                          0.00       6.13 f
+  genblk4.vdotmulu/multu[1]/mult_final/U142/ZN (NR3D2BWP)
+                                                          0.05       6.18 r
+  genblk4.vdotmulu/multu[1]/mult_final/U420/ZN (IND4D2BWP)
+                                                          0.07       6.25 f
+  genblk4.vdotmulu/multu[1]/mult_final/U333/ZN (ND2D2BWP)
+                                                          0.04       6.29 r
+  genblk4.vdotmulu/multu[1]/mult_final/U332/ZN (INVD3BWP)
+                                                          0.03       6.32 f
+  genblk4.vdotmulu/multu[1]/mult_final/U291/ZN (INVD6BWP)
+                                                          0.04       6.36 r
+  genblk4.vdotmulu/multu[1]/mult_final/U276/ZN (NR2XD8BWP)
+                                                          0.03       6.39 f
+  genblk4.vdotmulu/multu[1]/mult_final/U275/ZN (INVD12BWP)
+                                                          0.04       6.43 r
+  genblk4.vdotmulu/multu[1]/mult_final/U415/Z (OR3D4BWP)
+                                                          0.07       6.50 r
+  genblk4.vdotmulu/multu[1]/mult_final/U3/ZN (NR2D8BWP)
+                                                          0.03       6.53 f
+  genblk4.vdotmulu/multu[1]/mult_final/U127/ZN (AOI21D1BWP)
+                                                          0.13       6.66 r
+  genblk4.vdotmulu/multu[1]/mult_final/U309/ZN (INVD4BWP)
+                                                          0.07       6.73 f
+  genblk4.vdotmulu/multu[1]/mult_final/U414/ZN (OAI31D4BWP)
+                                                          0.09       6.82 r
+  genblk4.vdotmulu/multu[1]/mult_final/U216/ZN (NR2XD3BWP)
+                                                          0.08       6.90 f
+  genblk4.vdotmulu/multu[1]/mult_final/U39/ZN (CKND1BWP)
+                                                          0.14       7.04 r
+  genblk4.vdotmulu/multu[1]/mult_final/U22/ZN (NR2D0BWP)
+                                                          0.07       7.11 f
+  genblk4.vdotmulu/multu[1]/mult_final/U519/ZN (OAI21D1BWP)
+                                                          0.21       7.32 r
+  genblk4.vdotmulu/multu[1]/mult_final/U418/ZN (INVD3BWP)
+                                                          0.05       7.37 f
+  genblk4.vdotmulu/multu[1]/mult_final/U417/ZN (AOI31D4BWP)
+                                                          0.06       7.43 r
+  genblk4.vdotmulu/multu[1]/mult_final/U438/ZN (ND2D8BWP)
+                                                          0.07       7.50 f
+  genblk4.vdotmulu/multu[1]/mult_final/U387/ZN (NR3D3BWP)
+                                                          0.11       7.61 r
+  genblk4.vdotmulu/multu[1]/mult_final/U199/ZN (CKND2D8BWP)
+                                                          0.07       7.68 f
+  genblk4.vdotmulu/multu[1]/mult_final/U206/Z (XOR2D2BWP)
+                                                          0.15       7.83 r
+  genblk4.vdotmulu/multu[1]/mult_final/U48/ZN (ND3D3BWP)
+                                                          0.06       7.89 f
+  genblk4.vdotmulu/multu[1]/mult_final/U200/Z (OA31D4BWP)
+                                                          0.12       8.01 f
+  genblk4.vdotmulu/multu[1]/mult_final/U201/ZN (DCCKND16BWP)
+                                                          0.03       8.03 r
+  genblk4.vdotmulu/multu[1]/mult_final/U252/ZN (NR2D8BWP)
+                                                          0.02       8.06 f
+  genblk4.vdotmulu/multu[1]/mult_final/U282/ZN (CKND6BWP)
+                                                          0.05       8.11 r
+  genblk4.vdotmulu/multu[1]/mult_final/U244/Z (OR3D4BWP)
+                                                          0.08       8.18 r
+  genblk4.vdotmulu/multu[1]/mult_final/U221/ZN (NR2XD4BWP)
+                                                          0.04       8.23 f
+  genblk4.vdotmulu/multu[1]/mult_final/U226/ZN (OAI22D2BWP)
+                                                          0.14       8.37 r
+  genblk4.vdotmulu/multu[1]/mult_final/U93/ZN (IND3D4BWP)
+                                                          0.08       8.45 f
+  genblk4.vdotmulu/multu[1]/mult_final/U262/ZN (OAI31D4BWP)
+                                                          0.11       8.56 r
+  genblk4.vdotmulu/multu[1]/mult_final/U61/ZN (NR2XD4BWP)
+                                                          0.07       8.62 f
+  genblk4.vdotmulu/multu[1]/mult_final/U101/ZN (INVD12BWP)
+                                                          0.04       8.66 r
+  genblk4.vdotmulu/multu[1]/mult_final/U100/ZN (NR2D8BWP)
+                                                          0.03       8.69 f
+  genblk4.vdotmulu/multu[1]/mult_final/U50/ZN (CKND3BWP)
+                                                          0.06       8.75 r
+  genblk4.vdotmulu/multu[1]/mult_final/U243/ZN (NR2D8BWP)
+                                                          0.04       8.79 f
+  genblk4.vdotmulu/multu[1]/mult_final/U72/ZN (ND2D8BWP)
+                                                          0.03       8.82 r
+  genblk4.vdotmulu/multu[1]/mult_final/U342/ZN (INR2D0BWP)
+                                                          0.04       8.86 f
+  genblk4.vdotmulu/multu[1]/mult_final/U341/Z (OA21D2BWP)
+                                                          0.09       8.96 f
+  genblk4.vdotmulu/multu[1]/mult_final/U7/ZN (ND2D3BWP)
+                                                          0.03       8.99 r
+  genblk4.vdotmulu/multu[1]/mult_final/U242/ZN (OAI211D4BWP)
+                                                          0.09       9.08 f
+  genblk4.vdotmulu/multu[1]/mult_final/U189/ZN (NR3D3BWP)
+                                                          0.12       9.20 r
+  genblk4.vdotmulu/multu[1]/mult_final/U77/ZN (CKND2D8BWP)
+                                                          0.05       9.25 f
+  genblk4.vdotmulu/multu[1]/mult_final/U245/ZN (INVD6BWP)
+                                                          0.03       9.28 r
+  genblk4.vdotmulu/multu[1]/mult_final/U126/Z (XOR2D1BWP)
+                                                          0.12       9.40 f
+  genblk4.vdotmulu/multu[1]/mult_final/U273/ZN (CKND2BWP)
+                                                          0.07       9.47 r
+  genblk4.vdotmulu/multu[1]/mult_final/U416/ZN (NR3D2BWP)
+                                                          0.05       9.51 f
+  genblk4.vdotmulu/multu[1]/mult_final/U331/ZN (AOI31D4BWP)
+                                                          0.06       9.57 r
+  genblk4.vdotmulu/multu[1]/mult_final/U90/ZN (CKND2D8BWP)
+                                                          0.06       9.64 f
+  genblk4.vdotmulu/multu[1]/mult_final/U173/ZN (CKND12BWP)
+                                                          0.05       9.68 r
+  genblk4.vdotmulu/multu[1]/mult_final/U366/Z (AN2D4BWP)
+                                                          0.06       9.74 r
+  genblk4.vdotmulu/multu[1]/mult_final/U70/Z (AN2D4BWP)
+                                                          0.06       9.80 r
+  genblk4.vdotmulu/multu[1]/mult_final/U128/ZN (CKND2D4BWP)
+                                                          0.06       9.86 f
+  genblk4.vdotmulu/multu[1]/mult_final/U233/ZN (IND3D2BWP)
+                                                          0.12       9.98 f
+  genblk4.vdotmulu/multu[1]/mult_final/U311/ZN (OAI21D2BWP)
+                                                          0.07      10.05 r
+  genblk4.vdotmulu/multu[1]/mult_final/U279/ZN (OAI31D4BWP)
+                                                          0.07      10.12 f
+  genblk4.vdotmulu/multu[1]/mult_final/U278/ZN (NR2D8BWP)
+                                                          0.10      10.22 r
+  genblk4.vdotmulu/multu[1]/mult_final/U51/ZN (ND3D4BWP)
+                                                          0.10      10.32 f
+  genblk4.vdotmulu/multu[1]/mult_final/U348/ZN (OAI22D1BWP)
+                                                          0.23      10.55 r
+  genblk4.vdotmulu/multu[1]/mult_final/U87/ZN (ND3D3BWP)
+                                                          0.08      10.63 f
+  genblk4.vdotmulu/multu[1]/mult_final/U203/ZN (OAI31D2BWP)
+                                                          0.09      10.71 r
+  genblk4.vdotmulu/multu[1]/mult_final/U202/Z (BUFFD4BWP)
+                                                          0.07      10.78 r
+  genblk4.vdotmulu/multu[1]/mult_final/U361/ZN (NR2XD8BWP)
+                                                          0.04      10.82 f
+  genblk4.vdotmulu/multu[1]/mult_final/U73/ZN (ND2D8BWP)
+                                                          0.05      10.88 r
+  genblk4.vdotmulu/multu[1]/mult_final/U134/ZN (NR3D4BWP)
+                                                          0.05      10.93 f
+  genblk4.vdotmulu/multu[1]/mult_final/U106/ZN (OAI32D4BWP)
+                                                          0.16      11.09 r
+  genblk4.vdotmulu/multu[1]/mult_final/U18/ZN (INR3D1BWP)
+                                                          0.09      11.18 r
+  genblk4.vdotmulu/multu[1]/mult_final/U69/ZN (AOI31D4BWP)
+                                                          0.06      11.24 f
+  genblk4.vdotmulu/multu[1]/mult_final/U68/ZN (CKND2D8BWP)
+                                                          0.06      11.30 r
+  genblk4.vdotmulu/multu[1]/mult_final/U4/ZN (INVD12BWP)
+                                                          0.03      11.33 f
+  genblk4.vdotmulu/multu[1]/mult_final/U84/ZN (CKND2D8BWP)
+                                                          0.03      11.36 r
+  genblk4.vdotmulu/multu[1]/mult_final/U62/ZN (CKND12BWP)
+                                                          0.02      11.38 f
+  genblk4.vdotmulu/multu[1]/mult_final/U133/ZN (ND2D3BWP)
+                                                          0.04      11.42 r
+  genblk4.vdotmulu/multu[1]/mult_final/U42/ZN (INVD8BWP)
+                                                          0.03      11.45 f
+  genblk4.vdotmulu/multu[1]/mult_final/U79/ZN (CKND2D8BWP)
+                                                          0.04      11.49 r
+  genblk4.vdotmulu/multu[1]/mult_final/U272/ZN (XNR2D2BWP)
+                                                          0.12      11.60 f
+  genblk4.vdotmulu/multu[1]/mult_final/U96/ZN (ND3D4BWP)
+                                                          0.04      11.64 r
+  genblk4.vdotmulu/multu[1]/mult_final/U386/ZN (OAI31D4BWP)
+                                                          0.05      11.69 f
+  genblk4.vdotmulu/multu[1]/mult_final/U240/ZN (NR2D8BWP)
+                                                          0.07      11.76 r
+  genblk4.vdotmulu/multu[1]/mult_final/U125/ZN (CKND8BWP)
+                                                          0.04      11.80 f
+  genblk4.vdotmulu/multu[1]/mult_final/U290/Z (OR3D4BWP)
+                                                          0.10      11.90 f
+  genblk4.vdotmulu/multu[1]/mult_final/U235/ZN (NR2D8BWP)
+                                                          0.06      11.96 r
+  genblk4.vdotmulu/multu[1]/mult_final/U234/ZN (ND3D2BWP)
+                                                          0.09      12.05 f
+  genblk4.vdotmulu/multu[1]/mult_final/U274/ZN (OAI21D4BWP)
+                                                          0.07      12.12 r
+  genblk4.vdotmulu/multu[1]/mult_final/U385/ZN (OAI31D4BWP)
+                                                          0.07      12.19 f
+  genblk4.vdotmulu/multu[1]/mult_final/U304/ZN (NR2D8BWP)
+                                                          0.08      12.27 r
+  genblk4.vdotmulu/multu[1]/mult_final/U8/ZN (CKND2D8BWP)
+                                                          0.05      12.32 f
+  genblk4.vdotmulu/multu[1]/mult_final/U212/ZN (NR2D8BWP)
+                                                          0.05      12.38 r
+  genblk4.vdotmulu/multu[1]/mult_final/U89/ZN (CKND2D3BWP)
+                                                          0.05      12.42 f
+  genblk4.vdotmulu/multu[1]/mult_final/U124/ZN (CKND3BWP)
+                                                          0.04      12.46 r
+  genblk4.vdotmulu/multu[1]/mult_final/U295/Z (OR2D1BWP)
+                                                          0.06      12.52 r
+  genblk4.vdotmulu/multu[1]/mult_final/U296/ZN (ND2D3BWP)
+                                                          0.07      12.59 f
+  genblk4.vdotmulu/multu[1]/mult_final/U217/ZN (NR2XD2BWP)
+                                                          0.05      12.65 r
+  genblk4.vdotmulu/multu[1]/mult_final/U218/ZN (ND4D4BWP)
+                                                          0.08      12.72 f
+  genblk4.vdotmulu/multu[1]/mult_final/U249/ZN (ND3D8BWP)
+                                                          0.06      12.79 r
+  genblk4.vdotmulu/multu[1]/mult_final/U27/ZN (CKND16BWP)
+                                                          0.04      12.83 f
+  genblk4.vdotmulu/multu[1]/mult_final/U299/ZN (CKND2D8BWP)
+                                                          0.04      12.86 r
+  genblk4.vdotmulu/multu[1]/mult_final/U119/ZN (CKND3BWP)
+                                                          0.04      12.90 f
+  genblk4.vdotmulu/multu[1]/mult_final/U66/ZN (IND3D4BWP)
+                                                          0.03      12.93 r
+  genblk4.vdotmulu/multu[1]/mult_final/U59/ZN (INR2XD1BWP)
+                                                          0.08      13.01 r
+  genblk4.vdotmulu/multu[1]/mult_final/U247/ZN (IND3D4BWP)
+                                                          0.06      13.08 r
+  genblk4.vdotmulu/multu[1]/mult_final/U236/ZN (OAI211D4BWP)
+                                                          0.08      13.16 f
+  genblk4.vdotmulu/multu[1]/mult_final/U364/Z (OR3D4BWP)
+                                                          0.12      13.28 f
+  genblk4.vdotmulu/multu[1]/mult_final/U107/ZN (NR2D8BWP)
+                                                          0.06      13.34 r
+  genblk4.vdotmulu/multu[1]/mult_final/U95/ZN (ND3D4BWP)
+                                                          0.07      13.41 f
+  genblk4.vdotmulu/multu[1]/mult_final/U132/ZN (ND2D1BWP)
+                                                          0.08      13.49 r
+  genblk4.vdotmulu/multu[1]/mult_final/U91/ZN (ND3D3BWP)
+                                                          0.05      13.54 f
+  genblk4.vdotmulu/multu[1]/mult_final/U277/ZN (OAI31D4BWP)
+                                                          0.10      13.64 r
+  genblk4.vdotmulu/multu[1]/mult_final/U167/ZN (NR2D4BWP)
+                                                          0.04      13.67 f
+  genblk4.vdotmulu/multu[1]/mult_final/U165/ZN (CKND6BWP)
+                                                          0.03      13.70 r
+  genblk4.vdotmulu/multu[1]/mult_final/U166/ZN (INVD12BWP)
+                                                          0.02      13.72 f
+  genblk4.vdotmulu/multu[1]/mult_final/U308/ZN (ND2D8BWP)
+                                                          0.03      13.75 r
+  genblk4.vdotmulu/multu[1]/mult_final/U121/ZN (NR2D4BWP)
+                                                          0.03      13.77 f
+  genblk4.vdotmulu/multu[1]/mult_final/U194/ZN (ND2D2BWP)
+                                                          0.05      13.83 r
+  genblk4.vdotmulu/multu[1]/mult_final/U60/ZN (INVD4BWP)
+                                                          0.03      13.86 f
+  genblk4.vdotmulu/multu[1]/mult_final/U40/ZN (ND2D4BWP)
+                                                          0.04      13.90 r
+  genblk4.vdotmulu/multu[1]/mult_final/U178/ZN (IAO21D1BWP)
+                                                          0.08      13.97 r
+  genblk4.vdotmulu/multu[1]/mult_final/U197/Z (BUFFD4BWP)
+                                                          0.05      14.03 r
+  genblk4.vdotmulu/multu[1]/mult_final/U140/ZN (IND4D1BWP)
+                                                          0.05      14.08 r
+  genblk4.vdotmulu/multu[1]/mult_final/U139/ZN (ND3D2BWP)
+                                                          0.16      14.24 f
+  genblk4.vdotmulu/multu[1]/mult_final/U143/ZN (CKND6BWP)
+                                                          0.08      14.32 r
+  genblk4.vdotmulu/multu[1]/mult_final/U105/ZN (IND3D4BWP)
+                                                          0.08      14.40 f
+  genblk4.vdotmulu/multu[1]/mult_final/U123/ZN (NR2XD4BWP)
+                                                          0.07      14.47 r
+  genblk4.vdotmulu/multu[1]/mult_final/U109/ZN (XNR2D2BWP)
+                                                          0.13      14.61 f
+  genblk4.vdotmulu/multu[1]/mult_final/U363/ZN (ND3D3BWP)
+                                                          0.04      14.65 r
+  genblk4.vdotmulu/multu[1]/mult_final/U362/ZN (OAI31D4BWP)
+                                                          0.05      14.70 f
+  genblk4.vdotmulu/multu[1]/mult_final/U228/ZN (NR2D4BWP)
+                                                          0.10      14.80 r
+  genblk4.vdotmulu/multu[1]/mult_final/U32/ZN (CKND12BWP)
+                                                          0.05      14.85 f
+  genblk4.vdotmulu/multu[1]/mult_final/U88/ZN (NR3D8BWP)
+                                                          0.06      14.91 r
+  genblk4.vdotmulu/multu[1]/mult_final/U175/ZN (ND2D8BWP)
+                                                          0.05      14.96 f
+  genblk4.vdotmulu/multu[1]/mult_final/U286/ZN (INR2XD2BWP)
+                                                          0.05      15.01 r
+  genblk4.vdotmulu/multu[1]/mult_final/U215/ZN (XNR2D2BWP)
+                                                          0.10      15.11 f
+  genblk4.vdotmulu/multu[1]/mult_final/U64/Z (AN3D4BWP)
+                                                          0.05      15.15 f
+  genblk4.vdotmulu/multu[1]/mult_final/U205/ZN (AOI31D4BWP)
+                                                          0.05      15.20 r
+  genblk4.vdotmulu/multu[1]/mult_final/U204/ZN (CKND2D4BWP)
+                                                          0.07      15.27 f
+  genblk4.vdotmulu/multu[1]/mult_final/U281/ZN (CKND12BWP)
+                                                          0.04      15.32 r
+  genblk4.vdotmulu/multu[1]/mult_final/U186/ZN (ND3D8BWP)
+                                                          0.06      15.38 f
+  genblk4.vdotmulu/multu[1]/mult_final/U180/ZN (IND3D4BWP)
+                                                          0.10      15.48 f
+  genblk4.vdotmulu/multu[1]/mult_final/U103/ZN (CKND6BWP)
+                                                          0.03      15.51 r
+  genblk4.vdotmulu/multu[1]/mult_final/U284/Z (XOR2D0BWP)
+                                                          0.14      15.65 f
+  genblk4.vdotmulu/multu[1]/mult_final/U317/ZN (IND3D2BWP)
+                                                          0.04      15.69 r
+  genblk4.vdotmulu/multu[1]/mult_final/U208/Z (OA211D4BWP)
+                                                          0.09      15.78 r
+  genblk4.vdotmulu/multu[1]/mult_final/U83/ZN (CKND16BWP)
+                                                          0.03      15.81 f
+  genblk4.vdotmulu/multu[1]/mult_final/U347/Z (OR3D4BWP)
+                                                          0.09      15.90 f
+  genblk4.vdotmulu/multu[1]/mult_final/U82/ZN (NR2XD8BWP)
+                                                          0.03      15.94 r
+  genblk4.vdotmulu/multu[1]/mult_final/U136/ZN (CKND2D4BWP)
+                                                          0.04      15.98 f
+  genblk4.vdotmulu/multu[1]/mult_final/U335/ZN (XNR2D2BWP)
+                                                          0.10      16.08 f
+  genblk4.vdotmulu/multu[1]/mult_final/U496/Z (AN3XD1BWP)
+                                                          0.06      16.14 f
+  genblk4.vdotmulu/multu[1]/mult_final/U367/Z (AO31D4BWP)
+                                                          0.08      16.22 f
+  genblk4.vdotmulu/multu[1]/mult_final/U211/ZN (NR2XD4BWP)
+                                                          0.05      16.27 r
+  genblk4.vdotmulu/multu[1]/mult_final/U138/Z (AN2D4BWP)
+                                                          0.08      16.34 r
+  genblk4.vdotmulu/multu[1]/mult_final/U298/ZN (CKND2D8BWP)
+                                                          0.04      16.38 f
+  genblk4.vdotmulu/multu[1]/mult_final/U230/ZN (NR2D8BWP)
+                                                          0.07      16.45 r
+  genblk4.vdotmulu/multu[1]/mult_final/U231/ZN (CKND2D8BWP)
+                                                          0.04      16.49 f
+  genblk4.vdotmulu/multu[1]/mult_final/U280/ZN (OAI21D4BWP)
+                                                          0.06      16.56 r
+  genblk4.vdotmulu/multu[1]/mult_final/U301/ZN (NR2D3BWP)
+                                                          0.04      16.60 f
+  genblk4.vdotmulu/multu[1]/mult_final/U314/ZN (ND4D2BWP)
+                                                          0.04      16.64 r
+  genblk4.vdotmulu/multu[1]/mult_final/U289/ZN (ND3D3BWP)
+                                                          0.07      16.71 f
+  genblk4.vdotmulu/multu[1]/mult_final/U302/ZN (NR2XD4BWP)
+                                                          0.08      16.79 r
+  genblk4.vdotmulu/multu[1]/mult_final/U35/ZN (CKND2D2BWP)
+                                                          0.06      16.85 f
+  genblk4.vdotmulu/multu[1]/mult_final/U14/ZN (CKND1BWP)
+                                                          0.08      16.94 r
+  genblk4.vdotmulu/multu[1]/mult_final/U193/Z (AO222D1BWP)
+                                                          0.12      17.06 r
+  genblk4.vdotmulu/multu[1]/mult_final/U440/CO (HA1D0BWP)
+                                                          0.09      17.15 r
+  genblk4.vdotmulu/multu[1]/mult_final/U425/CO (HA1D0BWP)
+                                                          0.09      17.24 r
+  genblk4.vdotmulu/multu[1]/mult_final/U427/CO (HA1D2BWP)
+                                                          0.07      17.31 r
+  genblk4.vdotmulu/multu[1]/mult_final/U422/S (HA1D0BWP)
+                                                          0.06      17.37 f
+  genblk4.vdotmulu/multu[1]/mult_final/U118/ZN (OAI22D2BWP)
+                                                          0.11      17.49 r
+  genblk4.vdotmulu/multu[1]/mult_final/U26/ZN (OAI31D4BWP)
+                                                          0.12      17.60 f
+  genblk4.vdotmulu/multu[1]/mult_final/U163/ZN (NR2D4BWP)
+                                                          0.22      17.82 r
+  genblk4.vdotmulu/multu[1]/mult_final/U502/Z (AO222D1BWP)
+                                                          0.14      17.97 r
+  genblk4.vdotmulu/multu[1]/mult_final/product[1] (shift_round_final_1)
+                                                          0.00      17.97 r
+  genblk4.vdotmulu/multu[1]/product[1] (VMULTp_1)         0.00      17.97 r
+  genblk4.vdotmulu/mult_reg[17]/D (DFQD1BWP)              0.00      17.97 r
+  data arrival time                                                 17.97
+
+  clock Clk2 (rise edge)                                 18.00      18.00
+  clock network delay (ideal)                             0.00      18.00
+  genblk4.vdotmulu/mult_reg[17]/CP (DFQD1BWP)             0.00      18.00 r
+  library setup time                                     -0.03      17.97
+  data required time                                                17.97
+  --------------------------------------------------------------------------
+  data required time                                                17.97
+  data arrival time                                                -17.97
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -nworst 3
+        -max_paths 3
+Design : CVP14
+Version: H-2013.03-SP3
+Date   : Fri Apr 25 00:29:23 2014
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: NCCOM   Library: tcbn40lpbwptc
+Wire Load Model Mode: top
+
+  Startpoint: offsetInc_reg
+              (rising edge-triggered flip-flop clocked by Clk1)
+  Endpoint: offsetInc_reg
+            (rising edge-triggered flip-flop clocked by Clk1)
+  Path Group: Clk1
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk1 (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  offsetInc_reg/CP (DFD1BWP)               0.00 #     0.00 r
+  offsetInc_reg/QN (DFD1BWP)               0.14       0.14 r
+  U4105/ZN (OAI32D1BWP)                    0.03       0.17 f
+  offsetInc_reg/D (DFD1BWP)                0.00       0.17 f
+  data arrival time                                   0.17
+
+  clock Clk1 (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  offsetInc_reg/CP (DFD1BWP)               0.00       0.00 r
+  library hold time                        0.02       0.02
+  data required time                                  0.02
+  -----------------------------------------------------------
+  data required time                                  0.02
+  data arrival time                                  -0.17
+  -----------------------------------------------------------
+  slack (MET)                                         0.15
+
+
+  Startpoint: offsetInc_reg
+              (rising edge-triggered flip-flop clocked by Clk1)
+  Endpoint: offsetInc_reg
+            (rising edge-triggered flip-flop clocked by Clk1)
+  Path Group: Clk1
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk1 (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  offsetInc_reg/CP (DFD1BWP)               0.00 #     0.00 r
+  offsetInc_reg/QN (DFD1BWP)               0.14       0.14 r
+  U4105/ZN (OAI32D1BWP)                    0.03       0.17 f
+  offsetInc_reg/D (DFD1BWP)                0.00       0.17 f
+  data arrival time                                   0.17
+
+  clock Clk1 (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  offsetInc_reg/CP (DFD1BWP)               0.00       0.00 r
+  library hold time                        0.02       0.02
+  data required time                                  0.02
+  -----------------------------------------------------------
+  data required time                                  0.02
+  data arrival time                                  -0.17
+  -----------------------------------------------------------
+  slack (MET)                                         0.16
+
+
+  Startpoint: offsetInc_reg
+              (rising edge-triggered flip-flop clocked by Clk1)
+  Endpoint: offsetInc_reg
+            (rising edge-triggered flip-flop clocked by Clk1)
+  Path Group: Clk1
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk1 (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  offsetInc_reg/CP (DFD1BWP)               0.00 #     0.00 r
+  offsetInc_reg/QN (DFD1BWP)               0.14       0.14 r
+  U4105/ZN (OAI32D1BWP)                    0.03       0.17 f
+  offsetInc_reg/D (DFD1BWP)                0.00       0.17 f
+  data arrival time                                   0.17
+
+  clock Clk1 (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  offsetInc_reg/CP (DFD1BWP)               0.00       0.00 r
+  library hold time                        0.02       0.02
+  data required time                                  0.02
+  -----------------------------------------------------------
+  data required time                                  0.02
+  data arrival time                                  -0.17
+  -----------------------------------------------------------
+  slack (MET)                                         0.16
+
+
+  Startpoint: genblk4.vdotmulu/add1u[2]/pre_sum_reg[15]
+              (rising edge-triggered flip-flop clocked by Clk2)
+  Endpoint: genblk4.vdotmulu/add1_reg[47]
+            (rising edge-triggered flip-flop clocked by Clk2)
+  Path Group: Clk2
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk2 (rise edge)                                  6.00       6.00
+  clock network delay (ideal)                             0.00       6.00
+  genblk4.vdotmulu/add1u[2]/pre_sum_reg[15]/CP (DFQD1BWP)
+                                                          0.00 #     6.00 r
+  genblk4.vdotmulu/add1u[2]/pre_sum_reg[15]/Q (DFQD1BWP)
+                                                          0.12       6.12 f
+  genblk4.vdotmulu/add1u[2]/finalADD/pre_sum[15] (norm_round_sum_final_8)
+                                                          0.00       6.12 f
+  genblk4.vdotmulu/add1u[2]/finalADD/U421/Z (CKBD1BWP)
+                                                          0.04       6.15 f
+  genblk4.vdotmulu/add1u[2]/finalADD/final_sum[15] (norm_round_sum_final_8)
+                                                          0.00       6.15 f
+  genblk4.vdotmulu/add1u[2]/Sum[15] (VADDp_8)             0.00       6.15 f
+  genblk4.vdotmulu/add1_reg[47]/D (DFQD1BWP)              0.00       6.15 f
+  data arrival time                                                  6.15
+
+  clock Clk2 (rise edge)                                  6.00       6.00
+  clock network delay (ideal)                             0.00       6.00
+  genblk4.vdotmulu/add1_reg[47]/CP (DFQD1BWP)             0.00       6.00 r
+  library hold time                                       0.02       6.02
+  data required time                                                 6.02
+  --------------------------------------------------------------------------
+  data required time                                                 6.02
+  data arrival time                                                 -6.15
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.13
+
+
+  Startpoint: genblk4.vdotmulu/add1u[1]/pre_sum_reg[15]
+              (rising edge-triggered flip-flop clocked by Clk2)
+  Endpoint: genblk4.vdotmulu/add1_reg[31]
+            (rising edge-triggered flip-flop clocked by Clk2)
+  Path Group: Clk2
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk2 (rise edge)                                  6.00       6.00
+  clock network delay (ideal)                             0.00       6.00
+  genblk4.vdotmulu/add1u[1]/pre_sum_reg[15]/CP (DFQD1BWP)
+                                                          0.00 #     6.00 r
+  genblk4.vdotmulu/add1u[1]/pre_sum_reg[15]/Q (DFQD1BWP)
+                                                          0.12       6.12 f
+  genblk4.vdotmulu/add1u[1]/finalADD/pre_sum[15] (norm_round_sum_final_7)
+                                                          0.00       6.12 f
+  genblk4.vdotmulu/add1u[1]/finalADD/U421/Z (CKBD1BWP)
+                                                          0.04       6.15 f
+  genblk4.vdotmulu/add1u[1]/finalADD/final_sum[15] (norm_round_sum_final_7)
+                                                          0.00       6.15 f
+  genblk4.vdotmulu/add1u[1]/Sum[15] (VADDp_7)             0.00       6.15 f
+  genblk4.vdotmulu/add1_reg[31]/D (DFQD1BWP)              0.00       6.15 f
+  data arrival time                                                  6.15
+
+  clock Clk2 (rise edge)                                  6.00       6.00
+  clock network delay (ideal)                             0.00       6.00
+  genblk4.vdotmulu/add1_reg[31]/CP (DFQD1BWP)             0.00       6.00 r
+  library hold time                                       0.02       6.02
+  data required time                                                 6.02
+  --------------------------------------------------------------------------
+  data required time                                                 6.02
+  data arrival time                                                 -6.15
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.13
+
+
+  Startpoint: genblk4.vdotmulu/add1u[0]/pre_sum_reg[15]
+              (rising edge-triggered flip-flop clocked by Clk2)
+  Endpoint: genblk4.vdotmulu/add1_reg[15]
+            (rising edge-triggered flip-flop clocked by Clk2)
+  Path Group: Clk2
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CVP14              TSMC512K_Lowk_Aggresive
+                                           tpfn45gsgv18tc
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock Clk2 (rise edge)                                  6.00       6.00
+  clock network delay (ideal)                             0.00       6.00
+  genblk4.vdotmulu/add1u[0]/pre_sum_reg[15]/CP (DFQD1BWP)
+                                                          0.00 #     6.00 r
+  genblk4.vdotmulu/add1u[0]/pre_sum_reg[15]/Q (DFQD1BWP)
+                                                          0.12       6.12 f
+  genblk4.vdotmulu/add1u[0]/finalADD/pre_sum[15] (norm_round_sum_final_6)
+                                                          0.00       6.12 f
+  genblk4.vdotmulu/add1u[0]/finalADD/U421/Z (CKBD1BWP)
+                                                          0.04       6.15 f
+  genblk4.vdotmulu/add1u[0]/finalADD/final_sum[15] (norm_round_sum_final_6)
+                                                          0.00       6.15 f
+  genblk4.vdotmulu/add1u[0]/Sum[15] (VADDp_6)             0.00       6.15 f
+  genblk4.vdotmulu/add1_reg[15]/D (DFQD1BWP)              0.00       6.15 f
+  data arrival time                                                  6.15
+
+  clock Clk2 (rise edge)                                  6.00       6.00
+  clock network delay (ideal)                             0.00       6.00
+  genblk4.vdotmulu/add1_reg[15]/CP (DFQD1BWP)             0.00       6.00 r
+  library hold time                                       0.02       6.02
+  data required time                                                 6.02
+  --------------------------------------------------------------------------
+  data required time                                                 6.02
+  data arrival time                                                 -6.15
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.13
+
+
+1

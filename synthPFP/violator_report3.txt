@@ -1,0 +1,13 @@
+Warning: Ignoring compile_fix_multiple_port_nets = TRUE. (UIO-60)
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : CVP14
+Version: H-2013.03-SP3
+Date   : Thu Apr 24 23:51:02 2014
+****************************************
+
+This design has no violated constraints.
+
+1
