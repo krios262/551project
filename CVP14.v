@@ -6,6 +6,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
   parameter serial_operation = 1'b0;
   parameter Pipe_SMUL_parallel = 1'b1;
   parameter Pipe_VDOT_parallel = 1'b1;
+  parameter Pipe_VADD_parallel = 1'b1;
 
   //Parameters for opcodes
   parameter vadd = 4'b0000, vdot = 4'b0001, smul = 4'b0010, sst = 4'b0011, vld = 4'b0100,
@@ -76,6 +77,8 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
     if (serial_operation)
       VADD16ser adderu(.SumV(AdderOutS), .V(OvF), .A(vOutS), .B(vOutS2), .start(addStart), .write(addWrite),
                          .done(addDone), .Clk1(Clk1), .Clk2(Clk2));
+    else if (Pipe_VADD_parallel)
+      VADD16p adderu(.SumV(AdderOut), .V(OvF), .A(vOutP), .B(vOutP2), .start(addStart), .done(addDone), .Clk1(Clk1), .Clk2(Clk2));
     else
       VADD16 adderu(.SumV(AdderOut), .V(OvF), .A(vOutP), .B(vOutP2), .start(addStart), .done(addDone));
   endgenerate
