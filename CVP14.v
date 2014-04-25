@@ -3,8 +3,9 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
   //Generate parameters
   parameter Pipe_Vdot = 1'b0;
-  parameter serial_operation = 1'b1;
-  parameter Pipe_SMUL_parallel = 1'b0;
+  parameter serial_operation = 1'b0;
+  parameter Pipe_SMUL_parallel = 1'b1;
+  parameter Pipe_VDOT_parallel = 1'b1;
 
   //Parameters for opcodes
   parameter vadd = 4'b0000, vdot = 4'b0001, smul = 4'b0010, sst = 4'b0011, vld = 4'b0100,
@@ -94,6 +95,9 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
     if (serial_operation)
       VDOT16s vdotmulu(.out(dotOut), .V(dotV), .A(vOutS), .B(vOutS2), .start(dotStart), .Clk1(Clk1), .Clk2(Clk2),
                         .done(dotDone));
+    else if (Pipe_VDOT_parallel)
+      VDOT16pp vdotmulu(.out(dotOut), .V(dotV), .A(vOutP), .B(vOutP2), .start(dotStart), .Clk1(Clk1), .Clk2(Clk2),
+                        .done(dotDone));
     else if (Pipe_Vdot)
       VDOT16p vdotmulu(.out(dotOut), .V(dotV), .A(vOutP), .B(vOutP2), .start(dotStart), .Clk1(Clk1), .Clk2(Clk2),
                         .done(dotDone));
@@ -151,7 +155,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
             sAddr <= instruction[8:6]; //get system mem dest address
             if(serial_operation)
               vAddrW <= instruction[11:9];
-            else 
+            else
               vAddr <= instruction[11:9];//vector store dest
           end
           vst: begin
