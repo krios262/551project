@@ -1,12 +1,12 @@
 //Eight 16x16-bit vector registers
 module vRegs(output reg [15:0] DataOut_s, output reg [15:0] DataOut2_s,
-    input [2:0] Addr, input [2:0] Addr2, input Clk1, input Clk2,
+    input [2:0] AddrW, input [2:0] Addr, input [2:0] Addr2, input Clk1, input Clk2,
     input [15:0] DataIn_s, input RD_s, input WR_s);
 
   reg [15:0] vector[7:0][15:0];
   integer i;  //used in for loop
   wire [1:0] cmd;
-  reg [2:0] address, address2;
+  reg [2:0] addressW, address, address2;
   reg prev_WR_s, prev_RD_s;
   reg [3:0] selectW;
   reg [3:0] selectR;
@@ -26,9 +26,9 @@ module vRegs(output reg [15:0] DataOut_s, output reg [15:0] DataOut2_s,
     end
 
     if (WR_s) begin
-      vector[address][selectW] <= DataIn_s;
+      vector[addressW][selectW] <= DataIn_s;
     end else begin
-      vector[address][i] <= vector[address][i];
+      vector[addressW][i] <= vector[address][i];
     end
 
     if (~prev_RD_s && RD_s)
@@ -49,6 +49,7 @@ module vRegs(output reg [15:0] DataOut_s, output reg [15:0] DataOut2_s,
   always@(posedge Clk2) begin
     address <= Addr;
     address2 <= Addr2;
+    addressW <= AddrW;
   end
 
 endmodule

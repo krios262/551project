@@ -1,46 +1,8 @@
-module SMUL16(output reg [255:0] product,output reg Ovf, input [15:0] scalar,input [255:0] vecin);
-
-SMUL(product[255:240],Ovf,scalar[15:0], vecin[255:240]);
-SMUL(product[239:224],Ovf,scalar[15:0], vecin[239:224]);
-SMUL(product[223:208],Ovf,scalar[15:0], vecin[223:208]);
-SMUL(product[207:192],Ovf,scalar[15:0], vecin[207:192]);
-SMUL(product[191:176],Ovf,scalar[15:0], vecin[191:176]);
-SMUL(product[175:160],Ovf,scalar[15:0], vecin[175:160]);
-SMUL(product[159:144],Ovf,scalar[15:0], vecin[159:144]);
-SMUL(product[143:128],Ovf,scalar[15:0], vecin[143:128]);
-SMUL(product[127:112],Ovf,scalar[15:0], vecin[127:112]);
-SMUL(product[111:96],Ovf,scalar[15:0], vecin[111:96]);
-SMUL(product[95:80],Ovf,scalar[15:0], vecin[95:80]);
-SMUL(product[79:64],Ovf,scalar[15:0], vecin[79:64]);
-SMUL(product[63:48],Ovf,scalar[15:0], vecin[63:48]);
-SMUL(product[47:32],Ovf,scalar[15:0], vecin[47:32]);
-SMUL(product[31:16],Ovf,scalar[15:0], vecin[31:16]);
-SMUL(product[15:0],Ovf,scalar[15:0], vecin[15:0]);
-
-endmodule
-
-module t_SMULv();
-  
-  wire [255:0] pro;
-  
-  reg [255:0] vec1;
-  reg [15:0] s1;
-  
-  SMUL16 S1(pro,s1,vec1);
-  
-  initial begin
-    s1 = 16'hA;
-    vec1 = 256'h00010203;
-    #10 vec1 = 256'h00020304;
-    #20 vec1 = 256'h0406080a;
-end
-endmodule
-
-module SMUL(output reg [15:0] prod,output reg Overflow,input [15:0] A, input [15:0] B, output reg [22:0] operprod,output reg [6:0] temp_exp);
+module SMUL(output reg [15:0] prod,output reg Overflow,input [15:0] A, input [15:0] B);
   
   reg [11:0] operA,operB;
   wire [11:0] operA1,operB1,operA2,operB2;
-  //reg [23:0] operprod;
+  reg [23:0] operprod;
   reg [9:0] operprod1;
   reg [11:0] operprod2;
   reg [5:0] i = 6'b000000;
@@ -48,7 +10,7 @@ module SMUL(output reg [15:0] prod,output reg Overflow,input [15:0] A, input [15
   reg [1:0] oper;
   reg flag;
   reg flagz;
-  //reg [6:0] temp_exp;
+  reg [6:0] temp_exp;
   
   //append sticky and guard bit along with normalised one
   assign operA1 = {1'b0,1'b1,A[9:0]};

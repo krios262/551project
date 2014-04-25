@@ -3,6 +3,7 @@ module t_CVP14_synth();
   wire[15:0] out, in, addr;
   wire r, w, v;
   reg  rst, c1, c2;
+  parameter MAX_CLK = 29;
 
   DRAM mem(.DataOut(in), .Addr(addr), .DataIn(out),
     .clk1(c1), .clk2(c2), .RD(r), .WR(w));
@@ -12,7 +13,7 @@ module t_CVP14_synth();
   initial begin
     c1 = 1'b1; c2 = 1'b0;
     forever begin
-      #5;
+      #(MAX_CLK/2);
       c1 = ~c1;
       c2 = ~c2;
       /*
@@ -28,11 +29,23 @@ module t_CVP14_synth();
   initial begin
     #2.5;
     rst = 1'b1;
-    #10;
+    #MAX_CLK;
     rst = 1'b0;
-    #6000;
+    #60000000;
+    $display("Didn't reach addr xFFFF, dump what we have");
     $writememb("dump.txt", mem.Memory);
     #10;
     $finish;
   end
+
+  always@(addr) begin
+	//END OF TESTBENCH CONDITION
+	$display("Addr = %h", addr);
+	if(addr == 16'hffff) begin
+		$display("\nTime:%0t WE DID IT, MEM DUMP!\n", $time);
+		$writememb("dump.txt", mem.Memory);
+		#10;
+		$finish;
+	end
+end
 endmodule
