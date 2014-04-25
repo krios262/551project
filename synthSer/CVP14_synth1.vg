@@ -1,4 +1,4 @@
-
+`timescale 1ns / 1ps
 module CVP14_DW01_inc_4 ( A, SUM );
   input [11:0] A;
   output [11:0] SUM;
@@ -2559,7 +2559,7 @@ module CVP14_DW01_sub_19 ( A, B, CI, DIFF, CO );
 endmodule
 
 
-module CVP14 ( Addr, RD, WR, V, DataOut, Reset, Clk1, Clk2, DataIn );
+module CVP14_synth ( Addr, RD, WR, V, DataOut, Reset, Clk1, Clk2, DataIn );
   output [15:0] Addr;
   output [15:0] DataOut;
   input [15:0] DataIn;

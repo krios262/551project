@@ -15,22 +15,22 @@ set_wire_load_model -name TSMC512K_Lowk_Aggresive -library tpfn45gsgv18tc
 set_fix_multiple_port_nets -all
 set_local_link_library {tcbn40lpbwptc.db,tpfn45gsgv18tc.db,tcbn40lpbwptc.db}
 
-#synthesis 6
+#synthesis 1
 #timing options
-create_clock [get_ports Clk1] -period 33 -waveform {0 8.25}
-create_clock [get_ports Clk2] -period 33 -waveform {17.5 25.75}
+create_clock [get_ports Clk1] -period 100 -waveform {0 25}
+create_clock [get_ports Clk2] -period 100 -waveform {50 75}
 set_dont_touch_network [all_clocks]
 #area options
-set_max_area 22000
+set_max_area 70000
 #Compile with aggressive mapping effort
-ungroup -flatten -all
+#ungroup -flatten -all
 uniquify
 compile -map_effort high
-report_area > synthSer/area6.txt
-report_timing -path full -delay max -nworst 3 > synthSer/timing6.txt
-report_timing -path full -delay min -nworst 3 >> synthSer/timing6.txt
-report_constraint -all_violators > synthSer/violator_report6.txt
-write -hierarchy -format verilog CVP14 -output synthSer/CVP14_synth6.vg
+report_area > synthSer/area1.txt
+report_timing -path full -delay max -nworst 3 > synthSer/timing1.txt
+report_timing -path full -delay min -nworst 3 >> synthSer/timing1.txt
+report_constraint -all_violators > synthSer/violator_report1.txt
+write -hierarchy -format verilog CVP14 -output synthSer/CVP14_synth1.vg
 #try this hierarchy flag
 
 #synthesis 5

@@ -39,31 +39,26 @@ module t_CVP14();
   end
 
   initial begin
+    #2.5;
     rst = 1'b1;
     #10;
     rst = 1'b0;
-    #4500;/*
-    $strobe("V4.0: %h", UUT.vector.vector[4][0]);
-    $strobe("V4.1: %h", UUT.vector.vector[4][1]);
-    $strobe("V4.2: %h", UUT.vector.vector[4][2]);
-    $strobe("V4.3: %h", UUT.vector.vector[4][3]);
-    $strobe("V4.4: %h", UUT.vector.vector[4][4]);
-    $strobe("V4.5: %h", UUT.vector.vector[4][5]);
-    $strobe("V4.6: %h", UUT.vector.vector[4][6]);
-    $strobe("V4.7: %h", UUT.vector.vector[4][7]);
-    $strobe("V4.8: %h", UUT.vector.vector[4][8]);
-    $strobe("V4.9: %h", UUT.vector.vector[4][9]);
-    $strobe("V4.10: %h", UUT.vector.vector[4][10]);
-    $strobe("V4.11: %h", UUT.vector.vector[4][11]);
-    $strobe("V4.12: %h", UUT.vector.vector[4][12]);
-    $strobe("V4.13: %h", UUT.vector.vector[4][13]);
-    $strobe("V4.14: %h", UUT.vector.vector[4][14]);
-    $strobe("V4.15: %h", UUT.vector.vector[4][15]);
-    #10;
-    $strobe("S0: %h S7: %h", UUT.scalar.scalar[0], UUT.scalar.scalar[7]);
-    //write memory contents to text file
-    */$writememb("dump.txt", mem.Memory);
+    #60000000;
+    $display("Didn't reach addr xFFFF, dump what we have");
+    $writememb("dump.txt", mem.Memory);
     #10;
     $finish;
   end
+
+  always@(addr) begin
+    //END OF TESTBENCH CONDITION
+    $display("Addr = %h", addr);
+    if(addr == 16'hffff) begin
+    $display("Time:%t MEM DUMP!", $time);
+    $writememb("dump.txt", mem.Memory);
+    #10;
+    $finish;
+    end
+  end
+
 endmodule

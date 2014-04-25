@@ -40,7 +40,7 @@ module t_CVP14_synth();
   always@(addr) begin
 	//END OF TESTBENCH CONDITION
 	$display("Addr = %h", addr);
-	if(addr == 16'hffff) begin
+	if(addr == 16'hfff3) begin
 		$display("Time:%t MEM DUMP!", $time);
 		$writememb("dump.txt", mem.Memory);
 		#10;
