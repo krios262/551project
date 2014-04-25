@@ -3,7 +3,7 @@
 Report : area
 Design : CVP14
 Version: H-2013.03-SP3
-Date   : Thu Apr 24 00:10:46 2014
+Date   : Thu Apr 24 22:45:19 2014
 ****************************************
 
 Information: Updating design information... (UID-85)
@@ -13,20 +13,20 @@ Library(s) Used:
     tcbn40lpbwptc (File: /cae/apps/data/synopsys-2011/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn40lpbwp_120b/tcbn40lpbwptc.db)
 
 Number of ports:                           54
-Number of nets:                         25412
-Number of cells:                        24866
-Number of combinational cells:          21058
-Number of sequential cells:              3808
+Number of nets:                         25421
+Number of cells:                        24879
+Number of combinational cells:          21072
+Number of sequential cells:              3807
 Number of macros/black boxes:               0
-Number of buf/inv:                       6868
-Number of references:                     137
+Number of buf/inv:                       6871
+Number of references:                     141
 
-Combinational area:              26270.370202
-Buf/Inv area:                     4462.214540
-Noncombinational area:           13892.382370
+Combinational area:              26234.384602
+Buf/Inv area:                     4456.393340
+Noncombinational area:           13885.326368
 Macro/Black Box area:                0.000000
 Net Interconnect area:      undefined  (Wire load has zero net area)
 
-Total cell area:                 40162.752572
+Total cell area:                 40119.710970
 Total area:                 undefined
 1
