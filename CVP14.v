@@ -19,7 +19,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
   wire [255:0] vOutP, vOutP2;
   reg  [15:0]  sIn, vInS;
   wire [15:0]  vOutS, vOutS2, sOut;
-  reg  [2:0]   sAddr, vAddr, vAddr2;
+  reg  [2:0]   sAddr, vAddr, vAddr2, vAddrW;
   reg sRD, sWR, sWR_l, sWR_h, vWR_p, vWR_s, vRD_p, vRD_s;
   reg updatePC, jump, setPC, updateAddr, offsetInc; //addressing module flags
 
@@ -55,7 +55,7 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
     if (serial_operation)
       vRegs vector(.DataOut_s(vOutS), .Addr(vAddr), .Clk1(Clk1), .Clk2(Clk2),
                   .DataIn_s(vInS), .WR_s(vWR_s),
-                  .RD_s(vRD_s), .DataOut2_s(vOutS2), .Addr2(vAddr2));
+                  .RD_s(vRD_s), .DataOut2_s(vOutS2), .Addr2(vAddr2), .AddrW(vAddrW));
     else
       vReg vector(.DataOut_p(vOutP), .DataOut_s(vOutS), .Addr(vAddr), .Clk1(Clk1), .Clk2(Clk2),
                   .DataIn_p(vInP), .DataIn_s(vInS), .WR_p(vWR_p), .RD_p(vRD_p), .WR_s(vWR_s),
@@ -149,7 +149,10 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
           end
           vld: begin
             sAddr <= instruction[8:6]; //get system mem dest address
-            vAddr <= instruction[11:9]; //vector store dest
+            if(serial_operation)
+              vAddrW <= instruction[11:9];
+            else 
+              vAddr <= instruction[11:9];//vector store dest
           end
           vst: begin
             sAddr <= instruction[8:6]; //get system mem dest address
@@ -175,13 +178,19 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
       executing: begin
         case (instruction[15:12])
           vadd: begin
-            vAddr <= instruction[11:9];
+            if(serial_operation)
+              vAddrW <= instruction[11:9];
+            else 
+              vAddr <= instruction[11:9];
             addStart <= 1'b1;
           end
           vdot:
             dotStart <= 1'b1;
           smul: begin
-            vAddr <= instruction[11:9];
+            if(serial_operation)
+              vAddrW <= instruction[11:9];
+            else 
+              vAddr <= instruction[11:9];
             smulStart <= 1'b1;
           end
           sst:
@@ -270,10 +279,13 @@ module CVP14(output [15:0] Addr, output reg RD, output reg WR, output reg V,
 
         case (instruction[15:12])
           vadd: begin
-            if (serial_operation)
+            if (serial_operation) begin
               vRD_s <= 1'b1;
-            else
+              vRD_p <= 1'b0;
+            end else begin
               vRD_p <= 1'b1;
+              vRD_s <= 1'b0;
+            end
           end
           vdot: begin
             if (serial_operation)
