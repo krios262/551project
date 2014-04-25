@@ -7,7 +7,7 @@ Report : timing
         -max_paths 3
 Design : CVP14
 Version: H-2013.03-SP3
-Date   : Thu Apr 24 00:14:57 2014
+Date   : Thu Apr 24 22:49:26 2014
 ****************************************
 
  # A fanout number of 1000 was used for high fanout net computations.
@@ -15,9 +15,9 @@ Date   : Thu Apr 24 00:14:57 2014
 Operating Conditions: NCCOM   Library: tcbn40lpbwptc
 Wire Load Model Mode: top
 
-  Startpoint: genblk1.vector/address_reg[1]
+  Startpoint: instruction_reg[14]
               (rising edge-triggered flip-flop clocked by Clk2)
-  Endpoint: genblk1.vector/vector_reg[3][7][7]
+  Endpoint: sAddr_reg[2]
             (rising edge-triggered flip-flop clocked by Clk1)
   Path Group: Clk1
   Path Type: max
@@ -27,43 +27,49 @@ Wire Load Model Mode: top
   CVP14              TSMC512K_Lowk_Aggresive
                                            tpfn45gsgv18tc
 
-  Point                                                   Incr       Path
-  --------------------------------------------------------------------------
-  clock Clk2 (rise edge)                                200.00     200.00
-  clock network delay (ideal)                             0.00     200.00
-  genblk1.vector/address_reg[1]/CP (DFD1BWP)              0.00     200.00 r
-  genblk1.vector/address_reg[1]/QN (DFD1BWP)              0.20     200.20 f
-  U65970/ZN (CKND2D0BWP)                                  0.15     200.34 r
-  U64156/Z (OR2XD1BWP)                                    0.22     200.56 r
-  U62328/Z (CKBD3BWP)                                     0.29     200.84 r
-  U64026/Z (BUFFD1BWP)                                    0.28     201.13 r
-  U63962/Z (BUFFD1BWP)                                    0.28     201.40 r
-  U65954/Z (CKBD2BWP)                                     0.28     201.68 r
-  U65969/ZN (INVD1BWP)                                    0.23     201.91 f
-  U73435/ZN (AOI22D1BWP)                                  0.10     202.00 r
-  U73434/ZN (ND4D1BWP)                                    0.21     202.21 f
-  U67519/ZN (INVD1BWP)                                    0.13     202.35 r
-  U73432/ZN (NR2XD0BWP)                                   0.08     202.42 f
-  U67518/ZN (AOI211XD2BWP)                                0.24     202.66 r
-  U62898/ZN (MAOI22D0BWP)                                 0.12     202.78 f
-  genblk1.vector/vector_reg[3][7][7]/D (DFQD1BWP)         0.00     202.78 f
-  data arrival time                                                202.78
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk2 (rise edge)                 200.00     200.00
+  clock network delay (ideal)              0.00     200.00
+  instruction_reg[14]/CP (EDFD1BWP)        0.00     200.00 r
+  instruction_reg[14]/QN (EDFD1BWP)        0.32     200.32 r
+  U66917/ZN (ND2D1BWP)                     0.28     200.60 f
+  U66916/ZN (INVD1BWP)                     0.21     200.81 r
+  U73468/ZN (NR2XD0BWP)                    0.13     200.94 f
+  U73466/ZN (AOI211XD0BWP)                 0.11     201.05 r
+  U73463/ZN (ND4D1BWP)                     0.14     201.19 f
+  U61367/ZN (AOI22D0BWP)                   0.22     201.41 r
+  U63167/Z (OA31D1BWP)                     0.13     201.54 r
+  U63746/ZN (INVD1BWP)                     0.10     201.63 f
+  U66907/ZN (NR3D1BWP)                     0.23     201.86 r
+  U66906/ZN (INVD1BWP)                     0.11     201.97 f
+  U73457/ZN (NR2XD0BWP)                    0.07     202.04 r
+  U73456/ZN (AOI31D1BWP)                   0.04     202.08 f
+  U73455/ZN (OAI31D1BWP)                   0.09     202.17 r
+  U66905/ZN (ND2D1BWP)                     0.22     202.39 f
+  U66902/ZN (INVD1BWP)                     0.13     202.52 r
+  U64394/ZN (OAI31D2BWP)                   0.11     202.63 f
+  U73452/ZN (OAI22D1BWP)                   0.10     202.73 r
+  U73451/ZN (AOI21D1BWP)                   0.04     202.77 f
+  U73450/ZN (OAI211D1BWP)                  0.04     202.81 r
+  sAddr_reg[2]/D (DFQD1BWP)                0.00     202.81 r
+  data arrival time                                 202.81
 
-  clock Clk1 (rise edge)                                400.00     400.00
-  clock network delay (ideal)                             0.00     400.00
-  genblk1.vector/vector_reg[3][7][7]/CP (DFQD1BWP)        0.00     400.00 r
-  library setup time                                     -0.04     399.96
-  data required time                                               399.96
-  --------------------------------------------------------------------------
-  data required time                                               399.96
-  data arrival time                                               -202.78
-  --------------------------------------------------------------------------
-  slack (MET)                                                      197.18
+  clock Clk1 (rise edge)                 400.00     400.00
+  clock network delay (ideal)              0.00     400.00
+  sAddr_reg[2]/CP (DFQD1BWP)               0.00     400.00 r
+  library setup time                      -0.04     399.96
+  data required time                                399.96
+  -----------------------------------------------------------
+  data required time                                399.96
+  data arrival time                                -202.81
+  -----------------------------------------------------------
+  slack (MET)                                       197.14
 
 
-  Startpoint: genblk1.vector/address_reg[1]
+  Startpoint: instruction_reg[14]
               (rising edge-triggered flip-flop clocked by Clk2)
-  Endpoint: genblk1.vector/vector_reg[4][7][7]
+  Endpoint: sAddr_reg[2]
             (rising edge-triggered flip-flop clocked by Clk1)
   Path Group: Clk1
   Path Type: max
@@ -73,43 +79,49 @@ Wire Load Model Mode: top
   CVP14              TSMC512K_Lowk_Aggresive
                                            tpfn45gsgv18tc
 
-  Point                                                   Incr       Path
-  --------------------------------------------------------------------------
-  clock Clk2 (rise edge)                                200.00     200.00
-  clock network delay (ideal)                             0.00     200.00
-  genblk1.vector/address_reg[1]/CP (DFD1BWP)              0.00     200.00 r
-  genblk1.vector/address_reg[1]/QN (DFD1BWP)              0.20     200.20 f
-  U65970/ZN (CKND2D0BWP)                                  0.15     200.34 r
-  U64156/Z (OR2XD1BWP)                                    0.22     200.56 r
-  U62328/Z (CKBD3BWP)                                     0.29     200.84 r
-  U64026/Z (BUFFD1BWP)                                    0.28     201.13 r
-  U63962/Z (BUFFD1BWP)                                    0.28     201.40 r
-  U65954/Z (CKBD2BWP)                                     0.28     201.68 r
-  U65969/ZN (INVD1BWP)                                    0.23     201.91 f
-  U73435/ZN (AOI22D1BWP)                                  0.10     202.00 r
-  U73434/ZN (ND4D1BWP)                                    0.21     202.21 f
-  U67519/ZN (INVD1BWP)                                    0.13     202.35 r
-  U73432/ZN (NR2XD0BWP)                                   0.08     202.42 f
-  U67518/ZN (AOI211XD2BWP)                                0.24     202.66 r
-  U63124/ZN (MAOI22D0BWP)                                 0.12     202.78 f
-  genblk1.vector/vector_reg[4][7][7]/D (DFQD1BWP)         0.00     202.78 f
-  data arrival time                                                202.78
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk2 (rise edge)                 200.00     200.00
+  clock network delay (ideal)              0.00     200.00
+  instruction_reg[14]/CP (EDFD1BWP)        0.00     200.00 r
+  instruction_reg[14]/QN (EDFD1BWP)        0.32     200.32 r
+  U66917/ZN (ND2D1BWP)                     0.28     200.60 f
+  U66916/ZN (INVD1BWP)                     0.21     200.81 r
+  U73468/ZN (NR2XD0BWP)                    0.13     200.94 f
+  U73466/ZN (AOI211XD0BWP)                 0.11     201.05 r
+  U73463/ZN (ND4D1BWP)                     0.14     201.19 f
+  U61367/ZN (AOI22D0BWP)                   0.22     201.41 r
+  U63167/Z (OA31D1BWP)                     0.13     201.54 r
+  U63746/ZN (INVD1BWP)                     0.10     201.63 f
+  U66907/ZN (NR3D1BWP)                     0.23     201.86 r
+  U66906/ZN (INVD1BWP)                     0.11     201.97 f
+  U73457/ZN (NR2XD0BWP)                    0.07     202.04 r
+  U73456/ZN (AOI31D1BWP)                   0.04     202.08 f
+  U73455/ZN (OAI31D1BWP)                   0.09     202.17 r
+  U66905/ZN (ND2D1BWP)                     0.22     202.39 f
+  U66902/ZN (INVD1BWP)                     0.13     202.52 r
+  U64394/ZN (OAI31D2BWP)                   0.11     202.63 f
+  U73452/ZN (OAI22D1BWP)                   0.10     202.73 r
+  U73451/ZN (AOI21D1BWP)                   0.04     202.77 f
+  U73450/ZN (OAI211D1BWP)                  0.04     202.81 r
+  sAddr_reg[2]/D (DFQD1BWP)                0.00     202.81 r
+  data arrival time                                 202.81
 
-  clock Clk1 (rise edge)                                400.00     400.00
-  clock network delay (ideal)                             0.00     400.00
-  genblk1.vector/vector_reg[4][7][7]/CP (DFQD1BWP)        0.00     400.00 r
-  library setup time                                     -0.04     399.96
-  data required time                                               399.96
-  --------------------------------------------------------------------------
-  data required time                                               399.96
-  data arrival time                                               -202.78
-  --------------------------------------------------------------------------
-  slack (MET)                                                      197.18
+  clock Clk1 (rise edge)                 400.00     400.00
+  clock network delay (ideal)              0.00     400.00
+  sAddr_reg[2]/CP (DFQD1BWP)               0.00     400.00 r
+  library setup time                      -0.04     399.96
+  data required time                                399.96
+  -----------------------------------------------------------
+  data required time                                399.96
+  data arrival time                                -202.81
+  -----------------------------------------------------------
+  slack (MET)                                       197.15
 
 
-  Startpoint: genblk1.vector/address_reg[1]
+  Startpoint: instruction_reg[14]
               (rising edge-triggered flip-flop clocked by Clk2)
-  Endpoint: genblk1.vector/vector_reg[5][7][7]
+  Endpoint: sAddr_reg[2]
             (rising edge-triggered flip-flop clocked by Clk1)
   Path Group: Clk1
   Path Type: max
@@ -119,43 +131,49 @@ Wire Load Model Mode: top
   CVP14              TSMC512K_Lowk_Aggresive
                                            tpfn45gsgv18tc
 
-  Point                                                   Incr       Path
-  --------------------------------------------------------------------------
-  clock Clk2 (rise edge)                                200.00     200.00
-  clock network delay (ideal)                             0.00     200.00
-  genblk1.vector/address_reg[1]/CP (DFD1BWP)              0.00     200.00 r
-  genblk1.vector/address_reg[1]/QN (DFD1BWP)              0.20     200.20 f
-  U65970/ZN (CKND2D0BWP)                                  0.15     200.34 r
-  U64156/Z (OR2XD1BWP)                                    0.22     200.56 r
-  U62328/Z (CKBD3BWP)                                     0.29     200.84 r
-  U64026/Z (BUFFD1BWP)                                    0.28     201.13 r
-  U63962/Z (BUFFD1BWP)                                    0.28     201.40 r
-  U65954/Z (CKBD2BWP)                                     0.28     201.68 r
-  U65969/ZN (INVD1BWP)                                    0.23     201.91 f
-  U73435/ZN (AOI22D1BWP)                                  0.10     202.00 r
-  U73434/ZN (ND4D1BWP)                                    0.21     202.21 f
-  U67519/ZN (INVD1BWP)                                    0.13     202.35 r
-  U73432/ZN (NR2XD0BWP)                                   0.08     202.42 f
-  U67518/ZN (AOI211XD2BWP)                                0.24     202.66 r
-  U62949/ZN (MAOI22D0BWP)                                 0.12     202.78 f
-  genblk1.vector/vector_reg[5][7][7]/D (DFQD1BWP)         0.00     202.78 f
-  data arrival time                                                202.78
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk2 (rise edge)                 200.00     200.00
+  clock network delay (ideal)              0.00     200.00
+  instruction_reg[14]/CP (EDFD1BWP)        0.00     200.00 r
+  instruction_reg[14]/QN (EDFD1BWP)        0.32     200.32 r
+  U66917/ZN (ND2D1BWP)                     0.28     200.60 f
+  U66916/ZN (INVD1BWP)                     0.21     200.81 r
+  U73468/ZN (NR2XD0BWP)                    0.13     200.94 f
+  U73466/ZN (AOI211XD0BWP)                 0.11     201.05 r
+  U73463/ZN (ND4D1BWP)                     0.14     201.19 f
+  U61367/ZN (AOI22D0BWP)                   0.22     201.41 r
+  U63167/Z (OA31D1BWP)                     0.13     201.54 r
+  U63746/ZN (INVD1BWP)                     0.10     201.63 f
+  U66907/ZN (NR3D1BWP)                     0.23     201.86 r
+  U66906/ZN (INVD1BWP)                     0.11     201.97 f
+  U73457/ZN (NR2XD0BWP)                    0.07     202.04 r
+  U73456/ZN (AOI31D1BWP)                   0.04     202.08 f
+  U73455/ZN (OAI31D1BWP)                   0.09     202.17 r
+  U66905/ZN (ND2D1BWP)                     0.22     202.39 f
+  U66902/ZN (INVD1BWP)                     0.13     202.52 r
+  U64394/ZN (OAI31D2BWP)                   0.11     202.63 f
+  U73452/ZN (OAI22D1BWP)                   0.10     202.73 r
+  U73451/ZN (AOI21D1BWP)                   0.04     202.77 f
+  U73450/ZN (OAI211D1BWP)                  0.04     202.81 r
+  sAddr_reg[2]/D (DFQD1BWP)                0.00     202.81 r
+  data arrival time                                 202.81
 
-  clock Clk1 (rise edge)                                400.00     400.00
-  clock network delay (ideal)                             0.00     400.00
-  genblk1.vector/vector_reg[5][7][7]/CP (DFQD1BWP)        0.00     400.00 r
-  library setup time                                     -0.04     399.96
-  data required time                                               399.96
-  --------------------------------------------------------------------------
-  data required time                                               399.96
-  data arrival time                                               -202.78
-  --------------------------------------------------------------------------
-  slack (MET)                                                      197.18
+  clock Clk1 (rise edge)                 400.00     400.00
+  clock network delay (ideal)              0.00     400.00
+  sAddr_reg[2]/CP (DFQD1BWP)               0.00     400.00 r
+  library setup time                      -0.04     399.96
+  data required time                                399.96
+  -----------------------------------------------------------
+  data required time                                399.96
+  data arrival time                                -202.81
+  -----------------------------------------------------------
+  slack (MET)                                       197.15
 
 
-  Startpoint: genblk1.vector/DataOut_s_reg[0]
+  Startpoint: genblk1.vector/DataOut_s_reg[1]
               (rising edge-triggered flip-flop clocked by Clk1)
-  Endpoint: genblk4.vdotmulu/out_reg[15]
+  Endpoint: genblk4.vdotmulu/out_reg[10]
             (rising edge-triggered flip-flop clocked by Clk2)
   Path Group: Clk2
   Path Type: max
@@ -169,401 +187,377 @@ Wire Load Model Mode: top
   --------------------------------------------------------------------------
   clock Clk1 (rise edge)                                  0.00       0.00
   clock network delay (ideal)                             0.00       0.00
-  genblk1.vector/DataOut_s_reg[0]/CP (EDFQD1BWP)          0.00 #     0.00 r
-  genblk1.vector/DataOut_s_reg[0]/Q (EDFQD1BWP)           0.24       0.24 r
-  U64179/ZN (CKND3BWP)                                    0.23       0.48 f
-  U68326/ZN (NR4D1BWP)                                    0.24       0.71 r
-  U74644/ZN (OAI32D1BWP)                                  0.11       0.83 f
-  genblk4.vdotmulu/multu/mult_41/S2_2_2/S (FA1D0BWP)      0.12       0.95 r
-  genblk4.vdotmulu/multu/mult_41/S2_3_1/CO (FA1D0BWP)     0.08       1.03 r
-  genblk4.vdotmulu/multu/mult_41/S2_4_1/CO (FA1D0BWP)     0.14       1.17 r
-  genblk4.vdotmulu/multu/mult_41/S2_5_1/CO (FA1D0BWP)     0.14       1.31 r
-  genblk4.vdotmulu/multu/mult_41/S2_6_1/CO (FA1D0BWP)     0.14       1.44 r
-  genblk4.vdotmulu/multu/mult_41/S2_7_1/CO (FA1D0BWP)     0.14       1.58 r
-  genblk4.vdotmulu/multu/mult_41/S2_8_1/CO (FA1D0BWP)     0.14       1.71 r
-  genblk4.vdotmulu/multu/mult_41/S2_9_1/CO (FA1D0BWP)     0.14       1.85 r
-  genblk4.vdotmulu/multu/mult_41/S4_1/S (FA1D0BWP)        0.19       2.04 f
-  U68314/Z (AN2XD1BWP)                                    0.08       2.12 f
-  intadd_0/U9/CO (FA1D0BWP)                               0.09       2.22 f
-  intadd_0/U8/CO (FA1D0BWP)                               0.09       2.31 f
+  genblk1.vector/DataOut_s_reg[1]/CP (EDFQD2BWP)          0.00 #     0.00 r
+  genblk1.vector/DataOut_s_reg[1]/Q (EDFQD2BWP)           0.24       0.24 r
+  U65158/ZN (CKND2BWP)                                    0.21       0.45 f
+  U67510/ZN (NR4D1BWP)                                    0.25       0.69 r
+  U74259/ZN (OAI32D1BWP)                                  0.11       0.81 f
+  genblk4.vdotmulu/multu/mult_41/S2_2_2/S (FA1D0BWP)      0.12       0.93 r
+  genblk4.vdotmulu/multu/mult_41/S2_3_1/CO (FA1D0BWP)     0.08       1.01 r
+  genblk4.vdotmulu/multu/mult_41/S2_4_1/CO (FA1D0BWP)     0.14       1.15 r
+  genblk4.vdotmulu/multu/mult_41/S2_5_1/CO (FA1D0BWP)     0.14       1.29 r
+  genblk4.vdotmulu/multu/mult_41/S2_6_1/CO (FA1D0BWP)     0.14       1.42 r
+  genblk4.vdotmulu/multu/mult_41/S2_7_1/CO (FA1D0BWP)     0.14       1.56 r
+  genblk4.vdotmulu/multu/mult_41/S2_8_1/CO (FA1D0BWP)     0.14       1.69 r
+  genblk4.vdotmulu/multu/mult_41/S2_9_1/CO (FA1D0BWP)     0.14       1.83 r
+  genblk4.vdotmulu/multu/mult_41/S4_1/S (FA1D0BWP)        0.19       2.02 f
+  U67498/ZN (ND2D1BWP)                                    0.08       2.10 r
+  U67497/ZN (INVD1BWP)                                    0.04       2.14 f
+  intadd_0/U9/CO (FA1D0BWP)                               0.09       2.23 f
+  intadd_0/U8/CO (FA1D0BWP)                               0.09       2.32 f
   intadd_0/U7/CO (FA1D0BWP)                               0.09       2.40 f
   intadd_0/U6/CO (FA1D0BWP)                               0.09       2.49 f
-  intadd_0/U5/CO (FA1D1BWP)                               0.07       2.56 f
-  intadd_0/U4/CO (FA1D0BWP)                               0.09       2.65 f
-  intadd_0/U3/CO (FA1D0BWP)                               0.09       2.74 f
-  intadd_0/U2/CO (FA1D0BWP)                               0.13       2.86 f
-  U74811/S (FA1D0BWP)                                     0.18       3.04 f
-  U65327/ZN (NR2XD0BWP)                                   0.20       3.24 r
-  U68300/ZN (ND2D1BWP)                                    0.18       3.42 f
-  U74783/ZN (NR3D0BWP)                                    0.12       3.54 r
-  U65076/ZN (MUX2ND1BWP)                                  0.17       3.71 r
-  U74612/ZN (ND4D1BWP)                                    0.22       3.93 f
-  U68299/Z (AN2XD1BWP)                                    0.14       4.07 f
-  U64593/ZN (CKND2BWP)                                    0.14       4.21 r
-  U74611/ZN (NR2XD0BWP)                                   0.12       4.34 f
-  U68296/ZN (ND2D1BWP)                                    0.09       4.43 r
-  U74784/CO (FA1D0BWP)                                    0.15       4.57 r
-  U74608/ZN (NR2XD0BWP)                                   0.14       4.71 f
-  U74607/ZN (AOI21D1BWP)                                  0.22       4.94 r
-  U74606/ZN (INR2D1BWP)                                   0.17       5.11 r
-  U64388/ZN (INR2D2BWP)                                   0.18       5.29 r
-  U74601/ZN (AOI21D1BWP)                                  0.13       5.42 f
-  U74596/ZN (IND4D1BWP)                                   0.18       5.60 f
-  U68281/ZN (ND2D1BWP)                                    0.07       5.67 r
-  U61513/Z (CKBD3BWP)                                     0.20       5.87 r
-  U62534/ZN (CKND3BWP)                                    0.23       6.09 f
-  U68280/Z (AN2XD1BWP)                                    0.11       6.21 f
-  U68279/ZN (INR2D2BWP)                                   0.09       6.30 f
-  U65325/ZN (IAO21D1BWP)                                  0.14       6.44 r
-  U68278/ZN (INVD1BWP)                                    0.11       6.55 f
-  U74786/ZN (NR3D0BWP)                                    0.18       6.72 r
-  U62324/Z (AO21D1BWP)                                    0.12       6.84 r
-  U64587/ZN (CKND0BWP)                                    0.17       7.01 f
-  U62526/ZN (CKND2BWP)                                    0.27       7.28 r
-  U74588/ZN (NR2XD0BWP)                                   0.20       7.48 f
-  U74586/ZN (INR2D1BWP)                                   0.13       7.62 f
-  U68270/ZN (ND2D1BWP)                                    0.08       7.70 r
-  U74583/ZN (INR2D1BWP)                                   0.04       7.74 f
-  U74582/ZN (OAI21D1BWP)                                  0.16       7.90 r
-  U74787/ZN (NR3D0BWP)                                    0.10       8.01 f
-  U65111/ZN (AOI31D2BWP)                                  0.17       8.17 r
-  U62323/ZN (ND2D2BWP)                                    0.22       8.39 f
-  U62510/ZN (CKND3BWP)                                    0.24       8.64 r
-  U68269/ZN (ND2D1BWP)                                    0.13       8.77 f
-  U74576/ZN (NR2XD0BWP)                                   0.20       8.96 r
-  U74574/ZN (IND2D1BWP)                                   0.13       9.10 f
-  U61522/ZN (XNR2D1BWP)                                   0.20       9.29 r
-  U74788/ZN (INR3D0BWP)                                   0.12       9.41 f
-  U65324/ZN (AOI21D1BWP)                                  0.21       9.62 r
-  U65237/ZN (ND2D2BWP)                                    0.25       9.86 f
-  U74564/ZN (NR2XD0BWP)                                   0.24      10.10 r
-  U68262/ZN (ND2D1BWP)                                    0.18      10.28 f
-  U62491/Z (CKXOR2D1BWP)                                  0.14      10.42 f
-  U74554/ZN (IND4D1BWP)                                   0.07      10.49 r
-  U65323/ZN (IND2D1BWP)                                   0.16      10.65 f
-  U68255/ZN (INVD1BWP)                                    0.12      10.77 r
-  U64805/ZN (ND2D2BWP)                                    0.19      10.96 f
-  U61515/ZN (CKND2BWP)                                    0.28      11.23 r
-  U68254/ZN (ND2D1BWP)                                    0.15      11.39 f
-  U65005/ZN (NR2XD1BWP)                                   0.17      11.56 r
-  U68253/ZN (ND2D1BWP)                                    0.11      11.67 f
-  U62481/Z (OR2D0BWP)                                     0.13      11.80 f
-  U68251/ZN (INR2D2BWP)                                   0.10      11.90 f
-  U74544/ZN (INR2D1BWP)                                   0.09      11.99 f
-  U74542/ZN (ND4D1BWP)                                    0.05      12.04 r
-  U68250/ZN (ND2D1BWP)                                    0.19      12.23 f
-  U74541/ZN (NR2XD0BWP)                                   0.09      12.32 r
-  U68249/Z (CKBD2BWP)                                     0.21      12.53 r
-  U68247/ZN (ND2D1BWP)                                    0.18      12.72 f
-  U74540/ZN (NR2XD0BWP)                                   0.22      12.93 r
-  U68245/ZN (ND2D1BWP)                                    0.14      13.07 f
-  U74539/ZN (AOI21D1BWP)                                  0.14      13.22 r
-  U61523/Z (XOR2D1BWP)                                    0.18      13.39 f
-  U74528/ZN (INR2D1BWP)                                   0.09      13.49 f
-  U74527/ZN (AOI31D1BWP)                                  0.07      13.56 r
-  U65305/ZN (IND2D1BWP)                                   0.20      13.75 f
-  U62464/ZN (CKND2BWP)                                    0.27      14.02 r
-  U74526/ZN (ND3D1BWP)                                    0.25      14.27 f
-  U74525/ZN (NR2XD0BWP)                                   0.25      14.52 r
-  U74513/ZN (OAI21D1BWP)                                  0.11      14.63 f
-  U65095/ZN (OAI31D4BWP)                                  0.09      14.72 r
-  U74792/ZN (INR4D0BWP)                                   0.14      14.86 f
-  U74511/ZN (NR2XD0BWP)                                   0.14      15.00 r
-  U68230/ZN (ND2D1BWP)                                    0.22      15.22 f
-  U68229/ZN (INVD1BWP)                                    0.21      15.43 r
-  U74510/ZN (IND3D1BWP)                                   0.16      15.59 f
-  U74509/ZN (INR2D1BWP)                                   0.20      15.79 r
-  U74508/ZN (INR2D1BWP)                                   0.11      15.90 r
-  U74507/ZN (NR2XD0BWP)                                   0.08      15.99 f
-  U62453/Z (CKXOR2D1BWP)                                  0.16      16.15 r
-  U74495/Z (OA31D1BWP)                                    0.11      16.26 r
-  U68219/ZN (ND2D1BWP)                                    0.12      16.37 f
-  U68218/ZN (INVD1BWP)                                    0.23      16.60 r
-  U74494/ZN (IND2D1BWP)                                   0.18      16.79 f
-  U74493/ZN (NR2XD0BWP)                                   0.21      17.00 r
-  U62449/Z (CKXOR2D1BWP)                                  0.18      17.17 r
-  U74490/ZN (IND4D1BWP)                                   0.23      17.41 f
-  U68213/ZN (ND3D2BWP)                                    0.20      17.61 r
-  U68212/ZN (INVD1BWP)                                    0.20      17.81 f
-  U64267/ZN (CKND2D0BWP)                                  0.18      17.99 r
-  U68211/ZN (NR2XD1BWP)                                   0.17      18.16 f
-  U65072/ZN (AOI21D2BWP)                                  0.19      18.35 r
-  U74474/ZN (ND4D1BWP)                                    0.18      18.53 f
-  U68197/ZN (ND2D1BWP)                                    0.15      18.68 r
-  U65101/ZN (NR2XD1BWP)                                   0.13      18.81 f
-  U68196/ZN (INVD1BWP)                                    0.10      18.91 r
-  U74473/ZN (NR2XD0BWP)                                   0.09      19.00 f
-  U68195/Z (AN2XD1BWP)                                    0.11      19.11 f
-  U68194/ZN (ND2D1BWP)                                    0.04      19.15 r
-  U68192/ZN (ND2D1BWP)                                    0.11      19.26 f
-  U61520/ZN (XNR2D1BWP)                                   0.17      19.43 f
-  U68191/ZN (ND2D1BWP)                                    0.09      19.52 r
-  U74469/ZN (NR2XD0BWP)                                   0.05      19.58 f
-  U74463/ZN (AOI31D1BWP)                                  0.12      19.70 r
-  U68186/ZN (ND2D1BWP)                                    0.16      19.86 f
-  U68185/ZN (INVD1BWP)                                    0.14      20.00 r
-  U68184/ZN (ND2D1BWP)                                    0.11      20.10 f
-  U61517/ZN (INR2D1BWP)                                   0.20      20.30 r
-  U68180/Z (AN2XD1BWP)                                    0.15      20.45 r
-  U62433/Z (CKXOR2D1BWP)                                  0.13      20.58 f
-  U74804/ZN (IINR4D0BWP)                                  0.09      20.68 f
-  U74458/ZN (NR2XD0BWP)                                   0.13      20.81 r
-  U68178/ZN (ND2D1BWP)                                    0.15      20.96 f
-  U74457/ZN (NR2XD0BWP)                                   0.20      21.16 r
-  U65322/ZN (INR2D1BWP)                                   0.23      21.40 r
-  U68175/ZN (ND2D1BWP)                                    0.18      21.57 f
-  U74456/ZN (NR2XD0BWP)                                   0.15      21.73 r
-  U74455/ZN (AOI211XD0BWP)                                0.12      21.85 f
-  U74454/ZN (IND3D1BWP)                                   0.11      21.96 f
-  U74447/ZN (OAI31D1BWP)                                  0.17      22.14 r
-  U64276/ZN (NR2XD1BWP)                                   0.16      22.30 f
-  U74446/ZN (INR2D1BWP)                                   0.10      22.40 f
-  U68169/ZN (ND2D1BWP)                                    0.11      22.51 r
-  U74445/ZN (IND2D1BWP)                                   0.10      22.61 r
-  U74439/ZN (IND2D1BWP)                                   0.09      22.71 r
-  U74438/ZN (OAI21D1BWP)                                  0.12      22.83 f
-  U74437/ZN (IND4D1BWP)                                   0.07      22.89 r
-  U74436/ZN (INR2D1BWP)                                   0.06      22.95 f
-  U74435/ZN (NR2XD0BWP)                                   0.11      23.06 r
-  U68163/ZN (ND2D1BWP)                                    0.11      23.17 f
-  U68162/ZN (INVD1BWP)                                    0.17      23.34 r
-  U68161/ZN (ND2D1BWP)                                    0.12      23.47 f
-  U65304/Z (OR2XD1BWP)                                    0.11      23.58 f
-  U65321/ZN (INR2D1BWP)                                   0.17      23.74 r
-  U68160/ZN (ND2D1BWP)                                    0.14      23.88 f
-  U74434/ZN (INR2D1BWP)                                   0.13      24.01 r
-  U74433/ZN (AOI21D1BWP)                                  0.08      24.09 f
-  U74432/ZN (ND3D1BWP)                                    0.09      24.18 r
-  U62420/Z (OA31D1BWP)                                    0.08      24.26 r
-  U64368/ZN (CKND0BWP)                                    0.10      24.36 f
-  U74427/ZN (NR2XD0BWP)                                   0.20      24.56 r
-  U68155/ZN (ND2D1BWP)                                    0.13      24.69 f
-  U74426/ZN (NR2XD0BWP)                                   0.19      24.88 r
-  U74421/ZN (AOI21D1BWP)                                  0.11      24.98 f
-  U68153/ZN (ND2D1BWP)                                    0.09      25.07 r
-  U74418/ZN (OAI21D1BWP)                                  0.09      25.16 f
-  U74417/ZN (NR2XD0BWP)                                   0.18      25.34 r
-  U68146/ZN (ND2D1BWP)                                    0.18      25.52 f
-  U68145/ZN (NR2XD1BWP)                                   0.20      25.72 r
-  U74415/ZN (OAI21D1BWP)                                  0.09      25.81 f
-  U65018/ZN (OAI31D2BWP)                                  0.08      25.90 r
-  U74414/ZN (NR2XD0BWP)                                   0.13      26.03 f
-  U74809/ZN (INR4D0BWP)                                   0.08      26.11 f
-  U74810/ZN (INR3D0BWP)                                   0.17      26.28 r
-  U68139/ZN (ND2D1BWP)                                    0.17      26.45 f
-  U74408/ZN (NR2XD0BWP)                                   0.21      26.65 r
-  U68138/ZN (ND2D1BWP)                                    0.18      26.83 f
-  U74405/ZN (NR2XD0BWP)                                   0.14      26.98 r
-  U74404/ZN (AOI21D1BWP)                                  0.06      27.03 f
-  U74403/ZN (OAI31D1BWP)                                  0.09      27.13 r
-  U17368/CO (HA1D0BWP)                                    0.13      27.25 r
-  U18314/CO (HA1D0BWP)                                    0.09      27.34 r
-  U18316/S (HA1D0BWP)                                     0.07      27.41 f
-  U74814/ZN (MUX2ND0BWP)                                  0.15      27.56 r
-  U68091/ZN (INVD1BWP)                                    0.11      27.67 f
-  U68089/ZN (AOI21D2BWP)                                  0.22      27.88 r
-  U61512/Z (AO32D1BWP)                                    0.30      28.19 r
-  U74270/ZN (NR2XD0BWP)                                   0.16      28.35 f
-  U68073/ZN (INVD1BWP)                                    0.10      28.45 r
-  U13056/S (FA1D0BWP)                                     0.22      28.67 f
-  U68069/ZN (INVD1BWP)                                    0.11      28.78 r
-  U74263/ZN (IND2D1BWP)                                   0.12      28.90 f
-  U74262/ZN (NR2XD0BWP)                                   0.14      29.04 r
-  U68068/ZN (INVD1BWP)                                    0.12      29.16 f
-  U62413/ZN (NR2XD3BWP)                                   0.20      29.36 r
-  U74219/ZN (NR2XD0BWP)                                   0.10      29.46 f
-  U74817/ZN (MUX2ND0BWP)                                  0.15      29.61 f
-  U74218/ZN (NR2XD0BWP)                                   0.08      29.69 r
-  U68014/Z (CKBD2BWP)                                     0.22      29.90 r
-  U74217/ZN (NR2XD0BWP)                                   0.16      30.06 f
-  U74207/ZN (NR2XD0BWP)                                   0.14      30.20 r
-  U68006/ZN (ND2D1BWP)                                    0.14      30.34 f
-  U68005/ZN (ND2D1BWP)                                    0.11      30.45 r
-  U74206/ZN (NR2XD0BWP)                                   0.09      30.54 f
-  U68004/ZN (ND2D1BWP)                                    0.12      30.66 r
-  U65069/Z (OA21D1BWP)                                    0.12      30.78 r
-  U62405/Z (OR2D0BWP)                                     0.11      30.89 r
-  U68002/Z (AN2XD1BWP)                                    0.10      31.00 r
-  U68001/ZN (ND2D1BWP)                                    0.08      31.08 f
-  U68000/ZN (INVD1BWP)                                    0.08      31.16 r
-  U67999/ZN (ND2D1BWP)                                    0.12      31.29 f
-  U65032/ZN (CKND2BWP)                                    0.17      31.46 r
-  U65030/ZN (NR2XD1BWP)                                   0.16      31.61 f
-  U74202/ZN (IND2D1BWP)                                   0.13      31.74 f
-  U74201/ZN (AOI21D1BWP)                                  0.15      31.89 r
-  U67998/ZN (ND2D1BWP)                                    0.16      32.04 f
-  U62404/Z (CKXOR2D1BWP)                                  0.17      32.21 r
-  U67993/Z (AN2XD1BWP)                                    0.19      32.40 r
-  U67992/ZN (ND2D1BWP)                                    0.12      32.52 f
-  U67989/ZN (INVD1BWP)                                    0.07      32.59 r
-  U64514/ZN (OAI211D4BWP)                                 0.14      32.73 f
-  U67988/ZN (INVD1BWP)                                    0.18      32.91 r
-  U74196/ZN (NR2XD0BWP)                                   0.13      33.04 f
-  U67987/ZN (ND2D1BWP)                                    0.09      33.13 r
-  U65109/ZN (NR2XD1BWP)                                   0.11      33.25 f
-  U67982/ZN (INVD1BWP)                                    0.10      33.34 r
-  U74193/ZN (AOI32D1BWP)                                  0.07      33.42 f
-  U64298/ZN (NR2XD1BWP)                                   0.13      33.55 r
-  U74191/ZN (NR2XD0BWP)                                   0.16      33.71 f
-  U74190/ZN (ND3D1BWP)                                    0.19      33.90 r
-  U67980/ZN (ND2D1BWP)                                    0.17      34.06 f
-  U74189/ZN (NR2XD0BWP)                                   0.20      34.26 r
-  U74186/ZN (INR2D1BWP)                                   0.23      34.49 r
-  U67978/ZN (INVD1BWP)                                    0.11      34.60 f
-  U74185/ZN (AOI32D1BWP)                                  0.21      34.80 r
-  U65029/Z (CKAN2D0BWP)                                   0.17      34.98 r
-  U67976/ZN (ND2D1BWP)                                    0.17      35.15 f
-  U67975/ZN (ND2D1BWP)                                    0.12      35.27 r
-  U74177/ZN (ND3D1BWP)                                    0.18      35.45 f
-  U64264/ZN (NR2XD1BWP)                                   0.19      35.64 r
-  U74173/ZN (IND2D1BWP)                                   0.11      35.76 r
-  U67973/ZN (INR3D1BWP)                                   0.22      35.98 r
-  U74169/ZN (INR2D1BWP)                                   0.17      36.15 r
-  U74168/ZN (NR2XD0BWP)                                   0.11      36.26 f
-  U67970/ZN (INVD1BWP)                                    0.08      36.35 r
-  U74165/ZN (AOI31D1BWP)                                  0.11      36.46 f
-  U67969/ZN (ND2D1BWP)                                    0.10      36.56 r
-  U74163/ZN (INR2D1BWP)                                   0.07      36.62 f
-  U74162/ZN (AOI21D1BWP)                                  0.12      36.75 r
-  U74152/ZN (INR2D1BWP)                                   0.10      36.85 r
-  U65090/ZN (MUX2ND1BWP)                                  0.15      37.01 r
-  U74150/ZN (ND3D1BWP)                                    0.14      37.15 f
-  U67955/ZN (ND2D1BWP)                                    0.14      37.29 r
-  U74148/ZN (NR2XD0BWP)                                   0.11      37.40 f
-  U67954/ZN (OAI21D2BWP)                                  0.20      37.60 r
-  U67951/ZN (ND2D1BWP)                                    0.09      37.69 f
-  U64362/ZN (OAI31D2BWP)                                  0.15      37.84 r
-  U67950/ZN (INVD1BWP)                                    0.10      37.93 f
-  U67949/ZN (ND2D1BWP)                                    0.08      38.02 r
-  U67948/ZN (INVD1BWP)                                    0.06      38.08 f
-  U74142/ZN (OAI31D1BWP)                                  0.17      38.25 r
-  U74141/ZN (NR2XD0BWP)                                   0.14      38.38 f
-  U74140/ZN (AOI21D1BWP)                                  0.14      38.52 r
-  U67945/ZN (ND2D1BWP)                                    0.15      38.67 f
-  U74821/ZN (MUX2ND0BWP)                                  0.11      38.79 f
-  U74138/ZN (AOI21D1BWP)                                  0.12      38.90 r
-  U74137/ZN (OAI211D1BWP)                                 0.14      39.04 f
-  U62391/Z (OR2D0BWP)                                     0.14      39.18 f
-  U74136/ZN (AOI21D1BWP)                                  0.13      39.31 r
-  U67941/ZN (INVD1BWP)                                    0.05      39.36 f
-  U74134/ZN (AOI31D1BWP)                                  0.12      39.48 r
-  U74133/Z (OA21D1BWP)                                    0.09      39.57 r
-  U74131/ZN (OAI31D1BWP)                                  0.04      39.61 f
-  U65047/ZN (AOI21D2BWP)                                  0.14      39.75 r
-  U74129/ZN (ND3D1BWP)                                    0.20      39.95 f
-  U74740/ZN (NR2XD0BWP)                                   0.23      40.19 r
-  U67871/ZN (INVD1BWP)                                    0.14      40.32 f
-  genblk4.vdotmulu/addu/sub_159/U2_1/CO (FA1D0BWP)        0.15      40.47 f
-  genblk4.vdotmulu/addu/sub_159/U2_2/CO (FA1D0BWP)        0.09      40.56 f
-  genblk4.vdotmulu/addu/sub_159/U2_3/CO (FA1D0BWP)        0.09      40.65 f
-  genblk4.vdotmulu/addu/sub_159/U2_4/CO (FA1D0BWP)        0.09      40.74 f
-  genblk4.vdotmulu/addu/sub_159/U2_5/CO (FA1D0BWP)        0.09      40.83 f
-  genblk4.vdotmulu/addu/sub_159/U2_6/CO (FA1D0BWP)        0.09      40.92 f
-  genblk4.vdotmulu/addu/sub_159/U2_7/CO (FA1D0BWP)        0.09      41.01 f
-  genblk4.vdotmulu/addu/sub_159/U2_8/CO (FA1D0BWP)        0.09      41.10 f
-  genblk4.vdotmulu/addu/sub_159/U2_9/CO (FA1D0BWP)        0.09      41.19 f
-  genblk4.vdotmulu/addu/sub_159/U2_10/CO (FA1D0BWP)       0.09      41.28 f
-  genblk4.vdotmulu/addu/sub_159/U2_11/CO (FA1D0BWP)       0.09      41.37 f
-  genblk4.vdotmulu/addu/sub_159/U2_12/CO (FA1D0BWP)       0.09      41.46 f
-  genblk4.vdotmulu/addu/sub_159/U2_13/S (FA1D0BWP)        0.09      41.55 f
-  U65166/ZN (AOI222D4BWP)                                 0.19      41.74 r
-  U67853/ZN (INVD1BWP)                                    0.08      41.82 f
-  U67852/Z (OR2XD1BWP)                                    0.11      41.92 f
-  U73992/ZN (NR2XD0BWP)                                   0.16      42.09 r
-  U67847/ZN (ND2D1BWP)                                    0.17      42.26 f
-  U73984/ZN (OAI22D1BWP)                                  0.18      42.44 r
-  U73983/ZN (NR2XD0BWP)                                   0.12      42.56 f
-  U73982/ZN (INR2D1BWP)                                   0.09      42.65 f
-  U67844/ZN (ND2D1BWP)                                    0.08      42.74 r
-  U66001/ZN (INR2D1BWP)                                   0.20      42.93 r
-  U73979/ZN (IND4D1BWP)                                   0.20      43.13 f
-  U67843/ZN (ND2D1BWP)                                    0.12      43.25 r
-  U62382/ZN (CKND3BWP)                                    0.15      43.40 f
-  U67842/ZN (ND2D1BWP)                                    0.15      43.54 r
-  U65092/ZN (AOI22D2BWP)                                  0.14      43.68 f
-  U73975/ZN (IND2D1BWP)                                   0.13      43.81 f
-  U73966/ZN (IND2D1BWP)                                   0.05      43.86 r
-  U67831/Z (CKBD2BWP)                                     0.20      44.06 r
-  U73961/Z (OA21D1BWP)                                    0.12      44.18 r
-  U62381/Z (MUX2D1BWP)                                    0.11      44.29 r
-  U67825/ZN (ND2D1BWP)                                    0.13      44.42 f
-  U73957/ZN (IND2D1BWP)                                   0.19      44.62 f
-  U73953/ZN (AOI21D1BWP)                                  0.11      44.73 r
-  U73952/ZN (AOI21D1BWP)                                  0.08      44.81 f
-  U73949/ZN (NR2XD0BWP)                                   0.14      44.95 r
-  U67823/ZN (INVD1BWP)                                    0.11      45.06 f
-  U65099/ZN (INR3D4BWP)                                   0.17      45.23 r
-  U73945/ZN (IND2D1BWP)                                   0.09      45.32 r
-  U73944/ZN (OAI21D1BWP)                                  0.04      45.36 f
-  U61303/Z (AO31D1BWP)                                    0.16      45.52 f
-  U73943/ZN (NR2XD0BWP)                                   0.19      45.71 r
-  U73942/ZN (INR2D1BWP)                                   0.22      45.94 r
-  U65995/ZN (INR2D1BWP)                                   0.22      46.16 r
-  U73939/ZN (AOI21D1BWP)                                  0.14      46.30 f
-  U67818/ZN (INVD1BWP)                                    0.09      46.39 r
-  U67817/ZN (ND2D1BWP)                                    0.08      46.47 f
-  U73934/ZN (IND2D1BWP)                                   0.15      46.62 f
-  U73926/ZN (OAI21D1BWP)                                  0.07      46.70 r
-  U73925/ZN (AOI21D1BWP)                                  0.08      46.77 f
-  U73924/ZN (NR2XD0BWP)                                   0.15      46.92 r
-  U73923/ZN (ND3D1BWP)                                    0.15      47.07 f
-  U62377/ZN (ND2D2BWP)                                    0.20      47.26 r
-  U74830/ZN (NR3D0BWP)                                    0.14      47.40 f
-  U67803/ZN (INVD1BWP)                                    0.12      47.52 r
-  U73916/ZN (NR2XD0BWP)                                   0.06      47.58 f
-  U65044/ZN (MUX2ND1BWP)                                  0.16      47.74 r
-  U61310/ZN (INR3D0BWP)                                   0.21      47.94 r
-  U67798/ZN (INVD1BWP)                                    0.10      48.05 f
-  U62376/ZN (ND2D2BWP)                                    0.20      48.25 r
-  U67797/ZN (INVD1BWP)                                    0.11      48.36 f
-  U67796/ZN (NR2XD1BWP)                                   0.21      48.57 r
-  U73904/ZN (AOI211XD0BWP)                                0.20      48.77 f
-  U73895/ZN (AOI21D1BWP)                                  0.17      48.94 r
-  U67789/ZN (INVD1BWP)                                    0.09      49.03 f
-  U64308/ZN (NR2XD1BWP)                                   0.14      49.17 r
-  U73879/ZN (NR2XD0BWP)                                   0.07      49.24 f
-  U73878/ZN (NR2XD0BWP)                                   0.18      49.42 r
-  U73864/ZN (NR2XD0BWP)                                   0.14      49.56 f
-  U67754/ZN (NR2XD1BWP)                                   0.24      49.80 r
-  U64280/ZN (CKND2D0BWP)                                  0.20      50.01 f
-  U67742/ZN (OAI31D2BWP)                                  0.21      50.22 r
-  genblk4.vdotmulu/addu/add_234/U1_1_1/CO (HA1D0BWP)      0.13      50.36 r
-  genblk4.vdotmulu/addu/add_234/U1_1_2/CO (HA1D0BWP)      0.09      50.45 r
-  genblk4.vdotmulu/addu/add_234/U1_1_3/CO (HA1D0BWP)      0.09      50.53 r
-  genblk4.vdotmulu/addu/add_234/U1_1_4/CO (HA1D0BWP)      0.09      50.62 r
-  genblk4.vdotmulu/addu/add_234/U1_1_5/CO (HA1D0BWP)      0.09      50.71 r
-  genblk4.vdotmulu/addu/add_234/U1_1_6/CO (HA1D0BWP)      0.09      50.80 r
-  genblk4.vdotmulu/addu/add_234/U1_1_7/CO (HA1D0BWP)      0.09      50.89 r
-  genblk4.vdotmulu/addu/add_234/U1_1_8/CO (HA1D0BWP)      0.09      50.98 r
-  genblk4.vdotmulu/addu/add_234/U1_1_9/CO (HA1D0BWP)      0.09      51.07 r
-  genblk4.vdotmulu/addu/add_234/U1_1_10/CO (HA1D0BWP)     0.08      51.14 r
-  U65991/ZN (ND2D1BWP)                                    0.17      51.32 f
-  U67737/ZN (ND2D1BWP)                                    0.17      51.49 r
-  U62106/ZN (MAOI22D0BWP)                                 0.22      51.71 r
-  U62371/Z (AN4D1BWP)                                     0.16      51.87 r
-  U73805/ZN (ND4D1BWP)                                    0.06      51.93 f
-  U73804/Z (OR4XD1BWP)                                    0.13      52.06 f
-  U74836/ZN (NR4D0BWP)                                    0.21      52.27 r
-  U62108/ZN (OAI211D0BWP)                                 0.13      52.40 f
-  U62109/ZN (MOAI22D0BWP)                                 0.11      52.51 f
-  genblk4.vdotmulu/out_reg[15]/D (DFKCNQD1BWP)            0.00      52.51 f
-  data arrival time                                                 52.51
+  intadd_0/U5/CO (FA1D0BWP)                               0.09       2.58 f
+  intadd_0/U4/CO (FA1D0BWP)                               0.09       2.67 f
+  intadd_0/U3/CO (FA1D0BWP)                               0.09       2.76 f
+  intadd_0/U2/CO (FA1D0BWP)                               0.13       2.89 f
+  U74395/S (FA1D0BWP)                                     0.27       3.16 r
+  U74229/ZN (INR2D1BWP)                                   0.08       3.23 f
+  U63767/Z (CKBD4BWP)                                     0.17       3.40 f
+  U74225/ZN (AOI22D1BWP)                                  0.24       3.64 r
+  U61846/Z (OR2D1BWP)                                     0.17       3.80 r
+  U74221/ZN (NR2XD0BWP)                                   0.10       3.91 f
+  U67477/ZN (ND2D1BWP)                                    0.11       4.02 r
+  U74220/ZN (NR2XD0BWP)                                   0.14       4.16 f
+  U64621/ZN (INR2D1BWP)                                   0.22       4.38 r
+  U67476/ZN (INVD1BWP)                                    0.06       4.44 f
+  U61838/Z (AO31D1BWP)                                    0.14       4.58 f
+  U74219/ZN (NR2XD0BWP)                                   0.17       4.75 r
+  U74214/ZN (ND4D1BWP)                                    0.18       4.93 f
+  U67473/ZN (ND2D1BWP)                                    0.07       5.00 r
+  U61328/Z (CKBD3BWP)                                     0.18       5.18 r
+  U74213/ZN (NR2XD0BWP)                                   0.14       5.32 f
+  U67469/ZN (ND2D1BWP)                                    0.13       5.45 r
+  U74207/ZN (NR2XD0BWP)                                   0.07       5.52 f
+  U64317/ZN (NR2XD1BWP)                                   0.14       5.66 r
+  U74206/ZN (ND3D1BWP)                                    0.15       5.81 f
+  U74205/ZN (NR2XD0BWP)                                   0.14       5.95 r
+  U67467/Z (OR2D2BWP)                                     0.26       6.21 r
+  U67466/ZN (CKND2BWP)                                    0.25       6.46 f
+  U67465/ZN (ND2D1BWP)                                    0.13       6.59 r
+  U64351/ZN (NR2XD1BWP)                                   0.12       6.72 f
+  U74204/ZN (AOI21D1BWP)                                  0.15       6.87 r
+  U67464/ZN (INVD1BWP)                                    0.11       6.98 f
+  U74200/ZN (NR2XD0BWP)                                   0.12       7.10 r
+  U74199/ZN (INR2D1BWP)                                   0.05       7.15 f
+  U61329/Z (CKBD3BWP)                                     0.17       7.32 f
+  U67460/ZN (ND2D1BWP)                                    0.12       7.44 r
+  U74198/ZN (NR2XD0BWP)                                   0.14       7.57 f
+  U74197/ZN (OAI21D1BWP)                                  0.10       7.67 r
+  U64316/ZN (OAI31D2BWP)                                  0.10       7.77 f
+  U74196/ZN (IND3D1BWP)                                   0.16       7.93 f
+  U65156/ZN (OAI31D2BWP)                                  0.20       8.12 r
+  U61813/Z (OR2XD1BWP)                                    0.08       8.21 r
+  U63628/ZN (CKND2BWP)                                    0.11       8.32 f
+  U64409/ZN (CKND3BWP)                                    0.21       8.53 r
+  U74190/ZN (NR2XD0BWP)                                   0.14       8.67 f
+  U67455/ZN (ND2D1BWP)                                    0.13       8.80 r
+  U74188/ZN (NR2XD0BWP)                                   0.15       8.95 f
+  U61326/ZN (MAOI222D1BWP)                                0.20       9.15 r
+  U61805/ZN (XNR2D1BWP)                                   0.16       9.31 f
+  U74183/ZN (OAI31D1BWP)                                  0.18       9.49 r
+  U67450/ZN (NR2XD1BWP)                                   0.21       9.70 f
+  U67449/ZN (ND2D1BWP)                                    0.12       9.82 r
+  U74182/ZN (NR2XD0BWP)                                   0.14       9.96 f
+  U67442/ZN (ND2D1BWP)                                    0.10      10.06 r
+  U67439/ZN (INVD1BWP)                                    0.07      10.13 f
+  U74170/ZN (OAI21D1BWP)                                  0.07      10.19 r
+  U67438/ZN (OAI31D2BWP)                                  0.12      10.32 f
+  U74169/ZN (ND3D1BWP)                                    0.11      10.43 r
+  U74403/ZN (NR3D0BWP)                                    0.10      10.53 f
+  U74168/ZN (NR2XD0BWP)                                   0.14      10.67 r
+  U67437/ZN (ND2D1BWP)                                    0.26      10.93 f
+  U74167/ZN (INR2D1BWP)                                   0.20      11.13 r
+  U64355/ZN (INR2D2BWP)                                   0.19      11.32 r
+  U74166/ZN (IAO21D1BWP)                                  0.10      11.42 f
+  U67434/ZN (INVD1BWP)                                    0.11      11.52 r
+  U74159/ZN (NR2XD0BWP)                                   0.10      11.63 f
+  U74157/ZN (ND4D1BWP)                                    0.09      11.72 r
+  U67432/ZN (ND2D1BWP)                                    0.10      11.81 f
+  U67431/ZN (NR2XD1BWP)                                   0.21      12.02 r
+  U67430/ZN (INVD1BWP)                                    0.20      12.22 f
+  U74156/ZN (NR2XD0BWP)                                   0.21      12.43 r
+  U67428/ZN (ND2D1BWP)                                    0.18      12.61 f
+  U64346/ZN (INR2D2BWP)                                   0.17      12.79 r
+  U74154/ZN (AOI21D1BWP)                                  0.10      12.88 f
+  U74153/ZN (IND4D1BWP)                                   0.06      12.94 r
+  U63533/Z (OA21D1BWP)                                    0.12      13.06 r
+  U67423/ZN (ND2D1BWP)                                    0.24      13.31 f
+  U67422/ZN (INVD1BWP)                                    0.26      13.57 r
+  U67421/ZN (ND2D1BWP)                                    0.13      13.70 f
+  U74148/ZN (NR2XD0BWP)                                   0.20      13.91 r
+  U67417/ZN (ND2D1BWP)                                    0.14      14.05 f
+  U64338/ZN (NR2XD1BWP)                                   0.15      14.20 r
+  U67415/ZN (AOI21D2BWP)                                  0.12      14.33 f
+  U74137/ZN (ND3D1BWP)                                    0.10      14.43 r
+  U74408/ZN (NR3D0BWP)                                    0.09      14.52 f
+  U74135/ZN (NR2XD0BWP)                                   0.19      14.71 r
+  U61765/Z (AN2D2BWP)                                     0.22      14.93 r
+  U64620/ZN (INR2D1BWP)                                   0.23      15.16 r
+  U74126/ZN (INR2D1BWP)                                   0.23      15.38 r
+  U74124/ZN (OAI21D1BWP)                                  0.08      15.46 f
+  U74123/ZN (OAI31D1BWP)                                  0.09      15.55 r
+  U74409/ZN (INR3D0BWP)                                   0.14      15.69 f
+  U74122/ZN (IND3D1BWP)                                   0.10      15.79 r
+  U67399/ZN (ND3D2BWP)                                    0.22      16.01 f
+  U67398/ZN (INVD1BWP)                                    0.28      16.29 r
+  U67397/ZN (ND2D1BWP)                                    0.19      16.48 f
+  U64335/Z (OR2XD1BWP)                                    0.13      16.61 f
+  U64334/ZN (NR2XD1BWP)                                   0.13      16.73 r
+  U74119/ZN (OAI21D1BWP)                                  0.08      16.81 f
+  U67395/ZN (OAI31D2BWP)                                  0.10      16.91 r
+  U74410/ZN (INR3D0BWP)                                   0.16      17.07 f
+  U67392/ZN (NR3D1BWP)                                    0.22      17.29 r
+  U67391/ZN (INVD1BWP)                                    0.22      17.51 f
+  U74419/ZN (NR3D0BWP)                                    0.22      17.73 r
+  U67383/ZN (ND2D1BWP)                                    0.13      17.86 f
+  U74109/ZN (NR2XD0BWP)                                   0.20      18.06 r
+  U74108/ZN (OAI32D1BWP)                                  0.14      18.20 f
+  U74420/ZN (INR4D0BWP)                                   0.12      18.32 r
+  U63566/Z (OR2XD1BWP)                                    0.09      18.41 r
+  U63565/ZN (NR2XD1BWP)                                   0.11      18.52 f
+  U67381/Z (AN2XD1BWP)                                    0.16      18.67 f
+  U67377/ZN (ND2D1BWP)                                    0.13      18.81 r
+  U74107/ZN (NR2XD0BWP)                                   0.15      18.95 f
+  U74106/ZN (AOI21D1BWP)                                  0.24      19.20 r
+  U67376/ZN (INVD1BWP)                                    0.11      19.30 f
+  U74105/ZN (NR2XD0BWP)                                   0.13      19.43 r
+  U74091/ZN (AOI21D1BWP)                                  0.11      19.54 f
+  U67371/ZN (ND2D1BWP)                                    0.15      19.69 r
+  U64343/ZN (NR2XD1BWP)                                   0.14      19.84 f
+  U64399/Z (CKAN2D0BWP)                                   0.14      19.98 f
+  U64398/ZN (OAI31D2BWP)                                  0.17      20.14 r
+  U74085/ZN (NR2XD0BWP)                                   0.13      20.28 f
+  U74084/ZN (IND3D1BWP)                                   0.10      20.38 r
+  U61327/ZN (ND3D3BWP)                                    0.19      20.57 f
+  U61729/Z (OR2D0BWP)                                     0.17      20.75 f
+  U74083/ZN (INR2D1BWP)                                   0.18      20.93 r
+  U74080/ZN (INR2D1BWP)                                   0.17      21.10 r
+  U67363/ZN (ND2D1BWP)                                    0.07      21.17 f
+  U67362/ZN (ND2D1BWP)                                    0.07      21.24 r
+  U64410/Z (XOR2D1BWP)                                    0.20      21.44 f
+  U74079/ZN (ND4D1BWP)                                    0.12      21.56 r
+  U64508/ZN (INR3D4BWP)                                   0.21      21.77 r
+  U67356/ZN (INVD1BWP)                                    0.10      21.87 f
+  U74421/ZN (NR3D0BWP)                                    0.18      22.05 r
+  U67353/Z (AN2XD1BWP)                                    0.12      22.18 r
+  U67352/ZN (ND2D1BWP)                                    0.09      22.27 f
+  U63632/ZN (OAI21D2BWP)                                  0.11      22.38 r
+  U74069/ZN (NR2XD0BWP)                                   0.12      22.50 f
+  U74064/ZN (AOI31D1BWP)                                  0.14      22.64 r
+  U67345/ZN (ND2D1BWP)                                    0.19      22.84 f
+  U63651/ZN (NR2XD1BWP)                                   0.19      23.02 r
+  U67341/ZN (ND2D1BWP)                                    0.12      23.15 f
+  U67340/ZN (INVD1BWP)                                    0.12      23.27 r
+  U74058/ZN (OAI21D1BWP)                                  0.07      23.34 f
+  U63633/ZN (OAI31D2BWP)                                  0.08      23.42 r
+  U74422/ZN (INR4D0BWP)                                   0.08      23.50 f
+  U74057/ZN (IND2D1BWP)                                   0.08      23.57 r
+  U67339/ZN (ND2D1BWP)                                    0.09      23.66 f
+  U74056/ZN (NR2XD0BWP)                                   0.13      23.79 r
+  U67337/ZN (INVD1BWP)                                    0.08      23.87 f
+  U74052/ZN (NR2XD0BWP)                                   0.11      23.99 r
+  U74051/ZN (INR2D1BWP)                                   0.16      24.14 r
+  U67336/ZN (ND2D1BWP)                                    0.15      24.29 f
+  U74050/ZN (OAI21D1BWP)                                  0.08      24.37 r
+  U74049/ZN (AOI31D1BWP)                                  0.07      24.44 f
+  U67335/ZN (INVD1BWP)                                    0.09      24.53 r
+  U74423/ZN (INR4D0BWP)                                   0.06      24.59 f
+  U74039/ZN (AOI21D1BWP)                                  0.12      24.70 r
+  U67331/ZN (ND2D1BWP)                                    0.12      24.82 f
+  U67330/ZN (INVD1BWP)                                    0.11      24.94 r
+  U67329/ZN (ND2D1BWP)                                    0.14      25.08 f
+  U61709/ZN (NR2XD1BWP)                                   0.17      25.25 r
+  U64376/ZN (INR2D2BWP)                                   0.18      25.43 r
+  U73924/ZN (OAI21D1BWP)                                  0.08      25.51 f
+  U64375/ZN (OAI31D2BWP)                                  0.09      25.60 r
+  U74424/ZN (INR4D0BWP)                                   0.09      25.69 f
+  U74425/ZN (NR3D0BWP)                                    0.16      25.85 r
+  U67275/ZN (ND2D1BWP)                                    0.17      26.01 f
+  U64619/ZN (INR2D1BWP)                                   0.21      26.23 r
+  U67274/ZN (ND2D1BWP)                                    0.18      26.41 f
+  U73919/ZN (OAI32D1BWP)                                  0.11      26.52 r
+  U61708/Z (AO21D1BWP)                                    0.10      26.62 r
+  U18432/S (HA1D0BWP)                                     0.09      26.71 r
+  U64430/ZN (MUX2ND1BWP)                                  0.12      26.84 f
+  U73910/Z (OR4XD1BWP)                                    0.15      26.98 f
+  U67260/ZN (OAI21D2BWP)                                  0.19      27.17 r
+  U67259/ZN (INVD1BWP)                                    0.14      27.31 f
+  U73908/ZN (AOI32D1BWP)                                  0.17      27.48 r
+  U67258/ZN (INVD1BWP)                                    0.12      27.61 f
+  U67257/ZN (ND2D1BWP)                                    0.12      27.73 r
+  U67249/ZN (ND2D1BWP)                                    0.18      27.91 f
+  U67248/ZN (INVD1BWP)                                    0.22      28.13 r
+  U67246/ZN (ND2D1BWP)                                    0.26      28.39 f
+  U67245/ZN (NR2XD1BWP)                                   0.24      28.63 r
+  U67243/ZN (ND2D1BWP)                                    0.23      28.85 f
+  U67242/ZN (NR2XD1BWP)                                   0.25      29.10 r
+  U64518/ZN (CKND2BWP)                                    0.21      29.31 f
+  U73900/ZN (AOI21D1BWP)                                  0.15      29.47 r
+  U73896/ZN (INR3D0BWP)                                   0.12      29.59 r
+  U67238/Z (CKBD2BWP)                                     0.21      29.80 r
+  U73895/ZN (NR2XD0BWP)                                   0.20      30.00 f
+  U67237/ZN (ND2D1BWP)                                    0.15      30.15 r
+  U67236/ZN (AOI211D2BWP)                                 0.10      30.25 f
+  U73892/ZN (OAI21D1BWP)                                  0.07      30.33 r
+  U73891/ZN (ND3D1BWP)                                    0.17      30.49 f
+  U67234/ZN (INR4D1BWP)                                   0.20      30.69 f
+  U73888/ZN (NR2XD0BWP)                                   0.20      30.90 r
+  U64340/ZN (INR2D2BWP)                                   0.19      31.09 r
+  U64339/ZN (CKND2D0BWP)                                  0.16      31.25 f
+  U73887/ZN (NR2XD0BWP)                                   0.08      31.33 r
+  U64303/ZN (NR2XD1BWP)                                   0.11      31.44 f
+  U67232/ZN (NR4D8BWP)                                    0.26      31.71 r
+  U73883/ZN (NR2XD0BWP)                                   0.08      31.78 f
+  U73882/ZN (NR2XD0BWP)                                   0.19      31.97 r
+  U73881/ZN (INR2D1BWP)                                   0.17      32.14 r
+  U67214/ZN (ND2D1BWP)                                    0.18      32.32 f
+  U73880/ZN (OAI21D1BWP)                                  0.13      32.45 r
+  U61696/ZN (XNR2D1BWP)                                   0.14      32.59 f
+  U67213/ZN (NR2XD1BWP)                                   0.19      32.78 r
+  U73879/ZN (INR2D1BWP)                                   0.23      33.01 r
+  U73876/ZN (NR2XD0BWP)                                   0.14      33.15 f
+  U73875/ZN (INR2D1BWP)                                   0.14      33.29 r
+  U67212/ZN (ND2D1BWP)                                    0.15      33.44 f
+  U73873/ZN (IND2D1BWP)                                   0.13      33.57 f
+  U73872/ZN (NR2XD0BWP)                                   0.13      33.70 r
+  U73871/ZN (AOI21D1BWP)                                  0.11      33.81 f
+  U67207/ZN (ND2D1BWP)                                    0.10      33.91 r
+  U73869/ZN (INR2D1BWP)                                   0.07      33.98 f
+  U64333/ZN (INR2D2BWP)                                   0.13      34.11 r
+  U67124/ZN (INVD1BWP)                                    0.09      34.20 f
+  U73761/ZN (NR2XD0BWP)                                   0.18      34.38 r
+  U64368/ZN (MUX2ND1BWP)                                  0.20      34.58 r
+  U67122/ZN (ND2D1BWP)                                    0.10      34.68 f
+  U63501/ZN (NR2D3BWP)                                    0.18      34.86 r
+  U67117/ZN (INVD1BWP)                                    0.10      34.97 f
+  U67116/ZN (NR2XD1BWP)                                   0.17      35.13 r
+  U73743/ZN (OAI222D1BWP)                                 0.24      35.37 f
+  U63500/Z (AO222D1BWP)                                   0.24      35.61 f
+  U73683/ZN (AOI22D1BWP)                                  0.07      35.68 r
+  U73682/ZN (OAI211D1BWP)                                 0.08      35.76 f
+  U73681/ZN (AOI32D1BWP)                                  0.21      35.97 r
+  U73680/ZN (AOI211XD0BWP)                                0.12      36.09 f
+  U73679/ZN (AOI211XD0BWP)                                0.10      36.19 r
+  U73678/ZN (OAI222D1BWP)                                 0.08      36.26 f
+  U73676/ZN (AOI22D1BWP)                                  0.07      36.34 r
+  U67071/ZN (ND2D1BWP)                                    0.04      36.38 f
+  U73673/ZN (AOI222D1BWP)                                 0.11      36.49 r
+  U73669/ZN (OAI22D1BWP)                                  0.06      36.55 f
+  U65152/ZN (MAOI222D1BWP)                                0.16      36.71 r
+  U65151/ZN (ND2D1BWP)                                    0.24      36.95 f
+  U73657/ZN (INVD1BWP)                                    0.13      37.08 r
+  U67065/ZN (ND2D1BWP)                                    0.17      37.25 f
+  U61683/ZN (CKND2BWP)                                    0.25      37.50 r
+  U67057/ZN (AOI222D4BWP)                                 0.20      37.70 f
+  U67055/ZN (INVD1BWP)                                    0.11      37.81 r
+  U73652/ZN (NR2XD0BWP)                                   0.07      37.88 f
+  U67054/Z (CKBD2BWP)                                     0.19      38.06 f
+  U67053/ZN (INVD1BWP)                                    0.16      38.22 r
+  U64474/ZN (NR2XD1BWP)                                   0.14      38.36 f
+  U73650/ZN (OAI32D1BWP)                                  0.16      38.52 r
+  U67052/Z (AN2XD1BWP)                                    0.13      38.65 r
+  U67051/ZN (ND2D1BWP)                                    0.09      38.74 f
+  U67050/ZN (ND2D2BWP)                                    0.21      38.95 r
+  U67577/ZN (INVD1BWP)                                    0.17      39.12 f
+  U73642/ZN (IND2D1BWP)                                   0.13      39.25 r
+  U73641/ZN (OAI21D1BWP)                                  0.11      39.36 f
+  U73640/ZN (NR2XD0BWP)                                   0.13      39.49 r
+  U67036/Z (AN2XD1BWP)                                    0.11      39.61 r
+  U63654/ZN (NR2XD1BWP)                                   0.11      39.72 f
+  U73633/ZN (OAI22D1BWP)                                  0.20      39.92 r
+  U73632/ZN (INR2D1BWP)                                   0.17      40.09 r
+  U73627/ZN (INR2D1BWP)                                   0.21      40.30 r
+  U61464/ZN (IOA21D0BWP)                                  0.26      40.56 f
+  U61409/ZN (OAI22D1BWP)                                  0.13      40.69 r
+  U61410/ZN (NR2XD0BWP)                                   0.14      40.84 f
+  U64392/ZN (NR3D1BWP)                                    0.19      41.02 r
+  U67018/Z (AN2XD1BWP)                                    0.13      41.15 r
+  U63531/ZN (NR2D3BWP)                                    0.08      41.24 f
+  U67017/ZN (INVD1BWP)                                    0.16      41.40 r
+  U73621/ZN (AOI22D1BWP)                                  0.17      41.57 f
+  U73620/ZN (NR2XD0BWP)                                   0.22      41.79 r
+  U67015/ZN (ND2D1BWP)                                    0.14      41.93 f
+  U64329/ZN (INR2D2BWP)                                   0.11      42.04 f
+  U64328/ZN (CKND2BWP)                                    0.14      42.18 r
+  U67007/ZN (NR2XD1BWP)                                   0.16      42.34 f
+  U73612/ZN (NR2XD0BWP)                                   0.09      42.43 r
+  U67006/ZN (ND2D1BWP)                                    0.09      42.52 f
+  U73611/ZN (NR2XD0BWP)                                   0.13      42.65 r
+  U61672/Z (OR2XD1BWP)                                    0.18      42.84 r
+  U67005/ZN (CKND2BWP)                                    0.20      43.03 f
+  U73604/ZN (OAI21D1BWP)                                  0.13      43.16 r
+  U64374/ZN (OAI31D4BWP)                                  0.11      43.27 f
+  U73603/ZN (NR2XD0BWP)                                   0.14      43.41 r
+  U73599/ZN (ND3D1BWP)                                    0.14      43.55 f
+  U61670/ZN (ND2D2BWP)                                    0.22      43.77 r
+  U66989/ZN (MUX2ND1BWP)                                  0.21      43.98 f
+  U74440/ZN (NR3D0BWP)                                    0.18      44.15 r
+  U66987/ZN (ND2D1BWP)                                    0.13      44.28 f
+  U66986/ZN (INR2D2BWP)                                   0.11      44.39 f
+  U63624/ZN (CKND2BWP)                                    0.15      44.54 r
+  U66983/ZN (NR2XD1BWP)                                   0.16      44.70 f
+  U66981/ZN (INVD1BWP)                                    0.10      44.81 r
+  U73586/ZN (OAI21D1BWP)                                  0.06      44.87 f
+  U74441/ZN (MUX2ND0BWP)                                  0.15      45.02 f
+  U73585/ZN (AOI211XD0BWP)                                0.21      45.23 r
+  U61469/ZN (INR3D0BWP)                                   0.25      45.48 r
+  U63516/ZN (NR2D3BWP)                                    0.14      45.62 f
+  U73578/ZN (AOI211XD0BWP)                                0.12      45.74 r
+  U64363/ZN (AOI21D2BWP)                                  0.09      45.84 f
+  U73577/ZN (INR2D1BWP)                                   0.20      46.04 r
+  U66972/ZN (ND2D1BWP)                                    0.13      46.16 f
+  U61665/Z (OR2D0BWP)                                     0.14      46.30 f
+  U73574/ZN (NR2XD0BWP)                                   0.19      46.49 r
+  U66967/ZN (INVD1BWP)                                    0.11      46.60 f
+  U73559/ZN (AOI21D1BWP)                                  0.18      46.78 r
+  U66965/ZN (ND2D1BWP)                                    0.30      47.08 f
+  U63484/ZN (CKND2BWP)                                    0.23      47.31 r
+  U73558/ZN (OAI22D1BWP)                                  0.18      47.48 f
+  U66963/ZN (ND2D1BWP)                                    0.17      47.66 r
+  U73549/ZN (NR2XD0BWP)                                   0.12      47.78 f
+  U64370/ZN (CKND2D0BWP)                                  0.19      47.97 r
+  U73548/ZN (NR2XD0BWP)                                   0.14      48.11 f
+  U73547/ZN (IAO21D1BWP)                                  0.14      48.25 r
+  U66960/ZN (INVD1BWP)                                    0.10      48.35 f
+  U74445/ZN (NR3D0BWP)                                    0.17      48.52 r
+  U73544/ZN (ND3D1BWP)                                    0.16      48.68 f
+  U73531/ZN (OAI21D1BWP)                                  0.15      48.83 r
+  U66947/ZN (ND2D1BWP)                                    0.23      49.06 f
+  U66946/ZN (INVD1BWP)                                    0.27      49.33 r
+  U63483/ZN (OAI221D1BWP)                                 0.14      49.47 f
+  U73509/ZN (OAI211D1BWP)                                 0.09      49.56 r
+  r6953/U1_1_2/CO (HA1D0BWP)                              0.11      49.67 r
+  r6953/U1_1_3/CO (HA1D0BWP)                              0.09      49.76 r
+  r6953/U1_1_4/CO (HA1D0BWP)                              0.09      49.85 r
+  r6953/U1_1_5/CO (HA1D0BWP)                              0.09      49.94 r
+  r6953/U1_1_6/CO (HA1D0BWP)                              0.09      50.03 r
+  r6953/U1_1_7/CO (HA1D0BWP)                              0.09      50.12 r
+  r6953/U1_1_8/CO (HA1D0BWP)                              0.09      50.21 r
+  r6953/U1_1_9/CO (HA1D0BWP)                              0.09      50.29 r
+  r6953/U1_1_10/CO (HA1D0BWP)                             0.07      50.37 r
+  U64598/ZN (INR2D1BWP)                                   0.18      50.55 r
+  U66929/ZN (INR2D2BWP)                                   0.22      50.78 r
+  U65144/ZN (CKND2BWP)                                    0.20      50.98 f
+  U61448/ZN (OAI211D0BWP)                                 0.12      51.10 r
+  genblk4.vdotmulu/out_reg[10]/D (DFQD1BWP)               0.00      51.10 r
+  data arrival time                                                 51.10
 
   clock Clk2 (rise edge)                                200.00     200.00
   clock network delay (ideal)                             0.00     200.00
-  genblk4.vdotmulu/out_reg[15]/CP (DFKCNQD1BWP)           0.00     200.00 r
-  library setup time                                     -0.04     199.96
-  data required time                                               199.96
+  genblk4.vdotmulu/out_reg[10]/CP (DFQD1BWP)              0.00     200.00 r
+  library setup time                                     -0.05     199.95
+  data required time                                               199.95
   --------------------------------------------------------------------------
-  data required time                                               199.96
-  data arrival time                                                -52.51
+  data required time                                               199.95
+  data arrival time                                                -51.10
   --------------------------------------------------------------------------
-  slack (MET)                                                      147.45
+  slack (MET)                                                      148.85
 
 
-  Startpoint: genblk1.vector/DataOut_s_reg[0]
+  Startpoint: genblk1.vector/DataOut_s_reg[1]
               (rising edge-triggered flip-flop clocked by Clk1)
-  Endpoint: genblk4.vdotmulu/out_reg[15]
+  Endpoint: genblk4.vdotmulu/out_reg[10]
             (rising edge-triggered flip-flop clocked by Clk2)
   Path Group: Clk2
   Path Type: max
@@ -577,401 +571,377 @@ Wire Load Model Mode: top
   --------------------------------------------------------------------------
   clock Clk1 (rise edge)                                  0.00       0.00
   clock network delay (ideal)                             0.00       0.00
-  genblk1.vector/DataOut_s_reg[0]/CP (EDFQD1BWP)          0.00 #     0.00 r
-  genblk1.vector/DataOut_s_reg[0]/Q (EDFQD1BWP)           0.24       0.24 r
-  U64179/ZN (CKND3BWP)                                    0.23       0.48 f
-  U68326/ZN (NR4D1BWP)                                    0.24       0.71 r
-  U74644/ZN (OAI32D1BWP)                                  0.11       0.83 f
-  genblk4.vdotmulu/multu/mult_41/S2_2_2/S (FA1D0BWP)      0.12       0.95 r
-  genblk4.vdotmulu/multu/mult_41/S2_3_1/CO (FA1D0BWP)     0.08       1.03 r
-  genblk4.vdotmulu/multu/mult_41/S2_4_1/CO (FA1D0BWP)     0.14       1.17 r
-  genblk4.vdotmulu/multu/mult_41/S2_5_1/CO (FA1D0BWP)     0.14       1.31 r
-  genblk4.vdotmulu/multu/mult_41/S2_6_1/CO (FA1D0BWP)     0.14       1.44 r
-  genblk4.vdotmulu/multu/mult_41/S2_7_1/CO (FA1D0BWP)     0.14       1.58 r
-  genblk4.vdotmulu/multu/mult_41/S2_8_1/CO (FA1D0BWP)     0.14       1.71 r
-  genblk4.vdotmulu/multu/mult_41/S2_9_1/CO (FA1D0BWP)     0.14       1.85 r
-  genblk4.vdotmulu/multu/mult_41/S4_1/S (FA1D0BWP)        0.19       2.04 f
-  U68314/Z (AN2XD1BWP)                                    0.08       2.12 f
-  intadd_0/U9/CO (FA1D0BWP)                               0.09       2.22 f
-  intadd_0/U8/CO (FA1D0BWP)                               0.09       2.31 f
+  genblk1.vector/DataOut_s_reg[1]/CP (EDFQD2BWP)          0.00 #     0.00 r
+  genblk1.vector/DataOut_s_reg[1]/Q (EDFQD2BWP)           0.24       0.24 r
+  U65158/ZN (CKND2BWP)                                    0.21       0.45 f
+  U67510/ZN (NR4D1BWP)                                    0.25       0.69 r
+  U74259/ZN (OAI32D1BWP)                                  0.11       0.81 f
+  genblk4.vdotmulu/multu/mult_41/S2_2_2/S (FA1D0BWP)      0.12       0.93 r
+  genblk4.vdotmulu/multu/mult_41/S2_3_1/CO (FA1D0BWP)     0.08       1.01 r
+  genblk4.vdotmulu/multu/mult_41/S2_4_1/CO (FA1D0BWP)     0.14       1.15 r
+  genblk4.vdotmulu/multu/mult_41/S2_5_1/CO (FA1D0BWP)     0.14       1.29 r
+  genblk4.vdotmulu/multu/mult_41/S2_6_1/CO (FA1D0BWP)     0.14       1.42 r
+  genblk4.vdotmulu/multu/mult_41/S2_7_1/CO (FA1D0BWP)     0.14       1.56 r
+  genblk4.vdotmulu/multu/mult_41/S2_8_1/CO (FA1D0BWP)     0.14       1.69 r
+  genblk4.vdotmulu/multu/mult_41/S2_9_1/CO (FA1D0BWP)     0.14       1.83 r
+  genblk4.vdotmulu/multu/mult_41/S4_1/S (FA1D0BWP)        0.19       2.02 f
+  U67498/ZN (ND2D1BWP)                                    0.08       2.10 r
+  U67497/ZN (INVD1BWP)                                    0.04       2.14 f
+  intadd_0/U9/CO (FA1D0BWP)                               0.09       2.23 f
+  intadd_0/U8/CO (FA1D0BWP)                               0.09       2.32 f
   intadd_0/U7/CO (FA1D0BWP)                               0.09       2.40 f
   intadd_0/U6/CO (FA1D0BWP)                               0.09       2.49 f
-  intadd_0/U5/CO (FA1D1BWP)                               0.07       2.56 f
-  intadd_0/U4/CO (FA1D0BWP)                               0.09       2.65 f
-  intadd_0/U3/CO (FA1D0BWP)                               0.09       2.74 f
-  intadd_0/U2/CO (FA1D0BWP)                               0.13       2.86 f
-  U74811/S (FA1D0BWP)                                     0.18       3.04 f
-  U65327/ZN (NR2XD0BWP)                                   0.20       3.24 r
-  U68300/ZN (ND2D1BWP)                                    0.18       3.42 f
-  U74783/ZN (NR3D0BWP)                                    0.12       3.54 r
-  U65076/ZN (MUX2ND1BWP)                                  0.17       3.71 r
-  U74612/ZN (ND4D1BWP)                                    0.22       3.93 f
-  U68299/Z (AN2XD1BWP)                                    0.14       4.07 f
-  U64593/ZN (CKND2BWP)                                    0.14       4.21 r
-  U74611/ZN (NR2XD0BWP)                                   0.12       4.34 f
-  U68296/ZN (ND2D1BWP)                                    0.09       4.43 r
-  U74784/CO (FA1D0BWP)                                    0.15       4.57 r
-  U74608/ZN (NR2XD0BWP)                                   0.14       4.71 f
-  U74607/ZN (AOI21D1BWP)                                  0.22       4.94 r
-  U74606/ZN (INR2D1BWP)                                   0.17       5.11 r
-  U64388/ZN (INR2D2BWP)                                   0.18       5.29 r
-  U74601/ZN (AOI21D1BWP)                                  0.13       5.42 f
-  U74596/ZN (IND4D1BWP)                                   0.18       5.60 f
-  U68281/ZN (ND2D1BWP)                                    0.07       5.67 r
-  U61513/Z (CKBD3BWP)                                     0.20       5.87 r
-  U62534/ZN (CKND3BWP)                                    0.23       6.09 f
-  U68280/Z (AN2XD1BWP)                                    0.11       6.21 f
-  U68279/ZN (INR2D2BWP)                                   0.09       6.30 f
-  U65325/ZN (IAO21D1BWP)                                  0.14       6.44 r
-  U68278/ZN (INVD1BWP)                                    0.11       6.55 f
-  U74786/ZN (NR3D0BWP)                                    0.18       6.72 r
-  U62324/Z (AO21D1BWP)                                    0.12       6.84 r
-  U64587/ZN (CKND0BWP)                                    0.17       7.01 f
-  U62526/ZN (CKND2BWP)                                    0.27       7.28 r
-  U74588/ZN (NR2XD0BWP)                                   0.20       7.48 f
-  U74586/ZN (INR2D1BWP)                                   0.13       7.62 f
-  U68270/ZN (ND2D1BWP)                                    0.08       7.70 r
-  U74583/ZN (INR2D1BWP)                                   0.04       7.74 f
-  U74582/ZN (OAI21D1BWP)                                  0.16       7.90 r
-  U74787/ZN (NR3D0BWP)                                    0.10       8.01 f
-  U65111/ZN (AOI31D2BWP)                                  0.17       8.17 r
-  U62323/ZN (ND2D2BWP)                                    0.22       8.39 f
-  U62510/ZN (CKND3BWP)                                    0.24       8.64 r
-  U68269/ZN (ND2D1BWP)                                    0.13       8.77 f
-  U74576/ZN (NR2XD0BWP)                                   0.20       8.96 r
-  U74574/ZN (IND2D1BWP)                                   0.13       9.10 f
-  U61522/ZN (XNR2D1BWP)                                   0.20       9.29 r
-  U74788/ZN (INR3D0BWP)                                   0.12       9.41 f
-  U65324/ZN (AOI21D1BWP)                                  0.21       9.62 r
-  U65237/ZN (ND2D2BWP)                                    0.25       9.86 f
-  U74564/ZN (NR2XD0BWP)                                   0.24      10.10 r
-  U68262/ZN (ND2D1BWP)                                    0.18      10.28 f
-  U62491/Z (CKXOR2D1BWP)                                  0.14      10.42 f
-  U74554/ZN (IND4D1BWP)                                   0.07      10.49 r
-  U65323/ZN (IND2D1BWP)                                   0.16      10.65 f
-  U68255/ZN (INVD1BWP)                                    0.12      10.77 r
-  U64805/ZN (ND2D2BWP)                                    0.19      10.96 f
-  U61515/ZN (CKND2BWP)                                    0.28      11.23 r
-  U68254/ZN (ND2D1BWP)                                    0.15      11.39 f
-  U65005/ZN (NR2XD1BWP)                                   0.17      11.56 r
-  U68253/ZN (ND2D1BWP)                                    0.11      11.67 f
-  U62481/Z (OR2D0BWP)                                     0.13      11.80 f
-  U68251/ZN (INR2D2BWP)                                   0.10      11.90 f
-  U74544/ZN (INR2D1BWP)                                   0.09      11.99 f
-  U74542/ZN (ND4D1BWP)                                    0.05      12.04 r
-  U68250/ZN (ND2D1BWP)                                    0.19      12.23 f
-  U74541/ZN (NR2XD0BWP)                                   0.09      12.32 r
-  U68249/Z (CKBD2BWP)                                     0.21      12.53 r
-  U68247/ZN (ND2D1BWP)                                    0.18      12.72 f
-  U74540/ZN (NR2XD0BWP)                                   0.22      12.93 r
-  U68245/ZN (ND2D1BWP)                                    0.14      13.07 f
-  U74539/ZN (AOI21D1BWP)                                  0.14      13.22 r
-  U61523/Z (XOR2D1BWP)                                    0.18      13.39 f
-  U74528/ZN (INR2D1BWP)                                   0.09      13.49 f
-  U74527/ZN (AOI31D1BWP)                                  0.07      13.56 r
-  U65305/ZN (IND2D1BWP)                                   0.20      13.75 f
-  U62464/ZN (CKND2BWP)                                    0.27      14.02 r
-  U74526/ZN (ND3D1BWP)                                    0.25      14.27 f
-  U74525/ZN (NR2XD0BWP)                                   0.25      14.52 r
-  U74513/ZN (OAI21D1BWP)                                  0.11      14.63 f
-  U65095/ZN (OAI31D4BWP)                                  0.09      14.72 r
-  U74792/ZN (INR4D0BWP)                                   0.14      14.86 f
-  U74511/ZN (NR2XD0BWP)                                   0.14      15.00 r
-  U68230/ZN (ND2D1BWP)                                    0.22      15.22 f
-  U68229/ZN (INVD1BWP)                                    0.21      15.43 r
-  U74510/ZN (IND3D1BWP)                                   0.16      15.59 f
-  U74509/ZN (INR2D1BWP)                                   0.20      15.79 r
-  U74508/ZN (INR2D1BWP)                                   0.11      15.90 r
-  U74507/ZN (NR2XD0BWP)                                   0.08      15.99 f
-  U62453/Z (CKXOR2D1BWP)                                  0.16      16.15 r
-  U74495/Z (OA31D1BWP)                                    0.11      16.26 r
-  U68219/ZN (ND2D1BWP)                                    0.12      16.37 f
-  U68218/ZN (INVD1BWP)                                    0.23      16.60 r
-  U74494/ZN (IND2D1BWP)                                   0.18      16.79 f
-  U74493/ZN (NR2XD0BWP)                                   0.21      17.00 r
-  U62449/Z (CKXOR2D1BWP)                                  0.18      17.17 r
-  U74490/ZN (IND4D1BWP)                                   0.23      17.41 f
-  U68213/ZN (ND3D2BWP)                                    0.20      17.61 r
-  U68212/ZN (INVD1BWP)                                    0.20      17.81 f
-  U64267/ZN (CKND2D0BWP)                                  0.18      17.99 r
-  U68211/ZN (NR2XD1BWP)                                   0.17      18.16 f
-  U65072/ZN (AOI21D2BWP)                                  0.19      18.35 r
-  U74474/ZN (ND4D1BWP)                                    0.18      18.53 f
-  U68197/ZN (ND2D1BWP)                                    0.15      18.68 r
-  U65101/ZN (NR2XD1BWP)                                   0.13      18.81 f
-  U68196/ZN (INVD1BWP)                                    0.10      18.91 r
-  U74473/ZN (NR2XD0BWP)                                   0.09      19.00 f
-  U68195/Z (AN2XD1BWP)                                    0.11      19.11 f
-  U68194/ZN (ND2D1BWP)                                    0.04      19.15 r
-  U68192/ZN (ND2D1BWP)                                    0.11      19.26 f
-  U61520/ZN (XNR2D1BWP)                                   0.17      19.43 f
-  U68191/ZN (ND2D1BWP)                                    0.09      19.52 r
-  U74469/ZN (NR2XD0BWP)                                   0.05      19.58 f
-  U74463/ZN (AOI31D1BWP)                                  0.12      19.70 r
-  U68186/ZN (ND2D1BWP)                                    0.16      19.86 f
-  U68185/ZN (INVD1BWP)                                    0.14      20.00 r
-  U68184/ZN (ND2D1BWP)                                    0.11      20.10 f
-  U61517/ZN (INR2D1BWP)                                   0.20      20.30 r
-  U68180/Z (AN2XD1BWP)                                    0.15      20.45 r
-  U62433/Z (CKXOR2D1BWP)                                  0.13      20.58 f
-  U74804/ZN (IINR4D0BWP)                                  0.09      20.68 f
-  U74458/ZN (NR2XD0BWP)                                   0.13      20.81 r
-  U68178/ZN (ND2D1BWP)                                    0.15      20.96 f
-  U74457/ZN (NR2XD0BWP)                                   0.20      21.16 r
-  U65322/ZN (INR2D1BWP)                                   0.23      21.40 r
-  U68175/ZN (ND2D1BWP)                                    0.18      21.57 f
-  U74456/ZN (NR2XD0BWP)                                   0.15      21.73 r
-  U74455/ZN (AOI211XD0BWP)                                0.12      21.85 f
-  U74454/ZN (IND3D1BWP)                                   0.11      21.96 f
-  U74447/ZN (OAI31D1BWP)                                  0.17      22.14 r
-  U64276/ZN (NR2XD1BWP)                                   0.16      22.30 f
-  U74446/ZN (INR2D1BWP)                                   0.10      22.40 f
-  U68169/ZN (ND2D1BWP)                                    0.11      22.51 r
-  U74445/ZN (IND2D1BWP)                                   0.10      22.61 r
-  U74439/ZN (IND2D1BWP)                                   0.09      22.71 r
-  U74438/ZN (OAI21D1BWP)                                  0.12      22.83 f
-  U74437/ZN (IND4D1BWP)                                   0.07      22.89 r
-  U74436/ZN (INR2D1BWP)                                   0.06      22.95 f
-  U74435/ZN (NR2XD0BWP)                                   0.11      23.06 r
-  U68163/ZN (ND2D1BWP)                                    0.11      23.17 f
-  U68162/ZN (INVD1BWP)                                    0.17      23.34 r
-  U68161/ZN (ND2D1BWP)                                    0.12      23.47 f
-  U65304/Z (OR2XD1BWP)                                    0.11      23.58 f
-  U65321/ZN (INR2D1BWP)                                   0.17      23.74 r
-  U68160/ZN (ND2D1BWP)                                    0.14      23.88 f
-  U74434/ZN (INR2D1BWP)                                   0.13      24.01 r
-  U74433/ZN (AOI21D1BWP)                                  0.08      24.09 f
-  U74432/ZN (ND3D1BWP)                                    0.09      24.18 r
-  U62420/Z (OA31D1BWP)                                    0.08      24.26 r
-  U64368/ZN (CKND0BWP)                                    0.10      24.36 f
-  U74427/ZN (NR2XD0BWP)                                   0.20      24.56 r
-  U68155/ZN (ND2D1BWP)                                    0.13      24.69 f
-  U74426/ZN (NR2XD0BWP)                                   0.19      24.88 r
-  U74421/ZN (AOI21D1BWP)                                  0.11      24.98 f
-  U68153/ZN (ND2D1BWP)                                    0.09      25.07 r
-  U74418/ZN (OAI21D1BWP)                                  0.09      25.16 f
-  U74417/ZN (NR2XD0BWP)                                   0.18      25.34 r
-  U68146/ZN (ND2D1BWP)                                    0.18      25.52 f
-  U68145/ZN (NR2XD1BWP)                                   0.20      25.72 r
-  U74415/ZN (OAI21D1BWP)                                  0.09      25.81 f
-  U65018/ZN (OAI31D2BWP)                                  0.08      25.90 r
-  U74414/ZN (NR2XD0BWP)                                   0.13      26.03 f
-  U74809/ZN (INR4D0BWP)                                   0.08      26.11 f
-  U74810/ZN (INR3D0BWP)                                   0.17      26.28 r
-  U68139/ZN (ND2D1BWP)                                    0.17      26.45 f
-  U74408/ZN (NR2XD0BWP)                                   0.21      26.65 r
-  U68138/ZN (ND2D1BWP)                                    0.18      26.83 f
-  U74405/ZN (NR2XD0BWP)                                   0.14      26.98 r
-  U74404/ZN (AOI21D1BWP)                                  0.06      27.03 f
-  U74403/ZN (OAI31D1BWP)                                  0.09      27.13 r
-  U17368/CO (HA1D0BWP)                                    0.13      27.25 r
-  U18314/CO (HA1D0BWP)                                    0.09      27.34 r
-  U18316/S (HA1D0BWP)                                     0.07      27.41 f
-  U74814/ZN (MUX2ND0BWP)                                  0.15      27.56 r
-  U68091/ZN (INVD1BWP)                                    0.11      27.67 f
-  U68089/ZN (AOI21D2BWP)                                  0.22      27.88 r
-  U61512/Z (AO32D1BWP)                                    0.30      28.19 r
-  U74270/ZN (NR2XD0BWP)                                   0.16      28.35 f
-  U68073/ZN (INVD1BWP)                                    0.10      28.45 r
-  U13056/S (FA1D0BWP)                                     0.22      28.67 f
-  U68069/ZN (INVD1BWP)                                    0.11      28.78 r
-  U74263/ZN (IND2D1BWP)                                   0.12      28.90 f
-  U74262/ZN (NR2XD0BWP)                                   0.14      29.04 r
-  U68068/ZN (INVD1BWP)                                    0.12      29.16 f
-  U62413/ZN (NR2XD3BWP)                                   0.20      29.36 r
-  U74219/ZN (NR2XD0BWP)                                   0.10      29.46 f
-  U74817/ZN (MUX2ND0BWP)                                  0.15      29.61 f
-  U74218/ZN (NR2XD0BWP)                                   0.08      29.69 r
-  U68014/Z (CKBD2BWP)                                     0.22      29.90 r
-  U74217/ZN (NR2XD0BWP)                                   0.16      30.06 f
-  U74207/ZN (NR2XD0BWP)                                   0.14      30.20 r
-  U68006/ZN (ND2D1BWP)                                    0.14      30.34 f
-  U68005/ZN (ND2D1BWP)                                    0.11      30.45 r
-  U74206/ZN (NR2XD0BWP)                                   0.09      30.54 f
-  U68004/ZN (ND2D1BWP)                                    0.12      30.66 r
-  U65069/Z (OA21D1BWP)                                    0.12      30.78 r
-  U62405/Z (OR2D0BWP)                                     0.11      30.89 r
-  U68002/Z (AN2XD1BWP)                                    0.10      31.00 r
-  U68001/ZN (ND2D1BWP)                                    0.08      31.08 f
-  U68000/ZN (INVD1BWP)                                    0.08      31.16 r
-  U67999/ZN (ND2D1BWP)                                    0.12      31.29 f
-  U65032/ZN (CKND2BWP)                                    0.17      31.46 r
-  U65030/ZN (NR2XD1BWP)                                   0.16      31.61 f
-  U74202/ZN (IND2D1BWP)                                   0.13      31.74 f
-  U74201/ZN (AOI21D1BWP)                                  0.15      31.89 r
-  U67998/ZN (ND2D1BWP)                                    0.16      32.04 f
-  U62404/Z (CKXOR2D1BWP)                                  0.17      32.21 r
-  U67993/Z (AN2XD1BWP)                                    0.19      32.40 r
-  U67992/ZN (ND2D1BWP)                                    0.12      32.52 f
-  U67989/ZN (INVD1BWP)                                    0.07      32.59 r
-  U64514/ZN (OAI211D4BWP)                                 0.14      32.73 f
-  U67988/ZN (INVD1BWP)                                    0.18      32.91 r
-  U74196/ZN (NR2XD0BWP)                                   0.13      33.04 f
-  U67987/ZN (ND2D1BWP)                                    0.09      33.13 r
-  U65109/ZN (NR2XD1BWP)                                   0.11      33.25 f
-  U67982/ZN (INVD1BWP)                                    0.10      33.34 r
-  U74193/ZN (AOI32D1BWP)                                  0.07      33.42 f
-  U64298/ZN (NR2XD1BWP)                                   0.13      33.55 r
-  U74191/ZN (NR2XD0BWP)                                   0.16      33.71 f
-  U74190/ZN (ND3D1BWP)                                    0.19      33.90 r
-  U67980/ZN (ND2D1BWP)                                    0.17      34.06 f
-  U74189/ZN (NR2XD0BWP)                                   0.20      34.26 r
-  U74186/ZN (INR2D1BWP)                                   0.23      34.49 r
-  U67978/ZN (INVD1BWP)                                    0.11      34.60 f
-  U74185/ZN (AOI32D1BWP)                                  0.21      34.80 r
-  U65029/Z (CKAN2D0BWP)                                   0.17      34.98 r
-  U67976/ZN (ND2D1BWP)                                    0.17      35.15 f
-  U67975/ZN (ND2D1BWP)                                    0.12      35.27 r
-  U74177/ZN (ND3D1BWP)                                    0.18      35.45 f
-  U64264/ZN (NR2XD1BWP)                                   0.19      35.64 r
-  U74173/ZN (IND2D1BWP)                                   0.11      35.76 r
-  U67973/ZN (INR3D1BWP)                                   0.22      35.98 r
-  U74169/ZN (INR2D1BWP)                                   0.17      36.15 r
-  U74168/ZN (NR2XD0BWP)                                   0.11      36.26 f
-  U67970/ZN (INVD1BWP)                                    0.08      36.35 r
-  U74165/ZN (AOI31D1BWP)                                  0.11      36.46 f
-  U67969/ZN (ND2D1BWP)                                    0.10      36.55 r
-  U74163/ZN (INR2D1BWP)                                   0.07      36.62 f
-  U74162/ZN (AOI21D1BWP)                                  0.12      36.75 r
-  U74152/ZN (INR2D1BWP)                                   0.10      36.85 r
-  U65090/ZN (MUX2ND1BWP)                                  0.15      37.01 r
-  U74150/ZN (ND3D1BWP)                                    0.14      37.15 f
-  U67955/ZN (ND2D1BWP)                                    0.14      37.29 r
-  U74148/ZN (NR2XD0BWP)                                   0.11      37.40 f
-  U67954/ZN (OAI21D2BWP)                                  0.20      37.60 r
-  U67951/ZN (ND2D1BWP)                                    0.09      37.69 f
-  U64362/ZN (OAI31D2BWP)                                  0.15      37.84 r
-  U67950/ZN (INVD1BWP)                                    0.10      37.93 f
-  U67949/ZN (ND2D1BWP)                                    0.08      38.02 r
-  U67948/ZN (INVD1BWP)                                    0.06      38.08 f
-  U74142/ZN (OAI31D1BWP)                                  0.17      38.25 r
-  U74141/ZN (NR2XD0BWP)                                   0.14      38.38 f
-  U74140/ZN (AOI21D1BWP)                                  0.14      38.52 r
-  U67945/ZN (ND2D1BWP)                                    0.15      38.67 f
-  U74821/ZN (MUX2ND0BWP)                                  0.11      38.79 f
-  U74138/ZN (AOI21D1BWP)                                  0.12      38.90 r
-  U74137/ZN (OAI211D1BWP)                                 0.14      39.04 f
-  U62391/Z (OR2D0BWP)                                     0.14      39.18 f
-  U74136/ZN (AOI21D1BWP)                                  0.13      39.31 r
-  U67941/ZN (INVD1BWP)                                    0.05      39.36 f
-  U74134/ZN (AOI31D1BWP)                                  0.12      39.48 r
-  U74133/Z (OA21D1BWP)                                    0.09      39.57 r
-  U74131/ZN (OAI31D1BWP)                                  0.04      39.61 f
-  U65047/ZN (AOI21D2BWP)                                  0.14      39.75 r
-  U74129/ZN (ND3D1BWP)                                    0.20      39.95 f
-  U74740/ZN (NR2XD0BWP)                                   0.23      40.19 r
-  U67871/ZN (INVD1BWP)                                    0.14      40.32 f
-  genblk4.vdotmulu/addu/sub_159/U2_1/CO (FA1D0BWP)        0.15      40.47 f
-  genblk4.vdotmulu/addu/sub_159/U2_2/CO (FA1D0BWP)        0.09      40.56 f
-  genblk4.vdotmulu/addu/sub_159/U2_3/CO (FA1D0BWP)        0.09      40.65 f
-  genblk4.vdotmulu/addu/sub_159/U2_4/CO (FA1D0BWP)        0.09      40.74 f
-  genblk4.vdotmulu/addu/sub_159/U2_5/CO (FA1D0BWP)        0.09      40.83 f
-  genblk4.vdotmulu/addu/sub_159/U2_6/CO (FA1D0BWP)        0.09      40.92 f
-  genblk4.vdotmulu/addu/sub_159/U2_7/CO (FA1D0BWP)        0.09      41.01 f
-  genblk4.vdotmulu/addu/sub_159/U2_8/CO (FA1D0BWP)        0.09      41.10 f
-  genblk4.vdotmulu/addu/sub_159/U2_9/CO (FA1D0BWP)        0.09      41.19 f
-  genblk4.vdotmulu/addu/sub_159/U2_10/CO (FA1D0BWP)       0.09      41.28 f
-  genblk4.vdotmulu/addu/sub_159/U2_11/CO (FA1D0BWP)       0.09      41.37 f
-  genblk4.vdotmulu/addu/sub_159/U2_12/CO (FA1D0BWP)       0.09      41.46 f
-  genblk4.vdotmulu/addu/sub_159/U2_13/S (FA1D0BWP)        0.09      41.55 f
-  U65166/ZN (AOI222D4BWP)                                 0.19      41.74 r
-  U67853/ZN (INVD1BWP)                                    0.08      41.82 f
-  U67852/Z (OR2XD1BWP)                                    0.11      41.92 f
-  U73992/ZN (NR2XD0BWP)                                   0.16      42.09 r
-  U67847/ZN (ND2D1BWP)                                    0.17      42.26 f
-  U73984/ZN (OAI22D1BWP)                                  0.18      42.44 r
-  U73983/ZN (NR2XD0BWP)                                   0.12      42.56 f
-  U73982/ZN (INR2D1BWP)                                   0.09      42.65 f
-  U67844/ZN (ND2D1BWP)                                    0.08      42.74 r
-  U66001/ZN (INR2D1BWP)                                   0.20      42.93 r
-  U73979/ZN (IND4D1BWP)                                   0.20      43.13 f
-  U67843/ZN (ND2D1BWP)                                    0.12      43.25 r
-  U62382/ZN (CKND3BWP)                                    0.15      43.40 f
-  U67842/ZN (ND2D1BWP)                                    0.15      43.54 r
-  U65092/ZN (AOI22D2BWP)                                  0.14      43.68 f
-  U73975/ZN (IND2D1BWP)                                   0.13      43.81 f
-  U73966/ZN (IND2D1BWP)                                   0.05      43.86 r
-  U67831/Z (CKBD2BWP)                                     0.20      44.06 r
-  U73961/Z (OA21D1BWP)                                    0.12      44.18 r
-  U62381/Z (MUX2D1BWP)                                    0.11      44.29 r
-  U67825/ZN (ND2D1BWP)                                    0.13      44.42 f
-  U73957/ZN (IND2D1BWP)                                   0.19      44.62 f
-  U73953/ZN (AOI21D1BWP)                                  0.11      44.73 r
-  U73952/ZN (AOI21D1BWP)                                  0.08      44.81 f
-  U73949/ZN (NR2XD0BWP)                                   0.14      44.95 r
-  U67823/ZN (INVD1BWP)                                    0.11      45.06 f
-  U65099/ZN (INR3D4BWP)                                   0.17      45.23 r
-  U73945/ZN (IND2D1BWP)                                   0.09      45.32 r
-  U73944/ZN (OAI21D1BWP)                                  0.04      45.36 f
-  U61303/Z (AO31D1BWP)                                    0.16      45.52 f
-  U73943/ZN (NR2XD0BWP)                                   0.19      45.71 r
-  U73942/ZN (INR2D1BWP)                                   0.22      45.94 r
-  U65995/ZN (INR2D1BWP)                                   0.22      46.16 r
-  U73939/ZN (AOI21D1BWP)                                  0.14      46.30 f
-  U67818/ZN (INVD1BWP)                                    0.09      46.39 r
-  U67817/ZN (ND2D1BWP)                                    0.08      46.47 f
-  U73934/ZN (IND2D1BWP)                                   0.15      46.62 f
-  U73926/ZN (OAI21D1BWP)                                  0.07      46.70 r
-  U73925/ZN (AOI21D1BWP)                                  0.08      46.77 f
-  U73924/ZN (NR2XD0BWP)                                   0.15      46.92 r
-  U73923/ZN (ND3D1BWP)                                    0.15      47.07 f
-  U62377/ZN (ND2D2BWP)                                    0.20      47.26 r
-  U74830/ZN (NR3D0BWP)                                    0.14      47.40 f
-  U67803/ZN (INVD1BWP)                                    0.12      47.52 r
-  U73916/ZN (NR2XD0BWP)                                   0.06      47.58 f
-  U65044/ZN (MUX2ND1BWP)                                  0.16      47.74 r
-  U61310/ZN (INR3D0BWP)                                   0.21      47.94 r
-  U67798/ZN (INVD1BWP)                                    0.10      48.05 f
-  U62376/ZN (ND2D2BWP)                                    0.20      48.25 r
-  U67797/ZN (INVD1BWP)                                    0.11      48.36 f
-  U67796/ZN (NR2XD1BWP)                                   0.21      48.57 r
-  U73904/ZN (AOI211XD0BWP)                                0.20      48.77 f
-  U73895/ZN (AOI21D1BWP)                                  0.17      48.94 r
-  U67789/ZN (INVD1BWP)                                    0.09      49.03 f
-  U64308/ZN (NR2XD1BWP)                                   0.14      49.17 r
-  U73879/ZN (NR2XD0BWP)                                   0.07      49.24 f
-  U73878/ZN (NR2XD0BWP)                                   0.18      49.42 r
-  U73864/ZN (NR2XD0BWP)                                   0.14      49.56 f
-  U67754/ZN (NR2XD1BWP)                                   0.24      49.80 r
-  U64280/ZN (CKND2D0BWP)                                  0.20      50.01 f
-  U67742/ZN (OAI31D2BWP)                                  0.21      50.22 r
-  genblk4.vdotmulu/addu/add_234/U1_1_1/CO (HA1D0BWP)      0.13      50.36 r
-  genblk4.vdotmulu/addu/add_234/U1_1_2/CO (HA1D0BWP)      0.09      50.45 r
-  genblk4.vdotmulu/addu/add_234/U1_1_3/CO (HA1D0BWP)      0.09      50.53 r
-  genblk4.vdotmulu/addu/add_234/U1_1_4/CO (HA1D0BWP)      0.09      50.62 r
-  genblk4.vdotmulu/addu/add_234/U1_1_5/CO (HA1D0BWP)      0.09      50.71 r
-  genblk4.vdotmulu/addu/add_234/U1_1_6/CO (HA1D0BWP)      0.09      50.80 r
-  genblk4.vdotmulu/addu/add_234/U1_1_7/CO (HA1D0BWP)      0.09      50.89 r
-  genblk4.vdotmulu/addu/add_234/U1_1_8/CO (HA1D0BWP)      0.09      50.98 r
-  genblk4.vdotmulu/addu/add_234/U1_1_9/CO (HA1D0BWP)      0.09      51.07 r
-  genblk4.vdotmulu/addu/add_234/U1_1_10/CO (HA1D0BWP)     0.08      51.14 r
-  U65991/ZN (ND2D1BWP)                                    0.17      51.32 f
-  U67737/ZN (ND2D1BWP)                                    0.17      51.49 r
-  U62106/ZN (MAOI22D0BWP)                                 0.22      51.71 r
-  U62371/Z (AN4D1BWP)                                     0.16      51.87 r
-  U73805/ZN (ND4D1BWP)                                    0.06      51.93 f
-  U73804/Z (OR4XD1BWP)                                    0.13      52.06 f
-  U74836/ZN (NR4D0BWP)                                    0.21      52.27 r
-  U62108/ZN (OAI211D0BWP)                                 0.13      52.40 f
-  U62109/ZN (MOAI22D0BWP)                                 0.11      52.51 f
-  genblk4.vdotmulu/out_reg[15]/D (DFKCNQD1BWP)            0.00      52.51 f
-  data arrival time                                                 52.51
+  intadd_0/U5/CO (FA1D0BWP)                               0.09       2.58 f
+  intadd_0/U4/CO (FA1D0BWP)                               0.09       2.67 f
+  intadd_0/U3/CO (FA1D0BWP)                               0.09       2.76 f
+  intadd_0/U2/CO (FA1D0BWP)                               0.13       2.89 f
+  U74395/S (FA1D0BWP)                                     0.27       3.16 r
+  U74229/ZN (INR2D1BWP)                                   0.08       3.23 f
+  U63767/Z (CKBD4BWP)                                     0.17       3.40 f
+  U74225/ZN (AOI22D1BWP)                                  0.24       3.64 r
+  U61846/Z (OR2D1BWP)                                     0.17       3.80 r
+  U74221/ZN (NR2XD0BWP)                                   0.10       3.91 f
+  U67477/ZN (ND2D1BWP)                                    0.11       4.02 r
+  U74220/ZN (NR2XD0BWP)                                   0.14       4.16 f
+  U64621/ZN (INR2D1BWP)                                   0.22       4.38 r
+  U67476/ZN (INVD1BWP)                                    0.06       4.44 f
+  U61838/Z (AO31D1BWP)                                    0.14       4.58 f
+  U74219/ZN (NR2XD0BWP)                                   0.17       4.75 r
+  U74214/ZN (ND4D1BWP)                                    0.18       4.93 f
+  U67473/ZN (ND2D1BWP)                                    0.07       5.00 r
+  U61328/Z (CKBD3BWP)                                     0.18       5.18 r
+  U74213/ZN (NR2XD0BWP)                                   0.14       5.32 f
+  U67469/ZN (ND2D1BWP)                                    0.13       5.45 r
+  U74207/ZN (NR2XD0BWP)                                   0.07       5.52 f
+  U64317/ZN (NR2XD1BWP)                                   0.14       5.66 r
+  U74206/ZN (ND3D1BWP)                                    0.15       5.81 f
+  U74205/ZN (NR2XD0BWP)                                   0.14       5.95 r
+  U67467/Z (OR2D2BWP)                                     0.26       6.21 r
+  U67466/ZN (CKND2BWP)                                    0.25       6.46 f
+  U67465/ZN (ND2D1BWP)                                    0.13       6.59 r
+  U64351/ZN (NR2XD1BWP)                                   0.12       6.72 f
+  U74204/ZN (AOI21D1BWP)                                  0.15       6.87 r
+  U67464/ZN (INVD1BWP)                                    0.11       6.98 f
+  U74200/ZN (NR2XD0BWP)                                   0.12       7.10 r
+  U74199/ZN (INR2D1BWP)                                   0.05       7.15 f
+  U61329/Z (CKBD3BWP)                                     0.17       7.32 f
+  U67460/ZN (ND2D1BWP)                                    0.12       7.44 r
+  U74198/ZN (NR2XD0BWP)                                   0.14       7.57 f
+  U74197/ZN (OAI21D1BWP)                                  0.10       7.67 r
+  U64316/ZN (OAI31D2BWP)                                  0.10       7.77 f
+  U74196/ZN (IND3D1BWP)                                   0.16       7.93 f
+  U65156/ZN (OAI31D2BWP)                                  0.20       8.12 r
+  U61813/Z (OR2XD1BWP)                                    0.08       8.21 r
+  U63628/ZN (CKND2BWP)                                    0.11       8.32 f
+  U64409/ZN (CKND3BWP)                                    0.21       8.53 r
+  U74190/ZN (NR2XD0BWP)                                   0.14       8.67 f
+  U67455/ZN (ND2D1BWP)                                    0.13       8.80 r
+  U74188/ZN (NR2XD0BWP)                                   0.15       8.95 f
+  U61326/ZN (MAOI222D1BWP)                                0.20       9.15 r
+  U61805/ZN (XNR2D1BWP)                                   0.16       9.31 f
+  U74183/ZN (OAI31D1BWP)                                  0.18       9.49 r
+  U67450/ZN (NR2XD1BWP)                                   0.21       9.70 f
+  U67449/ZN (ND2D1BWP)                                    0.12       9.82 r
+  U74182/ZN (NR2XD0BWP)                                   0.14       9.96 f
+  U67442/ZN (ND2D1BWP)                                    0.10      10.06 r
+  U67439/ZN (INVD1BWP)                                    0.07      10.13 f
+  U74170/ZN (OAI21D1BWP)                                  0.07      10.19 r
+  U67438/ZN (OAI31D2BWP)                                  0.12      10.32 f
+  U74169/ZN (ND3D1BWP)                                    0.11      10.43 r
+  U74403/ZN (NR3D0BWP)                                    0.10      10.53 f
+  U74168/ZN (NR2XD0BWP)                                   0.14      10.67 r
+  U67437/ZN (ND2D1BWP)                                    0.26      10.93 f
+  U74167/ZN (INR2D1BWP)                                   0.20      11.13 r
+  U64355/ZN (INR2D2BWP)                                   0.19      11.32 r
+  U74166/ZN (IAO21D1BWP)                                  0.10      11.42 f
+  U67434/ZN (INVD1BWP)                                    0.11      11.52 r
+  U74159/ZN (NR2XD0BWP)                                   0.10      11.63 f
+  U74157/ZN (ND4D1BWP)                                    0.09      11.72 r
+  U67432/ZN (ND2D1BWP)                                    0.10      11.81 f
+  U67431/ZN (NR2XD1BWP)                                   0.21      12.02 r
+  U67430/ZN (INVD1BWP)                                    0.20      12.22 f
+  U74156/ZN (NR2XD0BWP)                                   0.21      12.43 r
+  U67428/ZN (ND2D1BWP)                                    0.18      12.61 f
+  U64346/ZN (INR2D2BWP)                                   0.17      12.79 r
+  U74154/ZN (AOI21D1BWP)                                  0.10      12.88 f
+  U74153/ZN (IND4D1BWP)                                   0.06      12.94 r
+  U63533/Z (OA21D1BWP)                                    0.12      13.06 r
+  U67423/ZN (ND2D1BWP)                                    0.24      13.31 f
+  U67422/ZN (INVD1BWP)                                    0.26      13.57 r
+  U67421/ZN (ND2D1BWP)                                    0.13      13.70 f
+  U74148/ZN (NR2XD0BWP)                                   0.20      13.91 r
+  U67417/ZN (ND2D1BWP)                                    0.14      14.05 f
+  U64338/ZN (NR2XD1BWP)                                   0.15      14.20 r
+  U67415/ZN (AOI21D2BWP)                                  0.12      14.33 f
+  U74137/ZN (ND3D1BWP)                                    0.10      14.43 r
+  U74408/ZN (NR3D0BWP)                                    0.09      14.52 f
+  U74135/ZN (NR2XD0BWP)                                   0.19      14.71 r
+  U61765/Z (AN2D2BWP)                                     0.22      14.93 r
+  U64620/ZN (INR2D1BWP)                                   0.23      15.16 r
+  U74126/ZN (INR2D1BWP)                                   0.23      15.38 r
+  U74124/ZN (OAI21D1BWP)                                  0.08      15.46 f
+  U74123/ZN (OAI31D1BWP)                                  0.09      15.55 r
+  U74409/ZN (INR3D0BWP)                                   0.14      15.69 f
+  U74122/ZN (IND3D1BWP)                                   0.10      15.79 r
+  U67399/ZN (ND3D2BWP)                                    0.22      16.01 f
+  U67398/ZN (INVD1BWP)                                    0.28      16.29 r
+  U67397/ZN (ND2D1BWP)                                    0.19      16.48 f
+  U64335/Z (OR2XD1BWP)                                    0.13      16.61 f
+  U64334/ZN (NR2XD1BWP)                                   0.13      16.73 r
+  U74119/ZN (OAI21D1BWP)                                  0.08      16.81 f
+  U67395/ZN (OAI31D2BWP)                                  0.10      16.91 r
+  U74410/ZN (INR3D0BWP)                                   0.16      17.07 f
+  U67392/ZN (NR3D1BWP)                                    0.22      17.29 r
+  U67391/ZN (INVD1BWP)                                    0.22      17.51 f
+  U74419/ZN (NR3D0BWP)                                    0.22      17.73 r
+  U67383/ZN (ND2D1BWP)                                    0.13      17.86 f
+  U74109/ZN (NR2XD0BWP)                                   0.20      18.06 r
+  U74108/ZN (OAI32D1BWP)                                  0.14      18.20 f
+  U74420/ZN (INR4D0BWP)                                   0.12      18.32 r
+  U63566/Z (OR2XD1BWP)                                    0.09      18.41 r
+  U63565/ZN (NR2XD1BWP)                                   0.11      18.52 f
+  U67381/Z (AN2XD1BWP)                                    0.16      18.67 f
+  U67377/ZN (ND2D1BWP)                                    0.13      18.81 r
+  U74107/ZN (NR2XD0BWP)                                   0.15      18.95 f
+  U74106/ZN (AOI21D1BWP)                                  0.24      19.20 r
+  U67376/ZN (INVD1BWP)                                    0.11      19.30 f
+  U74105/ZN (NR2XD0BWP)                                   0.13      19.43 r
+  U74091/ZN (AOI21D1BWP)                                  0.11      19.54 f
+  U67371/ZN (ND2D1BWP)                                    0.15      19.69 r
+  U64343/ZN (NR2XD1BWP)                                   0.14      19.84 f
+  U64399/Z (CKAN2D0BWP)                                   0.14      19.98 f
+  U64398/ZN (OAI31D2BWP)                                  0.17      20.14 r
+  U74085/ZN (NR2XD0BWP)                                   0.13      20.28 f
+  U74084/ZN (IND3D1BWP)                                   0.10      20.38 r
+  U61327/ZN (ND3D3BWP)                                    0.19      20.57 f
+  U61729/Z (OR2D0BWP)                                     0.17      20.75 f
+  U74083/ZN (INR2D1BWP)                                   0.18      20.93 r
+  U74080/ZN (INR2D1BWP)                                   0.17      21.10 r
+  U67363/ZN (ND2D1BWP)                                    0.07      21.17 f
+  U67362/ZN (ND2D1BWP)                                    0.07      21.24 r
+  U64410/Z (XOR2D1BWP)                                    0.20      21.44 f
+  U74079/ZN (ND4D1BWP)                                    0.12      21.56 r
+  U64508/ZN (INR3D4BWP)                                   0.21      21.77 r
+  U67356/ZN (INVD1BWP)                                    0.10      21.87 f
+  U74421/ZN (NR3D0BWP)                                    0.18      22.05 r
+  U67353/Z (AN2XD1BWP)                                    0.12      22.18 r
+  U67352/ZN (ND2D1BWP)                                    0.09      22.27 f
+  U63632/ZN (OAI21D2BWP)                                  0.11      22.38 r
+  U74069/ZN (NR2XD0BWP)                                   0.12      22.50 f
+  U74064/ZN (AOI31D1BWP)                                  0.14      22.64 r
+  U67345/ZN (ND2D1BWP)                                    0.19      22.84 f
+  U63651/ZN (NR2XD1BWP)                                   0.19      23.02 r
+  U67341/ZN (ND2D1BWP)                                    0.12      23.15 f
+  U67340/ZN (INVD1BWP)                                    0.12      23.27 r
+  U74058/ZN (OAI21D1BWP)                                  0.07      23.34 f
+  U63633/ZN (OAI31D2BWP)                                  0.08      23.42 r
+  U74422/ZN (INR4D0BWP)                                   0.08      23.50 f
+  U74057/ZN (IND2D1BWP)                                   0.08      23.57 r
+  U67339/ZN (ND2D1BWP)                                    0.09      23.66 f
+  U74056/ZN (NR2XD0BWP)                                   0.13      23.79 r
+  U67337/ZN (INVD1BWP)                                    0.08      23.87 f
+  U74052/ZN (NR2XD0BWP)                                   0.11      23.99 r
+  U74051/ZN (INR2D1BWP)                                   0.16      24.14 r
+  U67336/ZN (ND2D1BWP)                                    0.15      24.29 f
+  U74050/ZN (OAI21D1BWP)                                  0.08      24.37 r
+  U74049/ZN (AOI31D1BWP)                                  0.07      24.44 f
+  U67335/ZN (INVD1BWP)                                    0.09      24.53 r
+  U74423/ZN (INR4D0BWP)                                   0.06      24.59 f
+  U74039/ZN (AOI21D1BWP)                                  0.12      24.70 r
+  U67331/ZN (ND2D1BWP)                                    0.12      24.82 f
+  U67330/ZN (INVD1BWP)                                    0.11      24.94 r
+  U67329/ZN (ND2D1BWP)                                    0.14      25.08 f
+  U61709/ZN (NR2XD1BWP)                                   0.17      25.25 r
+  U64376/ZN (INR2D2BWP)                                   0.18      25.43 r
+  U73924/ZN (OAI21D1BWP)                                  0.08      25.51 f
+  U64375/ZN (OAI31D2BWP)                                  0.09      25.60 r
+  U74424/ZN (INR4D0BWP)                                   0.09      25.69 f
+  U74425/ZN (NR3D0BWP)                                    0.16      25.85 r
+  U67275/ZN (ND2D1BWP)                                    0.17      26.01 f
+  U64619/ZN (INR2D1BWP)                                   0.21      26.23 r
+  U67274/ZN (ND2D1BWP)                                    0.18      26.41 f
+  U73919/ZN (OAI32D1BWP)                                  0.11      26.52 r
+  U61708/Z (AO21D1BWP)                                    0.10      26.62 r
+  U18432/S (HA1D0BWP)                                     0.09      26.71 r
+  U64430/ZN (MUX2ND1BWP)                                  0.12      26.84 f
+  U73910/Z (OR4XD1BWP)                                    0.15      26.98 f
+  U67260/ZN (OAI21D2BWP)                                  0.19      27.17 r
+  U67259/ZN (INVD1BWP)                                    0.14      27.31 f
+  U73908/ZN (AOI32D1BWP)                                  0.17      27.48 r
+  U67258/ZN (INVD1BWP)                                    0.12      27.61 f
+  U67257/ZN (ND2D1BWP)                                    0.12      27.73 r
+  U67249/ZN (ND2D1BWP)                                    0.18      27.91 f
+  U67248/ZN (INVD1BWP)                                    0.22      28.13 r
+  U67246/ZN (ND2D1BWP)                                    0.26      28.39 f
+  U67245/ZN (NR2XD1BWP)                                   0.24      28.63 r
+  U67243/ZN (ND2D1BWP)                                    0.23      28.85 f
+  U67242/ZN (NR2XD1BWP)                                   0.25      29.10 r
+  U64518/ZN (CKND2BWP)                                    0.21      29.31 f
+  U73900/ZN (AOI21D1BWP)                                  0.15      29.47 r
+  U73896/ZN (INR3D0BWP)                                   0.12      29.59 r
+  U67238/Z (CKBD2BWP)                                     0.21      29.80 r
+  U73895/ZN (NR2XD0BWP)                                   0.20      30.00 f
+  U67237/ZN (ND2D1BWP)                                    0.15      30.15 r
+  U67236/ZN (AOI211D2BWP)                                 0.10      30.25 f
+  U73892/ZN (OAI21D1BWP)                                  0.07      30.33 r
+  U73891/ZN (ND3D1BWP)                                    0.17      30.49 f
+  U67234/ZN (INR4D1BWP)                                   0.20      30.69 f
+  U73888/ZN (NR2XD0BWP)                                   0.20      30.90 r
+  U64340/ZN (INR2D2BWP)                                   0.19      31.09 r
+  U64339/ZN (CKND2D0BWP)                                  0.16      31.25 f
+  U73887/ZN (NR2XD0BWP)                                   0.08      31.33 r
+  U64303/ZN (NR2XD1BWP)                                   0.11      31.44 f
+  U67232/ZN (NR4D8BWP)                                    0.26      31.71 r
+  U73883/ZN (NR2XD0BWP)                                   0.08      31.78 f
+  U73882/ZN (NR2XD0BWP)                                   0.19      31.97 r
+  U73881/ZN (INR2D1BWP)                                   0.17      32.14 r
+  U67214/ZN (ND2D1BWP)                                    0.18      32.32 f
+  U73880/ZN (OAI21D1BWP)                                  0.13      32.45 r
+  U61696/ZN (XNR2D1BWP)                                   0.14      32.59 f
+  U67213/ZN (NR2XD1BWP)                                   0.19      32.78 r
+  U73879/ZN (INR2D1BWP)                                   0.23      33.01 r
+  U73876/ZN (NR2XD0BWP)                                   0.14      33.15 f
+  U73875/ZN (INR2D1BWP)                                   0.14      33.29 r
+  U67212/ZN (ND2D1BWP)                                    0.15      33.44 f
+  U73873/ZN (IND2D1BWP)                                   0.13      33.57 f
+  U73872/ZN (NR2XD0BWP)                                   0.13      33.70 r
+  U73871/ZN (AOI21D1BWP)                                  0.11      33.81 f
+  U67207/ZN (ND2D1BWP)                                    0.10      33.91 r
+  U73869/ZN (INR2D1BWP)                                   0.07      33.98 f
+  U64333/ZN (INR2D2BWP)                                   0.13      34.11 r
+  U67124/ZN (INVD1BWP)                                    0.09      34.20 f
+  U73761/ZN (NR2XD0BWP)                                   0.18      34.38 r
+  U64368/ZN (MUX2ND1BWP)                                  0.20      34.58 r
+  U67122/ZN (ND2D1BWP)                                    0.10      34.68 f
+  U63501/ZN (NR2D3BWP)                                    0.18      34.86 r
+  U67117/ZN (INVD1BWP)                                    0.10      34.97 f
+  U67116/ZN (NR2XD1BWP)                                   0.17      35.13 r
+  U73743/ZN (OAI222D1BWP)                                 0.24      35.37 f
+  U63500/Z (AO222D1BWP)                                   0.24      35.61 f
+  U73683/ZN (AOI22D1BWP)                                  0.07      35.68 r
+  U73682/ZN (OAI211D1BWP)                                 0.08      35.76 f
+  U73681/ZN (AOI32D1BWP)                                  0.21      35.97 r
+  U73680/ZN (AOI211XD0BWP)                                0.12      36.09 f
+  U73679/ZN (AOI211XD0BWP)                                0.10      36.19 r
+  U73678/ZN (OAI222D1BWP)                                 0.08      36.26 f
+  U73676/ZN (AOI22D1BWP)                                  0.07      36.34 r
+  U67071/ZN (ND2D1BWP)                                    0.04      36.38 f
+  U73673/ZN (AOI222D1BWP)                                 0.11      36.49 r
+  U73669/ZN (OAI22D1BWP)                                  0.06      36.55 f
+  U65152/ZN (MAOI222D1BWP)                                0.16      36.71 r
+  U65151/ZN (ND2D1BWP)                                    0.24      36.95 f
+  U73657/ZN (INVD1BWP)                                    0.13      37.08 r
+  U67065/ZN (ND2D1BWP)                                    0.17      37.25 f
+  U61683/ZN (CKND2BWP)                                    0.25      37.50 r
+  U67057/ZN (AOI222D4BWP)                                 0.20      37.70 f
+  U67055/ZN (INVD1BWP)                                    0.11      37.81 r
+  U73652/ZN (NR2XD0BWP)                                   0.07      37.88 f
+  U67054/Z (CKBD2BWP)                                     0.19      38.06 f
+  U67053/ZN (INVD1BWP)                                    0.16      38.22 r
+  U64474/ZN (NR2XD1BWP)                                   0.14      38.36 f
+  U73650/ZN (OAI32D1BWP)                                  0.16      38.52 r
+  U67052/Z (AN2XD1BWP)                                    0.13      38.65 r
+  U67051/ZN (ND2D1BWP)                                    0.09      38.74 f
+  U67050/ZN (ND2D2BWP)                                    0.21      38.95 r
+  U67577/ZN (INVD1BWP)                                    0.17      39.12 f
+  U73642/ZN (IND2D1BWP)                                   0.13      39.25 r
+  U73641/ZN (OAI21D1BWP)                                  0.11      39.36 f
+  U73640/ZN (NR2XD0BWP)                                   0.13      39.49 r
+  U67036/Z (AN2XD1BWP)                                    0.11      39.61 r
+  U63654/ZN (NR2XD1BWP)                                   0.11      39.72 f
+  U73633/ZN (OAI22D1BWP)                                  0.20      39.92 r
+  U73632/ZN (INR2D1BWP)                                   0.17      40.09 r
+  U73627/ZN (INR2D1BWP)                                   0.21      40.30 r
+  U61464/ZN (IOA21D0BWP)                                  0.26      40.56 f
+  U61409/ZN (OAI22D1BWP)                                  0.13      40.69 r
+  U61410/ZN (NR2XD0BWP)                                   0.14      40.84 f
+  U64392/ZN (NR3D1BWP)                                    0.19      41.02 r
+  U67018/Z (AN2XD1BWP)                                    0.13      41.15 r
+  U63531/ZN (NR2D3BWP)                                    0.08      41.24 f
+  U67017/ZN (INVD1BWP)                                    0.16      41.40 r
+  U73621/ZN (AOI22D1BWP)                                  0.17      41.57 f
+  U73620/ZN (NR2XD0BWP)                                   0.22      41.79 r
+  U67015/ZN (ND2D1BWP)                                    0.14      41.93 f
+  U64329/ZN (INR2D2BWP)                                   0.11      42.04 f
+  U64328/ZN (CKND2BWP)                                    0.14      42.18 r
+  U67007/ZN (NR2XD1BWP)                                   0.16      42.34 f
+  U73612/ZN (NR2XD0BWP)                                   0.09      42.43 r
+  U67006/ZN (ND2D1BWP)                                    0.09      42.52 f
+  U73611/ZN (NR2XD0BWP)                                   0.13      42.65 r
+  U61672/Z (OR2XD1BWP)                                    0.18      42.84 r
+  U67005/ZN (CKND2BWP)                                    0.20      43.03 f
+  U73604/ZN (OAI21D1BWP)                                  0.13      43.16 r
+  U64374/ZN (OAI31D4BWP)                                  0.11      43.27 f
+  U73603/ZN (NR2XD0BWP)                                   0.14      43.41 r
+  U73599/ZN (ND3D1BWP)                                    0.14      43.55 f
+  U61670/ZN (ND2D2BWP)                                    0.22      43.77 r
+  U66989/ZN (MUX2ND1BWP)                                  0.21      43.98 f
+  U74440/ZN (NR3D0BWP)                                    0.18      44.15 r
+  U66987/ZN (ND2D1BWP)                                    0.13      44.28 f
+  U66986/ZN (INR2D2BWP)                                   0.11      44.39 f
+  U63624/ZN (CKND2BWP)                                    0.15      44.54 r
+  U66983/ZN (NR2XD1BWP)                                   0.16      44.70 f
+  U66981/ZN (INVD1BWP)                                    0.10      44.81 r
+  U73586/ZN (OAI21D1BWP)                                  0.06      44.87 f
+  U74441/ZN (MUX2ND0BWP)                                  0.15      45.02 f
+  U73585/ZN (AOI211XD0BWP)                                0.21      45.23 r
+  U61469/ZN (INR3D0BWP)                                   0.25      45.48 r
+  U63516/ZN (NR2D3BWP)                                    0.14      45.62 f
+  U73578/ZN (AOI211XD0BWP)                                0.12      45.74 r
+  U64363/ZN (AOI21D2BWP)                                  0.09      45.84 f
+  U73577/ZN (INR2D1BWP)                                   0.20      46.04 r
+  U66972/ZN (ND2D1BWP)                                    0.13      46.16 f
+  U61665/Z (OR2D0BWP)                                     0.14      46.30 f
+  U73574/ZN (NR2XD0BWP)                                   0.19      46.49 r
+  U66967/ZN (INVD1BWP)                                    0.11      46.60 f
+  U73559/ZN (AOI21D1BWP)                                  0.18      46.78 r
+  U66965/ZN (ND2D1BWP)                                    0.30      47.08 f
+  U63484/ZN (CKND2BWP)                                    0.23      47.31 r
+  U73558/ZN (OAI22D1BWP)                                  0.18      47.48 f
+  U66963/ZN (ND2D1BWP)                                    0.17      47.66 r
+  U73549/ZN (NR2XD0BWP)                                   0.12      47.78 f
+  U64370/ZN (CKND2D0BWP)                                  0.19      47.97 r
+  U73548/ZN (NR2XD0BWP)                                   0.14      48.11 f
+  U73547/ZN (IAO21D1BWP)                                  0.14      48.25 r
+  U66960/ZN (INVD1BWP)                                    0.10      48.35 f
+  U74445/ZN (NR3D0BWP)                                    0.17      48.52 r
+  U73544/ZN (ND3D1BWP)                                    0.16      48.68 f
+  U73531/ZN (OAI21D1BWP)                                  0.15      48.83 r
+  U66947/ZN (ND2D1BWP)                                    0.23      49.06 f
+  U66946/ZN (INVD1BWP)                                    0.27      49.33 r
+  U63483/ZN (OAI221D1BWP)                                 0.14      49.47 f
+  U73509/ZN (OAI211D1BWP)                                 0.09      49.56 r
+  r6953/U1_1_2/CO (HA1D0BWP)                              0.11      49.67 r
+  r6953/U1_1_3/CO (HA1D0BWP)                              0.09      49.76 r
+  r6953/U1_1_4/CO (HA1D0BWP)                              0.09      49.85 r
+  r6953/U1_1_5/CO (HA1D0BWP)                              0.09      49.94 r
+  r6953/U1_1_6/CO (HA1D0BWP)                              0.09      50.03 r
+  r6953/U1_1_7/CO (HA1D0BWP)                              0.09      50.12 r
+  r6953/U1_1_8/CO (HA1D0BWP)                              0.09      50.21 r
+  r6953/U1_1_9/CO (HA1D0BWP)                              0.09      50.29 r
+  r6953/U1_1_10/CO (HA1D0BWP)                             0.07      50.37 r
+  U64598/ZN (INR2D1BWP)                                   0.18      50.55 r
+  U66929/ZN (INR2D2BWP)                                   0.22      50.78 r
+  U65144/ZN (CKND2BWP)                                    0.20      50.98 f
+  U61448/ZN (OAI211D0BWP)                                 0.12      51.10 r
+  genblk4.vdotmulu/out_reg[10]/D (DFQD1BWP)               0.00      51.10 r
+  data arrival time                                                 51.10
 
   clock Clk2 (rise edge)                                200.00     200.00
   clock network delay (ideal)                             0.00     200.00
-  genblk4.vdotmulu/out_reg[15]/CP (DFKCNQD1BWP)           0.00     200.00 r
-  library setup time                                     -0.04     199.96
-  data required time                                               199.96
+  genblk4.vdotmulu/out_reg[10]/CP (DFQD1BWP)              0.00     200.00 r
+  library setup time                                     -0.05     199.95
+  data required time                                               199.95
   --------------------------------------------------------------------------
-  data required time                                               199.96
-  data arrival time                                                -52.51
+  data required time                                               199.95
+  data arrival time                                                -51.10
   --------------------------------------------------------------------------
-  slack (MET)                                                      147.45
+  slack (MET)                                                      148.85
 
 
-  Startpoint: genblk1.vector/DataOut_s_reg[0]
+  Startpoint: genblk1.vector/DataOut_s_reg[1]
               (rising edge-triggered flip-flop clocked by Clk1)
-  Endpoint: genblk4.vdotmulu/out_reg[15]
+  Endpoint: genblk4.vdotmulu/out_reg[10]
             (rising edge-triggered flip-flop clocked by Clk2)
   Path Group: Clk2
   Path Type: max
@@ -985,396 +955,372 @@ Wire Load Model Mode: top
   --------------------------------------------------------------------------
   clock Clk1 (rise edge)                                  0.00       0.00
   clock network delay (ideal)                             0.00       0.00
-  genblk1.vector/DataOut_s_reg[0]/CP (EDFQD1BWP)          0.00 #     0.00 r
-  genblk1.vector/DataOut_s_reg[0]/Q (EDFQD1BWP)           0.24       0.24 r
-  U64179/ZN (CKND3BWP)                                    0.23       0.48 f
-  U68326/ZN (NR4D1BWP)                                    0.24       0.71 r
-  U74644/ZN (OAI32D1BWP)                                  0.11       0.83 f
-  genblk4.vdotmulu/multu/mult_41/S2_2_2/S (FA1D0BWP)      0.12       0.95 r
-  genblk4.vdotmulu/multu/mult_41/S2_3_1/CO (FA1D0BWP)     0.08       1.03 r
-  genblk4.vdotmulu/multu/mult_41/S2_4_1/CO (FA1D0BWP)     0.14       1.17 r
-  genblk4.vdotmulu/multu/mult_41/S2_5_1/CO (FA1D0BWP)     0.14       1.31 r
-  genblk4.vdotmulu/multu/mult_41/S2_6_1/CO (FA1D0BWP)     0.14       1.44 r
-  genblk4.vdotmulu/multu/mult_41/S2_7_1/CO (FA1D0BWP)     0.14       1.58 r
-  genblk4.vdotmulu/multu/mult_41/S2_8_1/CO (FA1D0BWP)     0.14       1.71 r
-  genblk4.vdotmulu/multu/mult_41/S2_9_1/CO (FA1D0BWP)     0.14       1.85 r
-  genblk4.vdotmulu/multu/mult_41/S4_1/S (FA1D0BWP)        0.19       2.04 f
-  U68314/Z (AN2XD1BWP)                                    0.08       2.12 f
-  intadd_0/U9/CO (FA1D0BWP)                               0.09       2.22 f
-  intadd_0/U8/CO (FA1D0BWP)                               0.09       2.31 f
+  genblk1.vector/DataOut_s_reg[1]/CP (EDFQD2BWP)          0.00 #     0.00 r
+  genblk1.vector/DataOut_s_reg[1]/Q (EDFQD2BWP)           0.24       0.24 r
+  U65158/ZN (CKND2BWP)                                    0.21       0.45 f
+  U67510/ZN (NR4D1BWP)                                    0.25       0.69 r
+  U74259/ZN (OAI32D1BWP)                                  0.11       0.81 f
+  genblk4.vdotmulu/multu/mult_41/S2_2_2/S (FA1D0BWP)      0.12       0.93 r
+  genblk4.vdotmulu/multu/mult_41/S2_3_1/CO (FA1D0BWP)     0.08       1.01 r
+  genblk4.vdotmulu/multu/mult_41/S2_4_1/CO (FA1D0BWP)     0.14       1.15 r
+  genblk4.vdotmulu/multu/mult_41/S2_5_1/CO (FA1D0BWP)     0.14       1.29 r
+  genblk4.vdotmulu/multu/mult_41/S2_6_1/CO (FA1D0BWP)     0.14       1.42 r
+  genblk4.vdotmulu/multu/mult_41/S2_7_1/CO (FA1D0BWP)     0.14       1.56 r
+  genblk4.vdotmulu/multu/mult_41/S2_8_1/CO (FA1D0BWP)     0.14       1.69 r
+  genblk4.vdotmulu/multu/mult_41/S2_9_1/CO (FA1D0BWP)     0.14       1.83 r
+  genblk4.vdotmulu/multu/mult_41/S4_1/S (FA1D0BWP)        0.19       2.02 f
+  U67498/ZN (ND2D1BWP)                                    0.08       2.10 r
+  U67497/ZN (INVD1BWP)                                    0.04       2.14 f
+  intadd_0/U9/CO (FA1D0BWP)                               0.09       2.23 f
+  intadd_0/U8/CO (FA1D0BWP)                               0.09       2.32 f
   intadd_0/U7/CO (FA1D0BWP)                               0.09       2.40 f
   intadd_0/U6/CO (FA1D0BWP)                               0.09       2.49 f
-  intadd_0/U5/CO (FA1D1BWP)                               0.07       2.56 f
-  intadd_0/U4/CO (FA1D0BWP)                               0.09       2.65 f
-  intadd_0/U3/CO (FA1D0BWP)                               0.09       2.74 f
-  intadd_0/U2/CO (FA1D0BWP)                               0.13       2.86 f
-  U74811/S (FA1D0BWP)                                     0.18       3.04 f
-  U65327/ZN (NR2XD0BWP)                                   0.20       3.24 r
-  U68300/ZN (ND2D1BWP)                                    0.18       3.42 f
-  U74783/ZN (NR3D0BWP)                                    0.12       3.54 r
-  U65076/ZN (MUX2ND1BWP)                                  0.17       3.71 r
-  U74612/ZN (ND4D1BWP)                                    0.22       3.93 f
-  U68299/Z (AN2XD1BWP)                                    0.14       4.07 f
-  U64593/ZN (CKND2BWP)                                    0.14       4.21 r
-  U74611/ZN (NR2XD0BWP)                                   0.12       4.34 f
-  U68296/ZN (ND2D1BWP)                                    0.09       4.43 r
-  U74784/CO (FA1D0BWP)                                    0.15       4.57 r
-  U74608/ZN (NR2XD0BWP)                                   0.14       4.71 f
-  U74607/ZN (AOI21D1BWP)                                  0.22       4.94 r
-  U74606/ZN (INR2D1BWP)                                   0.17       5.11 r
-  U64388/ZN (INR2D2BWP)                                   0.18       5.29 r
-  U74601/ZN (AOI21D1BWP)                                  0.13       5.42 f
-  U74596/ZN (IND4D1BWP)                                   0.18       5.60 f
-  U68281/ZN (ND2D1BWP)                                    0.07       5.67 r
-  U61513/Z (CKBD3BWP)                                     0.20       5.87 r
-  U62534/ZN (CKND3BWP)                                    0.23       6.09 f
-  U68280/Z (AN2XD1BWP)                                    0.11       6.21 f
-  U68279/ZN (INR2D2BWP)                                   0.09       6.30 f
-  U65325/ZN (IAO21D1BWP)                                  0.14       6.44 r
-  U68278/ZN (INVD1BWP)                                    0.11       6.55 f
-  U74786/ZN (NR3D0BWP)                                    0.18       6.72 r
-  U62324/Z (AO21D1BWP)                                    0.12       6.84 r
-  U64587/ZN (CKND0BWP)                                    0.17       7.01 f
-  U62526/ZN (CKND2BWP)                                    0.27       7.28 r
-  U74588/ZN (NR2XD0BWP)                                   0.20       7.48 f
-  U74586/ZN (INR2D1BWP)                                   0.13       7.62 f
-  U68270/ZN (ND2D1BWP)                                    0.08       7.70 r
-  U74583/ZN (INR2D1BWP)                                   0.04       7.74 f
-  U74582/ZN (OAI21D1BWP)                                  0.16       7.90 r
-  U74787/ZN (NR3D0BWP)                                    0.10       8.01 f
-  U65111/ZN (AOI31D2BWP)                                  0.17       8.17 r
-  U62323/ZN (ND2D2BWP)                                    0.22       8.39 f
-  U62510/ZN (CKND3BWP)                                    0.24       8.64 r
-  U68269/ZN (ND2D1BWP)                                    0.13       8.77 f
-  U74576/ZN (NR2XD0BWP)                                   0.20       8.96 r
-  U74574/ZN (IND2D1BWP)                                   0.13       9.10 f
-  U61522/ZN (XNR2D1BWP)                                   0.20       9.29 r
-  U74788/ZN (INR3D0BWP)                                   0.12       9.41 f
-  U65324/ZN (AOI21D1BWP)                                  0.21       9.62 r
-  U65237/ZN (ND2D2BWP)                                    0.25       9.86 f
-  U74564/ZN (NR2XD0BWP)                                   0.24      10.10 r
-  U68262/ZN (ND2D1BWP)                                    0.18      10.28 f
-  U62491/Z (CKXOR2D1BWP)                                  0.14      10.42 f
-  U74554/ZN (IND4D1BWP)                                   0.07      10.49 r
-  U65323/ZN (IND2D1BWP)                                   0.16      10.65 f
-  U68255/ZN (INVD1BWP)                                    0.12      10.77 r
-  U64805/ZN (ND2D2BWP)                                    0.19      10.96 f
-  U61515/ZN (CKND2BWP)                                    0.28      11.23 r
-  U68254/ZN (ND2D1BWP)                                    0.15      11.39 f
-  U65005/ZN (NR2XD1BWP)                                   0.17      11.56 r
-  U68253/ZN (ND2D1BWP)                                    0.11      11.67 f
-  U62481/Z (OR2D0BWP)                                     0.13      11.80 f
-  U68251/ZN (INR2D2BWP)                                   0.10      11.90 f
-  U74544/ZN (INR2D1BWP)                                   0.09      11.99 f
-  U74542/ZN (ND4D1BWP)                                    0.05      12.04 r
-  U68250/ZN (ND2D1BWP)                                    0.19      12.23 f
-  U74541/ZN (NR2XD0BWP)                                   0.09      12.32 r
-  U68249/Z (CKBD2BWP)                                     0.21      12.53 r
-  U68247/ZN (ND2D1BWP)                                    0.18      12.72 f
-  U74540/ZN (NR2XD0BWP)                                   0.22      12.93 r
-  U68245/ZN (ND2D1BWP)                                    0.14      13.07 f
-  U74539/ZN (AOI21D1BWP)                                  0.14      13.22 r
-  U61523/Z (XOR2D1BWP)                                    0.18      13.39 f
-  U74528/ZN (INR2D1BWP)                                   0.09      13.49 f
-  U74527/ZN (AOI31D1BWP)                                  0.07      13.56 r
-  U65305/ZN (IND2D1BWP)                                   0.20      13.75 f
-  U62464/ZN (CKND2BWP)                                    0.27      14.02 r
-  U74526/ZN (ND3D1BWP)                                    0.25      14.27 f
-  U74525/ZN (NR2XD0BWP)                                   0.25      14.52 r
-  U74513/ZN (OAI21D1BWP)                                  0.11      14.63 f
-  U65095/ZN (OAI31D4BWP)                                  0.09      14.72 r
-  U74792/ZN (INR4D0BWP)                                   0.14      14.86 f
-  U74511/ZN (NR2XD0BWP)                                   0.14      15.00 r
-  U68230/ZN (ND2D1BWP)                                    0.22      15.22 f
-  U68229/ZN (INVD1BWP)                                    0.21      15.43 r
-  U74510/ZN (IND3D1BWP)                                   0.16      15.59 f
-  U74509/ZN (INR2D1BWP)                                   0.20      15.79 r
-  U74508/ZN (INR2D1BWP)                                   0.11      15.90 r
-  U74507/ZN (NR2XD0BWP)                                   0.08      15.99 f
-  U62453/Z (CKXOR2D1BWP)                                  0.16      16.15 r
-  U74495/Z (OA31D1BWP)                                    0.11      16.26 r
-  U68219/ZN (ND2D1BWP)                                    0.12      16.37 f
-  U68218/ZN (INVD1BWP)                                    0.23      16.60 r
-  U74494/ZN (IND2D1BWP)                                   0.18      16.79 f
-  U74493/ZN (NR2XD0BWP)                                   0.21      17.00 r
-  U62449/Z (CKXOR2D1BWP)                                  0.18      17.17 r
-  U74490/ZN (IND4D1BWP)                                   0.23      17.41 f
-  U68213/ZN (ND3D2BWP)                                    0.20      17.61 r
-  U68212/ZN (INVD1BWP)                                    0.20      17.81 f
-  U64267/ZN (CKND2D0BWP)                                  0.18      17.99 r
-  U68211/ZN (NR2XD1BWP)                                   0.17      18.16 f
-  U65072/ZN (AOI21D2BWP)                                  0.19      18.35 r
-  U74474/ZN (ND4D1BWP)                                    0.18      18.53 f
-  U68197/ZN (ND2D1BWP)                                    0.15      18.68 r
-  U65101/ZN (NR2XD1BWP)                                   0.13      18.81 f
-  U68196/ZN (INVD1BWP)                                    0.10      18.91 r
-  U74473/ZN (NR2XD0BWP)                                   0.09      19.00 f
-  U68195/Z (AN2XD1BWP)                                    0.11      19.11 f
-  U68194/ZN (ND2D1BWP)                                    0.04      19.15 r
-  U68192/ZN (ND2D1BWP)                                    0.11      19.26 f
-  U61520/ZN (XNR2D1BWP)                                   0.17      19.43 f
-  U68191/ZN (ND2D1BWP)                                    0.09      19.52 r
-  U74469/ZN (NR2XD0BWP)                                   0.05      19.58 f
-  U74463/ZN (AOI31D1BWP)                                  0.12      19.70 r
-  U68186/ZN (ND2D1BWP)                                    0.16      19.86 f
-  U68185/ZN (INVD1BWP)                                    0.14      20.00 r
-  U68184/ZN (ND2D1BWP)                                    0.11      20.10 f
-  U61517/ZN (INR2D1BWP)                                   0.20      20.30 r
-  U68180/Z (AN2XD1BWP)                                    0.15      20.45 r
-  U62433/Z (CKXOR2D1BWP)                                  0.13      20.58 f
-  U74804/ZN (IINR4D0BWP)                                  0.09      20.68 f
-  U74458/ZN (NR2XD0BWP)                                   0.13      20.81 r
-  U68178/ZN (ND2D1BWP)                                    0.15      20.96 f
-  U74457/ZN (NR2XD0BWP)                                   0.20      21.16 r
-  U65322/ZN (INR2D1BWP)                                   0.23      21.40 r
-  U68175/ZN (ND2D1BWP)                                    0.18      21.57 f
-  U74456/ZN (NR2XD0BWP)                                   0.15      21.73 r
-  U74455/ZN (AOI211XD0BWP)                                0.12      21.85 f
-  U74454/ZN (IND3D1BWP)                                   0.11      21.96 f
-  U74447/ZN (OAI31D1BWP)                                  0.17      22.14 r
-  U64276/ZN (NR2XD1BWP)                                   0.16      22.30 f
-  U74446/ZN (INR2D1BWP)                                   0.10      22.40 f
-  U68169/ZN (ND2D1BWP)                                    0.11      22.51 r
-  U74445/ZN (IND2D1BWP)                                   0.10      22.61 r
-  U74439/ZN (IND2D1BWP)                                   0.09      22.71 r
-  U74438/ZN (OAI21D1BWP)                                  0.12      22.83 f
-  U74437/ZN (IND4D1BWP)                                   0.07      22.89 r
-  U74436/ZN (INR2D1BWP)                                   0.06      22.95 f
-  U74435/ZN (NR2XD0BWP)                                   0.11      23.06 r
-  U68163/ZN (ND2D1BWP)                                    0.11      23.17 f
-  U68162/ZN (INVD1BWP)                                    0.17      23.34 r
-  U68161/ZN (ND2D1BWP)                                    0.12      23.47 f
-  U65304/Z (OR2XD1BWP)                                    0.11      23.58 f
-  U65321/ZN (INR2D1BWP)                                   0.17      23.74 r
-  U68160/ZN (ND2D1BWP)                                    0.14      23.88 f
-  U74434/ZN (INR2D1BWP)                                   0.13      24.01 r
-  U74433/ZN (AOI21D1BWP)                                  0.08      24.09 f
-  U74432/ZN (ND3D1BWP)                                    0.09      24.18 r
-  U62420/Z (OA31D1BWP)                                    0.08      24.26 r
-  U64368/ZN (CKND0BWP)                                    0.10      24.36 f
-  U74427/ZN (NR2XD0BWP)                                   0.20      24.56 r
-  U68155/ZN (ND2D1BWP)                                    0.13      24.69 f
-  U74426/ZN (NR2XD0BWP)                                   0.19      24.88 r
-  U74421/ZN (AOI21D1BWP)                                  0.11      24.98 f
-  U68153/ZN (ND2D1BWP)                                    0.09      25.07 r
-  U74418/ZN (OAI21D1BWP)                                  0.09      25.16 f
-  U74417/ZN (NR2XD0BWP)                                   0.18      25.34 r
-  U68146/ZN (ND2D1BWP)                                    0.18      25.52 f
-  U68145/ZN (NR2XD1BWP)                                   0.20      25.72 r
-  U74415/ZN (OAI21D1BWP)                                  0.09      25.81 f
-  U65018/ZN (OAI31D2BWP)                                  0.08      25.90 r
-  U74414/ZN (NR2XD0BWP)                                   0.13      26.03 f
-  U74809/ZN (INR4D0BWP)                                   0.08      26.11 f
-  U74810/ZN (INR3D0BWP)                                   0.17      26.28 r
-  U68139/ZN (ND2D1BWP)                                    0.17      26.45 f
-  U74408/ZN (NR2XD0BWP)                                   0.21      26.65 r
-  U68138/ZN (ND2D1BWP)                                    0.18      26.83 f
-  U74405/ZN (NR2XD0BWP)                                   0.14      26.98 r
-  U74404/ZN (AOI21D1BWP)                                  0.06      27.03 f
-  U74403/ZN (OAI31D1BWP)                                  0.09      27.13 r
-  U17368/CO (HA1D0BWP)                                    0.13      27.25 r
-  U18314/CO (HA1D0BWP)                                    0.09      27.34 r
-  U18316/S (HA1D0BWP)                                     0.07      27.41 f
-  U74814/ZN (MUX2ND0BWP)                                  0.15      27.56 r
-  U68091/ZN (INVD1BWP)                                    0.11      27.67 f
-  U68089/ZN (AOI21D2BWP)                                  0.22      27.88 r
-  U61512/Z (AO32D1BWP)                                    0.30      28.19 r
-  U74270/ZN (NR2XD0BWP)                                   0.16      28.35 f
-  U68073/ZN (INVD1BWP)                                    0.10      28.45 r
-  U13056/S (FA1D0BWP)                                     0.22      28.67 f
-  U68069/ZN (INVD1BWP)                                    0.11      28.78 r
-  U74263/ZN (IND2D1BWP)                                   0.12      28.90 f
-  U74262/ZN (NR2XD0BWP)                                   0.14      29.04 r
-  U68068/ZN (INVD1BWP)                                    0.12      29.16 f
-  U62413/ZN (NR2XD3BWP)                                   0.20      29.36 r
-  U74219/ZN (NR2XD0BWP)                                   0.10      29.46 f
-  U74817/ZN (MUX2ND0BWP)                                  0.15      29.61 f
-  U74218/ZN (NR2XD0BWP)                                   0.08      29.69 r
-  U68014/Z (CKBD2BWP)                                     0.22      29.90 r
-  U74217/ZN (NR2XD0BWP)                                   0.16      30.06 f
-  U74207/ZN (NR2XD0BWP)                                   0.14      30.20 r
-  U68006/ZN (ND2D1BWP)                                    0.14      30.34 f
-  U68005/ZN (ND2D1BWP)                                    0.11      30.45 r
-  U74206/ZN (NR2XD0BWP)                                   0.09      30.54 f
-  U68004/ZN (ND2D1BWP)                                    0.12      30.66 r
-  U65069/Z (OA21D1BWP)                                    0.12      30.78 r
-  U62405/Z (OR2D0BWP)                                     0.11      30.89 r
-  U68002/Z (AN2XD1BWP)                                    0.10      31.00 r
-  U68001/ZN (ND2D1BWP)                                    0.08      31.08 f
-  U68000/ZN (INVD1BWP)                                    0.08      31.16 r
-  U67999/ZN (ND2D1BWP)                                    0.12      31.29 f
-  U65032/ZN (CKND2BWP)                                    0.17      31.46 r
-  U65030/ZN (NR2XD1BWP)                                   0.16      31.61 f
-  U74202/ZN (IND2D1BWP)                                   0.13      31.74 f
-  U74201/ZN (AOI21D1BWP)                                  0.15      31.89 r
-  U67998/ZN (ND2D1BWP)                                    0.16      32.04 f
-  U62404/Z (CKXOR2D1BWP)                                  0.17      32.21 r
-  U67993/Z (AN2XD1BWP)                                    0.19      32.40 r
-  U67992/ZN (ND2D1BWP)                                    0.12      32.52 f
-  U67989/ZN (INVD1BWP)                                    0.07      32.59 r
-  U64514/ZN (OAI211D4BWP)                                 0.14      32.73 f
-  U67988/ZN (INVD1BWP)                                    0.18      32.91 r
-  U74196/ZN (NR2XD0BWP)                                   0.13      33.04 f
-  U67987/ZN (ND2D1BWP)                                    0.09      33.13 r
-  U65109/ZN (NR2XD1BWP)                                   0.11      33.25 f
-  U67982/ZN (INVD1BWP)                                    0.10      33.34 r
-  U74193/ZN (AOI32D1BWP)                                  0.07      33.42 f
-  U64298/ZN (NR2XD1BWP)                                   0.13      33.55 r
-  U74191/ZN (NR2XD0BWP)                                   0.16      33.71 f
-  U74190/ZN (ND3D1BWP)                                    0.19      33.90 r
-  U67980/ZN (ND2D1BWP)                                    0.17      34.06 f
-  U74189/ZN (NR2XD0BWP)                                   0.20      34.26 r
-  U74186/ZN (INR2D1BWP)                                   0.23      34.49 r
-  U67978/ZN (INVD1BWP)                                    0.11      34.60 f
-  U74185/ZN (AOI32D1BWP)                                  0.21      34.80 r
-  U65029/Z (CKAN2D0BWP)                                   0.17      34.98 r
-  U67976/ZN (ND2D1BWP)                                    0.17      35.15 f
-  U67975/ZN (ND2D1BWP)                                    0.12      35.27 r
-  U74177/ZN (ND3D1BWP)                                    0.18      35.45 f
-  U64264/ZN (NR2XD1BWP)                                   0.19      35.64 r
-  U74173/ZN (IND2D1BWP)                                   0.11      35.76 r
-  U67973/ZN (INR3D1BWP)                                   0.22      35.98 r
-  U74169/ZN (INR2D1BWP)                                   0.17      36.15 r
-  U74168/ZN (NR2XD0BWP)                                   0.11      36.26 f
-  U67970/ZN (INVD1BWP)                                    0.08      36.35 r
-  U74165/ZN (AOI31D1BWP)                                  0.11      36.46 f
-  U67969/ZN (ND2D1BWP)                                    0.10      36.55 r
-  U74163/ZN (INR2D1BWP)                                   0.07      36.62 f
-  U74162/ZN (AOI21D1BWP)                                  0.12      36.75 r
-  U74152/ZN (INR2D1BWP)                                   0.10      36.85 r
-  U65090/ZN (MUX2ND1BWP)                                  0.15      37.01 r
-  U74150/ZN (ND3D1BWP)                                    0.14      37.15 f
-  U67955/ZN (ND2D1BWP)                                    0.14      37.29 r
-  U74148/ZN (NR2XD0BWP)                                   0.11      37.40 f
-  U67954/ZN (OAI21D2BWP)                                  0.20      37.60 r
-  U67951/ZN (ND2D1BWP)                                    0.09      37.69 f
-  U64362/ZN (OAI31D2BWP)                                  0.15      37.84 r
-  U67950/ZN (INVD1BWP)                                    0.10      37.93 f
-  U67949/ZN (ND2D1BWP)                                    0.08      38.02 r
-  U67948/ZN (INVD1BWP)                                    0.06      38.08 f
-  U74142/ZN (OAI31D1BWP)                                  0.17      38.25 r
-  U74141/ZN (NR2XD0BWP)                                   0.14      38.38 f
-  U74140/ZN (AOI21D1BWP)                                  0.14      38.52 r
-  U67945/ZN (ND2D1BWP)                                    0.15      38.67 f
-  U74821/ZN (MUX2ND0BWP)                                  0.11      38.79 f
-  U74138/ZN (AOI21D1BWP)                                  0.12      38.90 r
-  U74137/ZN (OAI211D1BWP)                                 0.14      39.04 f
-  U62391/Z (OR2D0BWP)                                     0.14      39.18 f
-  U74136/ZN (AOI21D1BWP)                                  0.13      39.31 r
-  U67941/ZN (INVD1BWP)                                    0.05      39.36 f
-  U74134/ZN (AOI31D1BWP)                                  0.12      39.48 r
-  U74133/Z (OA21D1BWP)                                    0.09      39.57 r
-  U74131/ZN (OAI31D1BWP)                                  0.04      39.61 f
-  U65047/ZN (AOI21D2BWP)                                  0.14      39.75 r
-  U74129/ZN (ND3D1BWP)                                    0.20      39.95 f
-  U74740/ZN (NR2XD0BWP)                                   0.23      40.19 r
-  U67871/ZN (INVD1BWP)                                    0.14      40.32 f
-  genblk4.vdotmulu/addu/sub_159/U2_1/CO (FA1D0BWP)        0.15      40.47 f
-  genblk4.vdotmulu/addu/sub_159/U2_2/CO (FA1D0BWP)        0.09      40.56 f
-  genblk4.vdotmulu/addu/sub_159/U2_3/CO (FA1D0BWP)        0.09      40.65 f
-  genblk4.vdotmulu/addu/sub_159/U2_4/CO (FA1D0BWP)        0.09      40.74 f
-  genblk4.vdotmulu/addu/sub_159/U2_5/CO (FA1D0BWP)        0.09      40.83 f
-  genblk4.vdotmulu/addu/sub_159/U2_6/CO (FA1D0BWP)        0.09      40.92 f
-  genblk4.vdotmulu/addu/sub_159/U2_7/CO (FA1D0BWP)        0.09      41.01 f
-  genblk4.vdotmulu/addu/sub_159/U2_8/CO (FA1D0BWP)        0.09      41.10 f
-  genblk4.vdotmulu/addu/sub_159/U2_9/CO (FA1D0BWP)        0.09      41.19 f
-  genblk4.vdotmulu/addu/sub_159/U2_10/CO (FA1D0BWP)       0.09      41.28 f
-  genblk4.vdotmulu/addu/sub_159/U2_11/CO (FA1D0BWP)       0.09      41.37 f
-  genblk4.vdotmulu/addu/sub_159/U2_12/CO (FA1D0BWP)       0.09      41.46 f
-  genblk4.vdotmulu/addu/sub_159/U2_13/S (FA1D0BWP)        0.09      41.55 f
-  U65166/ZN (AOI222D4BWP)                                 0.19      41.74 r
-  U67853/ZN (INVD1BWP)                                    0.08      41.82 f
-  U67852/Z (OR2XD1BWP)                                    0.11      41.92 f
-  U73992/ZN (NR2XD0BWP)                                   0.16      42.09 r
-  U67847/ZN (ND2D1BWP)                                    0.17      42.26 f
-  U73984/ZN (OAI22D1BWP)                                  0.18      42.44 r
-  U73983/ZN (NR2XD0BWP)                                   0.12      42.56 f
-  U73982/ZN (INR2D1BWP)                                   0.09      42.65 f
-  U67844/ZN (ND2D1BWP)                                    0.08      42.74 r
-  U66001/ZN (INR2D1BWP)                                   0.20      42.93 r
-  U73979/ZN (IND4D1BWP)                                   0.20      43.13 f
-  U67843/ZN (ND2D1BWP)                                    0.12      43.25 r
-  U62382/ZN (CKND3BWP)                                    0.15      43.40 f
-  U67842/ZN (ND2D1BWP)                                    0.15      43.54 r
-  U65092/ZN (AOI22D2BWP)                                  0.14      43.68 f
-  U73975/ZN (IND2D1BWP)                                   0.13      43.81 f
-  U73966/ZN (IND2D1BWP)                                   0.05      43.86 r
-  U67831/Z (CKBD2BWP)                                     0.20      44.06 r
-  U73961/Z (OA21D1BWP)                                    0.12      44.18 r
-  U62381/Z (MUX2D1BWP)                                    0.11      44.29 r
-  U67825/ZN (ND2D1BWP)                                    0.13      44.42 f
-  U73957/ZN (IND2D1BWP)                                   0.19      44.62 f
-  U73953/ZN (AOI21D1BWP)                                  0.11      44.73 r
-  U73952/ZN (AOI21D1BWP)                                  0.08      44.81 f
-  U73949/ZN (NR2XD0BWP)                                   0.14      44.95 r
-  U67823/ZN (INVD1BWP)                                    0.11      45.06 f
-  U65099/ZN (INR3D4BWP)                                   0.17      45.23 r
-  U73945/ZN (IND2D1BWP)                                   0.09      45.32 r
-  U73944/ZN (OAI21D1BWP)                                  0.04      45.36 f
-  U61303/Z (AO31D1BWP)                                    0.16      45.52 f
-  U73943/ZN (NR2XD0BWP)                                   0.19      45.71 r
-  U73942/ZN (INR2D1BWP)                                   0.22      45.94 r
-  U65995/ZN (INR2D1BWP)                                   0.22      46.16 r
-  U73939/ZN (AOI21D1BWP)                                  0.14      46.30 f
-  U67818/ZN (INVD1BWP)                                    0.09      46.39 r
-  U67817/ZN (ND2D1BWP)                                    0.08      46.47 f
-  U73934/ZN (IND2D1BWP)                                   0.15      46.62 f
-  U73926/ZN (OAI21D1BWP)                                  0.07      46.70 r
-  U73925/ZN (AOI21D1BWP)                                  0.08      46.77 f
-  U73924/ZN (NR2XD0BWP)                                   0.15      46.92 r
-  U73923/ZN (ND3D1BWP)                                    0.15      47.07 f
-  U62377/ZN (ND2D2BWP)                                    0.20      47.26 r
-  U74830/ZN (NR3D0BWP)                                    0.14      47.40 f
-  U67803/ZN (INVD1BWP)                                    0.12      47.52 r
-  U73916/ZN (NR2XD0BWP)                                   0.06      47.58 f
-  U65044/ZN (MUX2ND1BWP)                                  0.16      47.74 r
-  U61310/ZN (INR3D0BWP)                                   0.21      47.94 r
-  U67798/ZN (INVD1BWP)                                    0.10      48.05 f
-  U62376/ZN (ND2D2BWP)                                    0.20      48.25 r
-  U67797/ZN (INVD1BWP)                                    0.11      48.36 f
-  U67796/ZN (NR2XD1BWP)                                   0.21      48.57 r
-  U73904/ZN (AOI211XD0BWP)                                0.20      48.77 f
-  U73895/ZN (AOI21D1BWP)                                  0.17      48.94 r
-  U67789/ZN (INVD1BWP)                                    0.09      49.03 f
-  U64308/ZN (NR2XD1BWP)                                   0.14      49.17 r
-  U73879/ZN (NR2XD0BWP)                                   0.07      49.24 f
-  U73878/ZN (NR2XD0BWP)                                   0.18      49.42 r
-  U73864/ZN (NR2XD0BWP)                                   0.14      49.56 f
-  U67754/ZN (NR2XD1BWP)                                   0.24      49.80 r
-  U64280/ZN (CKND2D0BWP)                                  0.20      50.01 f
-  U67742/ZN (OAI31D2BWP)                                  0.21      50.22 r
-  genblk4.vdotmulu/addu/add_234/U1_1_1/CO (HA1D0BWP)      0.13      50.36 r
-  genblk4.vdotmulu/addu/add_234/U1_1_2/CO (HA1D0BWP)      0.09      50.45 r
-  genblk4.vdotmulu/addu/add_234/U1_1_3/CO (HA1D0BWP)      0.09      50.53 r
-  genblk4.vdotmulu/addu/add_234/U1_1_4/CO (HA1D0BWP)      0.09      50.62 r
-  genblk4.vdotmulu/addu/add_234/U1_1_5/CO (HA1D0BWP)      0.09      50.71 r
-  genblk4.vdotmulu/addu/add_234/U1_1_6/CO (HA1D0BWP)      0.09      50.80 r
-  genblk4.vdotmulu/addu/add_234/U1_1_7/CO (HA1D0BWP)      0.09      50.89 r
-  genblk4.vdotmulu/addu/add_234/U1_1_8/CO (HA1D0BWP)      0.09      50.98 r
-  genblk4.vdotmulu/addu/add_234/U1_1_9/CO (HA1D0BWP)      0.09      51.07 r
-  genblk4.vdotmulu/addu/add_234/U1_1_10/CO (HA1D0BWP)     0.08      51.14 r
-  U65991/ZN (ND2D1BWP)                                    0.17      51.32 f
-  U67737/ZN (ND2D1BWP)                                    0.17      51.49 r
-  U62106/ZN (MAOI22D0BWP)                                 0.22      51.71 r
-  U62371/Z (AN4D1BWP)                                     0.16      51.87 r
-  U73805/ZN (ND4D1BWP)                                    0.06      51.93 f
-  U73804/Z (OR4XD1BWP)                                    0.13      52.06 f
-  U74836/ZN (NR4D0BWP)                                    0.21      52.27 r
-  U62108/ZN (OAI211D0BWP)                                 0.13      52.40 f
-  U62109/ZN (MOAI22D0BWP)                                 0.11      52.51 f
-  genblk4.vdotmulu/out_reg[15]/D (DFKCNQD1BWP)            0.00      52.51 f
-  data arrival time                                                 52.51
+  intadd_0/U5/CO (FA1D0BWP)                               0.09       2.58 f
+  intadd_0/U4/CO (FA1D0BWP)                               0.09       2.67 f
+  intadd_0/U3/CO (FA1D0BWP)                               0.09       2.76 f
+  intadd_0/U2/CO (FA1D0BWP)                               0.13       2.89 f
+  U74395/S (FA1D0BWP)                                     0.27       3.16 r
+  U74229/ZN (INR2D1BWP)                                   0.08       3.23 f
+  U63767/Z (CKBD4BWP)                                     0.17       3.40 f
+  U74225/ZN (AOI22D1BWP)                                  0.24       3.64 r
+  U61846/Z (OR2D1BWP)                                     0.17       3.80 r
+  U74221/ZN (NR2XD0BWP)                                   0.10       3.91 f
+  U67477/ZN (ND2D1BWP)                                    0.11       4.02 r
+  U74220/ZN (NR2XD0BWP)                                   0.14       4.16 f
+  U64621/ZN (INR2D1BWP)                                   0.22       4.38 r
+  U67476/ZN (INVD1BWP)                                    0.06       4.44 f
+  U61838/Z (AO31D1BWP)                                    0.14       4.58 f
+  U74219/ZN (NR2XD0BWP)                                   0.17       4.75 r
+  U74214/ZN (ND4D1BWP)                                    0.18       4.93 f
+  U67473/ZN (ND2D1BWP)                                    0.07       5.00 r
+  U61328/Z (CKBD3BWP)                                     0.18       5.18 r
+  U74213/ZN (NR2XD0BWP)                                   0.14       5.32 f
+  U67469/ZN (ND2D1BWP)                                    0.13       5.45 r
+  U74207/ZN (NR2XD0BWP)                                   0.07       5.52 f
+  U64317/ZN (NR2XD1BWP)                                   0.14       5.66 r
+  U74206/ZN (ND3D1BWP)                                    0.15       5.81 f
+  U74205/ZN (NR2XD0BWP)                                   0.14       5.95 r
+  U67467/Z (OR2D2BWP)                                     0.26       6.21 r
+  U67466/ZN (CKND2BWP)                                    0.25       6.46 f
+  U67465/ZN (ND2D1BWP)                                    0.13       6.59 r
+  U64351/ZN (NR2XD1BWP)                                   0.12       6.72 f
+  U74204/ZN (AOI21D1BWP)                                  0.15       6.87 r
+  U67464/ZN (INVD1BWP)                                    0.11       6.98 f
+  U74200/ZN (NR2XD0BWP)                                   0.12       7.10 r
+  U74199/ZN (INR2D1BWP)                                   0.05       7.15 f
+  U61329/Z (CKBD3BWP)                                     0.17       7.32 f
+  U67460/ZN (ND2D1BWP)                                    0.12       7.44 r
+  U74198/ZN (NR2XD0BWP)                                   0.14       7.57 f
+  U74197/ZN (OAI21D1BWP)                                  0.10       7.67 r
+  U64316/ZN (OAI31D2BWP)                                  0.10       7.77 f
+  U74196/ZN (IND3D1BWP)                                   0.16       7.93 f
+  U65156/ZN (OAI31D2BWP)                                  0.20       8.12 r
+  U61813/Z (OR2XD1BWP)                                    0.08       8.21 r
+  U63628/ZN (CKND2BWP)                                    0.11       8.32 f
+  U64409/ZN (CKND3BWP)                                    0.21       8.53 r
+  U74190/ZN (NR2XD0BWP)                                   0.14       8.67 f
+  U67455/ZN (ND2D1BWP)                                    0.13       8.80 r
+  U74188/ZN (NR2XD0BWP)                                   0.15       8.95 f
+  U61326/ZN (MAOI222D1BWP)                                0.20       9.15 r
+  U61805/ZN (XNR2D1BWP)                                   0.16       9.31 f
+  U74183/ZN (OAI31D1BWP)                                  0.18       9.49 r
+  U67450/ZN (NR2XD1BWP)                                   0.21       9.70 f
+  U67449/ZN (ND2D1BWP)                                    0.12       9.82 r
+  U74182/ZN (NR2XD0BWP)                                   0.14       9.96 f
+  U67442/ZN (ND2D1BWP)                                    0.10      10.06 r
+  U67439/ZN (INVD1BWP)                                    0.07      10.13 f
+  U74170/ZN (OAI21D1BWP)                                  0.07      10.19 r
+  U67438/ZN (OAI31D2BWP)                                  0.12      10.32 f
+  U74169/ZN (ND3D1BWP)                                    0.11      10.43 r
+  U74403/ZN (NR3D0BWP)                                    0.10      10.53 f
+  U74168/ZN (NR2XD0BWP)                                   0.14      10.67 r
+  U67437/ZN (ND2D1BWP)                                    0.26      10.93 f
+  U74167/ZN (INR2D1BWP)                                   0.20      11.13 r
+  U64355/ZN (INR2D2BWP)                                   0.19      11.32 r
+  U74166/ZN (IAO21D1BWP)                                  0.10      11.42 f
+  U67434/ZN (INVD1BWP)                                    0.11      11.52 r
+  U74159/ZN (NR2XD0BWP)                                   0.10      11.63 f
+  U74157/ZN (ND4D1BWP)                                    0.09      11.72 r
+  U67432/ZN (ND2D1BWP)                                    0.10      11.81 f
+  U67431/ZN (NR2XD1BWP)                                   0.21      12.02 r
+  U67430/ZN (INVD1BWP)                                    0.20      12.22 f
+  U74156/ZN (NR2XD0BWP)                                   0.21      12.43 r
+  U67428/ZN (ND2D1BWP)                                    0.18      12.61 f
+  U64346/ZN (INR2D2BWP)                                   0.17      12.79 r
+  U74154/ZN (AOI21D1BWP)                                  0.10      12.88 f
+  U74153/ZN (IND4D1BWP)                                   0.06      12.94 r
+  U63533/Z (OA21D1BWP)                                    0.12      13.06 r
+  U67423/ZN (ND2D1BWP)                                    0.24      13.31 f
+  U67422/ZN (INVD1BWP)                                    0.26      13.57 r
+  U67421/ZN (ND2D1BWP)                                    0.13      13.70 f
+  U74148/ZN (NR2XD0BWP)                                   0.20      13.91 r
+  U67417/ZN (ND2D1BWP)                                    0.14      14.05 f
+  U64338/ZN (NR2XD1BWP)                                   0.15      14.20 r
+  U67415/ZN (AOI21D2BWP)                                  0.12      14.33 f
+  U74137/ZN (ND3D1BWP)                                    0.10      14.43 r
+  U74408/ZN (NR3D0BWP)                                    0.09      14.52 f
+  U74135/ZN (NR2XD0BWP)                                   0.19      14.71 r
+  U61765/Z (AN2D2BWP)                                     0.22      14.93 r
+  U64620/ZN (INR2D1BWP)                                   0.23      15.16 r
+  U74126/ZN (INR2D1BWP)                                   0.23      15.38 r
+  U74124/ZN (OAI21D1BWP)                                  0.08      15.46 f
+  U74123/ZN (OAI31D1BWP)                                  0.09      15.55 r
+  U74409/ZN (INR3D0BWP)                                   0.14      15.69 f
+  U74122/ZN (IND3D1BWP)                                   0.10      15.79 r
+  U67399/ZN (ND3D2BWP)                                    0.22      16.01 f
+  U67398/ZN (INVD1BWP)                                    0.28      16.29 r
+  U67397/ZN (ND2D1BWP)                                    0.19      16.48 f
+  U64335/Z (OR2XD1BWP)                                    0.13      16.61 f
+  U64334/ZN (NR2XD1BWP)                                   0.13      16.73 r
+  U74119/ZN (OAI21D1BWP)                                  0.08      16.81 f
+  U67395/ZN (OAI31D2BWP)                                  0.10      16.91 r
+  U74410/ZN (INR3D0BWP)                                   0.16      17.07 f
+  U67392/ZN (NR3D1BWP)                                    0.22      17.29 r
+  U67391/ZN (INVD1BWP)                                    0.22      17.51 f
+  U74419/ZN (NR3D0BWP)                                    0.22      17.73 r
+  U67383/ZN (ND2D1BWP)                                    0.13      17.86 f
+  U74109/ZN (NR2XD0BWP)                                   0.20      18.06 r
+  U74108/ZN (OAI32D1BWP)                                  0.14      18.20 f
+  U74420/ZN (INR4D0BWP)                                   0.12      18.32 r
+  U63566/Z (OR2XD1BWP)                                    0.09      18.41 r
+  U63565/ZN (NR2XD1BWP)                                   0.11      18.52 f
+  U67381/Z (AN2XD1BWP)                                    0.16      18.67 f
+  U67377/ZN (ND2D1BWP)                                    0.13      18.81 r
+  U74107/ZN (NR2XD0BWP)                                   0.15      18.95 f
+  U74106/ZN (AOI21D1BWP)                                  0.24      19.20 r
+  U67376/ZN (INVD1BWP)                                    0.11      19.30 f
+  U74105/ZN (NR2XD0BWP)                                   0.13      19.43 r
+  U74091/ZN (AOI21D1BWP)                                  0.11      19.54 f
+  U67371/ZN (ND2D1BWP)                                    0.15      19.69 r
+  U64343/ZN (NR2XD1BWP)                                   0.14      19.84 f
+  U64399/Z (CKAN2D0BWP)                                   0.14      19.98 f
+  U64398/ZN (OAI31D2BWP)                                  0.17      20.14 r
+  U74085/ZN (NR2XD0BWP)                                   0.13      20.28 f
+  U74084/ZN (IND3D1BWP)                                   0.10      20.38 r
+  U61327/ZN (ND3D3BWP)                                    0.19      20.57 f
+  U61729/Z (OR2D0BWP)                                     0.17      20.75 f
+  U74083/ZN (INR2D1BWP)                                   0.18      20.93 r
+  U74080/ZN (INR2D1BWP)                                   0.17      21.10 r
+  U67363/ZN (ND2D1BWP)                                    0.07      21.17 f
+  U67362/ZN (ND2D1BWP)                                    0.07      21.24 r
+  U64410/Z (XOR2D1BWP)                                    0.20      21.44 f
+  U74079/ZN (ND4D1BWP)                                    0.12      21.56 r
+  U64508/ZN (INR3D4BWP)                                   0.21      21.77 r
+  U67356/ZN (INVD1BWP)                                    0.10      21.87 f
+  U74421/ZN (NR3D0BWP)                                    0.18      22.05 r
+  U67353/Z (AN2XD1BWP)                                    0.12      22.18 r
+  U67352/ZN (ND2D1BWP)                                    0.09      22.27 f
+  U63632/ZN (OAI21D2BWP)                                  0.11      22.38 r
+  U74069/ZN (NR2XD0BWP)                                   0.12      22.50 f
+  U74064/ZN (AOI31D1BWP)                                  0.14      22.64 r
+  U67345/ZN (ND2D1BWP)                                    0.19      22.84 f
+  U63651/ZN (NR2XD1BWP)                                   0.19      23.02 r
+  U67341/ZN (ND2D1BWP)                                    0.12      23.15 f
+  U67340/ZN (INVD1BWP)                                    0.12      23.27 r
+  U74058/ZN (OAI21D1BWP)                                  0.07      23.34 f
+  U63633/ZN (OAI31D2BWP)                                  0.08      23.42 r
+  U74422/ZN (INR4D0BWP)                                   0.08      23.50 f
+  U74057/ZN (IND2D1BWP)                                   0.08      23.57 r
+  U67339/ZN (ND2D1BWP)                                    0.09      23.66 f
+  U74056/ZN (NR2XD0BWP)                                   0.13      23.79 r
+  U67337/ZN (INVD1BWP)                                    0.08      23.87 f
+  U74052/ZN (NR2XD0BWP)                                   0.11      23.99 r
+  U74051/ZN (INR2D1BWP)                                   0.16      24.14 r
+  U67336/ZN (ND2D1BWP)                                    0.15      24.29 f
+  U74050/ZN (OAI21D1BWP)                                  0.08      24.37 r
+  U74049/ZN (AOI31D1BWP)                                  0.07      24.44 f
+  U67335/ZN (INVD1BWP)                                    0.09      24.53 r
+  U74423/ZN (INR4D0BWP)                                   0.06      24.59 f
+  U74039/ZN (AOI21D1BWP)                                  0.12      24.70 r
+  U67331/ZN (ND2D1BWP)                                    0.12      24.82 f
+  U67330/ZN (INVD1BWP)                                    0.11      24.94 r
+  U67329/ZN (ND2D1BWP)                                    0.14      25.08 f
+  U61709/ZN (NR2XD1BWP)                                   0.17      25.25 r
+  U64376/ZN (INR2D2BWP)                                   0.18      25.43 r
+  U73924/ZN (OAI21D1BWP)                                  0.08      25.51 f
+  U64375/ZN (OAI31D2BWP)                                  0.09      25.60 r
+  U74424/ZN (INR4D0BWP)                                   0.09      25.69 f
+  U74425/ZN (NR3D0BWP)                                    0.16      25.85 r
+  U67275/ZN (ND2D1BWP)                                    0.17      26.01 f
+  U64619/ZN (INR2D1BWP)                                   0.21      26.23 r
+  U67274/ZN (ND2D1BWP)                                    0.18      26.41 f
+  U73919/ZN (OAI32D1BWP)                                  0.11      26.52 r
+  U61708/Z (AO21D1BWP)                                    0.10      26.62 r
+  U18432/S (HA1D0BWP)                                     0.09      26.71 r
+  U64430/ZN (MUX2ND1BWP)                                  0.12      26.84 f
+  U73910/Z (OR4XD1BWP)                                    0.15      26.98 f
+  U67260/ZN (OAI21D2BWP)                                  0.19      27.17 r
+  U67259/ZN (INVD1BWP)                                    0.14      27.31 f
+  U73908/ZN (AOI32D1BWP)                                  0.17      27.48 r
+  U67258/ZN (INVD1BWP)                                    0.12      27.61 f
+  U67257/ZN (ND2D1BWP)                                    0.12      27.73 r
+  U67249/ZN (ND2D1BWP)                                    0.18      27.91 f
+  U67248/ZN (INVD1BWP)                                    0.22      28.13 r
+  U67246/ZN (ND2D1BWP)                                    0.26      28.39 f
+  U67245/ZN (NR2XD1BWP)                                   0.24      28.63 r
+  U67243/ZN (ND2D1BWP)                                    0.23      28.85 f
+  U67242/ZN (NR2XD1BWP)                                   0.25      29.10 r
+  U64518/ZN (CKND2BWP)                                    0.21      29.31 f
+  U73900/ZN (AOI21D1BWP)                                  0.15      29.47 r
+  U73896/ZN (INR3D0BWP)                                   0.12      29.59 r
+  U67238/Z (CKBD2BWP)                                     0.21      29.80 r
+  U73895/ZN (NR2XD0BWP)                                   0.20      30.00 f
+  U67237/ZN (ND2D1BWP)                                    0.15      30.15 r
+  U67236/ZN (AOI211D2BWP)                                 0.10      30.25 f
+  U73892/ZN (OAI21D1BWP)                                  0.07      30.33 r
+  U73891/ZN (ND3D1BWP)                                    0.17      30.49 f
+  U67234/ZN (INR4D1BWP)                                   0.20      30.69 f
+  U73888/ZN (NR2XD0BWP)                                   0.20      30.90 r
+  U64340/ZN (INR2D2BWP)                                   0.19      31.09 r
+  U64339/ZN (CKND2D0BWP)                                  0.16      31.25 f
+  U73887/ZN (NR2XD0BWP)                                   0.08      31.33 r
+  U64303/ZN (NR2XD1BWP)                                   0.11      31.44 f
+  U67232/ZN (NR4D8BWP)                                    0.26      31.71 r
+  U73883/ZN (NR2XD0BWP)                                   0.08      31.78 f
+  U73882/ZN (NR2XD0BWP)                                   0.19      31.97 r
+  U73881/ZN (INR2D1BWP)                                   0.17      32.14 r
+  U67214/ZN (ND2D1BWP)                                    0.18      32.32 f
+  U73880/ZN (OAI21D1BWP)                                  0.13      32.45 r
+  U61696/ZN (XNR2D1BWP)                                   0.14      32.59 f
+  U67213/ZN (NR2XD1BWP)                                   0.19      32.78 r
+  U73879/ZN (INR2D1BWP)                                   0.23      33.01 r
+  U73876/ZN (NR2XD0BWP)                                   0.14      33.15 f
+  U73875/ZN (INR2D1BWP)                                   0.14      33.29 r
+  U67212/ZN (ND2D1BWP)                                    0.15      33.44 f
+  U73873/ZN (IND2D1BWP)                                   0.13      33.57 f
+  U73872/ZN (NR2XD0BWP)                                   0.13      33.70 r
+  U73871/ZN (AOI21D1BWP)                                  0.11      33.81 f
+  U67207/ZN (ND2D1BWP)                                    0.10      33.91 r
+  U73869/ZN (INR2D1BWP)                                   0.07      33.98 f
+  U64333/ZN (INR2D2BWP)                                   0.13      34.11 r
+  U67124/ZN (INVD1BWP)                                    0.09      34.20 f
+  U73761/ZN (NR2XD0BWP)                                   0.18      34.38 r
+  U64368/ZN (MUX2ND1BWP)                                  0.20      34.58 r
+  U67122/ZN (ND2D1BWP)                                    0.10      34.68 f
+  U63501/ZN (NR2D3BWP)                                    0.18      34.86 r
+  U67117/ZN (INVD1BWP)                                    0.10      34.97 f
+  U67116/ZN (NR2XD1BWP)                                   0.17      35.13 r
+  U73743/ZN (OAI222D1BWP)                                 0.24      35.37 f
+  U63500/Z (AO222D1BWP)                                   0.24      35.61 f
+  U73683/ZN (AOI22D1BWP)                                  0.07      35.68 r
+  U73682/ZN (OAI211D1BWP)                                 0.08      35.76 f
+  U73681/ZN (AOI32D1BWP)                                  0.21      35.97 r
+  U73680/ZN (AOI211XD0BWP)                                0.12      36.09 f
+  U73679/ZN (AOI211XD0BWP)                                0.10      36.19 r
+  U73678/ZN (OAI222D1BWP)                                 0.08      36.26 f
+  U73676/ZN (AOI22D1BWP)                                  0.07      36.34 r
+  U67071/ZN (ND2D1BWP)                                    0.04      36.38 f
+  U73673/ZN (AOI222D1BWP)                                 0.11      36.49 r
+  U73669/ZN (OAI22D1BWP)                                  0.06      36.55 f
+  U65152/ZN (MAOI222D1BWP)                                0.16      36.71 r
+  U65151/ZN (ND2D1BWP)                                    0.24      36.95 f
+  U73657/ZN (INVD1BWP)                                    0.13      37.08 r
+  U67065/ZN (ND2D1BWP)                                    0.17      37.25 f
+  U61683/ZN (CKND2BWP)                                    0.25      37.50 r
+  U67057/ZN (AOI222D4BWP)                                 0.20      37.70 f
+  U67055/ZN (INVD1BWP)                                    0.11      37.81 r
+  U73652/ZN (NR2XD0BWP)                                   0.07      37.88 f
+  U67054/Z (CKBD2BWP)                                     0.19      38.06 f
+  U67053/ZN (INVD1BWP)                                    0.16      38.22 r
+  U64474/ZN (NR2XD1BWP)                                   0.14      38.36 f
+  U73650/ZN (OAI32D1BWP)                                  0.16      38.52 r
+  U67052/Z (AN2XD1BWP)                                    0.13      38.65 r
+  U67051/ZN (ND2D1BWP)                                    0.09      38.74 f
+  U67050/ZN (ND2D2BWP)                                    0.21      38.95 r
+  U67577/ZN (INVD1BWP)                                    0.17      39.12 f
+  U73642/ZN (IND2D1BWP)                                   0.13      39.25 r
+  U73641/ZN (OAI21D1BWP)                                  0.11      39.36 f
+  U73640/ZN (NR2XD0BWP)                                   0.13      39.49 r
+  U67036/Z (AN2XD1BWP)                                    0.11      39.61 r
+  U63654/ZN (NR2XD1BWP)                                   0.11      39.72 f
+  U73633/ZN (OAI22D1BWP)                                  0.20      39.92 r
+  U73632/ZN (INR2D1BWP)                                   0.17      40.09 r
+  U73627/ZN (INR2D1BWP)                                   0.21      40.30 r
+  U61464/ZN (IOA21D0BWP)                                  0.26      40.56 f
+  U61409/ZN (OAI22D1BWP)                                  0.13      40.69 r
+  U61410/ZN (NR2XD0BWP)                                   0.14      40.84 f
+  U64392/ZN (NR3D1BWP)                                    0.19      41.02 r
+  U67018/Z (AN2XD1BWP)                                    0.13      41.15 r
+  U63531/ZN (NR2D3BWP)                                    0.08      41.24 f
+  U67017/ZN (INVD1BWP)                                    0.16      41.40 r
+  U73621/ZN (AOI22D1BWP)                                  0.17      41.57 f
+  U73620/ZN (NR2XD0BWP)                                   0.22      41.79 r
+  U67015/ZN (ND2D1BWP)                                    0.14      41.93 f
+  U64329/ZN (INR2D2BWP)                                   0.11      42.04 f
+  U64328/ZN (CKND2BWP)                                    0.14      42.18 r
+  U67007/ZN (NR2XD1BWP)                                   0.16      42.34 f
+  U73612/ZN (NR2XD0BWP)                                   0.09      42.43 r
+  U67006/ZN (ND2D1BWP)                                    0.09      42.52 f
+  U73611/ZN (NR2XD0BWP)                                   0.13      42.65 r
+  U61672/Z (OR2XD1BWP)                                    0.18      42.84 r
+  U67005/ZN (CKND2BWP)                                    0.20      43.03 f
+  U73604/ZN (OAI21D1BWP)                                  0.13      43.16 r
+  U64374/ZN (OAI31D4BWP)                                  0.11      43.27 f
+  U73603/ZN (NR2XD0BWP)                                   0.14      43.41 r
+  U73599/ZN (ND3D1BWP)                                    0.14      43.55 f
+  U61670/ZN (ND2D2BWP)                                    0.22      43.77 r
+  U66989/ZN (MUX2ND1BWP)                                  0.21      43.98 f
+  U74440/ZN (NR3D0BWP)                                    0.18      44.15 r
+  U66987/ZN (ND2D1BWP)                                    0.13      44.28 f
+  U66986/ZN (INR2D2BWP)                                   0.11      44.39 f
+  U63624/ZN (CKND2BWP)                                    0.15      44.54 r
+  U66983/ZN (NR2XD1BWP)                                   0.16      44.70 f
+  U66981/ZN (INVD1BWP)                                    0.10      44.81 r
+  U73586/ZN (OAI21D1BWP)                                  0.06      44.87 f
+  U74441/ZN (MUX2ND0BWP)                                  0.15      45.02 f
+  U73585/ZN (AOI211XD0BWP)                                0.21      45.23 r
+  U61469/ZN (INR3D0BWP)                                   0.25      45.48 r
+  U63516/ZN (NR2D3BWP)                                    0.14      45.62 f
+  U73578/ZN (AOI211XD0BWP)                                0.12      45.74 r
+  U64363/ZN (AOI21D2BWP)                                  0.09      45.84 f
+  U73577/ZN (INR2D1BWP)                                   0.20      46.04 r
+  U66972/ZN (ND2D1BWP)                                    0.13      46.16 f
+  U61665/Z (OR2D0BWP)                                     0.14      46.30 f
+  U73574/ZN (NR2XD0BWP)                                   0.19      46.49 r
+  U66967/ZN (INVD1BWP)                                    0.11      46.60 f
+  U73559/ZN (AOI21D1BWP)                                  0.18      46.78 r
+  U66965/ZN (ND2D1BWP)                                    0.30      47.08 f
+  U63484/ZN (CKND2BWP)                                    0.23      47.31 r
+  U73558/ZN (OAI22D1BWP)                                  0.18      47.48 f
+  U66963/ZN (ND2D1BWP)                                    0.17      47.66 r
+  U73549/ZN (NR2XD0BWP)                                   0.12      47.78 f
+  U64370/ZN (CKND2D0BWP)                                  0.19      47.97 r
+  U73548/ZN (NR2XD0BWP)                                   0.14      48.11 f
+  U73547/ZN (IAO21D1BWP)                                  0.14      48.25 r
+  U66960/ZN (INVD1BWP)                                    0.10      48.35 f
+  U74445/ZN (NR3D0BWP)                                    0.17      48.52 r
+  U73544/ZN (ND3D1BWP)                                    0.16      48.68 f
+  U73531/ZN (OAI21D1BWP)                                  0.15      48.83 r
+  U66947/ZN (ND2D1BWP)                                    0.23      49.06 f
+  U66946/ZN (INVD1BWP)                                    0.27      49.33 r
+  U63483/ZN (OAI221D1BWP)                                 0.14      49.47 f
+  U73509/ZN (OAI211D1BWP)                                 0.09      49.56 r
+  r6953/U1_1_2/CO (HA1D0BWP)                              0.11      49.67 r
+  r6953/U1_1_3/CO (HA1D0BWP)                              0.09      49.76 r
+  r6953/U1_1_4/CO (HA1D0BWP)                              0.09      49.85 r
+  r6953/U1_1_5/CO (HA1D0BWP)                              0.09      49.94 r
+  r6953/U1_1_6/CO (HA1D0BWP)                              0.09      50.03 r
+  r6953/U1_1_7/CO (HA1D0BWP)                              0.09      50.12 r
+  r6953/U1_1_8/CO (HA1D0BWP)                              0.09      50.21 r
+  r6953/U1_1_9/CO (HA1D0BWP)                              0.09      50.29 r
+  r6953/U1_1_10/CO (HA1D0BWP)                             0.07      50.37 r
+  U64598/ZN (INR2D1BWP)                                   0.18      50.55 r
+  U66929/ZN (INR2D2BWP)                                   0.22      50.78 r
+  U65144/ZN (CKND2BWP)                                    0.20      50.98 f
+  U61448/ZN (OAI211D0BWP)                                 0.12      51.10 r
+  genblk4.vdotmulu/out_reg[10]/D (DFQD1BWP)               0.00      51.10 r
+  data arrival time                                                 51.10
 
   clock Clk2 (rise edge)                                200.00     200.00
   clock network delay (ideal)                             0.00     200.00
-  genblk4.vdotmulu/out_reg[15]/CP (DFKCNQD1BWP)           0.00     200.00 r
-  library setup time                                     -0.04     199.96
-  data required time                                               199.96
+  genblk4.vdotmulu/out_reg[10]/CP (DFQD1BWP)              0.00     200.00 r
+  library setup time                                     -0.05     199.95
+  data required time                                               199.95
   --------------------------------------------------------------------------
-  data required time                                               199.96
-  data arrival time                                                -52.51
+  data required time                                               199.95
+  data arrival time                                                -51.10
   --------------------------------------------------------------------------
-  slack (MET)                                                      147.45
+  slack (MET)                                                      148.85
 
 
 1
@@ -1387,7 +1333,7 @@ Report : timing
         -max_paths 3
 Design : CVP14
 Version: H-2013.03-SP3
-Date   : Thu Apr 24 00:14:57 2014
+Date   : Thu Apr 24 22:49:26 2014
 ****************************************
 
  # A fanout number of 1000 was used for high fanout net computations.
@@ -1411,8 +1357,8 @@ Wire Load Model Mode: top
   clock network delay (ideal)              0.00       0.00
   V_reg/CP (DFQD1BWP)                      0.00 #     0.00 r
   V_reg/Q (DFQD1BWP)                       0.13       0.13 f
-  U66891/ZN (ND2D1BWP)                     0.03       0.17 r
-  U71458/ZN (OAI22D1BWP)                   0.03       0.20 f
+  U66422/ZN (ND2D1BWP)                     0.03       0.17 r
+  U72271/ZN (OAI22D1BWP)                   0.03       0.20 f
   V_reg/D (DFQD1BWP)                       0.00       0.20 f
   data arrival time                                   0.20
 
@@ -1444,8 +1390,8 @@ Wire Load Model Mode: top
   clock network delay (ideal)              0.00       0.00
   V_reg/CP (DFQD1BWP)                      0.00 #     0.00 r
   V_reg/Q (DFQD1BWP)                       0.13       0.13 f
-  U66891/ZN (ND2D1BWP)                     0.03       0.17 r
-  U71458/ZN (OAI22D1BWP)                   0.03       0.20 f
+  U66422/ZN (ND2D1BWP)                     0.03       0.17 r
+  U72271/ZN (OAI22D1BWP)                   0.03       0.20 f
   V_reg/D (DFQD1BWP)                       0.00       0.20 f
   data arrival time                                   0.20
 
@@ -1477,8 +1423,8 @@ Wire Load Model Mode: top
   clock network delay (ideal)              0.00       0.00
   V_reg/CP (DFQD1BWP)                      0.00 #     0.00 r
   V_reg/Q (DFQD1BWP)                       0.13       0.13 f
-  U66891/ZN (ND2D1BWP)                     0.03       0.17 r
-  U71458/ZN (OAI22D1BWP)                   0.04       0.20 f
+  U66422/ZN (ND2D1BWP)                     0.03       0.17 r
+  U72271/ZN (OAI22D1BWP)                   0.04       0.20 f
   V_reg/D (DFQD1BWP)                       0.00       0.20 f
   data arrival time                                   0.20
 
@@ -1527,9 +1473,9 @@ Wire Load Model Mode: top
   slack (MET)                                                        0.14
 
 
-  Startpoint: genblk4.vdotmulu/state_reg[0]
+  Startpoint: genblk4.vdotmulu/state_reg[4]
               (rising edge-triggered flip-flop clocked by Clk2)
-  Endpoint: genblk4.vdotmulu/state_reg[1]
+  Endpoint: genblk4.vdotmulu/state_reg[4]
             (rising edge-triggered flip-flop clocked by Clk2)
   Path Group: Clk2
   Path Type: min
@@ -1543,27 +1489,27 @@ Wire Load Model Mode: top
   --------------------------------------------------------------------------
   clock Clk2 (rise edge)                                200.00     200.00
   clock network delay (ideal)                             0.00     200.00
-  genblk4.vdotmulu/state_reg[0]/CP (DFKCND1BWP)           0.00     200.00 r
-  genblk4.vdotmulu/state_reg[0]/Q (DFKCND1BWP)            0.11     200.11 r
-  U28815/S (HA1D0BWP)                                     0.06     200.17 f
-  genblk4.vdotmulu/state_reg[1]/D (DFKCNQD1BWP)           0.00     200.17 f
-  data arrival time                                                200.17
+  genblk4.vdotmulu/state_reg[4]/CP (DFKCSND1BWP)          0.00     200.00 r
+  genblk4.vdotmulu/state_reg[4]/Q (DFKCSND1BWP)           0.09     200.09 r
+  U74449/ZN (MUX2ND0BWP)                                  0.04     200.13 f
+  genblk4.vdotmulu/state_reg[4]/D (DFKCSND1BWP)           0.00     200.13 f
+  data arrival time                                                200.13
 
   clock Clk2 (rise edge)                                200.00     200.00
   clock network delay (ideal)                             0.00     200.00
-  genblk4.vdotmulu/state_reg[1]/CP (DFKCNQD1BWP)          0.00     200.00 r
-  library hold time                                       0.00     200.00
-  data required time                                               200.00
+  genblk4.vdotmulu/state_reg[4]/CP (DFKCSND1BWP)          0.00     200.00 r
+  library hold time                                      -0.02     199.98
+  data required time                                               199.98
   --------------------------------------------------------------------------
-  data required time                                               200.00
-  data arrival time                                               -200.17
+  data required time                                               199.98
+  data arrival time                                               -200.13
   --------------------------------------------------------------------------
-  slack (MET)                                                        0.16
+  slack (MET)                                                        0.15
 
 
-  Startpoint: genblk4.vdotmulu/state_reg[0]
+  Startpoint: genblk4.vdotmulu/state_reg[4]
               (rising edge-triggered flip-flop clocked by Clk2)
-  Endpoint: genblk4.vdotmulu/state_reg[1]
+  Endpoint: genblk4.vdotmulu/state_reg[4]
             (rising edge-triggered flip-flop clocked by Clk2)
   Path Group: Clk2
   Path Type: min
@@ -1577,22 +1523,22 @@ Wire Load Model Mode: top
   --------------------------------------------------------------------------
   clock Clk2 (rise edge)                                200.00     200.00
   clock network delay (ideal)                             0.00     200.00
-  genblk4.vdotmulu/state_reg[0]/CP (DFKCND1BWP)           0.00     200.00 r
-  genblk4.vdotmulu/state_reg[0]/Q (DFKCND1BWP)            0.13     200.13 f
-  U28815/S (HA1D0BWP)                                     0.06     200.18 f
-  genblk4.vdotmulu/state_reg[1]/D (DFKCNQD1BWP)           0.00     200.18 f
-  data arrival time                                                200.18
+  genblk4.vdotmulu/state_reg[4]/CP (DFKCSND1BWP)          0.00     200.00 r
+  genblk4.vdotmulu/state_reg[4]/Q (DFKCSND1BWP)           0.09     200.09 r
+  U74449/ZN (MUX2ND0BWP)                                  0.04     200.13 f
+  genblk4.vdotmulu/state_reg[4]/D (DFKCSND1BWP)           0.00     200.13 f
+  data arrival time                                                200.13
 
   clock Clk2 (rise edge)                                200.00     200.00
   clock network delay (ideal)                             0.00     200.00
-  genblk4.vdotmulu/state_reg[1]/CP (DFKCNQD1BWP)          0.00     200.00 r
-  library hold time                                       0.00     200.00
-  data required time                                               200.00
+  genblk4.vdotmulu/state_reg[4]/CP (DFKCSND1BWP)          0.00     200.00 r
+  library hold time                                      -0.02     199.98
+  data required time                                               199.98
   --------------------------------------------------------------------------
-  data required time                                               200.00
-  data arrival time                                               -200.18
+  data required time                                               199.98
+  data arrival time                                               -200.13
   --------------------------------------------------------------------------
-  slack (MET)                                                        0.18
+  slack (MET)                                                        0.15
 
 
 1
